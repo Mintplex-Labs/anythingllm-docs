@@ -46,6 +46,7 @@ const sidebars = {
       ]
     },
     'desktop-vs-docker',
+    'desktop',
   ],
   llms: [
     {
@@ -178,6 +179,25 @@ const sidebars = {
       ],
     },
   ],
+  desktop: [
+    {
+      type: 'link',
+      label: '← Home',
+      href: '/'
+    },
+    'desktop',
+    {
+      type: 'category',
+      label: 'Operating System',
+      collapsed: false,
+      className: 'category-header',
+      items: [
+        'desktop/mac',
+        'desktop/windows',
+        'desktop/linux',
+      ],
+    },
+  ]
 };
 
 module.exports = sidebars;

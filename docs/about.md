@@ -2,13 +2,10 @@
 sidebar_position: 0
 slug: /
 title: About AnythingLLM
-hide_title: false
+hide_title: true
 ---
 
-
-# AnythingLLM
-
-## Who is AnythingLLM?
+# What is AnythingLLM?
 
 :::warning Pardon our progress
 This documentation website is currently incomplete and is being updated continuously while we improve AnythingLLM quickly. You can always contact the team at [team@mintplexlabs.com](mailto:team@mintplexlabs.com) for inquiries or chat with us on [Discord](https://discord.gg/6UyHPeGZAC).
@@ -25,7 +22,7 @@ AnythingLLM is **not a one-person project**. The Mintplex Labs team also include
 - Our community of volunteer contributors
 - [You?](#)
 
-## Why use AnythingLLM?
+# Why use AnythingLLM?
 
 You want a **zero-setup**, **private**, and all-in-one AI application for local LLMs, RAG, and AI Agents all in one place without painful developer-required set up.<br/>[Learn more about AnythingLLM Desktop &rarr;](#)
 

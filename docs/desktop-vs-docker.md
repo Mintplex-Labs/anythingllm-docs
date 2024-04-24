@@ -1,5 +1,5 @@
 ---
-title: Desktop Vs. Docker
+title: 🆚 Desktop Vs. Docker
 hide_title: false
 ---
 
@@ -7,7 +7,7 @@ AnythingLLM offers two main ways to use AnythingLLM. There are some distinct dif
 
 
 ### You want AnythingLLM Desktop if...
-- if you want a one-click installable app to use local LLMs, RAG, and Agents locally
+- You want a one-click installable app to use local LLMs, RAG, and Agents locally
 - You do not need multi-user support
 - Everything needs to stay only on your device
 - You do not need to "publish" anything to the public internet. Eg: Chat widget for website
@@ -24,8 +24,6 @@ AnythingLLM offers two main ways to use AnythingLLM. There are some distinct dif
 
 The below table is a non-exhaustive list of features supported between platforms.
 
-✅
-❌
 <div class="special_table"></div>
 
 | Feature | Available on Desktop | Available on Docker |
