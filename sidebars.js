@@ -45,6 +45,7 @@ const sidebars = {
         },
       ]
     },
+    'desktop-vs-docker',
   ],
   llms: [
     {
