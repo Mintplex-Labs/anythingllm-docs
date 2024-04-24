@@ -48,7 +48,7 @@ const sidebars = {
     {
       type: "category",
       label: "⚡️ Features",
-      collapsed: false,
+      collapsed: true,
       collapsible: true,
       items: [
         {
@@ -119,6 +119,8 @@ const sidebars = {
         },
       ],
     },
+    'desktop-vs-docker',
+    'desktop',
   ],
   features: [
     {
@@ -176,8 +178,6 @@ const sidebars = {
       href: "/features/security",
       label: "Security",
     },
-    'desktop-vs-docker',
-    'desktop',
   ],
   llms: [
     {
