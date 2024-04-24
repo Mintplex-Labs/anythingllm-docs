@@ -18,7 +18,11 @@ const sidebars = {
 
   // But we want to manually specify the sidebar for more control
   docs: [
-    "about",
+    {
+      type: 'link',
+      href: '/',
+      label: 'Home',
+    },
     {
       type: "category",
       label: "🛠️ Configuration",
@@ -148,6 +152,20 @@ const sidebars = {
           type: "link",
           href: "/self-hosted/remote-docker",
           label: "Cloud Docker",
+          className: "category-sublink",
+        },
+      ],
+    },
+    {
+      type: "category",
+      label: "⁉️ FAQ",
+      collapsed: true,
+      collapsible: true,
+      items: [
+        {
+          type: "link",
+          href: "/faq/why-is-llm-not-using-docs",
+          label: "LLM not using my docs!",
           className: "category-sublink",
         },
       ],

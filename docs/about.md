@@ -3,6 +3,7 @@ sidebar_position: 0
 slug: /
 title: About AnythingLLM
 hide_title: true
+displayed_sidebar: docs
 ---
 
 # What is AnythingLLM?
@@ -24,11 +25,11 @@ AnythingLLM is **not a one-person project**. The Mintplex Labs team also include
 
 # Why use AnythingLLM?
 
-You want a **zero-setup**, **private**, and all-in-one AI application for local LLMs, RAG, and AI Agents all in one place without painful developer-required set up.<br/>[Learn more about AnythingLLM Desktop &rarr;](#)
+You want a **zero-setup**, **private**, and all-in-one AI application for local LLMs, RAG, and AI Agents all in one place without painful developer-required set up.<br/>[Learn more about AnythingLLM Desktop &rarr;](/desktop)
 
 _or_
 
-You need a **fully-customizable**, **private**, and all-in-one AI app for your _business or organization_ that is basically a full ChatGPT with permissioning but with any LLM, embedding model, or vector database.<br/>[Learn more about AnythingLLM for Docker &rarr;](#)
+You need a **fully-customizable**, **private**, and all-in-one AI app for your _business or organization_ that is basically a full ChatGPT with permissioning but with any LLM, embedding model, or vector database.<br/>[Learn more about AnythingLLM for Docker &rarr;](/self-hosted/local-docker)
 
 
 If either of these things excite you - you will love watching the video below.
