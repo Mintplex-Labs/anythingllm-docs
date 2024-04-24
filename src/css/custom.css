@@ -678,3 +678,15 @@ td {
 .main-wrapper {
   min-height: 100vh;
 }
+
+[data-theme='dark'] .theme-admonition-warning {
+  background-color: #4d3700 !important;
+  border-left-color: #e6a700 !important;
+  color: #fff8e6 !important;
+}
+
+[data-theme='light'] .theme-admonition-warning {
+  background-color: #fff8e6 !important;
+  border-left-color: #e6a700 !important;
+  color: #4d3700 !important;
+}
