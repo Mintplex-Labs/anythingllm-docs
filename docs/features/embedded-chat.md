@@ -1,0 +1,60 @@
+---
+title: Embedded Chat Widgets
+displayed_sidebar: features
+---
+
+:::info Docker version only!
+This feature is only available in the Docker version of AnythingLLM
+:::
+![Embedded Chat Widget](/img/embedded-chat-widget.png)
+
+AnythingLLM allows you to create embedded chat widgets that can be easily integrated into any website using a simple `<script>` tag. These embedded chat widgets provide a convenient way for users to interact with your chatbot directly from your website.
+
+## Configuration Options
+
+When creating an embedded chat widget, you have several configuration options available to customize its behavior and appearance.
+
+![Embedded Chat Options 1](/img/embedded-chat-options-1.png)
+
+### Workspace
+
+The workspace setting determines which workspace your chat window will be based on. All defaults will be inherited from the selected workspace unless overridden by the specific configuration options.
+
+### Allowed Chat Method
+
+You can set how your chatbot should operate using the allowed chat method. There are two options:
+
+- **Chat**: The chatbot will respond to all questions regardless of context.
+- **Query**: The chatbot will only respond to chats related to documents in the workspace.
+
+### Restrict Requests from Domains
+
+This filter allows you to block any requests that come from domains other than the specified list. Leaving this field empty means anyone can use your embedded chat widget on any site.
+
+![Embedded Chat Options 2](/img/embedded-chat-options-2.png)
+
+### Max Chats per Day
+
+You can limit the number of chats this embedded chat widget can process in a 24-hour period. Setting this value to zero means unlimited chats per day.
+
+### Max Chats per Session
+
+You can limit the number of chats a session user can send with this embedded chat widget in a 24-hour period. Setting this value to zero means unlimited chats per session.
+
+### Enable Dynamic Model Use
+
+By enabling dynamic model use, you allow the setting of the preferred LLM model to override the workspace default.
+
+### Enable Dynamic LLM Temperature
+
+Enabling dynamic LLM temperature allows the setting of the LLM temperature to override the workspace default.
+
+### Enable Prompt Override
+
+By enabling prompt override, you allow the setting of the system prompt to override the workspace default.
+
+## Embedding the Chat Widget
+
+![Embedded Chat Code](/img/embedded-chat-code.png)
+
+After creating an embedded chat widget, you will be provided with a link that you can publish on your website using a simple `<script>` tag. This allows you to easily integrate the chat widget into your website's HTML code.
