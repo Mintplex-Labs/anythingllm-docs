@@ -26,3 +26,5 @@ This command generates static content into the `build` directory and can be serv
 
 
 ### Deployment
+
+Deployment is handled automatically by Vercel when branches are merged into `main`.
