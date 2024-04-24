@@ -1,5 +1,6 @@
 ---
 title: Event Logs
+displayed_sidebar: features
 ---
 
 ![Event Logs](/img/event-logs.png)

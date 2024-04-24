@@ -1,5 +1,6 @@
 ---
 title: User Modes in AnythingLLM
+displayed_sidebar: features
 ---
 
 :::info Docker version only!
@@ -24,6 +25,10 @@ You can turn off password protection at any time or reset the password to the in
 
 ## Multi-user Mode
 
+:::warning warning
+Once in multi-user mode, you cannot revert back to single-user mode.
+:::
+
 The preferred method of use for AnythingLLM is **multi-user mode**. In this mode, you can set per-user role-based access permissions.
 
 By default, you will create the administrator account, which has the highest level of privilege. As an administrator, you will have access to the entire system, logs, analytics, and more.
@@ -42,4 +47,3 @@ To enable multi-user mode, toggle on the "Enable multi-user mode" option. This w
 
 This will be the default admin account that you will use to control the instance. Once set, you will be logged out so you can log in with the new password.
 
-**Important**: Once in multi-user mode, you cannot revert back to single-user mode.

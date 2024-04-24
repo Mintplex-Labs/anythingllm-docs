@@ -1,5 +1,6 @@
 ---
 title: API Access & Keys
+displayed_sidebar: features
 ---
 
 You can find the API documentation for available endpoints on your instance at `/api/docs`

@@ -22,8 +22,8 @@ const sidebars = {
     {
       type: "category",
       label: "🛠️ Configuration",
-      // collapsed: false,
-      collapsible: false,
+      collapsed: true,
+      collapsible: true,
       items: [
         {
           type: "link",
@@ -48,8 +48,8 @@ const sidebars = {
     {
       type: "category",
       label: "⚡️ Features",
-      // collapsed: false,
-      collapsible: false,
+      collapsed: false,
+      collapsible: true,
       items: [
         {
           type: "link",
@@ -120,7 +120,6 @@ const sidebars = {
       ],
     },
   ],
-
   features: [
     {
       type: "link",
@@ -128,61 +127,54 @@ const sidebars = {
       href: "/",
     },
     {
-      type: "category",
-      label: "⚡️ Features",
-      collapsed: false,
-      items: [
-        {
-          type: "link",
-          href: "/features/workspace-chat",
-          label: "Workspace Chat Logs",
-        },
-        {
-          type: "link",
-          href: "/features/appearance",
-          label: "Appearance Customization",
-        },
-        {
-          type: "link",
-          href: "/features/api-keys",
-          label: "API Access & Keys",
-        },
-        {
-          type: "link",
-          href: "/features/llm-preference",
-          label: "LLM Configuration",
-        },
-        {
-          type: "link",
-          href: "/features/transcription-model",
-          label: "Transcription Model Configuration",
-        },
-        {
-          type: "link",
-          href: "/features/embedder-preference",
-          label: "Embedder Configuration",
-        },
-        {
-          type: "link",
-          href: "/features/vector-db",
-          label: "Vector Database Configuration",
-        },
-        {
-          type: "link",
-          href: "/features/embedded-chat",
-          label: "Embedded Chat Widgets",
-        },
-        {
-          type: "link",
-          href: "/features/event-logs",
-          label: "Event Logs",
-        },
-        {
-          type: "link",
-          href: "/features/security",
-          label: "Security",
-        },
-      ],
+      type: "link",
+      href: "/features/workspace-chat",
+      label: "Workspace Chat Logs",
+    },
+    {
+      type: "link",
+      href: "/features/appearance",
+      label: "Appearance Customization",
+    },
+    {
+      type: "link",
+      href: "/features/api-keys",
+      label: "API Access & Keys",
+    },
+    {
+      type: "link",
+      href: "/features/llm-preference",
+      label: "LLM Configuration",
+    },
+    {
+      type: "link",
+      href: "/features/transcription-model",
+      label: "Transcription Model Configuration",
+    },
+    {
+      type: "link",
+      href: "/features/embedder-preference",
+      label: "Embedder Configuration",
+    },
+    {
+      type: "link",
+      href: "/features/vector-db",
+      label: "Vector Database Configuration",
+    },
+    {
+      type: "link",
+      href: "/features/embedded-chat",
+      label: "Embedded Chat Widgets",
+    },
+    {
+      type: "link",
+      href: "/features/event-logs",
+      label: "Event Logs",
+    },
+    {
+      type: "link",
+      href: "/features/security",
+      label: "Security",
     },
   ],
   llms: [

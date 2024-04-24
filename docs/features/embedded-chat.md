@@ -1,5 +1,6 @@
 ---
 title: Embedded Chat Widgets
+displayed_sidebar: features
 ---
 
 :::info Docker version only!

@@ -1,5 +1,6 @@
 ---
 title: Privacy & Data
+displayed_sidebar: features
 ---
 
 :::tip

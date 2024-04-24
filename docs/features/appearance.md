@@ -1,6 +1,11 @@
 ---
 title: Appearance Customization
+displayed_sidebar: features
 ---
+
+:::info Docker version only!
+These settings are only available in the Docker version of AnythingLLM
+:::
 
 AnythingLLM allows you to customize the look and feel of your instance to match your brand and identity.
 

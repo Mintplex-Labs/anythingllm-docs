@@ -1,4 +1,7 @@
-# Workspace Chat Logs
+---
+title: Workspace Chat Logs
+displayed_sidebar: features
+---
 
 **Did you know?** AnythingLLM allows you to export your chat logs in the correct format to build a fine-tuned model of GPT-3.5 and other available models on OpenAI.
 

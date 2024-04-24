@@ -1,5 +1,6 @@
 ---
 title: Vector DB Configuration
+displayed_sidebar: features
 ---
 
 :::note
