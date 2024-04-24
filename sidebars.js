@@ -121,6 +121,37 @@ const sidebars = {
     },
     'desktop-vs-docker',
     'desktop',
+    {
+      type: 'link',
+      href: "/hosted-deployment",
+      label: '🌐 AnythingLLM Cloud'
+    },
+    {
+      type: "category",
+      label: "✈️ Self-hosted deployment",
+      collapsed: true,
+      collapsible: true,
+      items: [
+        {
+          type: "link",
+          href: "/self-hosted/requirements",
+          label: "System Requirements",
+          className: "category-sublink",
+        },
+        {
+          type: "link",
+          href: "/self-hosted/local-docker",
+          label: "Local Docker",
+          className: "category-sublink",
+        },
+        {
+          type: "link",
+          href: "/self-hosted/remote-docker",
+          label: "Cloud Docker",
+          className: "category-sublink",
+        },
+      ],
+    },
   ],
   features: [
     {
