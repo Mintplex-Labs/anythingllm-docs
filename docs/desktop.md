@@ -1,5 +1,5 @@
 ---
-title: AnythingLLM Desktop
+title: 💻 AnythingLLM Desktop
 ---
 
 :::tip 
