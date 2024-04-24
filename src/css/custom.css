@@ -690,3 +690,17 @@ td {
   border-left-color: #e6a700 !important;
   color: #4d3700 !important;
 }
+
+/* 
+  Show warning triangle as a patch for our older version of docusarus 
+  so first we hide the default flame SVG
+  and then show the /26A0 unicode warning triangle.
+*/
+.theme-admonition-warning>div:first-of-type>span.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module>svg {
+  display: none;
+}
+
+.theme-admonition-warning>div:first-of-type>span.admonitionIcon_node_modules-\@docusaurus-theme-classic-lib-theme-Admonition-styles-module::before {
+  content: "\26A0";
+  font-size: 20px;
+}
