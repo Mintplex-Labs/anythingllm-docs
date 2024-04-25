@@ -21,7 +21,7 @@ AnythingLLM is **not a one-person project**. The Mintplex Labs team also include
 - Sean Hatfield (Engineer)
 - Tiff Tang (Designer)
 - Our community of volunteer contributors
-- [You?](#)
+- [You?](https://www.ycombinator.com/companies/mintplex-labs/jobs)
 
 # Why use AnythingLLM?
 
