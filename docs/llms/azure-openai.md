@@ -10,4 +10,4 @@ It is possible to use Microsoft Azure for your LLM chat model. This allows you t
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/llm-azure.png" />
+<img src="/img/llm-providers/cloud/llm-azure.png" />

@@ -28,7 +28,7 @@ AnythingLLM supports many vector databases providers out of the box.
 
 |        Supported Local Vector Databases   |
 |--------------|-----------    |
-| [LanceDB](/vector-databases/lancedb) _default_ | 
+| [LanceDB](/vector-databases/lancedb) (default) | 
 | [Chroma](/vector-databases/chromadb) |  
 | [Milvus](https://github.com/milvus-io/milvus) | 
 

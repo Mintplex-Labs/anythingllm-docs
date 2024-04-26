@@ -12,4 +12,4 @@ When you boot up AnythingLLM Desktop you will be able to select the model you wi
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/built-in-llm.png" />
+<img src="/img//llm-providers/local/built-in-llm.png" />

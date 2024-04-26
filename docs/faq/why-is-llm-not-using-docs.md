@@ -56,7 +56,7 @@ AnythingLLM exposes many many options to tune your workspace to better fit with 
 
 You can find these settings by hovering over a workspace and clicking the "Gear" icon.
 
-<img src="/img/settings.png" />
+<img src="/img/faq/llm-not-using-docs/settings.png" />
 
 
 ### Chat Settings > Prompt
@@ -89,6 +89,6 @@ Document Pinning is where we do a full-text insertion of the document into the c
 
 Document Pinning should be reserved for documents that can either fully fit in the context window or are extremely critical for the use-case of that workspace.
 
-<img src="/img/doc-pinning.png" />
+<img src="/img/faq/llm-not-using-docs/doc-pinning.png" />
 
 You can only pin a document that has already been embedded. Clicking the pushpin icon will toggle this setting for the document.

@@ -11,4 +11,4 @@ OpenAI is the most popular closed-source option for many AnythingLLM users. We s
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/built-in-llm.png" />
+<img src="/img/llm-providers/cloud/llm-openai.png" />

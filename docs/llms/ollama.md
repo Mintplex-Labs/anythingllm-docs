@@ -10,4 +10,4 @@ When running ollama locally, you should connect to Ollama with `http://127.0.0.1
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/llm-ollama.png" />
+<img src="/img/llm-providers/local/llm-ollama.png" />

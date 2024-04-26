@@ -6,7 +6,7 @@ displayed_sidebar: features
 :::info Docker version only!
 This feature is only available in the Docker version of AnythingLLM
 :::
-![Embedded Chat Widget](/img/embedded-chat-widget.png)
+![Embedded Chat Widget](/img/features/embeded-chat-widgets/embedded-chat-widget.png)
 
 AnythingLLM allows you to create embedded chat widgets that can be easily integrated into any website using a simple `<script>` tag. These embedded chat widgets provide a convenient way for users to interact with your chatbot directly from your website.
 
@@ -14,7 +14,7 @@ AnythingLLM allows you to create embedded chat widgets that can be easily integr
 
 When creating an embedded chat widget, you have several configuration options available to customize its behavior and appearance.
 
-![Embedded Chat Options 1](/img/embedded-chat-options-1.png)
+![Embedded Chat Options 1](/img/features/embeded-chat-widgets/embedded-chat-options-1.png)
 
 ### Workspace
 
@@ -31,7 +31,7 @@ You can set how your chatbot should operate using the allowed chat method. There
 
 This filter allows you to block any requests that come from domains other than the specified list. Leaving this field empty means anyone can use your embedded chat widget on any site.
 
-![Embedded Chat Options 2](/img/embedded-chat-options-2.png)
+![Embedded Chat Options 2](/img/features/embeded-chat-widgets/embedded-chat-options-2.png)
 
 ### Max Chats per Day
 
@@ -55,6 +55,6 @@ By enabling prompt override, you allow the setting of the system prompt to overr
 
 ## Embedding the Chat Widget
 
-![Embedded Chat Code](/img/embedded-chat-code.png)
+![Embedded Chat Code](/img/features/embeded-chat-widgets/embedded-chat-code.png)
 
 After creating an embedded chat widget, you will be provided with a link that you can publish on your website using a simple `<script>` tag. This allows you to easily integrate the chat widget into your website's HTML code.

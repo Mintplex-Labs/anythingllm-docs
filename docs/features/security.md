@@ -19,7 +19,7 @@ In single-user mode, you (and only you) have complete control over the instance.
 
 When using AnythingLLM in "single user mode," you can password protect the instance by toggling on the "Password Protect Instance" option. This will display an input where you can enter the password to protect the instance.
 
-![Password Protect Instance](/img/password-protect-instance.png)
+![Password Protect Instance](/img/features/security/password-protect-instance.png)
 
 You can turn off password protection at any time or reset the password to the instance while logged in.
 
@@ -43,7 +43,7 @@ By default, you will create the administrator account, which has the highest lev
 
 To enable multi-user mode, toggle on the "Enable multi-user mode" option. This will display an input where you can enter the username and password for the first admin account.
 
-![Enable Multi-user Mode](/img/multi-user-mode.png)
+![Enable Multi-user Mode](/img/features/security/multi-user-mode.png)
 
 This will be the default admin account that you will use to control the instance. Once set, you will be logged out so you can log in with the new password.
 

@@ -10,4 +10,4 @@ When running LMStudio locally, you should connect to LMStudio by first running t
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/llm-lmstudio.png" />
+<img src="/img/llm-providers/local/llm-lmstudio.png" />

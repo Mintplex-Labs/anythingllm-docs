@@ -14,4 +14,4 @@ AnythingLLM supports exporting chats as:
 
 Just click export at the top of the screen once at least 10 chat logs are available! Provided you have the correct account permissions, you can view the chat logs per workspace and per user of your AnythingLLM instance.
 
-![Workspace Chats Overview](/img/workspace-chats.png)
+![Workspace Chats Overview](/img/features/workspace-chat-logs/workspace-chats.png)

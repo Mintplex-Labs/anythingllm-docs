@@ -17,4 +17,4 @@ Like other LLM providers, the Chat Model Selection dropdown will automatically p
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/llm-google.png" />
+<img src="/img/llm-providers/cloud/llm-google.png" />
