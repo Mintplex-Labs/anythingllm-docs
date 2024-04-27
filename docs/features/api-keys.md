@@ -13,4 +13,4 @@ AnythingLLM supports a full developer API that you can use to manage, update, em
 
 You can create and delete API keys on the fly if you are allowed permission to do so.
 
-![API Keys](/img/api-keys.png)
+![API Keys](/img/features/api-access-keys/api-keys.png)

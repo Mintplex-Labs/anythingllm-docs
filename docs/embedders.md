@@ -24,7 +24,7 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
 
 |        Supported Local Embedding Providers   |
 |--------------|-----------    |
-| [Built-in](/embedders/built-in) _default_ | 
+| [Built-in](/embedders/built-in) (default) | 
 | [Ollama](/embedders/ollama) | 
 | [LMStudio](/embedders/lmstudio) | 
 | [LocalAI](/embedders/localai) | 

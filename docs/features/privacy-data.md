@@ -7,7 +7,7 @@ displayed_sidebar: features
 AnythingLLM is transparent telling you who and what has access to your data.
 :::
 
-![Privacy & Data](/img/privacy-data.png)
+![Privacy & Data](/img/features/privacy/privacy-data.png)
 
 ## Anonymous Telemetry
 

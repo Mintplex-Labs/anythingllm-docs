@@ -3,7 +3,7 @@ title: Event Logs
 displayed_sidebar: features
 ---
 
-![Event Logs](/img/event-logs.png)
+![Event Logs](/img/features/event-logs/event-logs.png)
 
 The Event Logs page in AnythingLLM allows users to view and monitor various events that occur within the application. This feature provides insights into user activities and system-related events.
 

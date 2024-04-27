@@ -15,4 +15,4 @@ You must obtain a valid API key from [mistral.ai](https://mistral.ai/) for this 
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/llm-mistral.png" />
+<img src="/img/llm-providers/cloud/llm-mistral.png" />

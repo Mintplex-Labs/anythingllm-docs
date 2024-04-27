@@ -17,4 +17,4 @@ OpenAI offers 3 embedding models that vary between performance and dimension. Ch
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/built-in-llm.png" />
+<img src="/img/embedding-providers/local/built-in-llm.png" />

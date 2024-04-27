@@ -17,7 +17,7 @@ The AnythingLLM windows application is currently unsigned and Windows defender o
 
 Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. Click "Keep" when downloading to allow the file to download.
 
-<img src="/img/download-mac.png" />
+<img src="/img/desktop/windows/download.png" />
 
 ### Installing the application
 After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process. 
@@ -28,13 +28,13 @@ Since the application is unsigned. Native windows defender will want to ensure y
 __this alert is temporary until the application signing process is completed on our end.__
 :::
 
-<img src="/img/install-windows1.png" />
+<img src="/img/desktop/windows/install-1.png" />
 
 After which, now the regular installer can run to install AnythingLLM Desktop!
 
 
-<img src="/img/install-windows2.png" />
-<img src="/img/install-windows3.png" />
+<img src="/img/desktop/windows/install-2.png" />
+<img src="/img/desktop/windows/install-3.png" />
 
 Click on the application to boot up AnythingLLM! You are done with installation.
 
@@ -43,7 +43,7 @@ Click on the application to boot up AnythingLLM! You are done with installation.
 :::note
 You should find the uninstall `executable` in `/Users/{user}/AppData/Local/Programs/AnythingLLM` or  `/Users/{user}/AppData/Local/Programs/anythingllm-desktop`
 :::
-<img src="/img/uninstall-windows.png" />
+<img src="/img/desktop/windows/uninstall.png" />
 
 ## Clear data from previous installations
 

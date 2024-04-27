@@ -16,6 +16,6 @@ You would need to delete and re-embed each document in every workspace to migrat
 
 AnythingLLM supports many vector databases providers out of the box.
 
-![LLM Provider Settings](/img/vectordb-preference.png)
+![LLM Provider Settings](/img/features/vector-db-configuration/vectordb-preference.png)
 
 To see all supported vector databases, visit [here](../vector-databases.md).

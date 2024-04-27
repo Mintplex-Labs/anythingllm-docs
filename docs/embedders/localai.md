@@ -6,4 +6,4 @@ title: LocalAI
 
 You can update your model to a different model at any time in the **Settings**.
 
-<img src="/img/built-in-llm.png" />
+<img src="/img/embedding-providers/local/built-in-llm.png" />

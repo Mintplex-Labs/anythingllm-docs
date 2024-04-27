@@ -21,7 +21,7 @@ Apple M-Series chips run local LLM inferencing _considerably_ faster than Intel-
 
 Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. Click "Keep" when downloading to allow the file to download.
 
-<img src="/img/download-mac.png" />
+<img src="/img/desktop/macos/download.png" />
 
 
 ### Installing the application
@@ -29,7 +29,7 @@ Your internet browser may need you to verify you want to download and run the An
 After downloading the `.dmg` file from the link in the invitation email, you will want to double-click on the resulting installed file.
 
 Once the dmg opens, you can drag the AnythingLLM logo into `Applications`
-<img src="/img/install-mac.png" />
+<img src="/img/desktop/macos/install.png" />
 
 Once installed, you will find AnythingLLM in your Applications folder as well as you can use `cmd + spacebar` and type in AnythingLLM to run.
 

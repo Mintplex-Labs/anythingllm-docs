@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-title: LLM Providers
+title: Supported LLMs
 ---
 
 # Supported LLMs
@@ -14,7 +14,7 @@ You can modify your LLM provider, model, or any other details at any time in Any
 
 |        Supported Local LLM Providers   |
 |--------------|-----------    |
-| [Built-in LLM](/llms/desktop-built-in) _desktop only_ | 
+| [Built-in LLM](/llms/desktop-built-in) (desktop only) | 
 | [Ollama](/llms/ollama) | 
 | [LMStudio](/llms/lmstudio) | 
 | [LocalAI](/llms/localai) | 

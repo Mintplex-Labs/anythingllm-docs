@@ -1,30 +1,18 @@
-# AnythingLLM docs
+<a name="readme-top"></a>
 
-These docs are built using [Docusaurus 2](https://docusaurus.io/)
-
-### Installation
-
-```
-$ yarn
-```
-
-### Local Development
-
-```
-$ yarn start
-```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
-
-### Build
-
-```
-$ yarn build
-```
-
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+<p align="center">
+  <a href="https://useanything.com"><img src="https://github.com/Mintplex-Labs/anything-llm/blob/master/images/wordmark.png?raw=true" alt="AnythingLLM logo"></a>
+</p>
 
 
-### Deployment
+## How to setup for development
 
-Deployment is handled automatically by Vercel when branches are merged into `main`.
+- Clone this Repository to your local machine `git clone https://github.com/Mintplex-Labs/anythingllm-docs.git`
+- Run `yarn` to install the dependencies
+- Run `yarn start` to start a local development server and it opens up a browser window. Most changes are reflected live without having to restart the server.
+
+## Contributing
+
+- Create issue
+- Create PR with branch name format of `<issue number>-<short name>`
+- yee haw let's merge

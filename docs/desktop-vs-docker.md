@@ -27,7 +27,7 @@ The below table is a non-exhaustive list of features supported between platforms
 <div class="special_table"></div>
 
 | Feature | Available on Desktop | Available on Docker |
-|----|----|----|
+|:----|:----|:----|
 | Multi-user support | ❌ | ✅ |
 | Emeddable chat widgets | ❌ | ✅ |
 | One-click install | ✅ | ❌ |

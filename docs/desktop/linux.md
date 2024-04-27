@@ -13,7 +13,7 @@ AnythingLLM is built on an Ubuntu system and may not work well on other distros.
 
 Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. Click "Keep" when downloading to allow the file to download.
 
-<img src="/img/download-mac.png" />
+<img src="/img/desktop/linux/download.png" />
 
 
 ### Installing the application
