@@ -48,7 +48,7 @@ const config: DocsThemeConfig = {
     const { route } = useRouter()
     const socialCard =
       route === '/' || !title
-        ? 'https://docs.useanything.com/og.png'
+        ? 'https://docs.useanything.com/images/og.png'
         : `https://docs.useanything.com/api/og?title=${title}`
 
     return (
@@ -65,9 +65,13 @@ const config: DocsThemeConfig = {
           name="og:description"
           content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches."
         />
+        <meta property="og:url" content="http://docs.useanything.com"></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="docs.useanything.com" />
+        <meta property="twitter:title" content="">AnythingLLM | The all-in-one AI desktop app.</meta>
+        <meta property="twitter:title" content="">All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches.</meta>
+
         <meta name="twitter:url" content="https://docs.useanything.com" />
         <meta
           name="og:title"
