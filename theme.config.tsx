@@ -21,7 +21,7 @@ const config: DocsThemeConfig = {
   chat: {
     link: 'https://discord.gg/Dh4zSZCdsC', // Link for discord icon on top nav bar
   },
-  docsRepositoryBase: 'https://github.com/Mintplex-Labs/anythingllm-docs', // Repo link for the 'Edit this page'
+  docsRepositoryBase: 'https://github.com/Mintplex-Labs/anythingllm-docs/tree/main', // Repo link for the 'Edit this page'
   footer: {
     text: (
       <span>
