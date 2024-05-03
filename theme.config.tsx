@@ -70,7 +70,7 @@ const config: DocsThemeConfig = {
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="docs.useanything.com" />
         <meta property="twitter:title" content="AnythingLLM | The all-in-one AI desktop app." />
-        <meta property="twitter:title" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
+        <meta property="twitter:description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
 
         <meta name="twitter:url" content="https://docs.useanything.com" />
         <meta
