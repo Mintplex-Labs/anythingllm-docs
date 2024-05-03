@@ -1,0 +1,118 @@
+---
+title: "Windows Installation"
+description: "Windows Installation guide for AnythingLLM"
+image: "/images/getting-started/installation/windows/thumbnail.png"
+---
+
+import { Callout, Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/getting-started/installation/windows/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Windows Installation"
+/>
+
+
+# Windows Installation
+
+<Callout type="warning" emoji="⚠️">
+  **Application is not signed!**
+
+    The AnythingLLM windows application is currently unsigned and Windows defender or other anti-virus software will sometimes flag the application as malicious. 
+
+    If you do not want to bypass that alert for any reason - please use AnythingLLM another way.
+</Callout>
+
+
+<Callout type="warning" emoji="️⚠️">
+  **OPERATING SYSTEM NOTICE**
+
+    AnythingLLM is intended to be used on an admin account of Windows Home. Other versions of windows (Enterprise or Server) may not work. We target for Windows 11.
+</Callout>
+
+
+## Downloading the application
+
+Here is the download link for the latest version of Anything LLM Windows.
+
+<Card 
+ title="Windows 10+ (Home, Professional - 64-bit CPU)" 
+ href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.exe"> 
+</Card>
+
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: false,
+      arrow: true,
+      target: '_blank'
+    }
+  }
+)
+
+
+Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. 
+
+Click "**Keep**" when downloading to allow the file to download.
+
+<Image
+  src="/images/getting-started/installation/windows/browser-warning.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Windows Install Browser Warning"
+/>
+
+
+## Installing the application
+
+After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process. 
+
+
+<Callout type="info" emoji="️💡">
+  **Anti-Virus false positive**
+
+    Since the application is unsigned. Native windows defender will want to ensure you mean to execute this application. Click on "more details" and the **"Run anyway"** button will be visible.
+
+  **This alert is temporary until the application signing process is completed on our end.**
+</Callout>
+
+
+<Image
+  src="/images/getting-started/installation/windows/anti-virus-warning.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Windows Install Anti Virus Warning"
+/>
+
+
+After which, now the regular installer can run to install AnythingLLM Desktop!
+
+
+<Image
+  src="/images/getting-started/installation/windows/install.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Windows Install"
+/>
+
+Click on the application name "**AnythingLLM**" on your desktop to boot up AnythingLLM! 
+
+<Image
+  src="/images/getting-started/installation/windows/desktop.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Windows Open"
+/>
+
+**You are done with installation.**

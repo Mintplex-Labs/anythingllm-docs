@@ -1,0 +1,55 @@
+---
+title: "Desktop Changelog Overview"
+description: "AnythingLLM Deskop Changelog"
+image: "/images/product/changelog/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+import Link from 'next/link'
+
+<Image
+  src="/images/product/changelog/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Changelog"
+/>
+
+
+# Desktop Changelogs
+
+We're using this log to jot down everything we've finished working on. It helps us see the progress we've made. This changelog is only tracking the changes in the <Link href='https://useanything.com/download'><u>AnythingLLM Desktop App</u></Link>.
+
+You can read the recent changelogs by clicking the cards below:
+
+<Cards>
+  <Card title="Changelog v1.5.2" href="v1.5.2"> 
+    <Image
+    src="/images/product/changelog/v1.5.2.png" 
+    height={1080} 
+    width={1920} 
+    quality={100}
+    alt="AnythingLLM Desktop Changelog v1.5.2"/>
+  </Card>
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

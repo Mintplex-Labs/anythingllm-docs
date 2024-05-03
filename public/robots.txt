@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Disallow: /api/*
+Disallow: /licence.txt
+Disallow: /privacy
+Disallow: /licence

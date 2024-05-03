@@ -1,0 +1,99 @@
+{
+  "index": {
+    "title": "Home",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": false
+    }
+  },
+  "getting-started": {
+    "title": "Getting Started",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "features": {
+    "title": "Features",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "anythingllm-setup": {
+    "title": "AnythingLLM Setup",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "guides-and-faq": {
+    "title": "Guides & FAQ",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "anythingllm-cloud": {
+    "title": "AnythingLLM Cloud",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "---": {
+  "type": "separator",
+  "title": "More"
+},
+"product": {
+  "title": "Product",
+  "theme": {
+    "breadcrumb": true,
+    "footer": true,
+    "pagination": true,
+    "toc": true
+  }
+},
+"sponsor-link": {
+  "title": "Sponsor ↗",
+  "href": "https://github.com/sponsors/Mintplex-Labs",
+  "newWindow": true
+},
+  "contribute": {
+    "title": "Contribute",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "legal": {
+    "title": "Legal",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "contact": {
+    "title": "Contact Mintplex Labs ↗",
+    "type": "page",
+    "href": "mailto:team@mintplexlabs.com",
+    "newWindow": true
+  }
+}
+

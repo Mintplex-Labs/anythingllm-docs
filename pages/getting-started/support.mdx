@@ -1,0 +1,94 @@
+---
+title: "Support"
+description: "Support for AnythingLLM"
+image: "/images/getting-started/support/thumbnail.png"
+---
+import { Callout, Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/getting-started/support/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Support"
+/>
+
+
+### Need a hand? No problem! You can get help in three different ways.
+
+
+#### 1. GitHub Issues:
+Feel free to open an issue on the AnythingLLM [GitHub Repository](https://github.com/Mintplex-Labs/anything-llm/issues). Both the Mintplex Labs Team and the AnythingLLM Community are there to offer support.
+
+
+#### 2. Email the Mintplex Labs Team:
+Send an email outlining your issue to Team@MintplexLabs.com. Be sure to provide a clear description of the problem you're facing.
+
+
+#### 3. Discord Community:
+Join Mintplex Labs Discord [Community Server](https://discord.gg/Dh4zSZCdsC) and post your support queries on the server to get help from the community.
+
+
+<Callout type="warning" emoji="⚠️">
+  **NOTE**
+
+    The Mintplex Labs Team is less active on Discord. 
+    
+    For direct assistance from the team, consider opening an issue on [github](https://github.com/Mintplex-Labs/anything-llm/issues) or sending an email to the provided address.
+</Callout>
+
+
+## Quick Links 
+
+<Cards>
+  <Card title="Github Issues" href="https://github.com/Mintplex-Labs/anything-llm/issues"> 
+    <Image
+      src="/images/getting-started/support/github.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Github Issues"
+    />
+  </Card>
+
+  <Card title="Email" href="mailto:team@mintplexlabs.com"> 
+    <Image
+      src="/images/getting-started/support/email.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Email"
+    />
+  </Card>
+
+  <Card title="Discord Community Invite" href="https://discord.gg/Dh4zSZCdsC"> 
+    <Image
+      src="/images/getting-started/support/discord.png" 
+      height={1080} 
+      width={1920}
+      quality={100} 
+      alt="AnythingLLM Discord Community"
+    />
+  </Card>
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

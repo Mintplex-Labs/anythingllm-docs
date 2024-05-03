@@ -1,30 +1,75 @@
-# AnythingLLM docs
+<a name="readme-top"></a>
 
-These docs are built using [Docusaurus 2](https://docusaurus.io/)
+<p align="center">
+  <a href="https://useanything.com"><img src="https://github.com/Mintplex-Labs/anything-llm/blob/master/images/wordmark.png?raw=true" alt="AnythingLLM logo"></a>
+</p>
 
-### Installation
 
-```
-$ yarn
-```
-
-### Local Development
+## Project Structure
 
 ```
-$ yarn start
+├── public/
+│   ├── images/
+│   │   ├── anythingllm-setup/
+│   │   ├── features/
+│   │   ├── getting-started/
+│   │   ├── guides-and-faq/
+│   │   ├── home/
+│   │   ├── legal/
+│   │   └── product/
+│   ├── favicon.png
+│   ├── licence.txt
+│   └── robots.txt
+├── pages/
+│   ├── anythingllm-setup/
+│   ├── features/
+│   ├── getting-started/
+│   ├── guides-and-faq/
+│   ├── legal/
+│   ├── product/
+│   ├── anythingllm-cloud.mdx
+│   ├── contribute.mdx
+│   └── index.mdx
+├── components/
+│   └── icons/
+├── next-env.d.ts
+├── next.config.js
+├── package.json
+├── pull-request-template.md
+├── README.md
+├── theme.config.tsx
+└── tsconfig.json
 ```
 
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
+## Setup for Local Development
 
-### Build
+1. Clone this Repository to your local machine using git clone:
 
+```sh
+git clone https://github.com/Mintplex-Labs/anythingllm-docs.git
 ```
-$ yarn build
+
+
+2. Install dependencies using npm:
+
+```sh
+yarn
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+3. Start the development server:
 
+```sh
+yarn dev
+```
 
-### Deployment
+## Contributing
 
-Deployment is handled automatically by Vercel when branches are merged into `main`.
+- Create issue
+- Create PR with branch name format of `<issue number>-<short name>`
+- yee haw let's merge
+
+## License
+
+This project is licensed under the MIT License.
+
+_special thanks to [https://github.com/ShadowAlyxia](@ShadowArcanist) for the migration to NextJS_

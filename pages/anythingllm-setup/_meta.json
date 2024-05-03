@@ -1,0 +1,38 @@
+{
+    "embedder-configuration": {
+    "title": "Embedder Configuration",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "llm-configuration": {
+    "title": "LLM Configuration",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "transcription-model-configuration": {
+    "title": "Transcription Configuration",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "vector-database-configuration": {
+    "title": "Vector DB Configuration",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}

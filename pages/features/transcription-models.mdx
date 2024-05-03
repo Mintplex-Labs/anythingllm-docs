@@ -1,0 +1,73 @@
+---
+title: "Transcription Models"
+description: "AnythingLLM supports custom audio transcription providers."
+image: "/images/features/transcription-models/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/features/transcription-models/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Transcription Models"
+/>
+
+# Transcription Models
+
+AnythingLLM supports custom audio transcription providers.
+
+
+## Supported Transcription Model Providers
+
+### Local Transcription Model Providers
+
+<Cards>
+  <Card title="Built-in (Xenova)" href="https://huggingface.co/Xenova/whisper-small"> 
+    <Image
+      src="/images/features/transcription-models/xenova.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Built-in (Xenova)"
+    />
+  </Card>
+</Cards>
+
+
+### Cloud Transcription Model Providers
+
+<Cards>
+  <Card title="OpenAI" href="https://platform.openai.com/"> 
+    <Image
+      src="/images/features/transcription-models/openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="OpenAI"
+    />
+  </Card>
+</Cards>
+
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

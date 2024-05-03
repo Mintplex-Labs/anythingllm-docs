@@ -1,0 +1,137 @@
+---
+title: "Vector Databases"
+description: "AnythingLLM allows you to use a host of LLM providers for chatting and generative AI."
+image: "/images/features/vector-databases/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/features/vector-databases/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Vector Databases"
+/>
+
+
+# Vector Databases
+
+AnythingLLM comes with a private built-in vector database powered by [LanceDB](https://lancedb.com/). Your vectors never leave AnythingLLM when using the default option.
+
+AnythingLLM supports many vector databases providers out of the box.
+
+
+## Supported Vector Databases
+
+### Local Vector Databases Providers
+
+<Cards>
+  <Card title="LanceDB (Built-in)" href="https://github.com/lancedb/lancedb"> 
+    <Image
+      src="/images/features/vector-databases/lancedb.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="LanceDB"
+    />
+  </Card>
+
+  <Card title="Chroma" href="https://github.com/chroma-core/chroma"> 
+    <Image
+      src="/images/features/vector-databases/chroma.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Chroma"
+    />
+  </Card>
+
+  <Card title="Milvus" href="https://github.com/milvus-io/milvus"> 
+    <Image
+      src="/images/features/vector-databases/milvus.png" 
+      height={1080} 
+      width={1920}
+      quality={100} 
+      alt="Milvus"
+    />
+  </Card>
+</Cards>
+
+
+
+### Cloud Vector Databases Providers
+
+<Cards>
+  <Card title="Pinecone" href="https://www.pinecone.io/"> 
+    <Image
+      src="/images/features/vector-databases/pinecone.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Pinecone"
+    />
+  </Card> 
+
+  <Card title="Zilliz" href="https://zilliz.com/"> 
+    <Image
+      src="/images/features/vector-databases/zilliz.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Zilliz"
+    />
+  </Card>
+
+  <Card title="AstraDB" href="https://www.datastax.com/"> 
+    <Image
+      src="/images/features/vector-databases/astra-db.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AstraDB"
+    />
+  </Card>
+
+  <Card title="QDrant" href="https://qdrant.tech/"> 
+    <Image
+      src="/images/features/vector-databases/qdrant.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="QDrant"
+    />
+  </Card>
+
+  <Card title="Weaviate" href="https://weaviate.io/"> 
+    <Image
+      src="/images/features/vector-databases/weaviate.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Weaviate"
+    />
+  </Card>
+</Cards>
+
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

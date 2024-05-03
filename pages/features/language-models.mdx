@@ -1,0 +1,207 @@
+---
+title: "Large Language Models"
+description: "AnythingLLM allows you to use a host of LLM providers for chatting and generative AI."
+image: "/images/features/language-models/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/features/language-models/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Large Language Models"
+/>
+
+# Large Language Models
+
+AnythingLLM allows you to use a host of LLM providers for chatting and generative AI. 
+
+Depending on your selection additional configuration might be required.
+
+
+## Supported Language Model Providers
+
+### Local Language Model Providers
+
+<Cards>
+  <Card title="Built-in (default)" href="#"> 
+    <Image
+      src="/images/features/embedding-models/built-in.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Built-in (default)"
+    />
+  </Card>
+
+  <Card title="Ollama" href="https://ollama.com/"> 
+    <Image
+      src="/images/features/language-models/ollama.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Ollama"
+    />
+  </Card>
+
+  <Card title="LM Studio" href="https://lmstudio.ai/"> 
+    <Image
+      src="/images/features/language-models/lm-sudio.png" 
+      height={1080} 
+      width={1920}
+      quality={100} 
+      alt="LM Studio"
+    />
+  </Card>
+
+  <Card title="Local AI" href="https://localai.io/"> 
+    <Image
+      src="/images/features/language-models/local-ai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Local AI"
+    />
+  </Card> 
+</Cards>
+
+
+
+### Cloud Language Model Providers
+
+<Cards>
+  <Card title="OpenAI" href="https://platform.openai.com/"> 
+    <Image
+      src="/images/features/language-models/openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="OpenAI"
+    />
+  </Card>
+
+  <Card title="Azure OpenAI" href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"> 
+    <Image
+      src="/images/features/language-models/azure-openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Azure OpenAI"
+    />
+  </Card> 
+
+    <Card title="Anthropic" href="https://anthropic.com/"> 
+    <Image
+      src="/images/features/language-models/anthropic.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Anthropic"
+    />
+  </Card>
+
+  <Card title="Google Gemini Pro" href="https://ai.google.dev/"> 
+    <Image
+      src="/images/features/language-models/google-gemini.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Google Gemini Pro"
+    />
+  </Card>
+
+    <Card title="Hugging Face" href="https://huggingface.com/"> 
+    <Image
+      src="/images/features/language-models/hugging-face.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Hugging Face"
+    />
+  </Card>
+
+  <Card title="Together AI" href="https://www.together.ai/"> 
+    <Image
+      src="/images/features/language-models/together-ai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Together AI"
+    />
+  </Card> 
+
+    <Card title="OpenRouter" href="https://openrouter.ai/"> 
+    <Image
+      src="/images/features/language-models/openrouter.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="OpenRouter"
+    />
+  </Card>
+
+  <Card title="Perplexity AI" href="https://www.perplexity.ai/"> 
+    <Image
+      src="/images/features/language-models/perplexity-ai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Perplexity AI"
+    />
+  </Card>
+
+    <Card title="Mistral API" href="https://mistral.ai/"> 
+    <Image
+      src="/images/features/language-models/mistral-ai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Mistral API"
+    />
+  </Card> 
+
+  <Card title="Groq" href="https://groq.com/"> 
+    <Image
+      src="/images/features/language-models/groq.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Groq"
+    />
+  </Card>
+
+  <Card title="OpenAI (generic)" href="/anythingllm-setup/llm-configuration/cloud/openai-generic"> 
+    <Image
+      src="/images/features/language-models/openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="OpenAI (generic)"
+    />
+  </Card>
+  
+</Cards>
+
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

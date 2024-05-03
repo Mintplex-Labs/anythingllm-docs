@@ -1,0 +1,173 @@
+---
+title: "All Features"
+description: "All the features of AnythingLLM"
+image: "/images/features/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/features/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM"
+/>
+
+# All Features of AnythingLLM
+
+Click the below cards to know more about the features
+
+<Cards>
+  {/* The page we are linking here `pages/features/ai-agents.mdx` is incomplete, so we are hiding this card
+  <Card title="AI Agents" href="ai-agents"> 
+	<Image
+	 src="/images/thumbnails/agents.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM AI Agents"
+	/>
+  </Card> */}
+
+  <Card title="API Access & Keys" href="api"> 
+	<Image
+	 src="/images/features/api/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM API Access & Keys"
+	/>
+  </Card>
+
+  <Card title="Appearance Customization" href="customization"> 
+	<Image
+	 src="/images/features/customization/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Appearance Customization"
+	/>
+  </Card>
+
+  <Card title="Embedded Chat Widgets" href="chat-widgets"> 
+	<Image
+	 src="/images/features/chat-widgets/thumbnail.png" 
+	 height={1080} 
+	 width={1920}
+	 quality={100} 
+	 alt="AnythingLLM Embedded Chat Widgets"
+	/>
+  </Card>
+
+  <Card title="Chat Logs" href="chat-logs"> 
+	<Image
+	 src="/images/features/chat-logs/thumbnail.png" 
+	 height={1080} 
+	 width={1920}
+	 quality={100} 
+	 alt="AnythingLLM Chat Logs"
+	/>
+  </Card>
+
+  <Card title="Event Logs" href="event-logs"> 
+	<Image
+	 src="/images/features/event-logs/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Event Logs"
+	/>
+  </Card>
+
+  <Card title="Large Language Models" href="language-models"> 
+	<Image
+	 src="/images/features/language-models/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Large Language Models"
+	/>
+  </Card>  
+
+  <Card title="Embedding Models" href="embedding-models"> 
+	<Image
+	 src="/images/features/embedding-models/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Embedding Models"
+	/>
+  </Card>
+
+  <Card title="Transcription Models" href="transcription-models"> 
+	<Image
+	 src="/images/features/transcription-models/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Transcription Models"
+	/>
+  </Card>
+
+  <Card title="Vector Databases" href="vector-databases"> 
+	<Image
+	 src="/images/features/vector-databases/thumbnail.png" 
+	 height={1080} 
+	 width={1920}
+	 quality={100} 
+	 alt="AnythingLLM Vector Database"
+	/>
+  </Card>
+
+  <Card title="Security & Access" href="security-and-access"> 
+	<Image
+	 src="/images/features/security-and-access/thumbnail.png" 
+	 height={1080} 
+	 width={1920}
+	 quality={100} 
+	 alt="AnythingLLM Security & Access"
+	/>
+  </Card>
+
+  <Card title="Privacy & Data Handling" href="privacy-and-data-handlingp"> 
+	<Image
+	 src="/images/features/privacy-and-data-handling/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Privacy & Data Handling"
+	/>
+  </Card>
+
+  <Card title="Cloud Deployment" href="/getting-started/installation/self-hosted/cloud-docker"> 
+	<Image
+	 src="/images/getting-started/installation/cloud-docker/thumbnail.png" 
+	 height={1080} 
+	 width={1920} 
+	 quality={100}
+	 alt="AnythingLLM Cloud Deployment"
+	/>
+  </Card>
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

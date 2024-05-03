@@ -1,0 +1,20 @@
+{
+  "licences": {
+    "title": "Licences",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": false
+    }
+  },
+  "privacy": {
+    "title": "Privacy",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": false
+    }
+  }
+}

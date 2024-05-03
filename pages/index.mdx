@@ -1,0 +1,97 @@
+---
+title: "Home"
+description: "Learn about AnythingLLM's features and how to use them"
+image: "/images/thumbnails/anythingllm.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+
+# AnythingLLM Documentation
+
+Learn about AnythingLLM's features and how to use them
+
+<br />
+
+<Cards>
+  <Card title="Get Started" href="getting-started/what-is-allm"> 
+    <Image
+      src="/images/getting-started/thumbnail.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Get Started"
+    />
+  </Card>
+
+  <Card title="Features" href="features/all-features"> 
+    <Image
+      src="/images/features/thumbnail.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Features"
+    />
+  </Card>
+
+  <Card title="AnythingLLM Cloud" href="anythingllm-cloud"> 
+    <Image
+      src="/images/home/anythingllm-cloud.png" 
+      height={1080} 
+      width={1920}
+      quality={100} 
+      alt="AnythingLLM Cloud"
+    />
+  </Card>
+
+  <Card title="Contribute" href="contribute"> 
+    <Image
+      src="/images/home/contribute.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Contribute"
+    />
+  </Card>
+
+  <Card title="Roadmap" href="product/roadmap"> 
+    <Image
+      src="/images/product/roadmap/thumbnail.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Roadmap"
+    />
+  </Card>
+
+  <Card title="Changelog" href="product/changelog/overview"> 
+    <Image
+      src="/images/product/changelog/thumbnail.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Changelog"
+    />
+  </Card>  
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

@@ -1,0 +1,59 @@
+---
+title: "Chroma Vector Database"
+description: "Chroma is an open-source and ai-native vector database that is easy to run and host anywhere."
+image: "/images/anythingllm-setup/vector-database-configuration/local/chroma/thumbnail.png"
+---
+
+import { Callout } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/local/chroma/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="Chroma Vector Database"
+/>
+
+
+# Chroma Vector Database
+
+[Chroma](https://trychroma.com) is an [open-source](https://github.com/chroma-core/chroma) and ai-native vector database that is easy to run and host anywhere.
+
+AnythingLLM can connect to your local or cloud-hosted Chroma instance running so that AnythingLLM can store and search embeddings on it automatically.
+
+
+## Connecting to Chroma Vector Database
+
+<Callout type="warning" emoji="️⚠️">
+  **Developer Notice**
+
+    Chroma [requires a server](https://docs.trychroma.com/usage-guide#running-chroma-in-clientserver-mode) to be running so that Chroma can embed or index your embeddings automatically. 
+    
+    AnythingLLM will use the embedding model set and **will not** use Chroma's built-in embedders even if defined.
+</Callout>
+
+You can configure Chroma at any time in the **Settings**.
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/local/chroma/chroma-vectordb.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="Chroma Vector Database Settings"
+/>
+
+## How to run Chroma Locally via Docker
+
+<br />
+
+<iframe 
+ width="800" 
+ height="450" 
+ src="https://www.youtube.com/embed/61kaK-e3Owc?si=5mdkTqKCZG4Nvn0-" 
+ title="YouTube video player" 
+ frameborder="0" 
+ allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+ referrerpolicy="strict-origin-when-cross-origin" 
+ allowfullscreen>
+</iframe>

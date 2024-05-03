@@ -1,0 +1,116 @@
+---
+title: "Embedding Models"
+description: "AnythingLLM supports many embedding model providers out of the box with very little, if any setup"
+image: "/images/features/embedding-models/thumbnail.png"
+---
+
+import { Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/features/embedding-models/thumbnail.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Embedding Models"
+/>
+
+# Embedding Models
+
+AnythingLLM supports many embedding model providers out of the box with very little, if any setup. 
+
+Embedding models are specific types of models that turn text into vectors, which can be stored and searched in a vector database - which is the foundation of RAG.
+
+
+## Supported Embedding Model Providers
+
+### Local Embedding Model Providers
+
+<Cards>
+  <Card title="Built-in (default)" href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"> 
+    <Image
+      src="/images/features/embedding-models/built-in.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="AnythingLLM Built-in (default)"
+    />
+  </Card>
+
+  <Card title="Ollama" href="https://ollama.com/"> 
+    <Image
+      src="/images/features/embedding-models/ollama.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Ollama"
+    />
+  </Card>
+
+  <Card title="LM Studio" href="https://lmstudio.ai/"> 
+    <Image
+      src="/images/features/embedding-models/lm-sudio.png" 
+      height={1080} 
+      width={1920}
+      quality={100} 
+      alt="LM Studio"
+    />
+  </Card>
+
+  <Card title="Local AI" href="https://localai.io/"> 
+    <Image
+      src="/images/features/embedding-models/local-ai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Local AI"
+    />
+  </Card> 
+</Cards>
+
+
+
+### Cloud Embedding Model Providers
+
+<Cards>
+  <Card title="OpenAI" href="https://platform.openai.com/"> 
+    <Image
+      src="/images/features/embedding-models/openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="OpenAI"
+    />
+  </Card>
+
+  <Card title="Azure OpenAI" href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"> 
+    <Image
+      src="/images/features/embedding-models/azure-openai.png" 
+      height={1080} 
+      width={1920} 
+      quality={100}
+      alt="Azure OpenAI"
+    />
+  </Card> 
+</Cards>
+
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: '_self'
+    }
+  }
+)
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>
