@@ -72,4 +72,4 @@ yarn dev
 
 This project is licensed under the MIT License.
 
-_special thanks to [https://github.com/ShadowAlyxia](@ShadowArcanist) for the migration to NextJS_
+_special thanks to [@ShadowArcanist](https://github.com/ShadowAlyxia) for the migration to NextJS_
