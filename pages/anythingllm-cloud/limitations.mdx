@@ -1,0 +1,35 @@
+---
+title: "Limitations"
+description: "Limitations of AnythingLLM Hosted Cloud Instances"
+image: "/images/home/anythingllm-cloud.png"
+---
+import { Callout } from 'nextra/components'
+
+# AnythingLLM Cloud Limitations
+
+AnythingLLM Hosted Cloud is the quickest way to get a multi-user, managed, and hosted version of AnythingLLM on a custom domain.
+
+While this form of accessing AnythingLLM there are some acute limitations you may not experience with other forms of AnythingLLM, like Desktop or self hosted.
+
+## No "built-in" LLM
+
+AnythingLLM hosted cloud does not ship with a built-in LLM you can use like in our desktop instance. This is due to CPU limitations of the instance we provide for you, which has no GPU and limited CPUs and RAM.
+
+Due to this, we limit access **only** to local LLMs that you can run yourself and connect to, or any supported cloud-based LLM provider.
+
+## Limited capacity for built-in embedder
+
+
+<Callout type="error" emoji="️‼️">
+  **Beware!**
+  The built-in embedder will not block you from trying to embed a 5,000pg PDF, but it will crash your instance. (502 error).
+</Callout>
+
+
+AnythingLLM **does allow** you to use the built-in embedder model, which is extremely convenient, cannot embed on CPU any arbitrarily large document.
+
+The Starter tier ships with **very minimal** compute resources while Professional ships with much more compute. This means that uploading a large document (in words, not file size) can overwhelm the CPU and cause
+the process to exit. This will result in a 502 error.
+
+
+### [How to fix the 502 error on your instance &rarr;](/)
