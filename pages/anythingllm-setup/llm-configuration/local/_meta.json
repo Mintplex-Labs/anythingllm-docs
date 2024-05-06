@@ -34,5 +34,14 @@
     "pagination": true,
     "toc": true
   }
+},
+"kobaldcpp": {
+  "title": "KobaldCPP",
+  "theme": {
+    "breadcrumb": true,
+    "footer": true,
+    "pagination": true,
+    "toc": true
+  }
 }
 }
