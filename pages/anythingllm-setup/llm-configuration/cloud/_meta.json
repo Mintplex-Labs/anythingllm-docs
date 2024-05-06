@@ -17,6 +17,15 @@
     "toc": true
   }
 },
+"cohere": {
+  "title": "Cohere",
+  "theme": {
+    "breadcrumb": true,
+    "footer": true,
+    "pagination": true,
+    "toc": true
+  }
+},
 "google-gemini": {
   "title": "Google Gemini",
   "theme": {
