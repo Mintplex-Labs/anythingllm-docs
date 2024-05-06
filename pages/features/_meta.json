@@ -10,7 +10,6 @@
   },
   "ai-agents": {
     "title": "AI Agents",
-    "display": "hidden", 
     "theme": {
       "breadcrumb": true,
       "footer": true,

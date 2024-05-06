@@ -1,9 +1,10 @@
 ---
 title: "AI Agents"
-description: "Step by step guide to use AnythingLLM"
+description: "Agents on AnythingLLM can scrape websites, list and summarize your documents, search the web, make charts, and even save files to desktop and their own memory."
 image: "/images/features/ai-agents/thumbnail.png"
 ---
 
+import { Callout } from 'nextra/components'
 import Image from 'next/image'
 
 <Image
@@ -14,6 +15,26 @@ import Image from 'next/image'
   alt="AnythingLLM AI Agents"
 />
 
-{/* This file is hidden from the sidebar by `pages/features/_meta.json` as this file is incomplete
-Explain about AI Agent feature here */}
+# AI Agents
+
+Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon, but basically the work inside a workspace.
+
+You can start an agent session by going into any workspace and typing `@agent <your prompt>` and exit by just typing `exit`
+
+Agents can scrape websites, list and summarize your documents, search the web, make charts, and even save files to desktop and their own memory.
+
+<Callout type="info" emoji="💡">
+  **Examples:** <br />
+    1: `@agent` what documents can you see - > LLM will "look" at what are the documents it can see
+
+    2: `@agent` summarize readme.pdf - > LLM will summarize that specific embedded file
+</Callout>
+
+<Image
+  src="/images/features/ai-agents/ai-agent.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM AI Agents"
+/>
 
