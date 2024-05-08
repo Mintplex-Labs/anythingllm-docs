@@ -43,6 +43,9 @@ const config: DocsThemeConfig = {
     autoCollapse: true, // If true, automatically collapse inactive folders above defaultMenuCollapseLevel.
     toggleButton: true, // Hide/show sidebar toggle button. Defaults to `false`.
   },
+  toc: {
+    backToTop: true,
+  },
   head: function useHead() {
     const { title } = useConfig()
     const { route } = useRouter()
