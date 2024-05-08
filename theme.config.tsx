@@ -40,8 +40,11 @@ const config: DocsThemeConfig = {
   },
   sidebar: {
     defaultMenuCollapseLevel: 1, // Change this number to control the default collapse level
-    toggleButton: true, // Set this to true to show the toggle button
-
+    autoCollapse: true, // If true, automatically collapse inactive folders above defaultMenuCollapseLevel.
+    toggleButton: true, // Hide/show sidebar toggle button. Defaults to `false`.
+  },
+  toc: {
+    backToTop: true,
   },
   head: function useHead() {
     const { title } = useConfig()
@@ -53,30 +56,20 @@ const config: DocsThemeConfig = {
 
     return (
       <>
-        <meta name="msapplication-TileColor" content="#fff" />
-        <meta name="theme-color" content="#fff" />
+        <meta name="msapplication-TileColor" content="#2f3136" />
+        <meta name="theme-color" content="#2f3136" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta httpEquiv="Content-Language" content="en" />
-        <meta
-          name="description"
-          content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches."
-        />
-        <meta
-          name="og:description"
-          content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches."
-        />
+        <meta name="description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
+        <meta name="og:description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
         <meta property="og:url" content="http://docs.useanything.com"></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
         <meta name="twitter:site:domain" content="docs.useanything.com" />
         <meta property="twitter:title" content="AnythingLLM | The all-in-one AI desktop app." />
         <meta property="twitter:description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
-
         <meta name="twitter:url" content="https://docs.useanything.com" />
-        <meta
-          name="og:title"
-          content={title ? title + ' – AnythingLLM Docs' : 'AnythingLLM Docs'}
-        />
+        <meta name="og:title" content={title ? title + ' – AnythingLLM Docs' : 'AnythingLLM Docs'} />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="AnythingLLM Docs" />
         <link rel="icon" href="/favicon.png" type="image/png" />

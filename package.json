@@ -1,6 +1,6 @@
 {
   "name": "anythingllm-docs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AnythingLLM Documentation",
   "scripts": {
     "dev": "next dev",
@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Mintplex-Labs/anythingllm-docs#readme",
   "dependencies": {
     "@next/third-parties": "^14.2.3",
+    "@vercel/og": "^0.6.2",
     "next": "^14.2.2",
     "nextra": "latest",
     "nextra-theme-docs": "latest",
