@@ -40,8 +40,8 @@ const config: DocsThemeConfig = {
   },
   sidebar: {
     defaultMenuCollapseLevel: 1, // Change this number to control the default collapse level
-    toggleButton: true, // Set this to true to show the toggle button
-
+    autoCollapse: true, // If true, automatically collapse inactive folders above defaultMenuCollapseLevel.
+    toggleButton: true, // Hide/show sidebar toggle button. Defaults to `false`.
   },
   head: function useHead() {
     const { title } = useConfig()
