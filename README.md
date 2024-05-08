@@ -50,7 +50,7 @@ git clone https://github.com/Mintplex-Labs/anythingllm-docs.git
 ```
 
 
-2. Install dependencies using npm:
+2. Install dependencies using yarn:
 
 ```sh
 yarn
