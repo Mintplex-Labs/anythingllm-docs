@@ -1,0 +1,29 @@
+{
+  "overview": {
+    "title": "Overview",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": false
+    }
+  },
+  "limitations": {
+    "title": "Limitations",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "error-502": {
+    "title": "502 Error on AnythingLLM Hosted",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}
