@@ -1,0 +1,14 @@
+.center-cta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  &:hover>a {
+    text-decoration: underline;
+  }
+}
+
+.mt-20 {
+  margin-top: 20px;
+}

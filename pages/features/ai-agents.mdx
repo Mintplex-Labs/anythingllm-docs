@@ -5,6 +5,7 @@ description: "Agents on AnythingLLM can scrape websites, list and summarize your
 
 import { Callout } from 'nextra/components'
 import Image from 'next/image'
+import Link from 'next/link'
 
 <Image
   src="/images/features/ai-agents/thumbnail.png" 
@@ -16,7 +17,7 @@ import Image from 'next/image'
 
 # AI Agents
 
-Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon, but basically the work inside a workspace.
+Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon. All agents share the same tools across workspaces, but operate within the workspace they were invoked via `@agent`.
 
 You can start an agent session by going into any workspace and typing `@agent <your prompt>` and exit by just typing `exit`
 
@@ -37,3 +38,6 @@ Agents can scrape websites, list and summarize your documents, search the web, m
   alt="AnythingLLM AI Agents"
 />
 
+<div className='center-cta mt-20'>
+  <Link href='/guides/ai-agents'><b>View all the available `@agent` skills &rarr;</b></Link>
+</div>

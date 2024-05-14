@@ -16,7 +16,7 @@ import Image from 'next/image'
 />
 
 # AI Agents
-Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon, but basically they work inside a workspace.
+Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon. All agents share the same tools across workspaces, but operate within the workspace they were invoked via `@agent`.
 
 <br />
 **Agents have access to the following tools:**
@@ -57,7 +57,7 @@ When you mention the agent, you will see a popup with the tools enabled for the 
 
 
 ## What is RAG Search and how to use it?
-RAG search allows the agent to check what are the things the agent aleady know about a specific topic (requires some data to be embedded in workspace)
+RAG search allows the agent to check what are the things the agent already know about a specific topic (requires some data to be embedded in workspace)
 
 You can use RAG search by asking the agent something like `@agent can you check what you already know about AnythingLLM?`
 
