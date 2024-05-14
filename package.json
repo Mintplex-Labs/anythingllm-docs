@@ -1,6 +1,6 @@
 {
   "name": "anythingllm-docs",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "AnythingLLM Documentation",
   "scripts": {
     "dev": "next dev",
