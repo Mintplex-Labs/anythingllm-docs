@@ -4,7 +4,7 @@ description: "What are AI Agents in AnythingLLM and how to use them?"
 ---
 
 import { Cards, Card, Callout } from 'nextra/components'
-import { CardsIcon, RowsIcon, GlobeIcon, DiagramIcon, NewsletterIcon, FileIcon, BoxIcon } from '/components/icons'
+import { CardsIcon, RowsIcon, GlobeIcon, DiagramIcon, NewsletterIcon, FileIcon, BoxIcon, Database } from '/components/icons'
 import Image from 'next/image'
 
 <Image
@@ -29,6 +29,7 @@ Agents are basically an LLM that has access to some simple tools. We will be add
   <Card icon={<NewsletterIcon />} title="List Documents" href="#what-is-list-documents-and-how-to-use-it" />
   <Card icon={<CardsIcon />} title="Summarize Documents" href="#what-is-summarize-documents-and-how-to-use-it" />
   <Card icon={<DiagramIcon />} title="Chart Generation" href="#what-is-chart-generation-and-how-to-use-it" />
+  <Card icon={<Database />} title="SQL Agent" href="#what-is-sql-agent-and-how-to-use-it" />
 </Cards>
 
 We have explained more about each tools below (keep reading)
@@ -163,6 +164,35 @@ Example 2: `@agent can you look at data.csv and plot that as a pie chat by age?`
   width={1920} 
   quality={100}
   alt="AnythingLLM AI Agents Chart Generation"
+/>
+
+
+## What is SQL Agent and how to use it?
+The built-in SQL agent is a skill that you can leverage to run real-time analytics and queries against a real database. The agent can do all of the following:
+- `list-databases`: View its current connections and sources it can leverage.
+- `list-tables`: View all of the available tables within a database.
+- `check-table-schema`: Check the available columns of a table for types and possible value stores.
+- `query`: Run a valid SQL query on a database to product a set of `rows` that will later be used in your answer.
+
+<Callout type="warning" emoji="️🔧">
+  **Caution!**
+
+  You should use the SQL agent with a <b>read-only</b> database user. While the agent is instructed to not provide anything other than SELECT statements, this does not prevent it from running other SQL commands that could modify your data!
+</Callout>
+
+
+_Example 1:_ <br/>
+`@agent can you summarize all of the sales volume for May 2024 in the backend-office DB?`
+
+_Example 2:_ (_assuming you have the `save-file` skill enabled_)<br/>
+`@agent can you grab the emails of the most recent 10 customers and save that to customer.csv?` 
+
+<Image
+  src="/images/guides/ai-agents/sql-agent.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM AI Agents SQL Agent skill"
 />
 
 
