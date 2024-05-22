@@ -14,6 +14,7 @@ import Image from "next/image";
   alt="AnythingLLM -- Why does the LLM not use my documents?"
 />
 
+
 # Why does the LLM not use my documents?
 
 <Callout type="info" emoji="️💡">
@@ -30,14 +31,14 @@ So to understand why this occurs we first need to clear up some confusion on how
 
 This will not be deeply technical, but once you read this you will be an expert on how traditional RAG works.
 
-## LLMs are not omnipotent
 
+## LLMs are not omnipotent
 Unfortunately, LLMs are not yet sentient and so it is vastly unrealistic with even the most powerful models for the model you are using to just "know what you mean".
 
 That being said there are a ton of factors and moving parts that can impact the output and salience of an LLM and even to complicate things further, each factor can impact your output depending on what your specific use case is!
 
-## LLMs do not introspect
 
+## LLMs do not introspect
 In AnythingLLM, we do not read your entire filesystem and then report that to the LLM, as it would waste tokens 99% of the time.
 
 Instead, your query is processed against your vector database of document text and we get back 4-6 text chunks from the documents that are deemed "relevant" to your prompt.
@@ -50,8 +51,8 @@ Your entire document set is not "embedded" into the model. It has no idea what i
 
 If this is what you want, you are thinking of agents, which are coming to AnythingLLM soon.
 
-## So how does AnythingLLM work?
 
+## So how does AnythingLLM work?
 Let's think of AnythingLLM as a framework or pipeline.
 
 1. A workspace is created. The LLM can only "see" documents embedded in this workspace. If a document is not embedded, there is no way the LLM can see or access that document's content.
@@ -85,8 +86,8 @@ Let's think of AnythingLLM as a framework or pipeline.
 
 Done.
 
-## How can I make retrieval better then?
 
+## How can I make retrieval better then?
 AnythingLLM exposes many many options to tune your workspace to better fit with your selection of LLM, embedder, and vector database.
 
 The workspace options are the easiest to mess with and you should start there first. AnythingLLM makes some default assumptions in each workspace. These work for some but certainly not all use cases.
@@ -101,22 +102,22 @@ You can find these settings by hovering over a workspace and clicking the "Gear"
   alt="AnythingLLM Workspace settings"
 />
 
-### Chat Settings > Prompt
 
+### Chat Settings > Prompt
 This is the system prompt for your workspace. This is the "rule set" your workspace will follow and how it will ultimately respond to queries. Here you can define it to respond in a certain programming language, maybe a specific language, or anything else. Just define it here.
 
-### Chat Settings > LLM Temperature
 
+### Chat Settings > LLM Temperature
 This determines how "inventive" the LLM is with responses. This varies from model to model. Know that the higher the number the more "random" a response will be. Lower is more short, terse, and more "factual".
 
-### Vector Database Settings > Max Context Snippets
 
+### Vector Database Settings > Max Context Snippets
 This is a very critical item during the "retrieval" part of RAG. This determines "How many relevant snippets of text do I want to send to the LLM". Intuitively you may think "Well, I want all of them", but that is not possible since there is an upper limit to how many tokens each model can process. This window, called the context window, is shared with the system prompt, context, query, and history.
 
 AnythingLLM will trim data from the context if you are going to overflow the model - which will crash it. So it's best to keep this value anywhere from 4-6 for the majority of models. If using a large-context model like Claude-3, you can go higher but beware that too much "noise" in the context may mislead the LLM in response generation.
 
-### Vector Database Settings > Document similarity threshold
 
+### Vector Database Settings > Document similarity threshold
 This setting is likely the cause of the issue you are having! This property will filter out low-scoring vector chunks that are likely irrelevant to your query. Since this is based on mathematical values and not based on the true semantic similarity it is possible the text chunk that contains your answer was filtered out.
 
 If you are getting hallucinations or bad LLM responses, you should set this to No Restriction. By default the minimum score is 20%, which works for some but this calculated values depends on several factors:
@@ -128,8 +129,8 @@ If you are getting hallucinations or bad LLM responses, you should set this to N
 - More vectors = more possible noise, and matches that are actually irrelevant.
 - Your query: This is what the matching vector is based on. Vague queries get vague results.
 
-## Document Pinning
 
+## Document Pinning
 As a last resort, if the above settings do not seem to change anything for you - then document pinning may be a good solution.
 
 Document Pinning is where we do a full-text insertion of the document into the context window. If the context window permits this volume of text, you will get full-text comprehension and far better answers at the expense of speed and cost.
