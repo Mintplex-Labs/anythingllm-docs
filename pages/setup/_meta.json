@@ -1,15 +1,6 @@
 {
-  "agent-configuration": {
-    "title": "AI Agent Configuration",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },  
     "embedder-configuration": {
-    "title": "Embedder Configuration",
+    "title": "Embedder Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -18,7 +9,7 @@
     }
   },
   "llm-configuration": {
-    "title": "LLM Configuration",
+    "title": "LLM Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -27,7 +18,7 @@
     }
   },
   "transcription-model-configuration": {
-    "title": "Transcription Configuration",
+    "title": "Transcription Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -36,7 +27,7 @@
     }
   },
   "vector-database-configuration": {
-    "title": "Vector DB Configuration",
+    "title": "Vector DB Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,

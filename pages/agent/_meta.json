@@ -1,6 +1,6 @@
 {
-  "ai-agents": {
-    "title": "AI Agents",
+  "overview": {
+    "title": "Overview",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -8,9 +8,8 @@
       "toc": true
     }
   },
-  "prompting-guide": {
-    "title": "Prompt Design Guide",
-    "display": "hidden", 
+  "setup": {
+    "title": "Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -18,9 +17,8 @@
       "toc": true
     }
   },
-  "uninstall": {
-    "title": "Uninstall AnythingLLM",
-    "display": "hidden", 
+  "usage": {
+    "title": "Usage",
     "theme": {
       "breadcrumb": true,
       "footer": true,
