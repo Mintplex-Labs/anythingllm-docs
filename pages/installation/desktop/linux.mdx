@@ -16,20 +16,25 @@ import Image from 'next/image'
 
 
 # Linux Installation
+There are **two** ways to install AnythingLLM on Windows
+
+**[1. Install using the Installation `.AppImage` file](#install-using-the-installation-file)**
+
+**[2. Install using Docker](#install-using-docker)**
+
 
 <Callout type="warning" emoji="⚠️">
   **OPERATING SYSTEM NOTICE**
 
-    AnythingLLM is built on an Ubuntu system and may not work well on other distros. 
+   ➤ AnythingLLM is built on an Ubuntu system and may not work well on other distros. 
 
-    Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles. 
+   ➤ Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles. 
 
-    We want to have Linux OS's to have the same experience with AnythingLLM.
+   ➤ We want to have Linux OS's to have the same experience with AnythingLLM.
 </Callout>
 
 
-## Downloading the application
-
+## Downloading the installation file
 Here is the download links for the latest version of Anything LLM Linux.
 
 <Cards>
@@ -67,11 +72,10 @@ Click "**Keep**" when downloading to allow the file to download.
 
 
 ## Installing the application
-
 After downloading the Linux `.AppImage` for AnythingLLM, you may need to give the file executable permissions so that it can run.
 
 ```shell copy "
-chmod a+x /Downloads/AnythingLLMDesktop.AppImage
+ chmod a+x /Downloads/AnythingLLMDesktop.AppImage
 ```
 
 After that, you can boot the AppImage like any other app image. Double-clicking or running via the terminal will boot the full application.
@@ -82,21 +86,38 @@ After that, you can boot the AppImage like any other app image. Double-clicking 
 # This will run the application in this terminal pane. It will show all logs.
 ```
 
-## Uninstalling the Linux application
+---
 
-Remove the `.AppImage` from your machine. Done. See the instructions below to remove all associated data.
+## Install using Docker
+Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/linux-install/)
+
+Run this command on your terminal
+```shell copy
+ docker pull mintplexlabs/anythingllm
+```
+It will pull in the latest AnythingLLM image from docker.
 
 
-## Clear data from previous installations
+Once you have pulled the latest image, run the following commands
+```shell copy showLineNumbers
+ export STORAGE_LOCATION=$HOME/anythingllm && \
+ mkdir -p $STORAGE_LOCATION && \
+ touch "$STORAGE_LOCATION/.env" && \
+ docker run -d -p 3001:3001 \
+ --cap-add SYS_ADMIN \
+ -v ${STORAGE_LOCATION}:/app/server/storage \
+ -v ${STORAGE_LOCATION}/.env:/app/server/.env \
+ -e STORAGE_DIR="/app/server/storage" \
+ mintplexlabs/anythingllm
+```
+The above command will mount the storage locally and run AnythingLLM in Docker
 
-To completely clear all application data from your system like your local database, documents, and vector cache you can delete the folder located in `/home/{user}/.config/anythingllm-desktop`
+Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM! 
 
-You can delete the entire directory or just the storage folder to reset your current install.
+All your data and progress will persist between container rebuilds or pulls from Docker Hub.
 
 
-## Updating your application
 
-As new releases are made available, you can simply download the latest `.AppImage` from the beta download page and then execute this new appImage and delete the old one. This will persist your data, but allow you to use the latest version of the software.
 
 
 
