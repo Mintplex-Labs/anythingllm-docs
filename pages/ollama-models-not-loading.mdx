@@ -1,0 +1,55 @@
+---
+title: "Why is AnythingLLM not displaying Ollama models?"
+description: "We get this question many times a week"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/faq/ollama-models-not-loading/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM -- Why is AnythingLLM not displaying Ollama models?"
+/>
+
+
+# Why is AnythingLLM not displaying Ollama models?
+First make sure ollama is running on the your machine in the background, you can confirm this by visting `http://127.0.0.1:11434`
+
+<Image
+  src="/images/faq/ollama-models-not-loading/ollama-running.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Ollama running on background"
+/>
+
+
+## AnythingLLM Desktop Version
+If you are using AnythingLLM desktop version then use `http://127.0.0.1:11434` as Ollama Base URL on AnythingLLM
+
+<Image
+  src="/images/faq/ollama-models-not-loading/ollama-correct-url.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Correct Ollama Base URL for AnythingLLM Desktop Version"
+/>
+
+
+## AnythingLLM Docker Version
+If you are using AnythingLLM Docker version then use `http://host.docker.internal:11434` as Ollama Base URL on AnythingLLM
+
+<Image
+  src="/images/faq/ollama-models-not-loading/ollama-correct-url-docker.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Correct Ollama Base URL for AnythingLLM Docker Version"
+/>
+
+<Callout type="info" emoji="️💡">
+  **Tip** ➤➤ On linux `http://host.docker.internal:xxxx` does not work. Use `http://172.17.0.1:xxxx` instead to emulate this functionality.
+</Callout>
