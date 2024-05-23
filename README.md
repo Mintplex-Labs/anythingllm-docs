@@ -11,24 +11,27 @@
 ├── public/
 │   ├── images/
 │   │   ├── anythingllm-setup/
+│   │   ├── cloud/
+│   │   ├── faq/
 │   │   ├── features/
 │   │   ├── getting-started/
-│   │   ├── guides-and-faq/
+│   │   ├── guides/
 │   │   ├── home/
 │   │   ├── legal/
-│   │   └── product/
+│   │   ├── product/
+│   │   └── thumbnails/
 │   ├── favicon.png
 │   ├── licence.txt
 │   └── robots.txt
 ├── pages/
-│   ├── anythingllm-setup/
+│   ├── agent/
+│   ├── api/
+│   ├── changelog/
+│   ├── cloud/
 │   ├── features/
-│   ├── getting-started/
-│   ├── guides-and-faq/
-│   ├── legal/
-│   ├── product/
-│   ├── anythingllm-cloud.mdx
-│   ├── contribute.mdx
+│   ├── installation/
+│   ├── setup/
+│   ├── _meta.json
 │   └── index.mdx
 ├── components/
 │   └── icons/
