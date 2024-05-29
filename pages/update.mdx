@@ -45,5 +45,9 @@ Simply download the latest version of the installation `.AppImage` from the [dow
 
 ---
 
-{/* ## Updating on Docker
-Enter the steps here */}
+## Updating on Docker
+- Stop the container currently running AnythingLLM so the port is freed.
+- `docker pull mintplexlabs/anythingllm` to pull the latest image.
+- Restart the container pointed at the same storage location defined during previous boot.
+
+You should always deploy or start the AnythingLLM container using the command found in [our local docker setup](/installation/self-hosted/local-docker#recommend-way-to-run-dockerized-anythingllm)

@@ -43,14 +43,14 @@ On workspace settings, select your LLM Provider and the Model you want your Agen
 <Callout type="error" emoji="️⚠️">
   **Caution**
 
-    Not all LLM Models works well as Agents, you need to use higher quantization models for better responses.
-    Example: `Llama 3 8B 8Bit Quantization Model` gives better responses as an Agent
+    Not all LLM Models works well as Agents, you may need to use higher quantization models for better responses.
+    Example: `Llama 3 8B 8Bit Quantization` gives better responses as an Agent
 </Callout>
 
 <Callout type="info" emoji="️ℹ️">
   **Note**
 
-    Agents supports lot of LLM providers and you can see all the supported LLMs from [here](https://docs.useanything.com/features/language-models#supported-language-model-providers)
+    AnythingLLM supports a lot of LLM providers for use with `@agent`s and you can see all the supported LLMs from [here](https://docs.useanything.com/features/language-models#supported-language-model-providers)
 </Callout>
 
 
@@ -73,9 +73,12 @@ Choose the skills (aka Tools) for your Agent to use.
 
 
 ### 4) Choose your Search Provider (Optional)
-One of the tools agents have is `Web-Browsing` which allows agents to browse the internet. 
+One of the tools agents can use is `Web-Browsing` which allows agents to browse the internet. 
 
-Currently we support two search providers [Google](https://www.google.com/) and [Serper](https://serper.dev/)
+Currently we support the following search providers:
+- [Google](https://www.google.com/) 
+- [Serper](https://serper.dev/)
+- [Bing Search](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/bing-entity-search-api/)
 
 <Callout type="info" emoji="️ℹ️">
   **Note**

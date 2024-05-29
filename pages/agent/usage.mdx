@@ -25,7 +25,7 @@ import Image from 'next/image'
 </Callout>
 
 
-Mention the agent by `@agent` to start a agent session. You can start an agent session anytime on your chat.
+Mention the agent by `@agent` to start an agent session. You can start an agent session anytime when using a workspace.
 
 <Image
   src="/images/guides/ai-agents/trigger.png" 
@@ -51,7 +51,7 @@ When you mention the agent, you will see a popup with the tools enabled for the 
   <Card icon={<Database />} title="SQL Agent" href="#what-is-sql-agent-and-how-to-use-it" />
 </Cards>
 
-We have explained more about each tools below (keep reading)
+We will explained the intended use case of each tool below.
 
 
 ## What is RAG Search and how to use it?
@@ -67,7 +67,7 @@ You can use RAG search by asking the agent something like `@agent can you check 
   alt="AnythingLLM AI Agents RAG Search"
 />
 
-RAG search can update agent's own memory and that can be later used for recall in agent or regular chat. This basically embeds a virtual document you cannot manage.
+RAG search can update agent's own memory and that can be later used for recall in agent or regular chat. This embeds a virtual document you cannot manage.
 
 Example: `Ah, great point. Can you summarize and save that summary for later to your memory`
 
@@ -87,7 +87,7 @@ Example: `@agent can you do a web search for "What is the issue going on with MK
 
 
 ## What is Web Scraping and how to use it?
-Web Scraping tool allows the agent to scrape a website and give you answer for your questions. This basically embedding a website into the workspace and asking question to the LLM to respond based on the content on the embedded website, with agent you don't have to manually embed the website -- the agent will do it automatically for you.
+Web Scraping tool allows the agent to scrape a website and give you answer for your questions. This embeds a website's content into the workspace and asking question to the LLM to respond based on the content on the embedded website, with agent you don't have to manually embed the website -- the agent will do it automatically for you.
 
 Example: `@agent can you scrape the website useanything.com and give me a summary of features AnythingLLM have?`
 
@@ -165,7 +165,7 @@ Example 2: `@agent can you look at data.csv and plot that as a pie chat by age?`
 
 
 ## What is SQL Agent and how to use it?
-The built-in SQL agent is a skill that you can leverage to run real-time analytics and queries against a real database. The agent can do all of the following:
+The built-in SQL agent is a skill that you can leverage to run real-time analytics and queries against a real relational database. The agent can do all of the following:
 - `list-databases`: View its current connections and sources it can leverage.
 - `list-tables`: View all of the available tables within a database.
 - `check-table-schema`: Check the available columns of a table for types and possible value stores.
@@ -226,12 +226,12 @@ No, you only have to use `@agent` to start an agent session, during the agent se
 
 
 ### 4) My Agent says it cannot access the internet, what can I do?
-This is because of the LLM you are using, not all LLMs are good to work as agent. Llama 3 8B with 4Bit Quantization won't respond properly as an agent but the Llama 3 8B with 8Bit Quantization will give better response as an Agent -- same LLM but different quantization. If your agent is not responding properly then try using a higher Quantization model.
+This is because of the LLM you are using, not all LLMs are great of even useable for `tool-calling`. With AnythingLLM we make every model possible to be used as an agent, but the strength of your model to comprehend the instruction and examples of tool calling is still reliant on the model itself. Smaller models with 4-Bit Quantization won't respond properly as an agent most times, but the very same model at 8Bit Quantization will give better response as an Agent -- same LLM but different quantization. If your agent is not responding properly then try using a higher quantization model or a larger model altoghether.
 
 
-### 5) My Agent says it save a file on my machine, but when I checked the location there is no files like the agent mentioned, what can I do?
+### 5) My Agent says it saved a file on my machine, but when I checked the location there is no file like the agent mentioned, what can I do?
 If you dont see `@agent is attempting to call save-file-to-browser` when you ask, it never really called the tool and just pretended it did, AKA: **Hallunicated**. 
 
 To fix this issue you can do one of the following things:
-- Be more explicit and say verbatim for it to call the specific `tool save-file-to-browser`
+- Be more explicit and say verbatim for it to call the specific tool `save-file-to-browser`
 - Use a better model that is more capable of tool calling.
