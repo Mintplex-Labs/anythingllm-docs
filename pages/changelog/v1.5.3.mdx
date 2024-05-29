@@ -1,0 +1,48 @@
+---
+title: "v1.5.3"
+description: "AnythingLLM Desktop v.1.5.3 Changelog"
+---
+import Image from 'next/image'
+
+<Image
+  src="/images/product/changelog/header-image.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Changelog v1.5.3"
+/>
+
+## New Features:
+
+- [x] KoboldCPP support as LLM
+- [x] Cohere support LLM & Embedder
+- [x] Generic OpenAI connector for LLM<br/>
+_> Useful for using any generic OpenAI compatible service without us building a dedicated connector._
+- [x] Chat window clears now with `/reset`
+- [x] Clicking on "gear" icon while in workspace settings brings you back to chat for easier navigation
+- [x] Custom refusal response for no results in `query` mode.
+- [x] Uploader fades out results on upload for UI/UX clarity
+- [x] Chart generation via `@agent` directive now available
+- [x] Confluence integration in Data connector
+- [x] New app icon
+- [x] Context menu (copy, right click & spellcheck now available)
+- [x] App will remember last window size and location on open.
+
+## Fixes:
+
+- [x] Document pinning in query mode is now enabled and counts as a "document" in search.
+- [x] Native embedder would appear to try to download many times if your first embedding was large
+- [x] Clear of event logs does not reload page now
+- [x] Bumped OpenAI depedencies
+- [x] Bumped Langchain depedencies
+- [x] Fixed bug with embedder parsing input query per-character sometimes.
+- [x] Patch OpenRouter model dropdown when no key is present
+
+## What's Next:
+
+- Google Drive Data connector (free!)
+- GMail Data connector (free!)
+- Open-source `@agent` support (Ollama, LMStudio, LocalAI)
+- Additional provider `@agent` support (Groq, Mistral, OpenRouter, etc)
+- Image generation model support
+- Custom Slash `/` commands

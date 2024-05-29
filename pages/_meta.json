@@ -1,6 +1,6 @@
 {
   "index": {
-    "title": "Home",
+    "title": "▲ Home",
     "theme": {
       "breadcrumb": false,
       "footer": true,
@@ -8,8 +8,12 @@
       "toc": false
     }
   },
-  "getting-started": {
-    "title": "Getting Started",
+  "-- Getting Started": {
+    "type": "separator",
+    "title": "Getting Started"
+  },
+  "introduction": {
+    "title": "Introduction",
     "theme": {
       "breadcrumb": false,
       "footer": true,
@@ -26,8 +30,30 @@
       "toc": true
     }
   },
-  "anythingllm-setup": {
-    "title": "Setup",
+  "installation": {
+    "title": "Installation",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "support": {
+    "title": "Support",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "-- Guides": {
+    "type": "separator",
+    "title": "Guides"
+  },
+  "agent": {
+    "title": "AI Agents",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -35,8 +61,8 @@
       "toc": true
     }
   },
-  "guides": {
-    "title": "Guides",
+  "setup": {
+    "title": "AnythingLLM Setup",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -44,8 +70,8 @@
       "toc": true
     }
   },
-  "faq": {
-    "title": "FAQ's",
+  "update": {
+    "title": "How to Update AnythingLLM",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -53,7 +79,51 @@
       "toc": true
     }
   },
-  "anythingllm-cloud": {
+  "uninstall": {
+    "title": "How to Uninstall AnythingLLM",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "debug": {
+    "title": "How to Run AnythingLLM in Debug Mode",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "-- FAQ": {
+    "type": "separator",
+    "title": "Frequently Asked Questions"
+  },
+  "llm-not-using-my-docs": {
+    "title": "LLM not using my docs",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "ollama-models-not-loading": {
+    "title": "AnythingLLM not displaying Ollama models",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "--- More": {
+    "type": "separator",
+    "title": "More"
+  },
+  "cloud": {
     "title": "AnythingLLM Cloud",
     "theme": {
       "breadcrumb": true,
@@ -62,12 +132,8 @@
       "toc": true
     }
   },
-  "---": {
-    "type": "separator",
-    "title": "More"
-  },
-  "product": {
-    "title": "Product",
+  "changelog": {
+    "title": "Changelogs",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -75,10 +141,14 @@
       "toc": true
     }
   },
-  "sponsor-link": {
-    "title": "Sponsor ↗",
-    "href": "https://github.com/sponsors/Mintplex-Labs",
-    "newWindow": true
+  "roadmap": {
+    "title": "Roadmap",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   },
   "contribute": {
     "title": "Contribute",
@@ -89,19 +159,32 @@
       "toc": true
     }
   },
-  "legal": {
-    "title": "Legal",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
+  "company": {
+    "title": "Mintplex Labs",
+    "type": "menu",
+    "items": {
+      "sponsor": {
+        "title": "Sponsor",
+        "href": "https://github.com/sponsors/Mintplex-Labs"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "href": "mailto:team@mintplexlabs.com"
+      },
+      "licences": {
+        "title": "Licences",
+        "href": "/licences"
+      },
+      "privacy": {
+        "title": "Privacy",
+        "href": "/privacy"
+      }
     }
   },
-  "contact": {
-    "title": "Contact Mintplex Labs ↗",
-    "type": "page",
-    "href": "mailto:team@mintplexlabs.com",
-    "newWindow": true
+  "privacy": {
+    "display": "hidden"
+  },
+  "licences": {
+    "display": "hidden"
   }
 }
