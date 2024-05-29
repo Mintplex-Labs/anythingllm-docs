@@ -50,7 +50,7 @@
   },
   "-- Guides": {
     "type": "separator",
-    "title": "Guides" 
+    "title": "Guides"
   },
   "agent": {
     "title": "AI Agents",
@@ -89,7 +89,7 @@
     }
   },
   "debug": {
-    "title": "How to Run AnythingLLM on Debug Mode",
+    "title": "How to Run AnythingLLM in Debug Mode",
     "theme": {
       "breadcrumb": true,
       "footer": true,
