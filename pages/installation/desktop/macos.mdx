@@ -1,0 +1,143 @@
+---
+title: "MacOS Installation"
+description: "MacOS Installation guide for AnythingLLM"
+---
+
+import { Callout, Cards } from 'nextra/components'
+import Image from 'next/image'
+
+<Image
+  src="/images/getting-started/installation/macos/header-image.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Installation"
+/>
+
+
+# MacOS Installation
+There are **three** ways to install AnythingLLM on MacOS
+
+**[1. Install using the Installation `.dmg` file](#install-using-the-installation-file)**
+
+**[2. Install using Homebrew](#install-using-homebrew)**
+
+**[3. Install using Docker](#install-using-docker)**
+
+
+## Install using the installation file
+
+<Callout type="warning" emoji="⚠️">
+  **Install the right dmg!**
+
+   ➤ Make sure you downloaded the correct `dmg` for your device! We support both types of chips found in MacOS devices.
+
+   ➤ Apple Silicon devices (M1/M2/M3) - `AnythingLLMDesktop-AppleSilicon.dmg`
+
+   ➤ Apple (Intel) - `AnythingLLMDesktop.dmg`
+</Callout>
+
+
+<Callout type="info" emoji="️💡">
+  **PERFORMANCE** ➤➤ Apple M-Series chips run local LLM inferencing **considerably** faster than Intel-based Mac.
+</Callout>
+
+
+### Downloading the installation file
+Here is the download links for the latest version of Anything LLM MacOS.
+
+<Cards>
+  <Card 
+    title="MacOS (Intel-based CPU)" 
+    href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.dmg"> 
+  </Card>
+
+  <Card 
+    title="MacOS (M-Series CPU)" 
+    href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop-Silicon.dmg"> 
+  </Card>
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: 'Card',
+    defaultProps: {
+      image: false,
+      arrow: true,
+      target: '_blank'
+    }
+  }
+)
+
+
+Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. 
+
+Click "**Keep**" when downloading to allow the file to download.
+
+<Image
+  src="/images/getting-started/installation/macos/browser-warning.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Mac Install Browser Warning"
+/>
+
+
+### Installing the application
+After downloading the `.dmg` file from the link in the invitation email, you will want to double-click on the resulting installed file.
+
+Once the dmg opens, you can drag the AnythingLLM logo into `Applications`
+
+<Image
+  src="/images/getting-started/installation/macos/install.png" 
+  height={1080} 
+  width={1920} 
+  quality={100}
+  alt="AnythingLLM Mac Installation"
+/>
+
+Once installed, you will find AnythingLLM in your Applications folder as well as you can use `cmd + spacebar` and type in AnythingLLM to run.
+
+---
+
+## Install using Homebrew
+Make sure you have installed [Homebrew](https://brew.sh/) on your machine, if you don't have Homebrew installed then you can install it by following this [guide](https://mac.install.guide/homebrew/3)
+
+Run the following command on your terminal
+```shell copy
+ brew install --cask anythingllm
+```
+
+Once installed, you will find AnythingLLM in your Applications folder as well as you can use `cmd + spacebar` and type in AnythingLLM to run.
+
+---
+
+## Install using Docker
+Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/mac-install)
+
+Run this command on your terminal
+```shell copy
+ docker pull mintplexlabs/anythingllm
+```
+It will pull in the latest AnythingLLM image from docker.
+
+
+Once you have pulled the latest image, run the following commands
+```shell copy showLineNumbers
+ export STORAGE_LOCATION=$HOME/anythingllm && \
+ mkdir -p $STORAGE_LOCATION && \
+ touch "$STORAGE_LOCATION/.env" && \
+ docker run -d -p 3001:3001 \
+ --cap-add SYS_ADMIN \
+ -v ${STORAGE_LOCATION}:/app/server/storage \
+ -v ${STORAGE_LOCATION}/.env:/app/server/.env \
+ -e STORAGE_DIR="/app/server/storage" \
+ mintplexlabs/anythingllm
+```
+The above command will mount the storage locally and run AnythingLLM in Docker
+
+Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM! 
+
+All your data and progress will persist between container rebuilds or pulls from Docker Hub.
