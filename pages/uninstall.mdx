@@ -3,19 +3,19 @@ title: "Uninstall"
 description: "Learn how to completely uninstall AnythingLLM"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/guides/uninstall.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/guides/uninstall.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Uninstall"
 />
 
+## Uninstalling on MacOS
 
-## Uninstalling on MacOS 
 Open your `Finder` and navigate to the `Applications` folder. Then, drag the AnythingLLM application into the `Trashcan`, and the application will be uninstalled.
 
 To remove all AnythingLLM desktop data from your system, please also delete the `/Library/Application Support/anythingllm-desktop` folder. This folder is where your database, documents, and vector cache are located.
@@ -23,6 +23,7 @@ To remove all AnythingLLM desktop data from your system, please also delete the 
 ---
 
 ## Uninstalling on Linux
+
 Delete the `.AppImage` from your system. Once done, follow the instructions below to erase all related data.
 
 To completely remove all application data, including your local database, documents, and vector cache, delete the folder located at `/home/{user}/.config/anythingllm-desktop`.
@@ -32,6 +33,7 @@ You can delete the entire directory or just the storage folder to reset your cur
 ---
 
 ## Uninstalling on Windows
+
 Utilize the uninstallation `executable` located in `/Users/{user}/AppData/Local/Programs/AnythingLLM` (or) `/Users/{user}/AppData/Local/Programs/anythingllm-desktop`
 
 To completely remove all application data from your system, including your local database, documents, and vector cache, delete the folder located at `/Users/{user}/AppData/Roaming/anythingllm-desktop/storage`.
@@ -40,5 +42,5 @@ You have the option to delete either the entire `/Users/{user}/AppData/Roaming/a
 
 ---
 
-{/* ## Uninstalling on Docker
-Enter the steps here */}
+{/_ ## Uninstalling on Docker
+Enter the steps here _/}

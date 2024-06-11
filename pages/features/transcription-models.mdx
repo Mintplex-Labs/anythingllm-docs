@@ -3,13 +3,13 @@ title: "Transcription Models"
 description: "AnythingLLM supports custom audio transcription providers."
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/features/transcription-models/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/features/transcription-models/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Transcription Models"
 />
@@ -18,50 +18,50 @@ import Image from 'next/image'
 
 AnythingLLM supports custom audio transcription providers.
 
-
 ## Supported Transcription Model Providers
 
 ### Local Transcription Model Providers
 
 <Cards>
-  <Card title="Built-in (Xenova)" href="https://huggingface.co/Xenova/whisper-small"> 
+  <Card
+    title="Built-in (Xenova)"
+    href="https://huggingface.co/Xenova/whisper-small"
+  >
     <Image
-      src="/images/features/transcription-models/xenova.png" 
-      height={1080} 
-      width={1920} 
+      src="/images/features/transcription-models/xenova.png"
+      height={1080}
+      width={1920}
       quality={100}
       alt="AnythingLLM Built-in (Xenova)"
     />
   </Card>
 </Cards>
 
-
 ### Cloud Transcription Model Providers
 
 <Cards>
-  <Card title="OpenAI" href="https://platform.openai.com/"> 
+  <Card title="OpenAI" href="https://platform.openai.com/">
     <Image
-      src="/images/features/transcription-models/openai.png" 
-      height={1080} 
-      width={1920} 
+      src="/images/features/transcription-models/openai.png"
+      height={1080}
+      width={1920}
       quality={100}
       alt="OpenAI"
     />
   </Card>
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`

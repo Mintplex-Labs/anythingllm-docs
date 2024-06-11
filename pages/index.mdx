@@ -3,11 +3,11 @@ title: "Home"
 description: "Learn about AnythingLLM's features and how to use them"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
-
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 # AnythingLLM Documentation
+
 Learn about AnythingLLM's features and how to use them
 
 <br />
@@ -23,45 +23,53 @@ Learn about AnythingLLM's features and how to use them
     />
   </Card>
 
-  <Card title="Installation" href="installation/overview"> 
-    <Image
-      src="/images/getting-started/installation/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Installation"
-    />
-  </Card>
+{" "}
 
-  <Card title="Features" href="features/all-features"> 
-    <Image
-      src="/images/features/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Features"
-    />
-  </Card>
+<Card title="Installation" href="installation/overview">
+  <Image
+    src="/images/getting-started/installation/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Installation"
+  />
+</Card>
 
-  <Card title="AnythingLLM Cloud" href="cloud/overview"> 
-    <Image
-      src="/images/cloud/header-image.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="AnythingLLM Cloud"
-    />
-  </Card>
+{" "}
 
-  <Card title="Roadmap" href="roadmap"> 
-    <Image
-      src="/images/product/roadmap/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Roadmap"
-    />
-  </Card>
+<Card title="Features" href="features/all-features">
+  <Image
+    src="/images/features/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Features"
+  />
+</Card>
+
+{" "}
+
+<Card title="AnythingLLM Cloud" href="cloud/overview">
+  <Image
+    src="/images/cloud/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Cloud"
+  />
+</Card>
+
+{" "}
+
+<Card title="Roadmap" href="roadmap">
+  <Image
+    src="/images/product/roadmap/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Roadmap"
+  />
+</Card>
 
   <Card title="Changelog" href="changelog/overview"> 
     <Image
@@ -78,13 +86,13 @@ export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`

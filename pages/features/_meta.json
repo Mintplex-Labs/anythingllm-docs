@@ -88,7 +88,7 @@
       "pagination": true,
       "toc": true
     }
-  },  
+  },
   "vector-databases": {
     "title": "Vector Database",
     "theme": {

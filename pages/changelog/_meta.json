@@ -8,8 +8,8 @@
       "toc": true
     }
   },
-  "v1.5.4": {
-    "title": "v1.5.4",
+  "v1.5.6": {
+    "title": "v1.5.6",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -17,8 +17,17 @@
       "toc": true
     }
   },
-  "v1.5.3": {
-    "title": "v1.5.3",
+  "v1.5.5": {
+    "title": "v1.5.5",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "v1.5.4": {
+    "title": "v1.5.4",
     "theme": {
       "breadcrumb": true,
       "footer": true,

@@ -1,5 +1,5 @@
 {
-    "overview": {
+  "overview": {
     "title": "Overview",
     "theme": {
       "breadcrumb": true,
@@ -27,4 +27,3 @@
     }
   }
 }
-

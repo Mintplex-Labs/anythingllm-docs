@@ -3,26 +3,30 @@ title: "Debug"
 description: "Learn how to run AnythingLLM in debug mode"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/guides/debug.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/guides/debug.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Debug Mode"
 />
 
 ## AnythingLLM Debug mode on MacOS
+
 To run the AnythingLLM Application in debug mode (if you are getting errors) you can open a Terminal and navigate to `~/Applications/AnythingLLM/Content/MacOs` where you can then run the executable and see all application logs while running AnythingLLM.
 
 ## AnythingLLM Debug mode on Windows
+
 To run the AnythingLLM Application in debug mode (if you are getting errors) you can open a CMD or Powershell window and run the path to the AnythingLLM executable. Typically this is in `C:\Users\usr\AppData\Local\Programs\anythingllm-desktop\AnythingLLMDesktop.exe`.
 This will print all logs to the powershell window while running and should display a verbose error once encountered that is critical for debugging.
 
 ## AnythingLLM Debug mode on Linux
+
 To run the AnythingLLM Application in debug mode (if you are getting errors) you can open a Terminal and navigate to `~/.config/anythingllm-desktop/AnythingLLMDesktop.AppImage` where you can then run the executable and see all AppImage logs while running AnythingLLM.
 
 ## AnythingLLM Debug mode on Docker
+
 Open `Container Logs` in Docker desktop or print the logs via `docker container <CONTAINER_ID> logs`

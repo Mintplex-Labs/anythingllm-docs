@@ -3,17 +3,16 @@ title: "Vector Databases"
 description: "Your vector database is set system-wide and cannot be configured atomically per-workspace like LLMs can.."
 ---
 
-import { Cards, Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Cards, Callout } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/anythingllm-setup/vector-database-configuration/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/vector-database-configuration/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Vector Databases"
 />
-
 
 # Vector Databases
 
@@ -25,10 +24,10 @@ Your vector database is set system-wide and cannot be configured atomically per-
     You should prevent "hopping" between vector databases. AnythingLLM will not automatically port over your already embedded information.
 
     You would need to delete and re-embed each document in every workspace to migrate to another vector database.
+
 </Callout>
 
 AnythingLLM supports many vector databases providers out of the box.
-
 
 ## Supported Vector Databases
 
@@ -45,15 +44,17 @@ AnythingLLM supports many vector databases providers out of the box.
     />
   </Card>
 
-  <Card title="Chroma" href="local/chroma"> 
-    <Image
-      src="/images/features/vector-databases/chroma.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Chroma"
-    />
-  </Card>
+{" "}
+
+<Card title="Chroma" href="local/chroma">
+  <Image
+    src="/images/features/vector-databases/chroma.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Chroma"
+  />
+</Card>
 
   <Card title="Milvus" href="local/milvus"> 
     <Image
@@ -66,8 +67,6 @@ AnythingLLM supports many vector databases providers out of the box.
   </Card>
 </Cards>
 
-
-
 ### Cloud Vector Databases Providers
 
 <Cards>
@@ -79,37 +78,43 @@ AnythingLLM supports many vector databases providers out of the box.
       quality={100}
       alt="Pinecone"
     />
-  </Card> 
-
-  <Card title="Zilliz" href="cloud/zilliz"> 
-    <Image
-      src="/images/features/vector-databases/zilliz.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Zilliz"
-    />
   </Card>
 
-  <Card title="AstraDB" href="cloud/astradb"> 
-    <Image
-      src="/images/features/vector-databases/astra-db.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AstraDB"
-    />
-  </Card>
+{" "}
 
-  <Card title="QDrant" href="cloud/qdrant"> 
-    <Image
-      src="/images/features/vector-databases/qdrant.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="QDrant"
-    />
-  </Card>
+<Card title="Zilliz" href="cloud/zilliz">
+  <Image
+    src="/images/features/vector-databases/zilliz.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Zilliz"
+  />
+</Card>
+
+{" "}
+
+<Card title="AstraDB" href="cloud/astradb">
+  <Image
+    src="/images/features/vector-databases/astra-db.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AstraDB"
+  />
+</Card>
+
+{" "}
+
+<Card title="QDrant" href="cloud/qdrant">
+  <Image
+    src="/images/features/vector-databases/qdrant.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="QDrant"
+  />
+</Card>
 
   <Card title="Weaviate" href="cloud/weaviate"> 
     <Image
@@ -122,18 +127,17 @@ AnythingLLM supports many vector databases providers out of the box.
   </Card>
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`

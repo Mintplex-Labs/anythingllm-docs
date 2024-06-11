@@ -3,23 +3,22 @@ title: "Embedding Models"
 description: "AnythingLLM supports many embedding model providers out of the box with very little, if any setup"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/features/embedding-models/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/features/embedding-models/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Embedding Models"
 />
 
 # Embedding Models
 
-AnythingLLM supports many embedding model providers out of the box with very little, if any setup. 
+AnythingLLM supports many embedding model providers out of the box with very little, if any setup.
 
 Embedding models are specific types of models that turn text into vectors, which can be stored and searched in a vector database - which is the foundation of RAG.
-
 
 ## Supported Embedding Model Providers
 
@@ -36,25 +35,29 @@ Embedding models are specific types of models that turn text into vectors, which
     />
   </Card>
 
-  <Card title="Ollama" href="https://ollama.com/"> 
-    <Image
-      src="/images/features/embedding-models/ollama.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Ollama"
-    />
-  </Card>
+{" "}
 
-  <Card title="LM Studio" href="https://lmstudio.ai/"> 
-    <Image
-      src="/images/features/embedding-models/lm-sudio.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="LM Studio"
-    />
-  </Card>
+<Card title="Ollama" href="https://ollama.com/">
+  <Image
+    src="/images/features/embedding-models/ollama.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Ollama"
+  />
+</Card>
+
+{" "}
+
+<Card title="LM Studio" href="https://lmstudio.ai/">
+  <Image
+    src="/images/features/embedding-models/lm-sudio.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="LM Studio"
+  />
+</Card>
 
   <Card title="Local AI" href="https://localai.io/"> 
     <Image
@@ -66,8 +69,6 @@ Embedding models are specific types of models that turn text into vectors, which
     />
   </Card> 
 </Cards>
-
-
 
 ### Cloud Embedding Model Providers
 
@@ -82,15 +83,20 @@ Embedding models are specific types of models that turn text into vectors, which
     />
   </Card>
 
-  <Card title="Azure OpenAI" href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"> 
-    <Image
-      src="/images/features/embedding-models/azure-openai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Azure OpenAI"
-    />
-  </Card> 
+{" "}
+
+<Card
+  title="Azure OpenAI"
+  href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"
+>
+  <Image
+    src="/images/features/embedding-models/azure-openai.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Azure OpenAI"
+  />
+</Card>{" "}
 
   <Card title="Cohere" href="https://cohere.com/"> 
     <Image
@@ -103,18 +109,17 @@ Embedding models are specific types of models that turn text into vectors, which
   </Card> 
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`

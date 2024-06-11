@@ -3,72 +3,72 @@ title: "Contribute"
 description: "Contribute to AnythingLLM"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/home/contribute.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/home/contribute.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Contribute"
 />
 
 # Contributing
-We welcome and appreciate any contributions from the community to help improve AnythingLLM and this Documentation.
 
+We welcome and appreciate any contributions from the community to help improve AnythingLLM and this Documentation.
 
 ## How to Contribute
 
 ### Create Issues
-If you encounter any bugs, have suggestions for new features, or want to discuss improvements, please create an issue on our GitHub repository. 
+
+If you encounter any bugs, have suggestions for new features, or want to discuss improvements, please create an issue on our GitHub repository.
 
 Clearly describe the problem or enhancement you're proposing, and our team will review it promptly.
 
-
 ### Pull Requests (PR)
-Contributions through Pull Requests are highly encouraged. 
 
-Whether it's fixing a bug, implementing a new feature, or improving documentation, your PRs are valuable to us. 
+Contributions through Pull Requests are highly encouraged.
 
+Whether it's fixing a bug, implementing a new feature, or improving documentation, your PRs are valuable to us.
 
 ### Tutorials
-Share your knowledge and expertise by creating tutorials for AnythingLLM. 
+
+Share your knowledge and expertise by creating tutorials for AnythingLLM.
 
 Tutorials can help users understand the project better and learn how to use its features effectively.
 
-
 ### Engage on Discord
-Join our Discord community to discuss ideas, seek help, and collaborate with other contributors and users. 
+
+Join our Discord community to discuss ideas, seek help, and collaborate with other contributors and users.
 
 Engaging on Discord is a great way to stay updated with project developments and connect with the community.
 
-
 ## Getting Started
+
 If you're new to contributing to open source projects or to AnythingLLM specifically, here's how you can get started:
 
-
 ### Familiarize Yourself:
+
 Take some time to understand the project's goals, architecture, and existing codebase. You can explore our GitHub repository and documentation to get acquainted.
 
+### Pick an Issue:
 
-### Pick an Issue: 
 Browse through our GitHub issues and look for tasks which you think you can solve.
 
+### Reach Out:
 
-### Reach Out: 
-If you need assistance or have any questions, don't hesitate to ask for help on Discord or in the comments of the GitHub issue you're working on. 
+If you need assistance or have any questions, don't hesitate to ask for help on Discord or in the comments of the GitHub issue you're working on.
 
 We're here to support you throughout the contribution process.
 
+### Submit Your Contribution:
 
-### Submit Your Contribution: 
 Once you've made your changes, submit a Pull Request on GitHub. Be sure to include a clear description of your changes and any relevant details.
 
 Thank you for considering contributing to AnythingLLM. Your support helps make this project better for everyone!
 
-
-## Quick Links 
+## Quick Links
 
 <Cards>
   <Card title="AnythingLLM Github" href="https://github.com/Mintplex-Labs/anything-llm/issues"> 
@@ -81,15 +81,20 @@ Thank you for considering contributing to AnythingLLM. Your support helps make t
     />
   </Card>
 
-  <Card title="AnythingLLM Docs Github" href="https://github.com/Mintplex-Labs/anythingllm-docs/issues"> 
-    <Image
-      src="/images/getting-started/support/github.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Github Issues"
-    />
-  </Card>
+{" "}
+
+<Card
+  title="AnythingLLM Docs Github"
+  href="https://github.com/Mintplex-Labs/anythingllm-docs/issues"
+>
+  <Image
+    src="/images/getting-started/support/github.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Github Issues"
+  />
+</Card>
 
   <Card title="Discord Community Invite" href="https://discord.gg/Dh4zSZCdsC"> 
     <Image
@@ -106,13 +111,13 @@ export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`
@@ -121,4 +126,3 @@ export const Card = Object.assign(
     object-fit: cover;
   }
 `}</style>
-

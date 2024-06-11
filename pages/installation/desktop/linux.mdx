@@ -3,75 +3,74 @@ title: "Linux Installation"
 description: "Linux Installation guide for AnythingLLM"
 ---
 
-import { Callout, Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Callout, Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/getting-started/installation/linux/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/linux/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Installation"
 />
 
-
 # Linux Installation
+
 There are **two** ways to install AnythingLLM on Windows
 
 **[1. Install using the Installation `.AppImage` file](#install-using-the-installation-file)**
 
 **[2. Install using Docker](#install-using-docker)**
 
-
 <Callout type="warning" emoji="⚠️">
   **OPERATING SYSTEM NOTICE**
 
-   ➤ AnythingLLM is built on an Ubuntu system and may not work well on other distros. 
+➤ AnythingLLM is built on an Ubuntu system and may not work well on other distros.
 
-   ➤ Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles. 
+➤ Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles.
 
-   ➤ We want to have Linux OS's to have the same experience with AnythingLLM.
+➤ We want to have Linux OS's to have the same experience with AnythingLLM.
+
 </Callout>
 
-
 ## Downloading the installation file
+
 Here is the download links for the latest version of Anything LLM Linux.
 
 <Cards>
-  <Card 
-    title="Linux (generic) x86" 
-    href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage"> 
-  </Card>
+  <Card
+    title="Linux (generic) x86"
+    href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage"
+  ></Card>
 </Cards>
 
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: false,
       arrow: true,
-      target: '_blank'
-    }
-  }
+      target: "_blank",
+    },
+  },
 )
 
-
-Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. 
+Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
 
 Click "**Keep**" when downloading to allow the file to download.
 
 <Image
-  src="/images/getting-started/installation/linux/browser-warning.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/linux/browser-warning.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Linux Install Browser Warning"
 />
 
-
 ## Installing the application
+
 After downloading the Linux `.AppImage` for AnythingLLM, you may need to give the file executable permissions so that it can run.
 
 ```shell copy "
@@ -89,16 +88,19 @@ After that, you can boot the AppImage like any other app image. Double-clicking 
 ---
 
 ## Install using Docker
+
 Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/linux-install/)
 
 Run this command on your terminal
+
 ```shell copy
  docker pull mintplexlabs/anythingllm
 ```
+
 It will pull in the latest AnythingLLM image from docker.
 
-
 Once you have pulled the latest image, run the following commands
+
 ```shell copy showLineNumbers
  export STORAGE_LOCATION=$HOME/anythingllm && \
  mkdir -p $STORAGE_LOCATION && \
@@ -110,15 +112,9 @@ Once you have pulled the latest image, run the following commands
  -e STORAGE_DIR="/app/server/storage" \
  mintplexlabs/anythingllm
 ```
+
 The above command will mount the storage locally and run AnythingLLM in Docker
 
-Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM! 
+Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM!
 
 All your data and progress will persist between container rebuilds or pulls from Docker Hub.
-
-
-
-
-
-
-

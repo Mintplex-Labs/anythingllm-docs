@@ -3,39 +3,39 @@ title: "AI Agent Setup"
 description: "This guide explain how to setup AI Agents on AnythingLLM"
 ---
 
-import { Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Callout } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/guides/ai-agents/setup.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/guides/ai-agents/setup.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM AI Agents"
 />
 
-
 # Setting up AI Agents
 
 ### 1) Go to Agent configuration
+
 Open the workspace settings and go to the agent configuration menu
 
 <Image
-  src="/images/anythingllm-setup/agent-configuration/configuration-menu.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/agent-configuration/configuration-menu.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Agent Configuration Menu"
 />
 
-
 ### 2) Choose the LLM for your Agent
+
 On workspace settings, select your LLM Provider and the Model you want your Agent to use.
 
 <Image
-  src="/images/anythingllm-setup/agent-configuration/llm.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/agent-configuration/llm.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Agent LLM"
 />
@@ -45,22 +45,24 @@ On workspace settings, select your LLM Provider and the Model you want your Agen
 
     Not all LLM Models works well as Agents, you may need to use higher quantization models for better responses.
     Example: `Llama 3 8B 8Bit Quantization` gives better responses as an Agent
+
 </Callout>
 
 <Callout type="info" emoji="️ℹ️">
   **Note**
 
     AnythingLLM supports a lot of LLM providers for use with `@agent`s and you can see all the supported LLMs from [here](https://docs.useanything.com/features/language-models#supported-language-model-providers)
+
 </Callout>
 
-
 ### 3) Choose your Agent skills
+
 Choose the skills (aka Tools) for your Agent to use.
 
 <Image
-  src="/images/anythingllm-setup/agent-configuration/tools.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/agent-configuration/tools.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Agent Skills"
 />
@@ -69,14 +71,16 @@ Choose the skills (aka Tools) for your Agent to use.
   **Note**
 
     Some tools like `RAG`, `Summarize Documents` and `Scrape Websites` are enabled by default and you cannot disable them.
+
 </Callout>
 
-
 ### 4) Choose your Search Provider (Optional)
-One of the tools agents can use is `Web-Browsing` which allows agents to browse the internet. 
+
+One of the tools agents can use is `Web-Browsing` which allows agents to browse the internet.
 
 Currently we support the following search providers:
-- [Google](https://www.google.com/) 
+
+- [Google](https://www.google.com/)
 - [Serper](https://serper.dev/)
 - [Bing Search](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/bing-entity-search-api/)
 
@@ -84,12 +88,13 @@ Currently we support the following search providers:
   **Note**
 
     You can ignore this step if you don't plan to use the `Web-Browsing` tool
+
 </Callout>
 
 <Image
-  src="/images/anythingllm-setup/agent-configuration/search.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/agent-configuration/search.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Agent Web Browsing"
 />
@@ -102,13 +107,13 @@ If you want to learn how to use AI Agents then you can read our [AI Agent Guide]
 
 <br />
 
-<iframe 
- width="100%" 
- height="450" 
- src="https://www.youtube.com/embed/4UFrVvy7VlA?si=TtWQ-Sg5fxytVsKI" 
- title="YouTube video player" 
- frameborder="0" 
- allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
- referrerpolicy="strict-origin-when-cross-origin" 
- allowfullscreen>
-</iframe>
+<iframe
+  width="100%"
+  height="450"
+  src="https://www.youtube.com/embed/4UFrVvy7VlA?si=TtWQ-Sg5fxytVsKI"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>

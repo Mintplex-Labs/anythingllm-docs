@@ -3,13 +3,13 @@ title: "LM Studio Embedder"
 description: "LMStudio supports LLM and embedding GGUF models from HuggingFace that can be run on CPU or GPU."
 ---
 
-import { Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Callout } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="LM Studio Embedder"
 />
@@ -20,25 +20,25 @@ import Image from 'next/image'
   **Heads up!**
 
     LMStudio's inference server only allows you to load multiple LLMs or a single embedding model, but not both. This means LMStudio cannot be both your LLM and embedder.
+
 </Callout>
 
-[LMStudio](https://lmstudio.ai) supports LLM **and** embedding GGUF models from HuggingFace that can be run on CPU or GPU. 
+[LMStudio](https://lmstudio.ai) supports LLM **and** embedding GGUF models from HuggingFace that can be run on CPU or GPU.
 
-LMStudio is a *separate* application that you need to download first and connect to.
-
+LMStudio is a _separate_ application that you need to download first and connect to.
 
 ## Connecting to LM Studio
 
-When running LMStudio locally, you should connect to LMStudio by first running the built-in inference server. 
+When running LMStudio locally, you should connect to LMStudio by first running the built-in inference server.
 
 You **must** explicitly load the embedding model before starting the inference server.
 
 You can update your model to a different model at any time in the **Settings**.
 
 <Image
-  src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/lmstudio-embedder.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/lmstudio-embedder.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="LM Studio Embedder"
 />

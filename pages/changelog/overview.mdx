@@ -3,18 +3,17 @@ title: "Desktop Changelog Overview"
 description: "AnythingLLM Deskop Changelog"
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
-import Link from 'next/link'
+import { Cards } from "nextra/components"
+import Image from "next/image"
+import Link from "next/link"
 
 <Image
-  src="/images/product/changelog/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Changelog"
 />
-
 
 # Desktop Changelogs
 
@@ -23,21 +22,32 @@ We're using this log to jot down everything we've finished working on. It helps 
 You can read the recent changelogs by clicking the cards below:
 
 <Cards>
-  <Card title="Changelog v1.5.4" href="v1.5.4"> 
+  <Card title="Changelog v1.5.6" href="v1.5.6">
     <Image
-    src="/images/product/changelog/header-image.png" 
-    height={1080} 
-    width={1920} 
-    quality={100}
-    alt="AnythingLLM Desktop Changelog v1.5.4"/>
+      src="/images/product/changelog/header-image.png"
+      height={1080}
+      width={1920}
+      quality={100}
+      alt="AnythingLLM Desktop Changelog v1.5.6"
+    />
   </Card>
-    <Card title="Changelog v1.5.3" href="v1.5.3"> 
+  <Card title="Changelog v1.5.5" href="v1.5.5">
     <Image
-    src="/images/product/changelog/header-image.png" 
-    height={1080} 
-    width={1920} 
-    quality={100}
-    alt="AnythingLLM Desktop Changelog v1.5.3"/>
+      src="/images/product/changelog/header-image.png"
+      height={1080}
+      width={1920}
+      quality={100}
+      alt="AnythingLLM Desktop Changelog v1.5.5"
+    />
+  </Card>
+  <Card title="Changelog v1.5.4" href="v1.5.4">
+    <Image
+      src="/images/product/changelog/header-image.png"
+      height={1080}
+      width={1920}
+      quality={100}
+      alt="AnythingLLM Desktop Changelog v1.5.4"
+    />
   </Card>
 </Cards>
 
@@ -45,13 +55,13 @@ export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`

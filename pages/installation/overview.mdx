@@ -3,36 +3,36 @@ title: "Installation Overview"
 description: "AnythingLLM offers two main ways to use AnythingLLM. There are some distinct differences in functionality between each offering"
 ---
 
-import { Callout, Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Callout, Cards } from "nextra/components"
+import Image from "next/image"
 
 <Image
-  src="/images/getting-started/installation/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Installation"
 />
 
-
 ## Installation Overview
+
 AnythingLLM is a "**single-player**" application you can install on any Mac, Windows, or Linux operating system and get local LLMs, RAG, and Agents with little to zero configuration and full privacy.
 
 You can install AnythingLLM as a Desktop Application, Self Host it locally using Docker and Host it on cloud (aws, google cloud, railway etc..) using Docker
 
-
 ## Docker vs Desktop Version
+
 AnythingLLM offers two main ways to use AnythingLLM. There are some distinct differences in functionality between each offering. Both are open source.
 
-
 ### You want AnythingLLM Desktop if...
+
 - You want a one-click installable app to use local LLMs, RAG, and Agents locally
 - You do not need multi-user support
 - Everything needs to stay only on your device
 - You do not need to "publish" anything to the public internet. Eg: Chat widget for website
 
-
 ### You want AnythingLLM Docker if...
+
 - You need an easy setup, but server-based service for AnythingLLM to use local LLMs, RAG, and Agents locally
 - You want to run an AnythingLLM instance that many people can use at the same time
 - You want to be able to share information with our users on your instance you invite
@@ -40,43 +40,39 @@ AnythingLLM offers two main ways to use AnythingLLM. There are some distinct dif
 - You will publish chat widgets to the public internet
 - You want to access AnythingLLM from the browser
 
-
 The below table is a non-exhaustive list of features supported between platforms.
 
-
 | Feature                        | Available on Desktop | Available on Docker |
-|:-------------------------------|:--------------------:|:-------------------:|
-| Multi-user support             | ❌                   | ✅                  |
-| Emeddable chat widgets         | ❌                   | ✅                  |
-| One-click install              | ✅                   | ❌                  |
-| Private documents              | ✅                   | ✅                  |
-| Connect to any vector database | ✅                   | ✅                  |
-| Use any LLM                    | ✅                   | ✅                  |
-| Built-in embedding provider    | ✅                   | ✅                  |
-| Built-in LLM provider          | ✅                   | ❌                  |
-| White-labeling                 | ❌                   | ✅                  |
-| Chat logs                      | ✅                   | ✅                  |
-| Agent support                  | ✅                   | ✅                  |
-| Agent skills                   | ✅                   | ✅                  |
-| Third-party data connectors    | ✅                   | ✅                  |
-| Password protection            | ❌                   | ✅                  |
-| Invite new users to instance   | ❌                   | ✅                  |
-| Text splitting configuration   | ✅                   | ✅                  |
-| Whisper model support          | ✅                   | ✅                  |
-| Full developer API             | ✅                   | ✅                  |
-| User management                | ❌                   | ✅                  |
-| Workspace access management    | ❌                   | ✅                  |
-| Website scraping               | ✅                   | ✅                  |
-
+| :----------------------------- | :------------------: | :-----------------: |
+| Multi-user support             |          ❌          |         ✅          |
+| Emeddable chat widgets         |          ❌          |         ✅          |
+| One-click install              |          ✅          |         ❌          |
+| Private documents              |          ✅          |         ✅          |
+| Connect to any vector database |          ✅          |         ✅          |
+| Use any LLM                    |          ✅          |         ✅          |
+| Built-in embedding provider    |          ✅          |         ✅          |
+| Built-in LLM provider          |          ✅          |         ❌          |
+| White-labeling                 |          ❌          |         ✅          |
+| Chat logs                      |          ✅          |         ✅          |
+| Agent support                  |          ✅          |         ✅          |
+| Agent skills                   |          ✅          |         ✅          |
+| Third-party data connectors    |          ✅          |         ✅          |
+| Password protection            |          ❌          |         ✅          |
+| Invite new users to instance   |          ❌          |         ✅          |
+| Text splitting configuration   |          ✅          |         ✅          |
+| Whisper model support          |          ✅          |         ✅          |
+| Full developer API             |          ✅          |         ✅          |
+| User management                |          ❌          |         ✅          |
+| Workspace access management    |          ❌          |         ✅          |
+| Website scraping               |          ✅          |         ✅          |
 
 <Callout type="info" emoji="️💡">
-  **Tip:**
-    AnythingLLM Desktop is the easiest way to use AnythingLLM.
+  **Tip:** AnythingLLM Desktop is the easiest way to use AnythingLLM.
 </Callout>
 
 <br />
 
-## Quick Links 
+## Quick Links
 
 <Cards>
   <Card title="System Requirements" href="system-requirements"> 
@@ -89,55 +85,68 @@ The below table is a non-exhaustive list of features supported between platforms
     />
   </Card>
 
-  <Card title="MacOS Install" href="desktop/macos"> 
-    <Image
-      src="/images/getting-started/installation/macos/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM MacOS Install"
-    />
-  </Card>
+{" "}
 
-  <Card title="Windows Install" href="desktop/windows"> 
-    <Image
-      src="/images/getting-started/installation/windows/header-image.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="AnythingLLM Windows Install"
-    />
-  </Card>
+<Card title="MacOS Install" href="desktop/macos">
+  <Image
+    src="/images/getting-started/installation/macos/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM MacOS Install"
+  />
+</Card>
 
-  <Card title="Linux Install" href="desktop/linux"> 
-    <Image
-      src="/images/getting-started/installation/linux/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Linux Install"
-    />
-  </Card>
+{" "}
 
-  <Card title="Local Docker Install" href="self-hosted/local-docker"> 
-    <Image
-      src="/images/getting-started/installation/local-docker/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Local Docker Install"
-    />
-  </Card>
+<Card title="Windows Install" href="desktop/windows">
+  <Image
+    src="/images/getting-started/installation/windows/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Windows Install"
+  />
+</Card>
 
-  <Card title="Midori AI Subsystem Manager" href="https://io.midori-ai.xyz/subsystem/manager/"> 
-    <Image
-      src="/images/getting-started/installation/local-docker/midori-subsystem.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Midori AI Subsystem"
-    />
-  </Card>
+{" "}
+
+<Card title="Linux Install" href="desktop/linux">
+  <Image
+    src="/images/getting-started/installation/linux/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Linux Install"
+  />
+</Card>
+
+{" "}
+
+<Card title="Local Docker Install" href="self-hosted/local-docker">
+  <Image
+    src="/images/getting-started/installation/local-docker/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AnythingLLM Local Docker Install"
+  />
+</Card>
+
+{" "}
+
+<Card
+  title="Midori AI Subsystem Manager"
+  href="https://io.midori-ai.xyz/subsystem/manager/"
+>
+  <Image
+    src="/images/getting-started/installation/local-docker/midori-subsystem.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Midori AI Subsystem"
+  />
+</Card>
 
   <Card title="Cloud Docker Install" href="self-hosted/cloud-docker"> 
     <Image
@@ -154,13 +163,13 @@ export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
-  }
+      target: "_self",
+    },
+  },
 )
 
 <style global jsx>{`
