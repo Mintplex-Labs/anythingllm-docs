@@ -1,38 +1,38 @@
 {
   "built-in": {
-  "title": "AnythingLLM Default",
-  "theme": {
-    "breadcrumb": true,
-    "footer": true,
-    "pagination": true,
-    "toc": true
+    "title": "AnythingLLM Default",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "lmstudio": {
+    "title": "LM Studio",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "localai": {
+    "title": "Local AI",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "ollama": {
+    "title": "Ollama",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
-},
-"lmstudio": {
-  "title": "LM Studio",
-  "theme": {
-    "breadcrumb": true,
-    "footer": true,
-    "pagination": true,
-    "toc": true
-  }
-},
-"localai": {
-  "title": "Local AI",
-  "theme": {
-    "breadcrumb": true,
-    "footer": true,
-    "pagination": true,
-    "toc": true
-  }
-},
-"ollama": {
-  "title": "Ollama",
-  "theme": {
-    "breadcrumb": true,
-    "footer": true,
-    "pagination": true,
-    "toc": true
-  }
-}
 }

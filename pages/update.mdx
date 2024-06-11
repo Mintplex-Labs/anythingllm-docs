@@ -3,31 +3,33 @@ title: "Update"
 description: "Learn how to update AnythingLLM"
 ---
 
-import { Cards, Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/guides/update.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/guides/update.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Update"
 />
 
-
-## Updating on MacOS 
+## Updating on MacOS
 
 ### Updating using Installation file
+
 Simply download the latest version of the installation `dmg` from the [download page](https://useanything.com/download) and then re-install the app and it will overwrite the existing application while persisting your storage and progress.
 
 ### Updating using Homebrew
+
 <Callout type="warning" emoji="⚠️">
-  **Note:** ➤➤ You can only update using Homebrew if you initially installed AnythingLLM using Homebrew.
+  **Note:** ➤➤ You can only update using Homebrew if you initially installed
+  AnythingLLM using Homebrew.
 </Callout>
 
 Simply run the below command on your terminal
 
-``` shell copy
+```shell copy
  brew update && brew upgrade --cask anythingllm
 ```
 
@@ -35,17 +37,20 @@ This command will overwrite the existing application with the new version while 
 
 ---
 
-## Updating on Windows 
+## Updating on Windows
+
 Simply download the latest version of the installation `.exe` from the [download page](https://useanything.com/download) and then re-install the app and it will overwrite the existing application while persisting your storage and progress.
 
 ---
 
-## Updating on Linux 
+## Updating on Linux
+
 Simply download the latest version of the installation `.AppImage` from the [download page](https://useanything.com/download) and then execute this new `.AppImage` and delete the old one. This will persist your data, but allow you to use the latest version of the software.
 
 ---
 
 ## Updating on Docker
+
 - Stop the container currently running AnythingLLM so the port is freed.
 - `docker pull mintplexlabs/anythingllm` to pull the latest image.
 - Restart the container pointed at the same storage location defined during previous boot.

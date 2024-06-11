@@ -3,49 +3,46 @@ title: "OpenAI Embedder"
 description: "OpenAI offers 3 embedding models that vary between performance and dimension.."
 ---
 
-import { Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/anythingllm-setup/embedder-configuration/cloud/openai/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/embedder-configuration/cloud/openai/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="OpenAI Embedder"
 />
 
-
 # OpenAI Embedder
 
-OpenAI offers 3 embedding models that vary between performance and dimension. Check with OpenAI for up to date pricing. 
+OpenAI offers 3 embedding models that vary between performance and dimension. Check with OpenAI for up to date pricing.
 
 When you attempt to embed documents in AnythingLLM we will provide a price estimate.
 
-
-| MODEL	                | ~ PAGES PER DOLLAR | MAX INPUT |
-|:----------------------|:------------------:|:---------:|
-|text-embedding-3-small |	62,500	         |  8,191    |
-|text-embedding-ada-002 |	12,500	         |	8,191    | 
-|text-embedding-3-large |	9,615	         |	8,191    |
-
-
+| MODEL                  | ~ PAGES PER DOLLAR | MAX INPUT |
+| :--------------------- | :----------------: | :-------: |
+| text-embedding-3-small |       62,500       |   8,191   |
+| text-embedding-ada-002 |       12,500       |   8,191   |
+| text-embedding-3-large |       9,615        |   8,191   |
 
 ## Connecting to OpenAI
 
 <Callout type="info" emoji="️💡">
   **Valid API Key required!**
 
-    You must obtain a valid API key from [platform.openai.com](https://platform.openai.com) for this integration to work. 
-    
+    You must obtain a valid API key from [platform.openai.com](https://platform.openai.com) for this integration to work.
+
     Ensure you also have attached a billing account or you may still be unable to use this provider.
+
 </Callout>
 
 You can update your model to a different model at any time in the **Settings**.
 
 <Image
-  src="/images/anythingllm-setup/embedder-configuration/cloud/openai/openai-embedder.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/embedder-configuration/cloud/openai/openai-embedder.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="OpenAI Embedder"
 />

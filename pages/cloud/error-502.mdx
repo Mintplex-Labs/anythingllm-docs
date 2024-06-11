@@ -2,32 +2,33 @@
 title: "502 Error on AnythingLLM Hosted"
 description: "How to reboot your crashed instance from too large of a document"
 ---
-import { Callout } from 'nextra/components'
-import Image from 'next/image'
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
 
 <Callout type="warning" emoji="️⚠️">
   **Notice**
   This page only applies to the Hosted Cloud version of AnythingLLM and only applies to those using the built-in embedder model.
 
-  Following these instructions are the preferred way to get your instance back online. 
-  
-  **Please do not e-mail team@mintplexlabs.com unless this process does not work for you.**
-</Callout>
+Following these instructions are the preferred way to get your instance back online.
 
+**Please do not e-mail team@mintplexlabs.com unless this process does not work for you.**
+
+</Callout>
 
 ### I am getting a 502 on my hosted AnythingLLM!
 
 <Callout type="error" emoji="️⚠️">
-  **Notice**
-  This "crash" resulted from your actions on uploading of a document. If you upload the same document again it **will crash again**.
+  **Notice** This "crash" resulted from your actions on uploading of a document.
+  If you upload the same document again it **will crash again**.
 </Callout>
 
 **What happened?** You uploaded too large of a document to your instance (word count, not file size) and on your tier likely overwhelmed the CPU causing the process to be killed to prevent the instance from freezing. This same error can occur from uploading _many_ files that are all medium sized at the same time.
 
 Recommendations for maximum file size based on tier:
+
 - **Starter Tier**: 10k words per file
 - **Professional Tier**: 50k words per file
-
 
 ### How do I get my instance back up?
 
@@ -36,9 +37,9 @@ Recommendations for maximum file size based on tier:
 Click on your subscription item that is currently offline (Click the gear icon)
 
 <Image
-  src="/images/cloud/subitem.png" 
-  height={500} 
-  width={500} 
+  src="/images/cloud/subitem.png"
+  height={500}
+  width={500}
   quality={100}
   alt="AnythingLLM Subscription Item"
 />
@@ -46,9 +47,9 @@ Click on your subscription item that is currently offline (Click the gear icon)
 You will now see a screen that looks like this
 
 <Image
-  src="/images/cloud/dashboard.png" 
-  height={500} 
-  width={500} 
+  src="/images/cloud/dashboard.png"
+  height={500}
+  width={500}
   quality={100}
   alt="AnythingLLM Subscription Dashboard"
 />
@@ -56,21 +57,21 @@ You will now see a screen that looks like this
 Scroll down and you will see a button labeled "Reboot". Clicking this will reboot your instance and it will be available again shortly after.
 
 <Image
-  src="/images/cloud/reboot.png" 
-  height={500} 
-  width={500} 
+  src="/images/cloud/reboot.png"
+  height={500}
+  width={500}
   quality={100}
   alt="AnythingLLM Subscription Reboot"
 />
 
 ### How do I prevent this from happening again?
 
-
 <Callout type="info" emoji="️💡">
   **Pro tip!**
 
-  If you have a large amount of really large files you want to embed - using a cloud based embedder will unlock the ability to quickly upload and
-  use these files with zero concern for overloading of the instance.
+If you have a large amount of really large files you want to embed - using a cloud based embedder will unlock the ability to quickly upload and
+use these files with zero concern for overloading of the instance.
+
 </Callout>
 
 There are a few ways to prevent this situation from occurring again.

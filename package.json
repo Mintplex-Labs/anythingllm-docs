@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "lint": "yarn prettier --ignore-path .prettierignore --write ./pages"
   },
   "repository": {
     "type": "git",

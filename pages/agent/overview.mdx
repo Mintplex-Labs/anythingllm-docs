@@ -3,25 +3,24 @@ title: "AI Agents"
 description: "What are AI Agents in AnythingLLM and how to use them?"
 ---
 
-import { Cards, Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/guides/ai-agents/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/guides/ai-agents/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM AI Agents"
 />
 
 # AI Agents
-Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon. 
+
+Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon.
 
 All agents share the same tools across workspaces, but operate within the workspace they were invoked via `@agent`.
 
-
-
-## Quick Links 
+## Quick Links
 
 <Cards>
   <Card title="Agent Setup Guide" href="/agent/setup"> 
@@ -49,14 +48,14 @@ export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
+      target: "_self",
+    },
   }
-)
+);
 
 <style global jsx>{`
   img {

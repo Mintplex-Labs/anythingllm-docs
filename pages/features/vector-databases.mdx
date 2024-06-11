@@ -3,24 +3,22 @@ title: "Vector Databases"
 description: "AnythingLLM allows you to use a host of LLM providers for chatting and generative AI."
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/features/vector-databases/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/features/vector-databases/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Vector Databases"
 />
-
 
 # Vector Databases
 
 AnythingLLM comes with a private built-in vector database powered by [LanceDB](https://lancedb.com/). Your vectors never leave AnythingLLM when using the default option.
 
 AnythingLLM supports many vector databases providers out of the box.
-
 
 ## Supported Vector Databases
 
@@ -37,15 +35,15 @@ AnythingLLM supports many vector databases providers out of the box.
     />
   </Card>
 
-  <Card title="Chroma" href="https://github.com/chroma-core/chroma"> 
-    <Image
-      src="/images/features/vector-databases/chroma.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Chroma"
-    />
-  </Card>
+<Card title="Chroma" href="https://github.com/chroma-core/chroma">
+  <Image
+    src="/images/features/vector-databases/chroma.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Chroma"
+  />
+</Card>
 
   <Card title="Milvus" href="https://github.com/milvus-io/milvus"> 
     <Image
@@ -58,8 +56,6 @@ AnythingLLM supports many vector databases providers out of the box.
   </Card>
 </Cards>
 
-
-
 ### Cloud Vector Databases Providers
 
 <Cards>
@@ -71,37 +67,37 @@ AnythingLLM supports many vector databases providers out of the box.
       quality={100}
       alt="Pinecone"
     />
-  </Card> 
-
-  <Card title="Zilliz" href="https://zilliz.com/"> 
-    <Image
-      src="/images/features/vector-databases/zilliz.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Zilliz"
-    />
   </Card>
 
-  <Card title="AstraDB" href="https://www.datastax.com/"> 
-    <Image
-      src="/images/features/vector-databases/astra-db.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AstraDB"
-    />
-  </Card>
+<Card title="Zilliz" href="https://zilliz.com/">
+  <Image
+    src="/images/features/vector-databases/zilliz.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Zilliz"
+  />
+</Card>
 
-  <Card title="QDrant" href="https://qdrant.tech/"> 
-    <Image
-      src="/images/features/vector-databases/qdrant.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="QDrant"
-    />
-  </Card>
+<Card title="AstraDB" href="https://www.datastax.com/">
+  <Image
+    src="/images/features/vector-databases/astra-db.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="AstraDB"
+  />
+</Card>
+
+<Card title="QDrant" href="https://qdrant.tech/">
+  <Image
+    src="/images/features/vector-databases/qdrant.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="QDrant"
+  />
+</Card>
 
   <Card title="Weaviate" href="https://weaviate.io/"> 
     <Image
@@ -114,19 +110,18 @@ AnythingLLM supports many vector databases providers out of the box.
   </Card>
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
+      target: "_self",
+    },
   }
-)
+);
 
 <style global jsx>{`
   img {

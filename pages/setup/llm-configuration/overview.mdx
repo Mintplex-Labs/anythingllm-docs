@@ -3,54 +3,46 @@ title: "Overview"
 description: "Large language models are AI systems capable of understanding and generating human language by processing vast amounts of text data."
 ---
 
-import { Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Cards } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/anythingllm-setup/llm-configuration/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/llm-configuration/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="LLM Configuration"
 />
-
 
 # Large Language Models
 
 Large language models are AI systems capable of understanding and generating human language by processing vast amounts of text data.
 
-
 ## Types of LLMs in AnythingLLM
 
 AnythingLLM allows you to get as specific or general as you want with your LLM selection. You can even have multiple LLMs configured at the same time all in the same application!
-
 
 ### System LLM
 
 This is the default LLM AnythingLLM will interface with. This is the LLM configuration that will be used when a workspace or agent-specific agent LLM has not been defined.
 
-
 ### Workspace LLM
 
 AnythingLLM allows you to set workspace-specific LLMs, this will override the system LLM **but only when chatting with the specific workspace**. This allows you to have many workspaces that each have their own provider, model, or both!
-
 
 ### Agent LLM
 
 AnythingLLM supports AI-agents. When it comes to agents, not all LLMs were created equal. Some LLMs directly support tool calling for better ai-agent functionality. The model is the model that is explicitly used for use with agents.
 
-
-
 ## Supported LLM Providers
 
-AnythingLLM supports many LLMs out of the box with very little, if any setup. 
+AnythingLLM supports many LLMs out of the box with very little, if any setup.
 
 The LLM is the foundational integration that will determine how your workspace or agents respond to your questions and prompts.
 
-You can modify your LLM provider, model, or any other details at any time in AnythingLLM with no worry. 
+You can modify your LLM provider, model, or any other details at any time in AnythingLLM with no worry.
 
 We allow you to connect to both local and cloud-based LLMs - even at the same time!
-
 
 ### Local Language Model Providers
 
@@ -65,35 +57,35 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     />
   </Card>
 
-  <Card title="Ollama" href="local/ollama"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/local/ollama/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Ollama"
-    />
-  </Card>
+<Card title="Ollama" href="local/ollama">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/local/ollama/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Ollama"
+  />
+</Card>
 
-  <Card title="LM Studio" href="local/lmstudio"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/local/lmstudio/header-image.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="LM Studio"
-    />
-  </Card>
+<Card title="LM Studio" href="local/lmstudio">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/local/lmstudio/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="LM Studio"
+  />
+</Card>
 
-  <Card title="Local AI" href="local/localai"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/local/localai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Local AI"
-    />
-  </Card> 
+<Card title="Local AI" href="local/localai">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/local/localai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Local AI"
+  />
+</Card>
 
   <Card title="KobaldCPP" href="local/kobaldcpp"> 
     <Image
@@ -105,8 +97,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     />
   </Card> 
 </Cards>
-
-
 
 ### Cloud Language Model Providers
 
@@ -121,105 +111,105 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     />
   </Card>
 
-  <Card title="Azure OpenAI" href="cloud/azure-openai"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/azure-openai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Azure OpenAI"
-    />
-  </Card> 
+<Card title="Azure OpenAI" href="cloud/azure-openai">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/azure-openai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Azure OpenAI"
+  />
+</Card>
 
-  <Card title="Anthropic" href="cloud/anthropic"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/anthropic/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Anthropic"
-    />
-  </Card>
+<Card title="Anthropic" href="cloud/anthropic">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/anthropic/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Anthropic"
+  />
+</Card>
 
-  <Card title="Cohere" href="cloud/cohere"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/cohere/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Cohere"
-    />
-  </Card>
+<Card title="Cohere" href="cloud/cohere">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/cohere/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Cohere"
+  />
+</Card>
 
-  <Card title="Google Gemini Pro" href="cloud/google-gemini"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/google-gemini/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Google Gemini Pro"
-    />
-  </Card>
+<Card title="Google Gemini Pro" href="cloud/google-gemini">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/google-gemini/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Google Gemini Pro"
+  />
+</Card>
 
-  <Card title="Hugging Face" href="cloud/huggingface"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/hugging-face/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Hugging Face"
-    />
-  </Card>
+<Card title="Hugging Face" href="cloud/huggingface">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/hugging-face/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Hugging Face"
+  />
+</Card>
 
-  <Card title="Together AI" href="cloud/together-ai"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/together-ai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Together AI"
-    />
-  </Card> 
+<Card title="Together AI" href="cloud/together-ai">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/together-ai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Together AI"
+  />
+</Card>
 
-  <Card title="OpenRouter" href="cloud/openrouter"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/openrouter/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="OpenRouter"
-    />
-  </Card>
+<Card title="OpenRouter" href="cloud/openrouter">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/openrouter/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="OpenRouter"
+  />
+</Card>
 
-  <Card title="Perplexity AI" href="cloud/perplexity-ai"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/perplexity-ai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Perplexity AI"
-    />
-  </Card>
+<Card title="Perplexity AI" href="cloud/perplexity-ai">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/perplexity-ai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Perplexity AI"
+  />
+</Card>
 
-  <Card title="Mistral API" href="cloud/mistral-ai"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/mistral-ai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Mistral API"
-    />
-  </Card> 
+<Card title="Mistral API" href="cloud/mistral-ai">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/mistral-ai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Mistral API"
+  />
+</Card>
 
-  <Card title="Groq" href="cloud.groq"> 
-    <Image
-      src="/images/anythingllm-setup/llm-configuration/cloud/groq/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Groq"
-    />
-  </Card>
+<Card title="Groq" href="cloud.groq">
+  <Image
+    src="/images/anythingllm-setup/llm-configuration/cloud/groq/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Groq"
+  />
+</Card>
 
   <Card title="OpenAI (generic)" href="cloud/openai-generic"> 
     <Image
@@ -232,19 +222,18 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   </Card>
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
+      target: "_self",
+    },
   }
-)
+);
 
 <style global jsx>{`
   img {

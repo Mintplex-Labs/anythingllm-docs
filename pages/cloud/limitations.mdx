@@ -2,7 +2,8 @@
 title: "Limitations"
 description: "Limitations of AnythingLLM Hosted Cloud Instances"
 ---
-import { Callout } from 'nextra/components'
+
+import { Callout } from "nextra/components";
 
 # AnythingLLM Cloud Limitations
 
@@ -18,17 +19,14 @@ Due to this, we limit access **only** to local LLMs that you can run yourself an
 
 ## Limited capacity for built-in embedder
 
-
 <Callout type="error" emoji="️‼️">
-  **Beware!**
-  The built-in embedder will not block you from trying to embed a 5,000pg PDF, but it will crash your instance. (502 error).
+  **Beware!** The built-in embedder will not block you from trying to embed a
+  5,000pg PDF, but it will crash your instance. (502 error).
 </Callout>
-
 
 AnythingLLM **does allow** you to use the built-in embedder model, which is extremely convenient, cannot embed on CPU any arbitrarily large document.
 
 The Starter tier ships with **very minimal** compute resources while Professional ships with much more compute. This means that uploading a large document (in words, not file size) can overwhelm the CPU and cause
 the process to exit. This will result in a 502 error.
-
 
 ### [How to fix the 502 error on your instance &rarr;](/)

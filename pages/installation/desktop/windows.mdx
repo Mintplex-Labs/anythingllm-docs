@@ -3,119 +3,114 @@ title: "Windows Installation"
 description: "Windows Installation guide for AnythingLLM"
 ---
 
-import { Callout, Cards } from 'nextra/components'
-import Image from 'next/image'
+import { Callout, Cards } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/getting-started/installation/windows/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/windows/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Windows Installation"
 />
 
-
 # Windows Installation
+
 There are **two** ways to install AnythingLLM on Windows
 
 **[1. Install using the Installation `.exe` file](#install-using-the-installation-file)**
 
 **[2. Install using Docker](#install-using-docker)**
 
-
 ## Install using the installation file
 
 <Callout type="warning" emoji="⚠️">
   **Application is not signed!**
 
-   ➤ The AnythingLLM windows application is currently unsigned and Windows defender or other anti-virus software will sometimes flag the application as malicious. 
+➤ The AnythingLLM windows application is currently unsigned and Windows defender or other anti-virus software will sometimes flag the application as malicious.
 
-   ➤ If you do not want to bypass that alert for any reason - please use AnythingLLM another way.
+➤ If you do not want to bypass that alert for any reason - please use AnythingLLM another way.
+
 </Callout>
-
 
 <Callout type="warning" emoji="️⚠️">
   **OPERATING SYSTEM NOTICE**
 
-   ➤ AnythingLLM is intended to be used on an admin account of Windows Home. Other versions of windows (Enterprise or Server) may not work. We target for Windows 11.
+➤ AnythingLLM is intended to be used on an admin account of Windows Home. Other versions of windows (Enterprise or Server) may not work. We target for Windows 11.
+
 </Callout>
 
-
 ## Downloading the installation file
+
 Here is the download link for the latest version of Anything LLM Windows.
 
-<Card 
- title="Windows 10+ (Home, Professional - 64-bit CPU)" 
- href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.exe"> 
-</Card>
-
+<Card
+  title="Windows 10+ (Home, Professional - 64-bit CPU)"
+  href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.exe"
+></Card>
 
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: false,
       arrow: true,
-      target: '_blank'
-    }
+      target: "_blank",
+    },
   }
-)
+);
 
-
-Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings. 
+Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
 
 Click "**Keep**" when downloading to allow the file to download.
 
 <Image
-  src="/images/getting-started/installation/windows/browser-warning.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/windows/browser-warning.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Windows Install Browser Warning"
 />
 
-
 ## Installing the application
-After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process. 
 
+After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process.
 
 <Callout type="info" emoji="️💡">
   **Anti-Virus false positive**
 
-   ➤ Since the application is unsigned. Native windows defender will want to ensure you mean to execute this application. Click on "more details" and the **"Run anyway"** button will be visible.
+➤ Since the application is unsigned. Native windows defender will want to ensure you mean to execute this application. Click on "more details" and the **"Run anyway"** button will be visible.
 
-  **➤ This alert is temporary until the application signing process is completed on our end.**
+**➤ This alert is temporary until the application signing process is completed on our end.**
+
 </Callout>
 
-
 <Image
-  src="/images/getting-started/installation/windows/anti-virus-warning.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/windows/anti-virus-warning.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Windows Install Anti Virus Warning"
 />
 
-
 After which, now the regular installer can run to install AnythingLLM Desktop!
 
-
 <Image
-  src="/images/getting-started/installation/windows/install.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/windows/install.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Windows Install"
 />
 
-Click on the application name "**AnythingLLM**" on your desktop to boot up AnythingLLM! 
+Click on the application name "**AnythingLLM**" on your desktop to boot up AnythingLLM!
 
 <Image
-  src="/images/getting-started/installation/windows/desktop.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/getting-started/installation/windows/desktop.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="AnythingLLM Windows Open"
 />
@@ -123,16 +118,19 @@ Click on the application name "**AnythingLLM**" on your desktop to boot up Anyth
 ---
 
 ## Install using Docker
+
 Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/windows-install/)
 
 Run this command on your terminal (powershell or command prompt)
+
 ```shell copy
  docker pull mintplexlabs/anythingllm
 ```
+
 It will pull in the latest AnythingLLM image from docker.
 
-
 Once you have pulled the latest image, run the following commands on your powershell
+
 ```powershell copy showLineNumbers
  $env:STORAGE_LOCATION="$HOME\Documents\anythingllm"; `
  If(!(Test-Path $env:STORAGE_LOCATION)) {New-Item $env:STORAGE_LOCATION -ItemType Directory}; `
@@ -144,9 +142,9 @@ Once you have pulled the latest image, run the following commands on your powers
  -e STORAGE_DIR="/app/server/storage" `
  mintplexlabs/anythingllm;
 ```
+
 The above command will mount the storage locally and run AnythingLLM in Docker
 
-Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM! 
+Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM!
 
 All your data and progress will persist between container rebuilds or pulls from Docker Hub.
-

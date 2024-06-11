@@ -3,17 +3,16 @@ title: "Overview"
 description: "Embedding models are specific types of models that turn text into vectors, which can be stored and searched in a vector database - which is the foundation of RAG."
 ---
 
-import { Cards, Callout } from 'nextra/components'
-import Image from 'next/image'
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
-  src="/images/anythingllm-setup/embedder-configuration/header-image.png" 
-  height={1080} 
-  width={1920} 
+  src="/images/anythingllm-setup/embedder-configuration/header-image.png"
+  height={1080}
+  width={1920}
   quality={100}
   alt="Embedder Configuration"
 />
-
 
 # Embedder Configuration
 
@@ -23,23 +22,23 @@ Embedding models are specific types of models that turn text into vectors, which
   **Tip:**
 
     Embedding models are set system-wide and cannot be configured atomically per-workspace like LLMs can.
-</Callout>
 
+</Callout>
 
 ## Supported Embedding Model Providers
 
 <Callout type="warning" emoji="️⚠️">
   **HEADS UP!**
 
-    Once you select your embedding model provider and begin uploading and embedding documents it is best to not change it. 
-    
+    Once you select your embedding model provider and begin uploading and embedding documents it is best to not change it.
+
     While you can change embedders, doing so will mean you will have to delete your uploaded documents and re-embed them so the new embedder can re-embed them.
+
 </Callout>
 
-AnythingLLM supports many embedding model providers out of the box with very little, if any setup. 
+AnythingLLM supports many embedding model providers out of the box with very little, if any setup.
 
 You can modify your embedding provider and model at any time in AnythingLLM. However doing so can result in broken queries and needing to re-embed uploaded and stored documents.
-
 
 ### Local Embedding Model Providers
 
@@ -54,25 +53,25 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     />
   </Card>
 
-  <Card title="Ollama" href="local/ollama"> 
-    <Image
-      src="/images/anythingllm-setup/embedder-configuration/local/ollama/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Ollama"
-    />
-  </Card>
+<Card title="Ollama" href="local/ollama">
+  <Image
+    src="/images/anythingllm-setup/embedder-configuration/local/ollama/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Ollama"
+  />
+</Card>
 
-  <Card title="LM Studio" href="local/lmstudio"> 
-    <Image
-      src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/header-image.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="LM Studio"
-    />
-  </Card>
+<Card title="LM Studio" href="local/lmstudio">
+  <Image
+    src="/images/anythingllm-setup/embedder-configuration/local/lmstudio/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="LM Studio"
+  />
+</Card>
 
   <Card title="Local AI" href="local/localai"> 
     <Image
@@ -84,8 +83,6 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     />
   </Card> 
 </Cards>
-
-
 
 ### Cloud Model Providers
 
@@ -100,15 +97,15 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     />
   </Card>
 
-  <Card title="Azure OpenAI" href="cloud/azure-openai"> 
-    <Image
-      src="/images/anythingllm-setup/embedder-configuration/cloud/azure-openai/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Azure OpenAI"
-    />
-  </Card> 
+<Card title="Azure OpenAI" href="cloud/azure-openai">
+  <Image
+    src="/images/anythingllm-setup/embedder-configuration/cloud/azure-openai/header-image.png"
+    height={1080}
+    width={1920}
+    quality={100}
+    alt="Azure OpenAI"
+  />
+</Card>
 
   <Card title="Cohere" href="cloud/cohere"> 
     <Image
@@ -121,19 +118,18 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
   </Card>  
 </Cards>
 
-
 export const Card = Object.assign(
   // Copy card component and add default props
   Cards.Card.bind(),
   {
-    displayName: 'Card',
+    displayName: "Card",
     defaultProps: {
       image: true,
       arrow: true,
-      target: '_self'
-    }
+      target: "_self",
+    },
   }
-)
+);
 
 <style global jsx>{`
   img {
