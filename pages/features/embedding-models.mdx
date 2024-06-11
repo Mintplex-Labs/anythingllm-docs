@@ -3,8 +3,8 @@ title: "Embedding Models"
 description: "AnythingLLM supports many embedding model providers out of the box with very little, if any setup"
 ---
 
-import { Cards } from "nextra/components"
-import Image from "next/image"
+import { Cards } from "nextra/components";
+import Image from "next/image";
 
 <Image
   src="/images/features/embedding-models/header-image.png"
@@ -35,8 +35,6 @@ Embedding models are specific types of models that turn text into vectors, which
     />
   </Card>
 
-{" "}
-
 <Card title="Ollama" href="https://ollama.com/">
   <Image
     src="/images/features/embedding-models/ollama.png"
@@ -46,8 +44,6 @@ Embedding models are specific types of models that turn text into vectors, which
     alt="Ollama"
   />
 </Card>
-
-{" "}
 
 <Card title="LM Studio" href="https://lmstudio.ai/">
   <Image
@@ -83,8 +79,6 @@ Embedding models are specific types of models that turn text into vectors, which
     />
   </Card>
 
-{" "}
-
 <Card
   title="Azure OpenAI"
   href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"
@@ -96,7 +90,7 @@ Embedding models are specific types of models that turn text into vectors, which
     quality={100}
     alt="Azure OpenAI"
   />
-</Card>{" "}
+</Card>
 
   <Card title="Cohere" href="https://cohere.com/"> 
     <Image
@@ -119,8 +113,8 @@ export const Card = Object.assign(
       arrow: true,
       target: "_self",
     },
-  },
-)
+  }
+);
 
 <style global jsx>{`
   img {

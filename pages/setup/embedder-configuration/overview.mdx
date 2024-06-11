@@ -3,8 +3,8 @@ title: "Overview"
 description: "Embedding models are specific types of models that turn text into vectors, which can be stored and searched in a vector database - which is the foundation of RAG."
 ---
 
-import { Cards, Callout } from "nextra/components"
-import Image from "next/image"
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
   src="/images/anythingllm-setup/embedder-configuration/header-image.png"
@@ -53,8 +53,6 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     />
   </Card>
 
-{" "}
-
 <Card title="Ollama" href="local/ollama">
   <Image
     src="/images/anythingllm-setup/embedder-configuration/local/ollama/header-image.png"
@@ -64,8 +62,6 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     alt="Ollama"
   />
 </Card>
-
-{" "}
 
 <Card title="LM Studio" href="local/lmstudio">
   <Image
@@ -101,8 +97,6 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     />
   </Card>
 
-{" "}
-
 <Card title="Azure OpenAI" href="cloud/azure-openai">
   <Image
     src="/images/anythingllm-setup/embedder-configuration/cloud/azure-openai/header-image.png"
@@ -111,7 +105,7 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
     quality={100}
     alt="Azure OpenAI"
   />
-</Card>{" "}
+</Card>
 
   <Card title="Cohere" href="cloud/cohere"> 
     <Image
@@ -134,8 +128,8 @@ export const Card = Object.assign(
       arrow: true,
       target: "_self",
     },
-  },
-)
+  }
+);
 
 <style global jsx>{`
   img {

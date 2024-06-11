@@ -1,24 +1,24 @@
 /* eslint-env node */
-import { ImageResponse } from "@vercel/og"
+import { ImageResponse } from "@vercel/og";
 
 export const config = {
   runtime: "edge",
-}
+};
 
 const font = fetch(new URL("./Inter-SemiBold.otf", import.meta.url)).then(
-  (res) => res.arrayBuffer(),
-)
+  (res) => res.arrayBuffer()
+);
 
 export default async function (req) {
-  const inter = await font
+  const inter = await font;
 
-  const { searchParams } = new URL(req.url)
+  const { searchParams } = new URL(req.url);
 
   // ?title=<title>
-  const hasTitle = searchParams.has("title")
+  const hasTitle = searchParams.has("title");
   const title = hasTitle
     ? searchParams.get("title")?.slice(0, 100)
-    : "AnythingLLM"
+    : "AnythingLLM";
 
   return new ImageResponse(
     (
@@ -78,6 +78,6 @@ export default async function (req) {
           style: "normal",
         },
       ],
-    },
-  )
+    }
+  );
 }

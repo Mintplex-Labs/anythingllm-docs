@@ -3,8 +3,8 @@ title: "Vector Databases"
 description: "Your vector database is set system-wide and cannot be configured atomically per-workspace like LLMs can.."
 ---
 
-import { Cards, Callout } from "nextra/components"
-import Image from "next/image"
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
 
 <Image
   src="/images/anythingllm-setup/vector-database-configuration/header-image.png"
@@ -44,8 +44,6 @@ AnythingLLM supports many vector databases providers out of the box.
     />
   </Card>
 
-{" "}
-
 <Card title="Chroma" href="local/chroma">
   <Image
     src="/images/features/vector-databases/chroma.png"
@@ -80,8 +78,6 @@ AnythingLLM supports many vector databases providers out of the box.
     />
   </Card>
 
-{" "}
-
 <Card title="Zilliz" href="cloud/zilliz">
   <Image
     src="/images/features/vector-databases/zilliz.png"
@@ -92,8 +88,6 @@ AnythingLLM supports many vector databases providers out of the box.
   />
 </Card>
 
-{" "}
-
 <Card title="AstraDB" href="cloud/astradb">
   <Image
     src="/images/features/vector-databases/astra-db.png"
@@ -103,8 +97,6 @@ AnythingLLM supports many vector databases providers out of the box.
     alt="AstraDB"
   />
 </Card>
-
-{" "}
 
 <Card title="QDrant" href="cloud/qdrant">
   <Image
@@ -137,8 +129,8 @@ export const Card = Object.assign(
       arrow: true,
       target: "_self",
     },
-  },
-)
+  }
+);
 
 <style global jsx>{`
   img {

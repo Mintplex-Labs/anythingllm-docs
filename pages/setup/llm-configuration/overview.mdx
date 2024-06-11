@@ -3,8 +3,8 @@ title: "Overview"
 description: "Large language models are AI systems capable of understanding and generating human language by processing vast amounts of text data."
 ---
 
-import { Cards } from "nextra/components"
-import Image from "next/image"
+import { Cards } from "nextra/components";
+import Image from "next/image";
 
 <Image
   src="/images/anythingllm-setup/llm-configuration/header-image.png"
@@ -57,8 +57,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     />
   </Card>
 
-{" "}
-
 <Card title="Ollama" href="local/ollama">
   <Image
     src="/images/anythingllm-setup/llm-configuration/local/ollama/header-image.png"
@@ -68,8 +66,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     alt="Ollama"
   />
 </Card>
-
-{" "}
 
 <Card title="LM Studio" href="local/lmstudio">
   <Image
@@ -81,8 +77,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Local AI" href="local/localai">
   <Image
     src="/images/anythingllm-setup/llm-configuration/local/localai/header-image.png"
@@ -91,7 +85,7 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     quality={100}
     alt="Local AI"
   />
-</Card>{" "}
+</Card>
 
   <Card title="KobaldCPP" href="local/kobaldcpp"> 
     <Image
@@ -117,8 +111,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     />
   </Card>
 
-{" "}
-
 <Card title="Azure OpenAI" href="cloud/azure-openai">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/azure-openai/header-image.png"
@@ -127,9 +119,7 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     quality={100}
     alt="Azure OpenAI"
   />
-</Card>{" "}
-
-{" "}
+</Card>
 
 <Card title="Anthropic" href="cloud/anthropic">
   <Image
@@ -141,8 +131,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Cohere" href="cloud/cohere">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/cohere/header-image.png"
@@ -152,8 +140,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     alt="Cohere"
   />
 </Card>
-
-{" "}
 
 <Card title="Google Gemini Pro" href="cloud/google-gemini">
   <Image
@@ -165,8 +151,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Hugging Face" href="cloud/huggingface">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/hugging-face/header-image.png"
@@ -177,8 +161,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Together AI" href="cloud/together-ai">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/together-ai/header-image.png"
@@ -187,9 +169,7 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     quality={100}
     alt="Together AI"
   />
-</Card>{" "}
-
-{" "}
+</Card>
 
 <Card title="OpenRouter" href="cloud/openrouter">
   <Image
@@ -201,8 +181,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Perplexity AI" href="cloud/perplexity-ai">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/perplexity-ai/header-image.png"
@@ -213,8 +191,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   />
 </Card>
 
-{" "}
-
 <Card title="Mistral API" href="cloud/mistral-ai">
   <Image
     src="/images/anythingllm-setup/llm-configuration/cloud/mistral-ai/header-image.png"
@@ -223,9 +199,7 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
     quality={100}
     alt="Mistral API"
   />
-</Card>{" "}
-
-{" "}
+</Card>
 
 <Card title="Groq" href="cloud.groq">
   <Image
@@ -258,8 +232,8 @@ export const Card = Object.assign(
       arrow: true,
       target: "_self",
     },
-  },
-)
+  }
+);
 
 <style global jsx>{`
   img {
