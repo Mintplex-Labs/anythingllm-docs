@@ -111,7 +111,7 @@
     }
   },
   "ollama-models-not-loading": {
-    "title": "AnythingLLM not displaying Ollama models",
+    "title": "Ollama Troubleshooting",
     "theme": {
       "breadcrumb": true,
       "footer": true,
