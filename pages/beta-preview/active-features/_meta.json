@@ -1,0 +1,11 @@
+{
+  "live-document-sync": {
+    "title": "Live document sync",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": false
+    }
+  }
+}

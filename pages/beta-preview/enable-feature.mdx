@@ -1,0 +1,39 @@
+---
+title: "Enable feature previews"
+description: "Learn how to enable feature previews of AnythingLLM"
+---
+
+import { Callout } from "nextra/components";
+
+<Callout type="error" emoji="️‼️">
+  **HEADS UP!** Feature previews are <b>not stable</b>. Please read on to
+  understand the dangers of using a beta feature before using one.
+</Callout>
+
+# Understanding the implications of beta previews
+
+While we take great care to craft features carefully we also want to proactively offer non-standard features to users of AnythingLLM when in development or when we are looking for feedback.
+
+When possible, we will proactively alert you to any particular dangers of a specific feature.
+
+# Possible dangers of using a beta feature
+
+- Partial or full data loss of AnythingLLM's local database, source files, stored documents, or datastores
+- Increased LLM, Embedder, or third party provider usage
+- Increased costs for third-party providers should they be used as a provider for an LLM, Embedder, or VectorDatabase
+- Increase resource usage on the device
+- Corruption of local DB or vector database
+- Unhandled bugs, exceptions, and crashes of AnythingLLM
+
+# How to enable feature previews
+
+<Callout>
+  If you follow this procedure and nothing happens then this means that there
+  are no active previews available for your version of AnythingLLM.
+</Callout>
+
+To enable feature previews in AnythingLLM in _any_ form (Docker, Desktop, Hosted) open the settings page by clicking on the "wrench" icon on the left sidebar.
+
+Next, press and hold the `Command` or `Control` key on your keyboard for 3 seconds. You should see an alert that Experimental Features have been enabled.
+
+You can now access the feature management page and after understanding and accepting the warning modal you can now manage experimental features.

@@ -1,0 +1,102 @@
+---
+title: "Automatic document sync"
+description: "Access the automatic document sync beta preview"
+---
+
+import { Callout, Cards } from "nextra/components";
+import Image from "next/image";
+export const Card = Object.assign(Cards.Card.bind(), {
+  displayName: "Card",
+  defaultProps: {
+    image: true,
+    arrow: true,
+    target: "_self",
+  },
+});
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Callout type="warning">
+  **Caution!** The following list are concerns when using the <b>Automatic Document Sync</b> feature preview.
+
+- Increased Embedder use _or_ cost if using third party embedder
+- Corruption of local database
+- Corruption of local vector database
+  </Callout>
+
+# About Automatic document sync
+
+The <b>Automatic Document Sync</b> feature for AnythingLLM allows you to "watch" a document for active changes. When changes are detected the file will be re-embed and all workspaces using this file will automatically be updated.
+
+This enables you to reference a document and have it's content consistently updates so answers are always accurate to the original source.
+
+## Scope of documents
+
+### Docker
+
+- Any website link
+- Any file collected via a <b>Data connector</b> _(eg: Confluence, Github, and YouTube)_
+- Manually uploaded files **are not synced** since the browser cannot read from your computer
+
+### Desktop
+
+_this preview is currently disabled on desktop_
+
+# How to use
+
+## Enable the feature
+
+First, you need to enable the feature from the feature preview management page.
+
+<Image
+  src="/images/beta-preview/live-document-sync/enable.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+## How to watch a file for changes
+
+Once enabled, you will see an "eye" icon on an **currently embedded file**. You currently _cannot_ watch an entire directory. If this option on the row is not available - this file is not available for watching.
+
+<Image
+  src="/images/beta-preview/live-document-sync/watch.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+If you add the same file in any other workspace you will notice the file is automatically watched. If you delete the document totally from the system, it will automatically be unwatched.
+
+## Manage and observe watched files easily
+
+Any watched file is checked **hourly** if it is stale. A _stale_ file is any file that has not had its content refreshed in the last _7 days_.
+
+**In the future, you will be able to force-refresh a document or change its default stale time**.
+
+<Image
+  src="/images/beta-preview/live-document-sync/manage.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+# Summary and notes
+
+Watching a file with AnythingLLM's Automatic Document Sync will periodically fetch and replace all embeddings of that document across all of your active workspace.
+
+This requires use of the connected embedder and therefore you may want to only watch a few files for resource reasons or cost concerns.
+
+Currently, if you close the application or docker container, the watched files will not be synced as the background worker does not run if the process is killed.
+
+# Troubleshooting
+
+If you are having issue with the document sync feature simply disable the toggle for the feature and it will not run any background workers while using AnythingLLM or on reboots.
+
+Please ping the core team with a GitHub issue or Discord message for any questions or bug reports.
