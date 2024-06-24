@@ -1,0 +1,98 @@
+---
+title: "Why is my AI Agent not using tools!"
+description: "AI Agents unlock new use cases for LLMs, but they are not foolproof. Read on for common issues with OSS LLMs not using tools."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Why is my `@agent` not using tools!
+
+AI Agents unlock new and exciting ways to use and leverage LLMs to _do things_ for you as opposed to just reply with text. However, these LLMs are still not fully intelligent and like other implementations
+of LLMs - this method is not without its "gotchas".
+
+Like other LLM problems, this mostly comes down to the model you are using and as always a more powerful & capable model yields better results. When using agents, we recommend the best model you can run.
+
+_caveat_: There are some smaller models that are specifically trained for JSON/function calling and they can be used in lieu of just a larger model, but this has its own drawbacks when you want to
+then get the final response back as a normal chat. In general, you should use a general text/instruct model.
+
+## What even is an agent?
+
+Without getting too technical there is some foundational knowledge to understand _what_ an "AI Agent" even is. The below graphics really
+describe what LLMs are doing and "reasoning" about. As you can see, its no different that a specifically formatted text response!
+
+<Image
+  src="/images/faq/agent-not-using-tools/regular.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+<Image
+  src="/images/faq/agent-not-using-tools/llm.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px" }}
+/>
+
+So now that we know LLMs are basically doing an extra step in between your prompt and it's final answer, any agent's implementation usually goes wrong in the JSON generation part.
+
+Okay, so now that we know how this pipeline works in order for an agent to even function works, how can we solve and debug issues?
+
+## Some LLMs are _bad_ at generating JSON and even worse at following instructions.
+
+<Callout type="info" emoji="️💡">
+  **Tip:**
+    Cloud based (un-quantized) models are typically _dramatically_ better at following instructions and forming valid JSON matching the required tool-call.
+
+    You can use a cloud based model for _just agent calls_ in AnythingLLM and use an open-source model for normal chatting.
+
+</Callout>
+
+The main issue we see with agents are people who want to use a smaller parameter model that is heavily quantized and want to get GPT-level quality tool interactions.
+Below are the reasons + ways to mitigate the effects of bad tool calls and their common solutions.
+
+## Model is hallucinating a tool call.
+
+When a tool is _actually_ called you will see what we call a "thought" output to the UI. This indicates that the tool was actually called. If the LLM responds with information and you don't see a thought-chain, it is likely
+making up the output and pretended to call a tool.
+
+<Image
+  src="/images/faq/agent-not-using-tools/thought.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px" }}
+/>
+
+### Common Solutions
+
+- Swap to a high quantization version or larger param model
+- `/reset` chat history and re-ask the prompt
+
+## LLM says it cannot call `XYZ` tool.
+
+Some models are aligned too heavily and will refuse to use some tools because of their training. This is common for requests like website scraping.
+
+### Common Solutions
+
+- Swap to a high quantization version, larger param model, or less restricted model
+- `/reset` chat history and re-ask the prompt
+- Turn off tools you are not using to reduce prompt window size
+
+## LLM is refusing to even detect or call a tool at all.
+
+Open-source models, with their quantization and limited context window are suspectable to just refusing to discover or correct call a tool properly.
+
+When tools are injected into the LLMs prompt for discovery and execution they can quite often be "overloaded" with information or due to their quantization are unable
+to create valid JSON that _exactly matches_ the schema required for a tool call to succeed. The LLM is simply generating JSON, something lower-param and quantized models are _particularly bad at_!
+
+AnythingLLM however does make some significant corrections to have slightly invalid JSON be formatted properly so a call can succeed, but we can only do so much on this front.
+
+### Common Solutions
+
+- Swap to a high quantization version, larger param model, or less restricted model
+- `/reset` chat history and re-ask the prompt (chat history can sometimes impact output of JSON)
+- Turn off tools you are not using to reduce prompt window size and load on prompt.
