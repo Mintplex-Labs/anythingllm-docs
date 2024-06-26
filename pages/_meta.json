@@ -128,7 +128,7 @@
       "toc": true
     }
   },
-  "ollama-models-not-loading": {
+  "ollama-connection-troubleshooting": {
     "title": "Ollama Connection Troubleshooting",
     "theme": {
       "breadcrumb": true,
