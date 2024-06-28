@@ -16,74 +16,35 @@ import Image from "next/image";
 
 # Linux Installation
 
-There are **two** ways to install AnythingLLM on Windows
+There are **two** ways to install AnythingLLM on Linux distros
 
-**[1. Install using the Installation `.AppImage` file](#install-using-the-installation-file)**
+**1. Install using the [installer script](#install-using-the-installer-script)**
 
-**[2. Install using Docker](#install-using-docker)**
+**2. Install using [Docker](#install-using-docker)**
+
+## Install using the installer script
 
 <Callout type="warning" emoji="⚠️">
-  **OPERATING SYSTEM NOTICE**
+  **NOTICE**
 
-➤ AnythingLLM is built on an Ubuntu system and may not work well on other distros.
+➤ AnythingLLM packages as an AppImage but you **will not** be able to boot if you run just the AppImage. Please only use the script below.
 
 ➤ Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles.
 
-➤ We want to have Linux OS's to have the same experience with AnythingLLM.
-
 </Callout>
 
-## Downloading the installation file
+First, open a terminal on your Linux machine and run this command.
 
-Here is the download links for the latest version of Anything LLM Linux.
-
-<Cards>
-  <Card
-    title="Linux (generic) x86"
-    href="https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/AnythingLLMDesktop.AppImage"
-  ></Card>
-</Cards>
-
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: false,
-      arrow: true,
-      target: "_blank",
-    },
-  }
-);
-
-Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
-
-Click "**Keep**" when downloading to allow the file to download.
-
-<Image
-  src="/images/getting-started/installation/linux/browser-warning.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Linux Install Browser Warning"
-/>
-
-## Installing the application
-
-After downloading the Linux `.AppImage` for AnythingLLM, you may need to give the file executable permissions so that it can run.
-
-```shell copy "
- chmod a+x /Downloads/AnythingLLMDesktop.AppImage
+```shell copy
+curl -fsSL https://s3.us-west-1.amazonaws.com/public.useanything.com/latest/installer.sh | sh
 ```
 
-After that, you can boot the AppImage like any other app image. Double-clicking or running via the terminal will boot the full application.
+You can view the raw script contents [here](https://github.com/Mintplex-Labs/anything-llm/blob/desktop/linux_installer.sh).
 
-```shell copy showLineNumbers"
-# Assuming we are running the AppImage from the /Downloads folder.
-./AnythingLLMDesktop.AppImage
-# This will run the application in this terminal pane. It will show all logs.
-```
+This will download the latest version of AnythingLLM's AppImage, unpack it, and then supply a symlink to seamlessly run AnythingLLM.
+This script will unpack the app in `$HOME/AnythingLLMDesktop`.
+
+You can start the app at any time by running `./AnythingLLMDesktop/start`. This will boot the app with full logging.
 
 ---
 
