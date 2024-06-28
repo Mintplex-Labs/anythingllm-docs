@@ -32,12 +32,16 @@ Before attempting any fixes or URL changes, verify that Ollama is running proper
 />
 
 If you don't see this page, troubleshoot your Ollama installation and ensure that it is running properly before moving forward.
+
 ## Automatic URL Detection (LLM & Embedding Providers)
+
 <Callout type="info" emoji="ℹ️">
-  AnythingLLM features automatic URL detection for Ollama. Manual configuration is only necessary if auto-detection fails.
+  AnythingLLM features automatic URL detection for Ollama. Manual configuration
+  is only necessary if auto-detection fails.
 </Callout>
-### URL Successfully Detected
-When selecting the Ollama provider, AnythingLLM attempts to auto detect your Ollama URL. If the option to input the base URL is hidden, the URL was automatically detected by AnythingLLM.
+### URL Successfully Detected When selecting the Ollama provider, AnythingLLM attempts
+to auto detect your Ollama URL. If the option to input the base URL is hidden, the
+URL was automatically detected by AnythingLLM.
 <Image
   src="/images/faq/ollama-models-not-loading/ollama-detected-collapsed.png"
   height={1080}
@@ -48,13 +52,13 @@ When selecting the Ollama provider, AnythingLLM attempts to auto detect your Oll
     "margin-top": "20px",
     "object-fit": "none",
     "object-position": "-320px top",
-    "width": "100%",
-    "height": "600px",
+    width: "100%",
+    height: "600px",
   }}
   alt="Ollama URL automatically detected"
 />
-### URL Detection Failed
-When manual endpoint input is expanded, the URL was not able to be detected.
+### URL Detection Failed When manual endpoint input is expanded, the URL was not
+able to be detected.
 <Image
   src="/images/faq/ollama-models-not-loading/ollama-cannot-detect.png"
   height={1080}
@@ -65,17 +69,21 @@ When manual endpoint input is expanded, the URL was not able to be detected.
     "margin-top": "20px",
     "object-fit": "none",
     "object-position": "-320px top",
-    "width": "100%",
-    "height": "650px",
+    width: "100%",
+    height: "650px",
   }}
   alt="Ollama URL failed detection"
 />
-If Ollama was not started when AnythingLLM tried to detect the URL, start up Ollama then press the `Auto-Detect` button. This should automatically detect the URL and allow you to begin selecting the `Model` and `Max Tokens` values.
-## Setting the Correct Ollama URL
+If Ollama was not started when AnythingLLM tried to detect the URL, start up Ollama
+then press the `Auto-Detect` button. This should automatically detect the URL and
+allow you to begin selecting the `Model` and `Max Tokens` values. ## Setting the
+Correct Ollama URL
 <Callout type="error" emoji="🚨">
-  If AnythingLLM was unable to detect your URL automatically, this is most likely an issue with your Ollama setup/configuration NOT AnythingLLM.
+  If AnythingLLM was unable to detect your URL automatically, this is most
+  likely an issue with your Ollama setup/configuration NOT AnythingLLM.
 </Callout>
-If you have confirmed 100% that your Ollama installation is running properly and is not being blocked by any firewalls etc, you can choose to set the URLs manually.
+If you have confirmed 100% that your Ollama installation is running properly and
+is not being blocked by any firewalls etc, you can choose to set the URLs manually.
 
 Choose your AnythingLLM version to find the correct Ollama URL:
 
@@ -92,6 +100,7 @@ Choose your AnythingLLM version to find the correct Ollama URL:
       quality={100}
       alt="Correct Ollama Base URL for AnythingLLM Desktop Version"
     />
+
   </Tabs.Tab>
 
   <Tabs.Tab>
@@ -117,6 +126,7 @@ Choose your AnythingLLM version to find the correct Ollama URL:
       }}
       alt="Correct Ollama Base URL for AnythingLLM Docker Version"
     />
+
   </Tabs.Tab>
 
   <Tabs.Tab>
@@ -125,6 +135,7 @@ Choose your AnythingLLM version to find the correct Ollama URL:
     Use either:
     - `http://localhost:11434`
     - `http://127.0.0.1:11434`
+
   </Tabs.Tab>
 </Tabs>
 
@@ -133,6 +144,7 @@ Choose your AnythingLLM version to find the correct Ollama URL:
 AnythingLLM Desktop offers two Ollama options:
 
 1. **Built-in AnythingLLM LLM Provider**:
+
    - Runs a separate Ollama instance internally.
    - Models downloaded to standalone Ollama won't appear here.
 
@@ -157,5 +169,6 @@ If you're still experiencing issues:
 3. Restart both Ollama and AnythingLLM.
 
 <Callout type="info" emoji="💡">
-  If problems persist after trying these steps, please contact visit our Discord to ask your questions.
+  If problems persist after trying these steps, please contact visit our Discord
+  to ask your questions.
 </Callout>
