@@ -22,33 +22,19 @@ We're using this log to jot down everything we've finished working on. It helps 
 You can read the recent changelogs by clicking the cards below:
 
 <Cards>
-  <Card title="Changelog v1.5.6" href="v1.5.6">
-    <Image
-      src="/images/product/changelog/header-image.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      alt="AnythingLLM Desktop Changelog v1.5.6"
-    />
-  </Card>
-  <Card title="Changelog v1.5.5" href="v1.5.5">
-    <Image
-      src="/images/product/changelog/header-image.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      alt="AnythingLLM Desktop Changelog v1.5.5"
-    />
-  </Card>
-  <Card title="Changelog v1.5.4" href="v1.5.4">
-    <Image
-      src="/images/product/changelog/header-image.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      alt="AnythingLLM Desktop Changelog v1.5.4"
-    />
-  </Card>
+  {["v1.5.8", "v1.5.7", "v1.5.6", "v1.5.5"].map(function (tag) {
+    return (
+      <Card title={`Changelog ${tag}`} href={tag}>
+        <Image
+          src="/images/product/changelog/header-image.png"
+          height={1080}
+          width={1920}
+          quality={100}
+          alt={`AnythingLLM Desktop Changelog ${tag}`}
+        />
+      </Card>
+    );
+  })}
 </Cards>
 
 export const Card = Object.assign(
