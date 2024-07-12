@@ -6,6 +6,7 @@ description: "AnythingLLM Deskop Changelog"
 import { Cards } from "nextra/components";
 import Image from "next/image";
 import Link from "next/link";
+import META from "./_meta.json";
 
 <Image
   src="/images/product/changelog/header-image.png"
@@ -22,19 +23,23 @@ We're using this log to jot down everything we've finished working on. It helps 
 You can read the recent changelogs by clicking the cards below:
 
 <Cards>
-  {["v1.5.8", "v1.5.7", "v1.5.6", "v1.5.5"].map(function (tag) {
-    return (
-      <Card title={`Changelog ${tag}`} href={tag}>
-        <Image
-          src="/images/product/changelog/header-image.png"
-          height={1080}
-          width={1920}
-          quality={100}
-          alt={`AnythingLLM Desktop Changelog ${tag}`}
-        />
-      </Card>
-    );
-  })}
+  {Object.keys(META)
+    .filter(function (key) {
+      return key.startsWith("v");
+    })
+    .map(function (tag) {
+      return (
+        <Card title={`Changelog ${tag}`} href={tag}>
+          <Image
+            src="/images/product/changelog/header-image.png"
+            height={1080}
+            width={1920}
+            quality={100}
+            alt={`AnythingLLM Desktop Changelog ${tag}`}
+          />
+        </Card>
+      );
+    })}
 </Cards>
 
 export const Card = Object.assign(

@@ -1,0 +1,48 @@
+---
+title: "v1.5.9"
+description: "AnythingLLM Desktop v.1.5.9 Changelog"
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.5.9"
+/>
+
+## New Features:
+
+<div class="nested">
+  - [x] [Automatic Local file
+  sync](/beta-preview/active-features/live-document-sync) is now live in Beta
+  features! > Now you can upload local files, edit their contents, and
+  AnythingLLM will automatically re-sync these files. > While in beta, please do
+  not watch thousands of files locally. <br />> [Read more about local file sync
+  &rarr;](/beta-preview/active-features/live-document-sync#how-does-document-sync-work-with-local-files)
+</div>
+- [x] You can now fork messages to start new threads from any point in a conversation
+- [x] You can now delete singular messages to remove them from a conversation - [x]
+We improved the layout of all icons below each chat. Hover to show them all - [x]
+We finally have a clean sidebar layout! - [x] We removed the limit of `12` for max
+snippets for a vector db search. - [x] Generic OpenAi connector can now be used for
+[@agents](/agent/overview).
+
+## Fixes & Improvements:
+
+- Improvements to the beta background worker functionality
+- Patched issue with some agent providers falling back on model that doesn't exist
+- Patched issue with OpenAI-compatible API endpoint always returning refusals
+- General UI and typo cleanup
+- Fixed issue where Confluence code snippets would not be collected.
+- Refactored and improved PDF loader/parser
+- Patched "domain" issue with bulk link scraper
+- Added system wide logger for easier debugging
+
+## What's Next:
+
+- Fine-tuning pipeline
+- Custom agent skill builder/tooling
+- Custom plugins/skills for AnythingLLM app and agents.
