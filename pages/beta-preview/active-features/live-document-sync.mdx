@@ -1,6 +1,6 @@
 ---
 title: "Automatic document sync"
-description: "Access the automatic document sync beta preview"
+description: "Access the automatic remote and local document sync beta preview"
 ---
 
 import { Callout, Cards } from "nextra/components";
@@ -47,9 +47,9 @@ This enables you to reference a document and have it's content consistently upda
 
 ### Desktop
 
+- **[Any manually uploaded local file](#how-does-document-sync-work-with-local-files)**
 - Any website link
 - Any file collected via a <b>Data connector</b> _(eg: Confluence, Github, and YouTube)_
-- Manually uploaded files **_still in development_**
 
 ## Enable the feature
 
@@ -102,3 +102,41 @@ Currently, if you close the application or docker container, the watched files w
 If you are having issue with the document sync feature simply disable the toggle for the feature and it will not run any background workers while using AnythingLLM or on reboots.
 
 Please ping the core team with a GitHub issue or Discord message for any questions or bug reports.
+
+## How does document sync work with local files?
+
+<Callout type="info">
+   While in beta, you should use this feature with files that update frequently. Otherwise, it wont help much!
+
+_Reminder:_ this is only available on AnythingLLM Desktop
+
+</Callout>
+
+On AnythingLLM Desktop you can now "watch" any locally uploaded file! Functionally, this works the exact same as watching content that comes from a website or elsewhere, but there
+are some tips and things to know before watching every locally uploaded file.
+
+### Only watch relevant files!
+
+While you can watch any local files it only really makes sense to use this feature on files that can or do change a lot. For example, PDF files don't change that often.
+
+### How often does it sync?
+
+Files will be checked for new content every **10 minutes**. The app must be open for this to occur as AnythingLLM does not minimize to the tray or taskbar when closed. If changes are found, the document content and all workspaces will be updated automatically.
+
+### How can I check it synced?
+
+Open the feature dashboard and see when the last sync was. Currently there is no easy way to verify the content synced - it will be live soon.
+
+### How can I change how often documents sync?
+
+You cannot modify the sync time currently.
+
+### What if I move or delete the original document from where it was during upload?
+
+AnythingLLM cannot and does not know where a file is relocated should you move it. On the next interval sync the document will be marked as "Not Found" and it will
+become automatically unwatched. The existing content and embeddings will not change. You cannot update its current location reference.
+
+### Why can't I watch a file I already uploaded?
+
+Prior to v1.5.9 the required changes to track file locations did not exist. Any files uploaded prior are not available to be watched and should be
+uploaded & embedded again.

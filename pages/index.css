@@ -12,3 +12,18 @@
 .mt-20 {
   margin-top: 20px;
 }
+
+.nested > ul > li > ul,
+.nested > blockquote {
+  margin-top: 0px;
+}
+
+.nested > blockquote > br.sm {
+  content: "";
+  display: block;
+  height: 5px;
+}
+
+.nested > blockquote > p {
+  margin-top: 0px !important;
+}
