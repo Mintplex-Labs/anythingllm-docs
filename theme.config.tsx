@@ -50,8 +50,8 @@ const config: DocsThemeConfig = {
     const { route } = useRouter()
     const socialCard =
       route === '/' || !title
-        ? 'https://docs.useanything.com/images/og.png'
-        : `https://docs.useanything.com/api/og?title=${title}`
+        ? 'https://docs.anythingllm.com/images/og.png'
+        : `https://docs.anythingllm.com/api/og?title=${title}`
 
     return (
       <>
@@ -61,13 +61,13 @@ const config: DocsThemeConfig = {
         <meta httpEquiv="Content-Language" content="en" />
         <meta name="description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
         <meta name="og:description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
-        <meta property="og:url" content="http://docs.useanything.com"></meta>
+        <meta property="og:url" content="http://docs.anythingllm.com"></meta>
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={socialCard} />
-        <meta name="twitter:site:domain" content="docs.useanything.com" />
+        <meta name="twitter:site:domain" content="docs.anythingllm.com" />
         <meta property="twitter:title" content="AnythingLLM | The all-in-one AI desktop app." />
         <meta property="twitter:description" content="All-in-one AI application that can do RAG, AI Agents, and much more with no code or infrastructure headaches." />
-        <meta name="twitter:url" content="https://docs.useanything.com" />
+        <meta name="twitter:url" content="https://docs.anythingllm.com" />
         <meta name="og:title" content={title ? title + ' – AnythingLLM Docs' : 'AnythingLLM Docs'} />
         <meta name="og:image" content={socialCard} />
         <meta name="apple-mobile-web-app-title" content="AnythingLLM Docs" />
@@ -94,7 +94,7 @@ const config: DocsThemeConfig = {
     dismissible: true,
     key: 'v1.5.11-release', // Storage key to keep the banner state (dismissed or not). If you have updated your banner text, you should change the key to make sure the banner is shown again.
     text: (
-      <a href="https://useanything.com/download" target="_blank">
+      <a href="https://anythingllm.com/download" target="_blank">
         🚀 AnythingLLM v1.5.11 is out. Update now →
       </a>
     )
