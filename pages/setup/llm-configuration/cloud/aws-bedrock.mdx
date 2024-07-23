@@ -1,0 +1,122 @@
+---
+title: "AWS Bedrock LLM"
+description: "Use full-parameter foundational and custom models hosted on AWS via Bedrock for RAG + Agents."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/anythingllm-setup/llm-configuration/cloud/aws-bedrock/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Azure OpenAI LLM"
+/>
+
+# AWS Bedrock LLM
+
+AWS Bedrock offers a very simple deployment service of full state of the art un-quantized foundational LLMs for you to run on your AWS account. While these models and their data should be private to your account each model does have its own EULA and can vary from model to model.
+
+## Connecting to AWS Bedrock
+
+<Callout type="info" emoji="️💡">
+  **Valid account setup required!**
+
+    You must have a valid [AWS Account](https://aws.amazon.com) to use AWS Bedrock - this service is not free.
+
+    You **must** be an administrator or root user of the account to follow the below steps. Otherwise, consult with your account admin.
+
+</Callout>
+<br/>
+<Image
+  src="/images/anythingllm-setup/llm-configuration/cloud/aws-bedrock/aws-bedrock-llm.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AWS Bedrock LLM settings"
+/>
+
+### Obtain IAM credentials to use for Bedrock
+
+<Callout type="error">
+  Do not use your root AWS access ID and Key for Bedrock. You should always use
+  the least privileged policy possible when using AWS keys in any third-party
+  applications, not just AnythingLLM.
+</Callout>
+
+Ideally, you should create a new user with at _least_ the following permission and policy below. The below policy
+does not limit access to any particular model, but is good for starting. It is up to you to modify the access level of whatever
+credentials will be used with AWS Bedrock depending on your use-case.
+
+The below credentials allow a user to see models and stream responses as well as default synchronous response - which is used for `@agents`.
+
+```json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "VisualEditor0",
+      "Effect": "Allow",
+      "Action": [
+        "bedrock:InvokeModel",
+        "bedrock:ListCustomModels",
+        "bedrock:GetPrompt",
+        "bedrock:GetFoundationModel",
+        "bedrock:InvokeModelWithResponseStream",
+        "bedrock:GetCustomModel",
+        "bedrock:ListFoundationModels"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+```
+
+Once a user with the correct permissions is defined or found you will need their `AWS ACCESS ID` and `AWS ACCESS SECRET` for connecting.
+
+### Copy the desired model you wish to use.
+
+<Callout type="info" emoji="️💡">
+ Please only use a `chat` capable model for LLM selection. Incompatible model types will not produce chats in AnythingLLM.
+
+</Callout>
+
+All models on Bedrock require permission from the model owner for use on your AWS account. Access is usually granted very quickly.
+You can request model permission from a link like this (replace `us-west-2` with you region)
+https://us-west-2.console.aws.amazon.com/bedrock/home?region=us-west-2#/modelaccess
+
+Below are where you can find `model ids` that you can use in AnythingLLM.
+
+<Image
+  src="/images/anythingllm-setup/llm-configuration/cloud/aws-bedrock/model-ids.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: 20 }}
+  alt="AWS Bedrock Model ids"
+/>
+
+Now that you have set up and have AWS Bedrock ready for LLM chatting, you can input the credentials to AnythingLLM.
+
+### AWS Bedrock IAM Access ID
+
+This is the ACCESS ID of the user who can invoke models on Bedrock
+
+### AWS Bedrock IAM Access Key
+
+This is the ACCESS SECRET of the user who can invoke models on Bedrock
+
+### AWS region
+
+This is the region that your account is enabled to use with AWS Bedrock - this depends on your region preference and account settings.
+An example is `us-west-2` Oregon. Yours may be elsewhere.
+
+### Model ID
+
+This is the model id copied from the screenshot above. If you are using a custom model, your key will be available elsewhere in the Bedrock UI.
+
+### Model context window
+
+This is the maximum amount of tokens that can exist in a single query for a model. This is a model specific parameter and will vary from model to model.
+Consult with AWS Bedrock's UI or the model provider documentation for what this limit may be.
