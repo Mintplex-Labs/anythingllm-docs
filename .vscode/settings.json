@@ -3,6 +3,7 @@
     "embedder",
     "embedders",
     "Emeddable",
-    "Mintplex"
+    "Mintplex",
+    "Ollama"
   ]
 }

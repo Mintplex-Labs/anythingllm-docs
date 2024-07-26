@@ -1,0 +1,84 @@
+---
+title: "Import an LLM into AnythingLLM"
+description: "How to import an LLM into AnythingLLM"
+---
+
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
+
+# Importing custom LLMs into AnythingLLM
+
+AnythingLLM allows you to easily load into any valid `GGUF` file and select that as your LLM with zero-setup. Please only use text based LLMs
+for this process. Embedder and vision models will not function in this capacity.
+
+# Importing an AnythingLLM Fine-Tune
+
+If you ordered or generated and fine-tune via the in-app process you can easily load the model directly into the app via the built-in LLM or via
+your preferred local LLM provider like Ollama, LMStudio, LocalAI, and more.
+
+## Import model into AnythingLLM.
+
+<Callout type="warning" emoji="‼️">
+  **Desktop only!**
+
+This LLM provider is only available in the desktop version. If you are using the browser based version you will need to import the model into your local LLM provider. We recommend
+Ollama or LMStudio.
+
+</Callout>
+
+Importing any `GGUF` file into AnythingLLM for use as you LLM is quite simple. On the LLM selection screen you will see an `Import custom model` button.
+
+Clicking this button will open a file picker. Simply select your GGUF file and wait 2-3 minutes while the model is imported. Now you can select and save this
+model as your LLM!
+
+<br />
+<Image
+  src="/images/fine-tuning/local-llm.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+After import you should see your model displayed.
+
+<br />
+<Image
+  src="/images/fine-tuning/local-llm-loaded.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## How to import into Ollama
+
+Importing to Ollama is also quite simple and we provide instructions in your download email on how to accomplish this. Please refer to this
+video segment.
+
+<iframe
+  width="100%"
+  height="500"
+  src="https://www.youtube.com/embed/1B50IDUl5D4?si=2SdTcSFxMzbQiD8e&amp;start=710"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+## How to import into LMStudio
+
+Importing to LMStudio is even more simple to load. Simply drag the instructions + `GGUF` folder into the LMStudio model location. Please refer to this
+video segment.
+
+<iframe
+  width="100%"
+  height="500"
+  src="https://www.youtube.com/embed/1B50IDUl5D4?si=lVYaAlLHxFuonepb&amp;start=1050"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>

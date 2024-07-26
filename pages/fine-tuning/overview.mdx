@@ -1,0 +1,77 @@
+---
+title: "AnythingLLM Fine-Tuning"
+description: "AnythingLLM Fine-Tuning Overview"
+---
+
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
+
+# AnythingLLM Fine-Tuning
+
+Fine-tuning is now available in AnythingLLM as an additional opt-in feature to improve your baseline model responses. Fine-tuning can be a powerful
+way to "bake in" knowledge that is specific to your use case into an already great foundational model like LLama 3 8B.
+
+## Why fine-tune?
+
+Fine-tuning and LLM is taking a solid foundational model and improving or "tuning" its behavior, responses, or inherit knowledge based on your AnythingLLM chats and documents.
+Combining RAG, agents, and a capable fine-tune is basically an LLM with superpowers.
+
+<Callout type="warning" emoji="‼️">
+  **Know before you tune!**
+
+Fine-tuning is not the "silver bullet" to bad responses. Fine-tuned LLMs do not guarantee better responses. Like any LLM, your data (chats and documents)
+are the key. While a fine-tune may "know" something it was trained on **it is not built for recall and citations.**
+
+</Callout>
+
+## What do I get when I order a fine-tune?
+
+When you order a fine-tuned model via AnythingLLM we **will deliver to you via email** a link to download an 8-bit quantized `.GGUF` file that you can run _anywhere_ you run
+LLMs locally. You can load this model directly into AnythingLLM, Ollama, LMStudio, LocalAI, and anywhere else you can run GGUF files.
+
+_This model is yours to keep, forever_.
+
+## How do I get started?
+
+We currently offer in-app fine-tuning where we handle everything for a single one-time fee. This process can deliver you a full fine tune in under 1 hour.
+
+<Cards>
+  <Card title="Cloud Fine-Tuning" href="/fine-tuning/cloud-fine-tuning">
+    <Image
+      src="/images/getting-started/header-image.png"
+      height={1080}
+      width={1920}
+      quality={100}
+      alt="AnythingLLM Cloud Fine-Tuning"
+    />
+  </Card>
+  <Card title="Local Fine-Tuning" href="/fine-tuning/local-fine-tuning">
+    <Image
+      src="/images/getting-started/header-image.png"
+      height={1080}
+      width={1920}
+      quality={100}
+      alt="AnythingLLM Local Fine-Tuning"
+    />
+  </Card>
+</Cards>
+
+export const Card = Object.assign(
+  // Copy card component and add default props
+  Cards.Card.bind(),
+  {
+    displayName: "Card",
+    defaultProps: {
+      image: true,
+      arrow: true,
+      target: "_self",
+    },
+  }
+);
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>
