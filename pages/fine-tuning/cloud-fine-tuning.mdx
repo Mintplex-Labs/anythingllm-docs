@@ -1,0 +1,167 @@
+---
+title: "Cloud Fine-Tuning"
+description: "How to use AnythingLLM Cloud Fine-Tuning"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# How does this work?
+
+In AnythingLLM (Docker or Desktop), you may have see an alert at the top of the application or saw the "Order Fine-Tune" on the workspace chats page.
+
+<Image
+  src="/images/fine-tuning/order-button.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+# Cloud Fine Tuning walkthrough
+
+The AnythingLLM application on both Docker and desktop will guide you through the process to order a fine-tuned based on your data.
+
+<Callout type="info">
+Currently, you **are required** to have chats with your workspaces in order to produce a fine-tuned model.
+
+**Training directly off your raw documents** will be present in a future update and will be available in cloud training.
+
+</Callout>
+
+## Introduction
+
+The first step is an overview and brief education on _what_ a fine-tuned model is and where it can exceed expectations and also where fine-tuning
+does not out-perform the traditional setup of AnythingLLM.
+
+In general, if you are hoping a fine-tune model means it can have 100% perfect recall with citations - you actually want RAG!
+
+Otherwise if you just want a better overall model that knows about your document information, should respond in a particular way, or behave in a certain defined way
+by default without prompting - that is a great use for a fine-tune.
+
+<Image
+  src="/images/fine-tuning/intro.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Legal Agreement & Delivery Terms
+
+Since the AnythingLLM training process does require a brief transfer of information from your device to our secure cloud you should review these terms in-app.
+
+We are committed to absolute privacy of your information. During this process your data is stored in a secure cloud storage location _only_ for the duration of training. Your data is _never retained_
+and it is only used for the training process directly. We do not audit or review the data uploaded to the training environment. You training session also runs in an isolated environment ensure full privacy.
+
+In the event of a training failure or success your data is deleted. Additionally, should you proceed to checkout and fail to complete the process
+your data will be removed within 1 hour of the checkout session creation if payment is never completed.
+
+### Delivery terms
+
+The agreement with Mintplex Labs is concluded once you are delivered the download link for your custom `GGUF` file.
+
+While training a custom LLM can unlock another level for accuracy and competency in your LLM we make no guarantees that the model will perform better as it is based on
+whatever data was available during upload. Additionally, this model is yours to keep and it will work anywhere you run models locally already as it is the same format.
+
+See [loading custom models in AnythingLLM &rarr;](/fine-tuning/loading-custom-models)
+
+## Training Model selection
+
+<Callout type="info">
+  Your email must be accurate - this is the only way we will communicate with
+  you about your fine-tune.
+</Callout>
+
+AnythingLLM maintains a list of trainable base models. Currently we try to stay within the Llama family of models but will expand to `Phi` and `Mistral` families soon.
+
+<Image
+  src="/images/fine-tuning/order-details-finished.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Data selection
+
+In AnythingLLM, you can select the data you wish to train on by _workspace_ and _quality_. The quality metric is the "Thumbs up" icon below chats. If you or your users have not been leaving feedback
+you may want to leave this feature off. In general, the more data the better the result can be.
+
+<Image
+  src="/images/fine-tuning/dataset.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Confirm Checkout
+
+Once you proceed past the dataset stage you will get an order review before checkout. Only after successful payment of the checkout will training begin.
+
+<Image
+  src="/images/fine-tuning/confirm.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Post order expectations
+
+Once you finish payment you can expect an email in your inbox that looking something like this.
+
+<Image
+  src="/images/fine-tuning/progress email.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Download your model
+
+When you fine-tune is complete you will receive an email with the direct download link.
+
+<Callout type="warning">
+  All model download links are valid for **24 hours** and after which will
+  expire. You can get a new download link on
+  [https://my.mintplexlabs.com](https://my.mintplexlabs.com) and logging in with
+  the email used to order the fine-tune.
+</Callout>
+<br />
+
+<Image
+  src="/images/fine-tuning/model done.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Request new download links
+
+Your model will exist in our secure storage until one of the following conditions are met:
+
+1. You request the model to be deleted permanently.
+2. It has been more than 3 months since you ordered the model.<br/>
+   **We will always confirm you have the model downloaded prior to deletion**.
+
+To request new download links login with the email you ordered the fine-tune with on [https://my.mintplexlabs.com](https://my.mintplexlabs.com)
+and you will see your fine-tune order. You will see a blue link that says **click here** for new links.
+
+The UI will refresh and the buttons for downloading the model and instruction sets will be valid for another 24 hours. **These new links must be used - your previous links will still be invalid**
+
+<br />
+<Image
+  src="/images/fine-tuning/dashboard.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+Once you have your custom LLM `GGUF` file downloaded you can load this locally!
+
+[See how to load and import custom LLM files &rarr;](/fine-tuning/loading-custom-models)
