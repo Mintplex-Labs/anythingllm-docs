@@ -1,0 +1,47 @@
+---
+title: "v1.6.0"
+description: "AnythingLLM Desktop v.1.6.0 Changelog"
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.6.0"
+/>
+
+## New Features:
+
+<div class="nested">
+  - [x] **Multimodal support** - You can now upload text and images into the
+  chat and use them with image capable models.
+  <blockquote class="nx-mt-6 nx-border-gray-300 nx-italic nx-text-gray-700 dark:nx-border-gray-700 dark:nx-text-gray-400 first:nx-mt-0 ltr:nx-border-l-2 ltr:nx-pl-6 rtl:nx-border-r-2 rtl:nx-pr-6">
+    You **must** use a multi-modal model to chat with images. This model can be
+    a local LLM or cloud-hosted model like GPT-4o.
+    <br />
+    We added `LLaVA-Llama3` as a model in our built-in LLM to make selection
+    easier for those unfamiliar with multi-modal models.
+  </blockquote>
+</div>
+<div class="nested">
+  - [x] Drag-and-Drop files into the chat UI to automatically upload & embed at
+  once.
+  <blockquote class="nx-mt-6 nx-border-gray-300 nx-italic nx-text-gray-700 dark:nx-border-gray-700 dark:nx-text-gray-400 first:nx-mt-0 ltr:nx-border-l-2 ltr:nx-pl-6 rtl:nx-border-r-2 rtl:nx-pr-6">
+    Images you drag-and-drop into a chat window are used for that specific chat.
+    Document files **uploaded are embedded** into the workspace as you normally
+    would and are available until un-embedded.
+  </blockquote>
+</div>
+
+## Fixes & Improvements:
+
+- Bumped known models for Perplexity & TogetherAI
+- Various small bugfixes
+
+## What's Next:
+
+- Custom `@agent` skill builder
+- More data connector integrations
