@@ -66,9 +66,16 @@ the docker container using AnythingLLM as `localhost:xxxx` will not resolve for 
 
 Pull in the latest image from docker. Supports both `amd64` and `arm64` CPU architectures.
 
-```shell
+```shell copy
  docker pull mintplexlabs/anythingllm
 ```
+
+<Callout type="info" emoji="️💡">
+  **Note** `--cap-add SYS_ADMIN` is a **required** command if you want to scrape
+  webpages. We use [PuppeeteerJS](https://github.com/puppeteer/puppeteer) to
+  scrape websites links and `--cap-add SYS_ADMIN` lets us use sandboxed Chromium
+  across all runtimes for best security practices.
+</Callout>
 
 Mount the storage locally and run AnythingLLM in Docker
 

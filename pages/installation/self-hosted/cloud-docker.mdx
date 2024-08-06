@@ -52,6 +52,13 @@ You should provision a folder somewhere on the host machine so that you can re-p
 
 </Callout>
 
+<Callout type="info" emoji="️💡">
+  **Note** `--cap-add SYS_ADMIN` is a **required** command if you want to scrape
+  webpages. We use [PuppeeteerJS](https://github.com/puppeteer/puppeteer) to
+  scrape websites links and `--cap-add SYS_ADMIN` lets us use sandboxed Chromium
+  across all runtimes for best security practices.
+</Callout>
+
 ```shell copy showLineNumbers
  # Assuming that you want to store app data in a folder at /var/lib/anythingllm
 
@@ -62,7 +69,7 @@ You should provision a folder somewhere on the host machine so that you can re-p
  mkdir -p $STORAGE_LOCATION && \
  touch "$STORAGE_LOCATION/.env" && \
  docker run -d -p 3001:3001 \ # expose on port 3001 (can be any host port)
- --cap-add SYS_ADMIN \ # So you can scrape website URLs for information!
+ --cap-add SYS_ADMIN \
  -v ${STORAGE_LOCATION}:/app/server/storage \
  -v ${STORAGE_LOCATION}/.env:/app/server/.env \
  -e STORAGE_DIR="/app/server/storage" \
