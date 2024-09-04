@@ -92,10 +92,10 @@ const config: DocsThemeConfig = {
   ),
   banner: {
     dismissible: true,
-    key: 'v1.6.3-release', // Storage key to keep the banner state (dismissed or not). If you have updated your banner text, you should change the key to make sure the banner is shown again.
+    key: 'v1.6.4-release', // Storage key to keep the banner state (dismissed or not). If you have updated your banner text, you should change the key to make sure the banner is shown again.
     text: (
       <a href="https://anythingllm.com/download" target="_blank">
-        🚀 AnythingLLM v1.6.3 with built-in speech to text. Update now →
+        🚀 AnythingLLM v1.6.4 is live! Update now →
       </a>
     )
   }
