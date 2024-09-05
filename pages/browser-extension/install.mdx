@@ -1,0 +1,140 @@
+---
+title: "AnythingLLM Browser Extension"
+description: "How to install the AnythingLLM Browser Extension"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+<Image
+  src="/images/features/browser-extension/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+# About the AnythingLLM Browser Extension
+
+<Callout type="info">
+  The AnythingLLM Browser Extension is new and is currently only available in the Docker version of AnythingLLM. Support for AnythingLLM desktop will be in versions 1.6.5 and later.
+
+If you do not see the screens below, you may need to update to the latest version of AnythingLLM or are on a version that does not support the browser extension yet.
+
+**The AnythingLLM Browser Extension requires AnythingLLM to be running on an accessible cloud instance or locally on your machine in some form.**
+
+</Callout>
+
+## Installing the AnythingLLM Browser Extension
+
+**Supported Browsers:**
+
+- [x] Chrome
+- [ ] Edge
+- [ ] Brave
+- [ ] Firefox
+
+You can find the AnythingLLM Browser Extension in the [Chrome Web Store &rarr;](https://chromewebstore.google.com/detail/anythingllm-browser-compa/pncmdlebcopjodenlllcomedphdmeogm)
+
+After installing the browser extension, you should see a new icon in your browser toolbar.
+
+### Connecting the Browser Extension to AnythingLLM
+
+Connecting to your specific AnythingLLM instance is simple.
+
+1. Open the AnythingLLM instance you want to connect to in your browser or on Desktop.
+2. Open settings and Click on the `Browse Extension` sidebar element under `Tools`.
+
+<Image
+  src="/images/features/browser-extension/sidebar.png"
+  height={500}
+  width={200}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+3. You will land on a page with a `Generate API Key` button. Click on the button to generate an API key. Click `Create API Key` to create the key.
+
+<Image
+  src="/images/features/browser-extension/generate.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+4. If possible the browser extension will automatically connect to your AnythingLLM instance. If not, you can manually connect by copying and pasting the connection string into the browser extension.
+
+_Automatically connected to AnythingLLM_
+
+<Image
+  src="/images/features/browser-extension/auto-connect.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+_Manually connect to AnythingLLM_
+
+<Image
+  src="/images/features/browser-extension/manual.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+5. You are now connected to your AnythingLLM instance! You can now use the browser extension to collect and send information on any website directly into AnythingLLM or embed directly into your workspaces for later!
+
+_Send an entire webpage to AnythingLLM_
+
+<Image
+  src="/images/features/browser-extension/whole-page.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+_Send a snippet of text you highlight on page_
+
+<Image
+  src="/images/features/browser-extension/snippet.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM"
+  style={{
+    borderRadius: "10px",
+  }}
+/>
+
+# Customizing the Browser Extension
+
+**_Docker only:_**
+By default, the image in the browser extension is the AnythingLLM logo. However, it will automatically use the logo of the instance you are connected to if set in the `Customization` section of the settings page.
+
+If you want to further customize the browser extension, you can do so by forking the [AnythingLLM Browser Extension GitHub Repository](https://github.com/Mintplex-Labs/anythingllm-extension) and making your own changes.
+
+Once you have made your changes, you can build the extension using the `yarn build` command.
+
+After building the extension, you can load it into your browser by clicking the `Load unpacked.` button in Chrome and selecting the `dist` folder.
