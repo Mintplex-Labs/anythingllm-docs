@@ -1,0 +1,77 @@
+---
+title: ""
+description: "How to create custom agent skills"
+---
+
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="error" emoji="⚠️">
+  **Warning:** Only run custom agent skills you trust.
+
+Custom agent skills are a powerful feature of AnythingLLM, but they can also be dangerous if misused.
+
+Always make sure to test your skills thoroughly before using them in a production environment & never install untrusted code on any machine.
+
+</Callout>
+
+# Introduction to custom agent skills
+
+AnythingLLM allows you to create custom agent skills that can be used to extend the capabilities of your `@agent` invocations. These skills can be anything you want from a simple API call to even operating-system invocations.
+
+The sky is the limit! Depending on how you run AnythingLLM, you can create custom agent skills that can run extra processes like running a local Python script or, on Desktop, even operating-system invocations.
+
+If it can be done in NodeJS, it can likely be done in AnythingLLM.
+
+## The current state of custom agent skills
+
+<Callout type="info" emoji="️💡">
+ Custom agent skills are newly supported in AnythingLLM and may have some bugs, quirks, missing features, unsupported features, etc.
+
+Please report any feature requests or bugs you find to the [GitHub repository](https://github.com/Mintplex-Labs/anything-llm).
+
+</Callout>
+
+1. NodeJS programming experience is required to create custom agent skills. Go to the [developer guide](./developer-guide.mdx) to get started.
+2. Custom agent skills must _exactly_ match the requirements listed on this help page.
+3. There are built in functions and utilities to help you log data or thoughts for an agent.
+4. There is currently no established tooling for creating custom agent skills - so follow this guide if developing skills for AnythingLLM.
+5. All skills must return a `string` type response - anything else may break the agent invocation.
+
+## Availability
+
+Custom agent skills are currently available in the AnythingLLM Docker image.
+
+Support in AnythingLLM Desktop should be live in version 1.6.5.
+
+Custom agent skills are **not** available in the AnythingLLM Cloud offering.
+
+## View loaded custom agent skills
+
+You can view the loaded custom agent skills by opening the `Agent Skills` tab in the settings of AnythingLLM.
+
+Any valid custom agent skills loaded into AnythingLLM will be displayed here.
+
+See [where to place your custom agent skills](./developer-guide.mdx#where-to-place-your-custom-agent-skill-code) for more information.
+
+<Image
+  src="/images/guides/custom-skills/sidebar.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px" }}
+/>
+
+## Dynamic UI of custom agent skills
+
+Custom agent skills can also have a dynamic UI inputs associated with them. This is useful for providing runtime arguments to your custom agent skills or configurable properties of them.
+
+See [how the dynamic UI for a custom agent skill](./plugin-json.mdx#setup_args) is setup via the `plugin.json` file.
+
+<Image
+  src="/images/guides/custom-skills/dynamic-ui.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px" }}
+/>
