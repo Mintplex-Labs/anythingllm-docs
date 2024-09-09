@@ -28,6 +28,13 @@ import Image from "next/image";
 
 ## Hot loading of custom agent skills
 
+<Callout type="info" emoji="️💡" >
+If you are in an active agent invocation when you make changes to your custom agent skill, you will need to `/exit` the current session for the changes to take effect.
+
+If you just added a new custom agent skill you will need to revisit or reload the page for the new skill to be shown in the UI.
+
+</Callout>
+
 AnythingLLM supports hot loading of custom agent skills. This means that you can make changes to your custom agent skill and see the changes without having to restart the agent or the instance of AnythingLLM.
 
 ## Where to place your custom agent skill code
@@ -37,7 +44,7 @@ In all versions you are looking for the matching folder of the `STORAGE_DIR` env
 
 <Callout type="info" emoji="️💡">
   Your entire custom agent skill folder should be wrapped in a folder with the
-  same `name` property as the associated `plugin.json` file.
+  same `hubId` property as the associated `plugin.json` file.
 </Callout>
 ### Docker
 
@@ -63,19 +70,21 @@ Then you will need to create this subfolder within the storage directory:
 
 ## File structure
 
-Your custom agent skill should be wrapped in a folder with the same `name` property that is defined in the `plugin.json` file.
+Your custom agent skill should be wrapped in a folder with the same `hubId` property that is defined in the `plugin.json` file.
+
+_See the plugin.json [reference](./plugin-json.mdx) for more information on the plugin.json file, its properties and how to use them._
 
 ```js
 // example plugin.json
 {
-  "name": "my-custom-agent-skill",
-  "hubId": "my-custom-agent-skill" // THIS MUST BE THE SAME AS THE NAME PROPERTY & MUST EXIST.
-  // see here for more information on the plugin.json file https://docs.anythingllm.com/agent/custom/plugin-json-reference
+  "name": "This is my human readable name",
+  "hubId": "my-custom-agent-skill" // THIS MUST BE THE SAME AS THE parent folder name. Can be any string.
 }
 ```
 
 Folder structure for associated agent skill:
 NOTE: The folder name must match the `hubId` property in the `plugin.json` file.
+
 ```text
 plugins/agent-skills/my-custom-agent-skill
 |-- plugin.json

@@ -44,7 +44,22 @@ The `this.runtimeArgs` object contains the arguments that were passed to the `se
 You can access the value of a specific argument by using the `propertyName` as the key.
 
 ```js
-this.runtimeArgs["OPEN_METEO_API_KEY"]; // 'sk-1234567890'
+// plugin.json excerpt
+// "setup_args": {
+//     "OPEN_METEO_API_KEY": {
+//       "type": "string",
+//       "required": false,
+//       "input": {
+//         "type": "text",
+//         "default": "YOUR_OPEN_METEO_API_KEY",
+//         "placeholder": "sk-1234567890",
+//         "hint": "The API key for the open-meteo API"
+//       },
+//       "value": "sk-key-for-service",
+//     }
+//   },
+
+this.runtimeArgs["OPEN_METEO_API_KEY"]; // 'sk-key-for-service'
 ```
 
 ### `this.introspect`
@@ -68,7 +83,8 @@ this.logger("Hello, world!"); // must be a string - will be printed to console w
 The `this.config` object contains the configuration for your custom agent skill. Useful for when you need to know the name of your custom agent skill or the version or for logs.
 
 ```js
-this.config.name; // 'open-meteo-weather-api'
+this.config.name; // 'Get Weather'
+this.config.hubId; // 'open-meteo-weather-api'
 this.config.version; // '1.0.0'
 ```
 

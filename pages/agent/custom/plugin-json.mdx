@@ -14,9 +14,11 @@ The `plugin.json` file is used to define a custom agent skill for AnythingLLM. I
   // see #active for more information
   "active": true,
 
-  // see #name for more information
+  // see #hubId for more information
   "hubId": "open-meteo-weather-api",
-  "name": "open-meteo-weather-api",
+
+  // see #name for more information
+  "name": "Get Weather",
 
   // see #other_properties for more information
   "schema": "skill-1.0.0",
@@ -80,9 +82,13 @@ The `plugin.json` file is used to define a custom agent skill for AnythingLLM. I
 
 The `active` property is a boolean that determines if the custom agent skill is active. If it is set to `false`, the custom agent skill will not be loaded.
 
-## `hubId` & `name`
+## `name`
 
-The `hubId` & `name` property is a string that is used to identify the custom agent skill. Both must be the same.
+The `name` property is a string that is used to identify the custom agent skill. This is the human-readable name of the skill that is displayed in the AnythingLLM UI.
+
+## `hubId`
+
+The `hubId` property is a string that is used to identify the custom agent skill. This must be the same as the parent folder name.
 
 ## `other_properties`
 
@@ -140,6 +146,10 @@ module.exports.runtime = {
 
 ```json
 "examples": [
+  // Example prompts and expected invocation format for the custom agent skill
+  // these are optional but highly encouraged since they help the LLM understand the expected format of the custom agent skill
+  // and when to use the associated skill with respect to the user prompt.
+  // This is known as "few-shot prompting" and is a best practice when creating custom agent skills.
   {
     "prompt": "What is the weather in Tokyo?",
     "call": "{\"latitude\": 35.6895, \"longitude\": 139.6917}"
