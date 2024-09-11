@@ -1,6 +1,6 @@
 {
-  "overview": {
-    "title": "Overview",
+  "introduction": {
+    "title": "Introduction",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -8,8 +8,8 @@
       "toc": true
     }
   },
-  "setup": {
-    "title": "Setup",
+  "developer-guide": {
+    "title": "Developer Guide",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -17,8 +17,8 @@
       "toc": true
     }
   },
-  "usage": {
-    "title": "Usage",
+  "plugin-json": {
+    "title": "plugin.json reference",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -26,8 +26,8 @@
       "toc": true
     }
   },
-  "custom": {
-    "title": "Custom Skills",
+  "handler-js": {
+    "title": "handler.js reference",
     "theme": {
       "breadcrumb": true,
       "footer": true,
