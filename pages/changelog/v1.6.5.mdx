@@ -1,0 +1,41 @@
+---
+title: "v1.6.5"
+description: "AnythingLLM Desktop v.1.6.4 Changelog"
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.6.5"
+/>
+
+## What's New:
+
+- [**AnythingLLM Browser Extension:**](../browser-extension/install.mdx) Send and embed information from the web directly to AnythingLLM or embed directly into your workspaces for later!
+- [**Custom Agent Skills:**](../agent/custom/introduction.mdx) Create fully custom agent skills to extend the capabilities of your `@agent` invocations.
+- [Better logging](../debug.mdx) for debugging.
+- You can now use `@agent` to run skills via the developer API.
+
+**Potential Breaking Change:**
+
+- By default, AnythingLLM will boot up on `localhost` and not `0.0.0.0` - which may be required if you are using the Desktop App developer API over LAN via private IP connection. You can change this in the system settings of the app.
+
+## Fixes & Improvements:
+
+- Fixed bug on windows where dragging and dropping files would embed, but not show as embedded in the UI.
+- Default profile picture are less ugly now.
+- Model provider updates (Gemini, Perplexity, Voyage AI, etc)
+- Milvus bug fix
+- Escape key to close document uploader
+- `SearchApi` agent web browsing support
+- Removal of `@agent` popup for first time users.
+- Removal of Fine-tuning alert from UI.
+
+## What's Next:
+
+- Custom workspace icons and user avatars.
+- Community Hub for sharing custom agent skills, workspaces, prompts, etc.
