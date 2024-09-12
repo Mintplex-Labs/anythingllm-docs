@@ -8,6 +8,15 @@
       "toc": true
     }
   },
+  "v1.6.6": {
+    "title": "v1.6.6",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "v1.6.5": {
     "title": "v1.6.5",
     "theme": {
