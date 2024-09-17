@@ -16,11 +16,7 @@ import Image from "next/image";
 
 # Windows Installation
 
-There are **two** ways to install AnythingLLM on Windows
-
 **[1. Install using the Installation `.exe` file](#install-using-the-installation-file)**
-
-**[2. Install using Docker](#install-using-docker)**
 
 ## Install using the installation file
 
@@ -36,7 +32,7 @@ There are **two** ways to install AnythingLLM on Windows
 <Callout type="warning" emoji="️⚠️">
   **OPERATING SYSTEM NOTICE**
 
-➤ AnythingLLM is intended to be used on an admin account of Windows Home. Other versions of windows (Enterprise or Server) may not work. We target for Windows 11.
+➤ AnythingLLM is intended to be used on an user account of Windows Home. Other versions of windows (Enterprise or Server) may not work. We target for Windows 11.
 
 </Callout>
 
@@ -114,37 +110,3 @@ Click on the application name "**AnythingLLM**" on your desktop to boot up Anyth
   quality={100}
   alt="AnythingLLM Windows Open"
 />
-
----
-
-## Install using Docker
-
-Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/windows-install/)
-
-Run this command on your terminal (powershell or command prompt)
-
-```shell copy
- docker pull mintplexlabs/anythingllm
-```
-
-It will pull in the latest AnythingLLM image from docker.
-
-Once you have pulled the latest image, run the following commands on your powershell
-
-```powershell copy showLineNumbers
- $env:STORAGE_LOCATION="$HOME\Documents\anythingllm"; `
- If(!(Test-Path $env:STORAGE_LOCATION)) {New-Item $env:STORAGE_LOCATION -ItemType Directory}; `
- If(!(Test-Path "$env:STORAGE_LOCATION\.env")) {New-Item "$env:STORAGE_LOCATION\.env" -ItemType File}; `
- docker run -d -p 3001:3001 `
- --cap-add SYS_ADMIN `
- -v "$env:STORAGE_LOCATION`:/app/server/storage" `
- -v "$env:STORAGE_LOCATION\.env:/app/server/.env" `
- -e STORAGE_DIR="/app/server/storage" `
- mintplexlabs/anythingllm;
-```
-
-The above command will mount the storage locally and run AnythingLLM in Docker
-
-Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM!
-
-All your data and progress will persist between container rebuilds or pulls from Docker Hub.

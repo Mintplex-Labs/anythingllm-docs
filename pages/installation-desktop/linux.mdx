@@ -16,11 +16,7 @@ import Image from "next/image";
 
 # Linux Installation
 
-There are **two** ways to install AnythingLLM on Linux distros
-
 **1. Install using the [installer script](#install-using-the-installer-script)**
-
-**2. Install using [Docker](#install-using-docker)**
 
 ## Install using the installer script
 
@@ -45,37 +41,3 @@ This will download the latest version of AnythingLLM's AppImage, unpack it, and 
 This script will unpack the app in `$HOME/AnythingLLMDesktop`.
 
 You can start the app at any time by running `./AnythingLLMDesktop/start`. This will boot the app with full logging.
-
----
-
-## Install using Docker
-
-Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/linux-install/)
-
-Run this command on your terminal
-
-```shell copy
- docker pull mintplexlabs/anythingllm
-```
-
-It will pull in the latest AnythingLLM image from docker.
-
-Once you have pulled the latest image, run the following commands
-
-```shell copy showLineNumbers
- export STORAGE_LOCATION=$HOME/anythingllm && \
- mkdir -p $STORAGE_LOCATION && \
- touch "$STORAGE_LOCATION/.env" && \
- docker run -d -p 3001:3001 \
- --cap-add SYS_ADMIN \
- -v ${STORAGE_LOCATION}:/app/server/storage \
- -v ${STORAGE_LOCATION}/.env:/app/server/.env \
- -e STORAGE_DIR="/app/server/storage" \
- mintplexlabs/anythingllm
-```
-
-The above command will mount the storage locally and run AnythingLLM in Docker
-
-Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM!
-
-All your data and progress will persist between container rebuilds or pulls from Docker Hub.
