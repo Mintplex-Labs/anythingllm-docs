@@ -22,7 +22,7 @@
     "@next/third-parties": "^14.2.3",
     "@vercel/og": "^0.6.2",
     "next": "^14.2.2",
-    "nextra": "latest",
+    "nextra": "^2.13.4",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
