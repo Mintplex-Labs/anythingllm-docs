@@ -16,13 +16,11 @@ import Image from "next/image";
 
 # MacOS Installation
 
-There are **three** ways to install AnythingLLM on MacOS
+There are **two** ways to install AnythingLLM on MacOS
 
 **[1. Install using the Installation `.dmg` file](#install-using-the-installation-file)**
 
 **[2. Install using Homebrew](#install-using-homebrew)**
-
-**[3. Install using Docker](#install-using-docker)**
 
 ## Install using the installation file
 
@@ -112,37 +110,3 @@ Run the following command on your terminal
 ```
 
 Once installed, you will find AnythingLLM in your Applications folder as well as you can use `cmd + spacebar` and type in AnythingLLM to run.
-
----
-
-## Install using Docker
-
-Make sure you have installed [Docker](https://www.docker.com/) on your machine, if you don't have Docker installed then you can install it by following this [guide](https://docs.docker.com/desktop/install/mac-install)
-
-Run this command on your terminal
-
-```shell copy
- docker pull mintplexlabs/anythingllm
-```
-
-It will pull in the latest AnythingLLM image from docker.
-
-Once you have pulled the latest image, run the following commands
-
-```shell copy showLineNumbers
- export STORAGE_LOCATION=$HOME/anythingllm && \
- mkdir -p $STORAGE_LOCATION && \
- touch "$STORAGE_LOCATION/.env" && \
- docker run -d -p 3001:3001 \
- --cap-add SYS_ADMIN \
- -v ${STORAGE_LOCATION}:/app/server/storage \
- -v ${STORAGE_LOCATION}/.env:/app/server/.env \
- -e STORAGE_DIR="/app/server/storage" \
- mintplexlabs/anythingllm
-```
-
-The above command will mount the storage locally and run AnythingLLM in Docker
-
-Now go to `http://localhost:3001` on your browser and you are now using AnythingLLM!
-
-All your data and progress will persist between container rebuilds or pulls from Docker Hub.

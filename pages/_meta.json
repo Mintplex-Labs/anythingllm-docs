@@ -22,56 +22,7 @@
     }
   },
   "features": {
-    "title": "Features",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "installation": {
-    "title": "Installation",
-    "theme": {
-      "breadcrumb": false,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "support": {
-    "title": "Support",
-    "theme": {
-      "breadcrumb": false,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "-- Guides": {
-    "type": "separator",
-    "title": "Guides"
-  },
-  "chat-ui": {
-    "title": "Chat Interface overview",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "agent": {
-    "title": "AI Agents",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "fine-tuning": {
-    "title": "Fine-tuning",
+    "title": "Feature Overview",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -88,8 +39,8 @@
       "toc": true
     }
   },
-  "update": {
-    "title": "How to Update AnythingLLM",
+  "chat-ui": {
+    "title": "Chat Interface overview",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -97,8 +48,12 @@
       "toc": true
     }
   },
-  "uninstall": {
-    "title": "How to Uninstall AnythingLLM",
+  "-- Installation Guides": {
+    "type": "separator",
+    "title": "Installation Guides"
+  },
+  "installation-desktop": {
+    "title": "AnythingLLM Desktop",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -106,8 +61,39 @@
       "toc": true
     }
   },
-  "debug": {
-    "title": "How to Run AnythingLLM in Debug Mode",
+  "installation-docker": {
+    "title": "AnythingLLM Self-hosted",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "cloud": {
+    "title": "AnythingLLM Cloud",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "-- Guides": {
+    "type": "separator",
+    "title": "Guides"
+  },
+  "agent": {
+    "title": "Using AI Agents",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "fine-tuning": {
+    "title": "Model Fine-tuning",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -147,7 +133,7 @@
     }
   },
   "ollama-connection-troubleshooting": {
-    "title": "Ollama Connection Troubleshooting",
+    "title": "Ollama Troubleshooting",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -168,17 +154,8 @@
       "toc": true
     }
   },
-  "cloud": {
-    "title": "AnythingLLM Cloud",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
   "changelog": {
-    "title": "Changelogs",
+    "title": "Desktop Changelogs",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -231,5 +208,14 @@
   },
   "licences": {
     "display": "hidden"
+  },
+  "support": {
+    "title": "Support",
+    "theme": {
+      "breadcrumb": false,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
 }
