@@ -8,6 +8,15 @@
       "toc": false
     }
   },
+  "roadmap": {
+    "title": "AnythingLLM Roadmap",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "-- Getting Started": {
     "type": "separator",
     "title": "Getting Started"
@@ -165,15 +174,6 @@
   },
   "changelog": {
     "title": "Desktop Changelogs",
-    "theme": {
-      "breadcrumb": true,
-      "footer": true,
-      "pagination": true,
-      "toc": true
-    }
-  },
-  "roadmap": {
-    "title": "Roadmap",
     "theme": {
       "breadcrumb": true,
       "footer": true,
