@@ -1,0 +1,48 @@
+---
+title: "Configuration"
+description: "Other settings, environment variables, and configurations for AnythingLLM"
+---
+
+import { Callout } from "nextra/components";
+
+<Callout type="warning" emoji="️⚠️">
+  **Warning:**
+  If you are not a developer, you should not set environment variables directly. Instead, you should use the in-app interface to manage environment variables.
+
+**Desktop:**
+If you are using AnythingLLM Desktop, do not edit the `.env` file. This guide is only for users who are using AnythingLLM Self-hosted or Docker.
+
+</Callout>
+
+# Configuration of AnythingLLM
+
+In general, the majority of configurations you can set are through environment variables and their is an associated in-app interface to manage these variables so you don't have to setup anything manually.
+
+However, there are a few configurations that are not configurable via the in-app interface and require you to set environment variables directly. These are usually for more niche use cases that most users will not need.
+
+<Callout type="info" emoji="️💡">
+  **Tip:** After you set these environment variables, you will need to restart
+  the AnythingLLM service or container for the changes to take effect.
+</Callout>
+
+## Disable View Chat History
+
+Modification of the `DISABLE_VIEW_CHAT_HISTORY` environment variable allows you to disable the **frontend** ability to view chat history by anyone with an account on the instance as well as the instance admin.
+This blocks any user, including yourself, from viewing chat history from users using the AnythingLLM chat interface **and** via external embed widgets.
+
+- **This does not impact users from seeing their own chat histories in chat or the LLM from being able to use them for queries.**
+- **This does not impact the ability to use API keys to access chat histories.**
+- **Chat history is not deleted when this is enabled. It is simply hidden and blocked from being viewed via the frontend admin interfaces.**
+
+### Enable
+
+Set the `DISABLE_VIEW_CHAT_HISTORY` environment variable to _any value_ to enable.
+
+```bash
+# This can be any value, number, boolean, or string and it will have the same effect.
+DISABLE_VIEW_CHAT_HISTORY="enable"
+```
+
+### Disable
+
+Fully remove or comment out the `DISABLE_VIEW_CHAT_HISTORY` environment variable to return to the default behavior.
