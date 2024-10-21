@@ -16,7 +16,7 @@ If you are using AnythingLLM Desktop, do not edit the `.env` file. This guide is
 
 # Configuration of AnythingLLM
 
-In general, the majority of configurations you can set are through environment variables and their is an associated in-app interface to manage these variables so you don't have to setup anything manually.
+In general, the majority of configurations you can set are through environment variables and there is typically an associated in-app interface to manage these settings so you don't have to edit them directly.
 
 However, there are a few configurations that are not configurable via the in-app interface and require you to set environment variables directly. These are usually for more niche use cases that most users will not need.
 
@@ -27,16 +27,17 @@ However, there are a few configurations that are not configurable via the in-app
 
 ## Disable View Chat History
 
-Modification of the `DISABLE_VIEW_CHAT_HISTORY` environment variable allows you to disable the **frontend** ability to view chat history by anyone with an account on the instance as well as the instance admin.
+Modification of the `DISABLE_VIEW_CHAT_HISTORY` environment variable allows you to disable the **frontend** ability to view chat history by anyone with an account on the instance as well as the instance administrator.
 This blocks any user, including yourself, from viewing chat history from users using the AnythingLLM chat interface **and** via external embed widgets.
 
-- **This does not impact users from seeing their own chat histories in chat or the LLM from being able to use them for queries.**
-- **This does not impact the ability to use API keys to access chat histories.**
+- **This does not impact users from seeing their own chat histories in chat or the LLM from being able to use them for continuous conversations.**
+- This **does not** impact the ability to use API keys to access chat histories via the associated API endpoints.
+- This will impact the ability to export chat histories via the in-app interface as well as the ability to delete chat histories.
 - **Chat history is not deleted when this is enabled. It is simply hidden and blocked from being viewed via the frontend admin interfaces.**
 
 ### Enable
 
-Set the `DISABLE_VIEW_CHAT_HISTORY` environment variable to _any value_ to enable.
+Set the `DISABLE_VIEW_CHAT_HISTORY` environment variable to **_any value_** to enable.
 
 ```bash
 # This can be any value, number, boolean, or string and it will have the same effect.
