@@ -57,6 +57,15 @@
       "toc": true
     }
   },
+  "configuration": {
+    "title": "Other configurations",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "-- Installation Guides": {
     "type": "separator",
     "title": "Installation Guides"
