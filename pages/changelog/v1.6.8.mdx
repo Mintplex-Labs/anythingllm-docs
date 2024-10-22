@@ -1,0 +1,67 @@
+---
+title: "v1.6.8"
+description: "AnythingLLM Desktop v.1.6.8 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.6.8"
+/>
+
+## What's New:
+
+- [x] You can now paste text, pictures, and files into the prompt input when focused if the items are on your clipboard.
+- [x] Generic OpenAI TTS connector is live. Any OpenAI compatible tts service will work now!
+- [x] [Deepseek](https://deepseek.com) LLM connector is now supported
+- [x] [Apipie](https://apipie.com) LMM connector is now supported
+- [x] [Fireworks](https://fireworks.ai) LLM connector is now supported
+- [x] [XAI](https://x.ai) Grok `grok-beta` LLM connector is now supported
+- [x] [Tavily](https://tavily.com) SERP connector is now supported for agent `web-search` skill.
+- [x] O1 model support for OpenAI
+- [x] LiteLLM Agent support
+- [x] Workspace agent selection is no longer **required** to be set in the settings. It will auto-select the model and provider based on your workspace and then your system settings. You can still set it manually if you'd like.
+- [x] Bulk document removal from UI is now supported via checkbox selection on right panel.
+- [x] `Select all` is now supported in the directory component. Right-click on the directory panel to select/deselect all.
+- [x] Mistral multi-modal support
+- [x] Groq Image support (please use supported vision model.)
+
+## Improvements:
+
+- [x] XLSX file upload support
+- [x] Gitlab connector can now pull issues in addition to code.
+- [x] Chat windows now auto-scrolls with reasonable behavior
+- [x] Show scrollbar `Appearance` setting to show scrollbar on right of chat windows for some users
+- [x] Freeform model input for chat models selection is now supported for LLMs with no `/models` endpoint. (Azure, Bedrock, etc.)
+- [x] Voyage model embedders were bumped to the latest versions.
+- [x] Github repo loader `langchain` was bumped to the latest version.
+- [x] Attachments in Dev API are now supported for API chats.
+- [x] File fetch speed improvements for the file picker
+- [x] `UserID` is now a supported option param in requests to the `workspace thread` endpoints for API.
+
+## Bug Fixes:
+
+- [x] Fixed a bug where the chat window would not scroll when you had a lot of messages.
+- [x] The agent model preference was not being respected for Bedrock and LMStudio. It now is.
+- [x] Handle non-ascii characters in single and bulk link scraper URLs
+- [x] Handle Bedrock models that cannot use `system` prompts (Titan)
+- [x] File name truncation on file rows overflowing the UI on file picker
+- [x] `Dockerfile` and `Jenkinsfile` file upload support
+- [x] Patch 11Labs selection bug not persisting in UI, while still being selected in the backend
+- [x] Patch bug in web-search and sql connector not persisting in UI, while still being selected in the backend
+- [x] GitHub handle `/tree` or `/blob` URLs from breaking collector.
+
+## What's Next:
+
+- Community Hub for Agent skills, workspace sharing, and more.
+- True dark mode and light mode UI
+- Bump in internal OLLAMA provider to latest version + pulling in any valid Ollama tag via our UI.
+
+---
+
+- _optional_ - we may enable custom UI themes for AnythingLLM
