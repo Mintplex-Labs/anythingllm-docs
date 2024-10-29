@@ -39,6 +39,16 @@ AWS Bedrock offers a very simple deployment service of full state of the art un-
 
 ### Obtain IAM credentials to use for Bedrock
 
+<Callout type="info">
+  **Heads up!** You can optionally use `session tokens` for your AWS account if
+  you do not want to create a new IAM user. Both forms of authentication are
+  supported for AnythingLLM's AWS Bedrock integration. [Learn more about
+  temporary session tokens on AWS
+  &rarr;](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp_use-resources.html#using-temp-creds-sdk-cli)
+</Callout>
+
+_the following below is for using IAM user authentication. If you are using session tokens this section is not relevant._
+
 <Callout type="error">
   Do not use your root AWS access ID and Key for Bedrock. You should always use
   the least privileged policy possible when using AWS keys in any third-party
@@ -106,6 +116,11 @@ This is the ACCESS ID of the user who can invoke models on Bedrock
 ### AWS Bedrock IAM Access Key
 
 This is the ACCESS SECRET of the user who can invoke models on Bedrock
+
+### AWS Bedrock Session Token
+
+This is the session token of the user who can invoke models on Bedrock. You must be using temporary session tokens to use this and have selected the `Session Token` form of authentication in the UI.
+The default form of authentication is using IAM user credentials.
 
 ### AWS region
 
