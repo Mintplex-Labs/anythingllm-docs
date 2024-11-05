@@ -1,0 +1,99 @@
+---
+title: "v1.6.9"
+description: "AnythingLLM Desktop v.1.6.9 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.6.9"
+/>
+
+## What's New:
+
+### AMD GPU Support + More
+
+Our internal Ollama provider was bumped to the latest version (0.3.14) which includes support for AMD GPUs, as well as other improvements.
+
+For Windows, we install the additional support files during the [installation process](../installation-desktop/windows.mdx) automatically.
+For MacOS, there is nothing to do.
+
+### Import any Ollama Model Tag or Hugging Face Model
+
+You can now import any Ollama model tag or Hugging Face model into AnythingLLM using the default Ollama provider. Simply enter the tag or URL and hit import.
+This allows you to use models that are not explicitly listed in the UI.
+
+Just paste in the `ollama run` command and hit import!
+
+Pulling from [Ollama.com](https://ollama.com/library)
+example: `ollama run mistral-nemo`
+
+Pulling from [Hugging Face](https://huggingface.co/docs/hub/en/ollama)
+example: `ollama run hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF`
+
+<Image
+  src="/images/product/changelog/1.6.9/import.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Import Model"
+/>
+
+### Computer Use (Anthropic AI)
+
+AnythingLLM can now leverage the new [Anthropic AI Computer Use]() models.
+
+This is an [experimental feature](https://docs.anythingllm.com/beta-preview/active-features/computer-use) and must be explicitly enabled in your system settings.
+
+<Image
+  src="/images/beta-preview/computer-use/invoke.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Computer Use"
+/>
+
+### Find-in-page support for workspace chat
+
+You can now find specific text within the workspace chat window. Simply press `Ctrl+F` to open the finder input at the top-right of the chat window.
+
+<Image
+  src="/images/product/changelog/1.6.9/find-in-page.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Find in Page"
+/>
+
+## Other Improvements:
+
+- [x] Added [NovitaAI](https://novita.ai/) as a supported LLM Provider
+- [x] Improved document metadata for embedding/RAG results
+- [x] Added Session Token support for AWS BedRock inference
+- [x] Added API docs update
+- [x] Added API Limit/orderBy for `workspace/chats` endpoint
+- [x] Added support for INO filetype
+
+## Bug Fixes:
+
+- [x] Patch restriction where localhost address web scraping was blocked.
+- [x] Patch bad reference for Ephemeral agent invocation
+- [x] Fixed issue where files with non-latin characters were not being respected when uploaded via API
+
+## What's Next:
+
+- Community Hub for Agent skills, workspace sharing, and more. [Pull Request #2555](https://github.com/Mintplex-Labs/anything-llm/pull/2555)
+- True dark mode and light mode UI [Pull Request #2481](https://github.com/Mintplex-Labs/anything-llm/pull/2481)
