@@ -1,0 +1,190 @@
+---
+title: "AI Computer use"
+description: "Enable an AI to autonomously use your computer to complete tasks"
+---
+
+import { Callout, Cards } from "nextra/components";
+import Image from "next/image";
+export const Card = Object.assign(Cards.Card.bind(), {
+  displayName: "Card",
+  defaultProps: {
+    image: true,
+    arrow: true,
+    target: "_self",
+  },
+});
+
+<style global jsx>{`
+  img.fullsize {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Callout type="error">
+  **Caution!** Allowing an AI to use your computer is a powerful feature. It comes with inherent risks and should be used with caution.
+
+**NEVER** allow an AI to use your computer unsupervised. You should always be present when the AI is using your computer.
+
+_The following risks are relevant to any AI using your computer, not just AnythingLLM_
+
+- **Data loss:** The AI could in theory delete files via the UI.
+- **Security risks:** The AI could access sensitive files or data on your computer
+- [Read more about the risks and how to mitigate them](https://docs.anthropic.com/en/docs/build-with-claude/computer-use)
+
+</Callout>
+
+# About Computer use
+
+The <b>Computer use</b> feature for AnythingLLM is an experimental feature that allows you to enable an AI to use your computer to complete tasks.
+
+This feature is powered by Anthropic's Claude 3.5 Sonnet model and is an implementation of Anthropic's [Computer use API](https://docs.anthropic.com/en/docs/build-with-claude/computer-use).
+
+Currently, the feature is in beta while we work on ways to bring this same functionality to **locally hosted open-source models**.
+
+## Known limitations
+
+- **Model:** The Anthropic model that enables computer use is fixed to `claude-3-5-sonnet` and cannot be changed. We also currently don't support BedRock or Vertex hosted providers.
+- **Guardrails:** This feature also has guardrails that may prevent it from doing specific tasks, like reading emails, writing content, or opening applications that could be considered harmful.
+- **Accessibility:** (MacOS only) This feature requires the `Accessibility` and `Screen Recording` permissions to be enabled for AnythingLLM.
+- **Primary Display:** This feature currently only works on the primary display.
+
+## What can I do with this?
+
+<Callout type="info">
+  **Note:** The Anthropic model that enables computer use is fixed to `claude-3-5-sonnet` and cannot be changed. We also currently don't support BedRock or Vertex hosted providers.
+
+It is also important to note that the model is not perfect and may not always behave as expected - you can abort the computer use session if things go wrong or the AI is not behaving as expected.
+You can do this by clicking the pause icon in the UI, pressing `CMD+K` or `CTRL+K`, or by quitting the AnythingLLM application.
+
+This feature also has guardrails that may prevent it from doing specific tasks, like reading emails, writing content, or opening applications that could be considered harmful.
+
+</Callout>
+
+Computer use is a powerful feature that can be used to complete complex tasks using the power of the host machine and its local files, applications, and more.
+
+Some example tasks you can complete include:
+
+- **Browsing the web** - The AI can browse the web to find information, research topics, and even post to social media (sometimes)
+- **Searching files** - The AI can search your file system for specific files
+- **Running applications** - The AI can open applications and navigate GUIs
+
+## Permissions
+
+_This section is relevant to users running AnythingLLM Desktop on MacOS_
+
+Certain permissions are required to use computer use. Please follow the instructions below to enable the necessary permissions.
+
+### Accessibility
+
+In order to use the computer use feature, you need to have the `Accessibility` permissions enabled for AnythingLLM on your system.
+
+This is done by opening the `Security & Privacy` settings on MacOS and clicking on the `Privacy` tab. From there, find `Accessibility` on the left and click on the `+` button to add AnythingLLM.
+
+This will allow AnythingLLM to control your computer's mouse and keyboard.
+
+<Image
+  src="/images/beta-preview/computer-use/accessibility.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+  style={{ objectFit: "contain" }}
+/>
+
+### Screen recording
+
+In order to use the computer use feature, you need to have the `Screen Recording` permissions enabled for AnythingLLM on your system.
+
+This is done by opening the `Security & Privacy` settings on MacOS and clicking on the `Privacy` tab. From there, find `Screen Recording` on the left and click on the `+` button to add AnythingLLM.
+
+This will allow AnythingLLM to take screenshots of your display.
+
+<Image
+  src="/images/beta-preview/computer-use/screen-recording.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+  style={{ objectFit: "contain" }}
+/>
+
+## Enable the feature
+
+First, you need to enable the feature from the feature preview management page.
+
+<Image
+  src="/images/beta-preview/computer-use/toggle.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+  style={{ objectFit: "contain" }}
+/>
+
+## Configure the feature with your API key
+
+Before you can use the feature, you need to configure it with your Anthropic API key to be able to use the feature. Do this by clicking the `Manage OS Agent Settings` link in the feature preview management page.
+
+<Image
+  src="/images/beta-preview/computer-use/config.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+/>
+
+## How to use the computer use feature
+
+<Callout type="info">
+  **Note:** Be ready at any time to abort the computer use session if things are
+  not going as expected. You can do this by clicking the pause icon in the UI,
+  pressing `CMD+K` (MacOS) or `CTRL+K` (Windows/Linux), or by quitting the
+  AnythingLLM application.
+</Callout>
+
+Once you have enabled the feature and configured it with your API key, you can invoke computer use by typing in `@os` in the AnythingLLM chat along with a prompt.
+
+Shortly after, you should see some outputs in the UI indicating that the OS agent is starting up as well as an additional popup (lower-left or lower-center of display) allowing you to control or halt the OS agent.
+
+<Image
+  src="/images/beta-preview/computer-use/invoke.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+/>
+
+### OS Agent control popup
+
+Once the OS agent is running, AnythingLLM will minimize to get out of the way and you should see a popup in your display allowing you to control or halt the OS agent.
+
+Clicking the Pause button will halt the OS agent immediately. The same can be done by pressing `CMD+K` (MacOS) or `CTRL+K` (Windows/Linux).
+
+You can also quit the AnythingLLM application which will halt the OS agent as well. You can drag the popup around to get it out of the way, but this may interfere with the OS agent's ability to control your mouse position if needed.
+
+<Image
+  src="/images/beta-preview/computer-use/popup.png"
+  width={512}
+  height={150}
+  quality={100}
+/>
+
+### OS Agent output
+
+The OS agent will output its actions and any relevant information to the AnythingLLM chat as it executes. These actions are currently **not** saved or stored your workspace's chat history.
+
+<Image
+  src="/images/beta-preview/computer-use/logging.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  className="fullsize"
+/>
+
+## What about open-source models?
+
+We are actively working on bringing this same functionality to locally hosted open-source models. While everything for local models is working, the main blocker is finding a vision model that is capable of understanding a UI image and translating that into an action in addition to knowing the proper x,y coordinates to click.
+
+If you are interested in helping us work on this, please reach out to us on [Discord](https://discord.gg/Dh4zSZCdsC) and we can talk about how you can help!
