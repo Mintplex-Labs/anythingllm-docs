@@ -1,0 +1,48 @@
+---
+title: "v1.6.10"
+description: "AnythingLLM Desktop v.1.6.10 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.6.10"
+/>
+
+Patch for Bing search sessions (e41a9beaaeb30d1b0f4feacdb5ccd7647b71eb7c)
+Dark/Light mode
+
+## What's New:
+
+- [x] Added Support for a true dark and light mode UI
+- [x] Internal Ollama bumped to 0.4.2
+- [x] Added Undo/Redo to prompt input
+
+## Other Improvements:
+
+- [x] Fixed titlebar not being draggable on onboarding
+- [x] Updated VoyageAI model list
+- [x] Improved model list detection for LMStudio
+
+## Bug Fixes:
+
+- [x] Fixed performance issues with long-running message windows
+- [x] Fixed scrollbar UI toggle not showing
+- [x] Fixed Bing search sessions not working
+
+## What's Next:
+
+- Community Hub for Agent skills, workspace sharing, and more. [Pull Request #2555](https://github.com/Mintplex-Labs/anything-llm/pull/2555)

@@ -7,8 +7,9 @@ import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
 
 <Callout type="warning" emoji="️⚠️">
-  **Note:** This documentation is for Windows only and should only be used if you are experiencing issues with the automatic dependency installation
-  that occurs during the installation process of the AnythingLLM Desktop executable.
+  **Note:** This documentation is for Windows only and should only be used if
+  you are experiencing issues with the automatic dependency installation that
+  occurs during the installation process of the AnythingLLM Desktop executable.
 </Callout>
 
 When installing AnythingLLM Desktop on Windows you may have been notified that external dependencies were missing. This is because AnythingLLM Desktop uses a local LLM powered by [Ollama](https://ollama.com/) which requires some additional dependencies to be installed on your system.
@@ -20,7 +21,7 @@ If you are in a geographic region that is restricted from accessing the S3 bucke
 
 ### Download the Dependency Bundle
 
-Download the [bundle](https://s3.us-west-1.amazonaws.com/public.useanything.com/support/ollama/win32_lib.zip) from the AnythingLLM S3 bucket. 
+Download the [bundle](https://s3.us-west-1.amazonaws.com/public.useanything.com/support/ollama/win32_lib.zip) from the AnythingLLM S3 bucket.
 
 _direct link:_ https://s3.us-west-1.amazonaws.com/public.useanything.com/support/ollama/win32_lib.zip
 
@@ -49,4 +50,5 @@ Copy the `lib` folder and paste it into the `ollama` folder inside the AnythingL
 You should now be able to run the AnythingLLM Desktop internal LLM with full GPU,CPU,NPU support.
 
 ## Alternative: Install Ollama Directly
+
 If you cannot unable to access the S3 bucket at all on your internet connection, you should just install [Ollama](https://ollama.com/) directly and select that LLM as your provider in AnythingLLM.
