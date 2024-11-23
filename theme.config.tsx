@@ -1,7 +1,15 @@
 import React from 'react'
 import { DocsThemeConfig, useConfig } from 'nextra-theme-docs'
 import { useRouter } from 'next/router'
-
+import _meta from './pages/changelog/_meta.json'
+// Get the latest release version from the changelog meta file
+const newRelease = Object.keys(_meta)
+  .filter((version) => !version.endsWith('.pre') && !version.includes('rc'))
+  .reduce((a, b) =>
+    0 < a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' })
+      ? a
+      : b
+  );
 
 const config: DocsThemeConfig = {
   project: {
@@ -95,10 +103,10 @@ const config: DocsThemeConfig = {
   ),
   banner: {
     dismissible: true,
-    key: 'v1.6.10-release', // Storage key to keep the banner state (dismissed or not). If you have updated your banner text, you should change the key to make sure the banner is shown again.
+    key: `${newRelease}-release`, // Storage key to keep the banner state (dismissed or not). If you have updated your banner text, you should change the key to make sure the banner is shown again.
     text: (
       <a href="https://anythingllm.com/download" target="_blank">
-        🚀 AnythingLLM v1.6.10 is live! Update now →
+        🚀 AnythingLLM {newRelease} is live! Update now →
       </a>
     )
   }
