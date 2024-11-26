@@ -1,0 +1,80 @@
+---
+title: FAQ
+description: Frequently asked questions about the AnythingLLM Community Hub.
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+import Link from "next/link";
+
+
+## Connecting to the AnythingLLM Community Hub
+
+<Callout type="info" emoji="🔑">
+Only pulling **private** items from the AnythingLLM Community Hub requires a Connection key. Public items do not require a Connection key and can be pulled in without one.
+To create a Connection key, visit your [profile page on the AnythingLLM Hub](https://hub.anythingllm.com/me) and click the **Create Connection Key** button.
+</Callout>
+
+Connecting to the AnythingLLM Community Hub requires a Connection key. You can find your Connection key by visting your [profile page on the AnythingLLM Hub](https://hub.anythingllm.com/me) and copying or creating a new Connection key.
+
+<Image 
+  src="/images/community-hub/connection-key-hub.png" 
+  alt="Connection key"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+    boxShadow: "0 0 10px 0 rgba(0, 0, 0, 0.1)",
+  }}
+/>
+
+Next, you can use the Connection key to connect to the AnythingLLM Community Hub in AnythingLLM.
+
+<Image 
+  src="/images/community-hub/connection-key.png" 
+  alt="Connection key"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+  }}
+/>
+
+## No private items
+
+The AnythingLLM Community Hub offers both public and private items. When you create an item, you can choose to make it private or public.
+
+Public items are visible to all users of AnythingLLM. **Private items are only visible to you and Teams** you share the tools with that you also have access to.
+
+If you are trying to pull in a private item from the AnythingLLM Community Hub:
+
+- Ensure you are logged in with the same account you used to create the item.
+- You are using the correct [Connection key](#connecting-to-the-anythingllm-community-hub) in AnythingLLM.
+- The item has been shared with at **least** one of your Teams.
+
+
+## Verification
+
+Some items in the AnythingLLM Community Hub are verified by the AnythingLLM team. These items are marked with a blue checkmark and a label that says **Verified**.
+
+<Image 
+  src="/images/community-hub/verification.png" 
+  alt="Verified badge"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+  }}
+/>
+
+Verified items have been reviewed by the AnythingLLM team to ensure they are safe and working as expected. Verification is not a guarantee of quality or safety, but rather a signal that the AnythingLLM team has reviewed the item and believes it is safe to use.
+
+You will only see verification badges for public items that are:
+- Agent Skills
+- Data Connectors
+- Workspaces
+
+The AnythingLLM team will review and verify items on a best-effort basis. If you believe an item should be verified, please let us know by [contacting support](mailto:team@anythingllm.com).

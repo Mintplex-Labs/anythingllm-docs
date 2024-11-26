@@ -113,3 +113,34 @@ Will redirect the user to the `/workspaces/sample-workspace` chat page after log
 ### Disable
 
 Fully remove or comment out the `SIMPLE_SSO_ENABLED` environment variable to return to the default behavior.
+
+
+## AnythingLLM Hub Agent Skills
+
+<Callout type="error" emoji="️🚨">
+  **Important:** Agent skills can enable running untrusted code from untrusted sources. By default, AnythingLLM will not allow downloading agent skills from the AnythingLLM Hub.
+</Callout>
+
+Modification of the `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED` environment variable allows you to pull in agent skills from the AnythingLLM Hub.
+
+**By default, this feature is disabled.** The reason for this is that running untrusted code from untrusted sources can be very risky and we want to err on the side of caution for self-hosted instances.
+
+There are two settings you can configure to control how this feature works:
+
+- `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED=1`: This configures enables AnythingLLM to download agent skills from the AnythingLLM Hub but **only if the item is verified or a private item**.
+- `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED=allow_all`: This configures enables AnythingLLM to download agent skills - including unverified public items - from the AnythingLLM Hub.
+
+### Enable
+
+Set the `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED` environment variable to **1** or **allow_all** to enable.
+
+```bash
+# This can be any value, number, boolean, or string and it will have the same effect.
+COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED="1"
+# or to allow all (not recommended)
+#COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED="allow_all"
+```
+
+### Disable
+
+Fully remove or comment out the `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED` environment variable to return to the default behavior.

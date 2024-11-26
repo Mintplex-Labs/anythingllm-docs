@@ -66,6 +66,50 @@
       "toc": true
     }
   },
+  "-- AnythingLLM Community Hub": {
+    "type": "separator",
+    "title": "AnythingLLM Community Hub"
+  },
+  "community-hub/about": {
+    "title": "What is the Community Hub?",
+    "href": "/community-hub/about",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "community-hub/import": {
+    "title": "Importing an item",
+    "href": "/community-hub/import",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "community-hub/upload": {
+    "title": "Uploading an item",
+    "href": "/community-hub/upload",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "community-hub/faq": {
+    "title": "FAQ",
+    "href": "/community-hub/faq",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "-- Installation Guides": {
     "type": "separator",
     "title": "Installation Guides"
@@ -226,6 +270,9 @@
   },
   "licences": {
     "display": "hidden"
+  },
+  "community-hub": {
+    "type": "hidden"
   },
   "support": {
     "title": "Support",
