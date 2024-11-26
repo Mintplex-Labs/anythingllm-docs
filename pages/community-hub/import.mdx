@@ -1,0 +1,67 @@
+---
+title: Importing from the AnythingLLM Community Hub
+description: How to import items from the AnythingLLM Community Hub into AnythingLLM.
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+import Link from "next/link";
+
+# Importing from the AnythingLLM Community Hub
+
+Every item in the AnythingLLM Community Hub can be imported into AnythingLLM. The process for importing each type is mostly the same.
+
+## Locate the item on the AnythingLLM Hub
+
+Given a public or private item on the AnythingLLM Hub, you can get the import string from the item by clicking on the **Import to AnythingLLM** button.
+
+<Image 
+  src="/images/community-hub/import-button.png" 
+  alt="Import button"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+  }}
+/>
+
+Clicking this button will show you a modal with the import string for the item.
+
+_On desktop this may prompt you to automatically open AnythingLLM to automatically handle the import via a deep links._
+
+<Image 
+  src="/images/community-hub/import-modal.png" 
+  alt="Import modal"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+  }}
+/>
+
+Paste the import string into AnythingLLM to begin the import process.
+
+<Image 
+  src="/images/community-hub/import-anythingllm.png" 
+  alt="Import modal"
+  width={1920} 
+  height={1080} 
+  style={{
+    margin: "5px",
+    borderRadius: "10px",
+  }}
+/>
+
+From here, you can follow the on-screen instructions to complete the import.
+
+## Failed to import agent skill?
+
+On self-hosted or the dockerized versions of AnythingLLM, you may encounter an error when importing an agent skill.
+
+This is because the agent skill requires you to enable imports of agent skills in the AnythingLLM configuration. By default, this is disabled to prevent malicious users from adding harmful agent skills to your instance.
+
+If you are the administrator of the AnythingLLM instance, you can enable imports of agent skills by modifying the `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED` configuration value to the appropriate security setting.
+
+See the [configuration page](/configuration#anythingllm-hub-agent-skills) for more information.
