@@ -1,0 +1,43 @@
+---
+title: "v1.7.1"
+description: "AnythingLLM Desktop v.1.7.1 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.1"
+/>
+
+## What's New:
+
+- [x] Token tracking metrics (time spent, tokens per second, etc.) on chats in workspace
+- [x] Fine-tuning flow support fully deprecated - to be replaced by local fine-tuning
+- [x] API improvements for workspace creation
+- [x] Add `GitLab` to watchable documents
+- [x] Add vector search API endpoint
+- [x] Ability to show/hide sidebar (cmd/ctrl + Shift + S)
+
+## Improvements:
+
+- [x] Gemini `/models` support
+- [x] Internal Ollama bumped to 0.5.4
+- [x] Deletion of current thread will not automatically re-route to default thread
+
+## Bug Fixes:
+
+- [x] User confirmation to reset all workspaces and clear document cache when changing embedding model or vector database - prevents accidental lockup of workspaces due to dimension mismatch
+- [x] Light mode table styles not showing headers
