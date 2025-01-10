@@ -109,6 +109,24 @@ This is the system prompt for your workspace. This is the "rule set" your worksp
 
 This determines how "inventive" the LLM is with responses. This varies from model to model. Know that the higher the number the more "random" a response will be. Lower is more short, terse, and more "factual".
 
+### Vector Database Settings > Search Preference
+
+<Image
+  src="/images/faq/llm-not-using-my-docs/vector-search-preference.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Workspace RAG Search Preference"
+/>
+
+By default, AnythingLLM will search for the most relevant chunks of text. For the majority of use cases this is the best option since it is very simple to run and very fast to calculate.
+
+However, if you are getting bad results, you may want to try "Accuracy Optimized" instead. This will search _more_ chunks of text and then re-rank them to the top chunks that are most relevant to your query. This process is slightly slower but will yield better results in almost all cases. This option is only available if you are using LanceDB as your vector database.
+
+The reason this method is opt-in is because it is computationally more expensive and on slower machines it may take more time that the you are willing to wait. Like the embedder model, this model will download **once** on it's first use. This is a workspace specific setting so you can experiment with it in different workspaces.
+
+> From our testing, the reranking process will add about 100-500ms to the response time depending on your computer or instance performance.
+
 ### Vector Database Settings > Max Context Snippets
 
 This is a very critical item during the "retrieval" part of RAG. This determines "How many relevant snippets of text do I want to send to the LLM". Intuitively you may think "Well, I want all of them", but that is not possible since there is an upper limit to how many tokens each model can process. This window, called the context window, is shared with the system prompt, context, query, and history.
