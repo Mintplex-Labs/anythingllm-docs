@@ -1,0 +1,61 @@
+---
+title: "v1.7.2"
+description: "AnythingLLM Desktop v.1.7.2 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.2"
+/>
+
+## What's New:
+
+- [x] Reranker added for workspace RAG (LanceDB only)
+- [x] Support attachmets via threadWorkspace API endpoints
+- [x] Added support for Gemini text embedder
+
+#### Windows ARM64 - Snapdragon X Elite devices only
+
+By default, on Windows ARM64 devices that have the Snapdragon X Elite chipset, AnythingLLM is now able to download and run LLMs on the built-in NPU. This is a huge efficiency boost for any workspace that uses RAG.
+
+Additionally, the default embedder model is able to run on the NPU as well with a 30% performance increase in embedding documents.
+
+
+<iframe
+  width="100%"
+  height="450"
+  src="https://www.youtube.com/embed/iQvHtubnfcI?si=McTUvuPNCc_AtGIM"
+  title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
+
+## Improvements:
+
+- [x] Migrate assets to our CDN for faster download speeds
+- [x] Update OpenAI responses to be proper second format
+- [x] Typo in SearXNG setup
+- [x] Voyage embedding models updated
+- [x] Api documentation upload endpoint fixed
+
+## Bug Fixes:
+
+- [x] Fixed “Javascript error” modal that showed for some users on start with no impact to app function (Windows x86 only)
+- [x] Scrollbar showing on some chats for no reason
+- [x] Fixed crash on audio file upload with low bitrate
