@@ -1,0 +1,74 @@
+---
+title: "v1.7.3"
+description: "AnythingLLM Desktop v.1.7.3 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.3"
+/>
+
+## What's New:
+
+<div
+  style={{
+    display: "flex",
+    gap: "10px",
+    padding: "10px",
+    flexWrap: "wrap",
+    width: "100%",
+  }}
+>
+  <Image
+    src="/images/product/changelog/1.7.3/think.png"
+    style={{ width: "100%", maxWidth: "400px", height: "auto" }}
+    width={0}
+    height={0}
+    sizes="(max-width: 768px) 100vw, 300px"
+    quality={100}
+    alt="AnythingLLM Thinking UI"
+  />
+  <Image
+    src="/images/product/changelog/1.7.3/agent-ui.png"
+    style={{ width: "100%", maxWidth: "400px", height: "auto" }}
+    width={0}
+    height={0}
+    sizes="(max-width: 768px) 100vw, 300px"
+    quality={100}
+    alt="AnythingLLM Agent UI"
+  />
+</div>
+
+- [x] Added new Agent logging output UI elements
+- [x] Added LLM `<thinking>` UI handlers for thinking chats and outputs
+- [x] Added ability to disable `default` agent skills
+
+## Improvements:
+
+- [x] Farsi translations
+- [x] Gemini model caching
+- [x] AzureOpenAI `o1` API verison support
+- [x] Caching of TogetherAI models
+- [x] Update NVIDIA NIM branding
+- [x] Bump perplexity models
+- [x] Improved LaTeX support for `$$` and `\[...\]` style equations
+
+## Bug Fixes:
+
+- [x] Fixed Officeparser tempfile location bug
+- [x] Adjustment to how `similarity_score` is calculated for RAG
+- [x] UI stop button bug invisible on light mode
