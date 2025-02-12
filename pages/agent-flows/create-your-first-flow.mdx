@@ -1,0 +1,228 @@
+---
+title: "Create your first agent flow"
+description: "Learn how to create your first agent flow in AnythingLLM"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  The below walkthrough is from the Docker version of AnythingLLM, but the
+  desktop version works the exact same way.
+</Callout>
+
+# Create your first agent flow
+
+Creating your first agent flow is a breeze. Let's walk through the steps to create your first agent flow. In this example, we will create a flow
+that will scrape hackernews and then use an LLM to filter out the posts that are not interesting to us by some variable topic.
+
+## Step 1: Create a new flow
+
+To create a new flow, you can click the "Create Flow" button in the flow editor. This will open the flow editor with a blank canvas.
+
+<Image
+  src="/images/agent-flows/no-flows.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+
+## Step 2: Reviewing the basic blocks
+
+On a blank canvas, you will see a few basic blocks that you can use to build your flow. Let's review the blocks we have available to us and what they do.
+
+[You can find the full list of blocks in the docs here](/agent-flows/blocks).
+
+<Image
+  src="/images/agent-flows/new-flow.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="UI when creating a new flow"
+/>
+
+### Flow Information Block
+
+The flow information block is used to provide information about the flow. It is the first block on the canvas and is used to give the flow a name and description.
+
+This is **a critical step** as it will be used by the LLM to understand the flow and the purpose of the flow and when it should be used.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-info.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+#### Flow name
+
+This is the name of the flow. It is used to identify the flow in the UI and in the LLM. You should give it a name that is descriptive of the flow but not too long.
+
+#### Flow description
+
+This is the description of the flow. It is used to give the LLM more information about the flow and the purpose of the flow. The best description will include:
+
+- What the flow does
+- Examples of how to use the flow or how it should be called
+- Any variable definitions or limitations the LLM should know about.
+
+_all of this is optional, but the more information you provide, the better!_
+
+### Flow Variables Block
+
+The flow variables block is used to define the variables that will be used in the flow.
+
+Variables are a way to pass data in and out of the flow on a per-step basis. They are defined in the flow variables block and can be used in the flow blocks.
+Any variable defined in the flow variables block can be used in the flow blocks and be used as an input or output for any block.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-vars.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+#### Variable name
+
+Variable names are used to identify the variable in the flow. You should give it a name that is descriptive of the variable but not too long.
+eg: `HackerNewsPostsPath`
+
+#### Variable default value
+
+Leaving this blank will not affect the flow, but if you provide a default value, it will be used as the value of the variable if no other value is provided.
+It is possible for the LLM agent to provide a value for the variable, and this would override the default value.
+
+### Flow Complete Block
+
+The flow complete block is used to indicate the end of the flow. It is the last block on the canvas and is used to indicate the end of the flow. This block purely serves as a visual indicator for you.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-complete.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+## Step 3: Adding blocks to the flow
+
+Now that we have reviewed the blocks, let's add some blocks to the flow.
+
+### Add a block
+
+<Callout type="info" emoji="💡">
+  Options in your add block menu will vary depending on the version of AnythingLLM you are using and the blocks you have available to you.
+  If you expect to use a block in your flow, but it is not available - you are probably using the wrong version of AnythingLLM.
+
+Check out the [block docs](/agent-flows/blocks) to see which blocks are available to you on your deployment of AnythingLLM.<br/>
+
+  <u>**Please do not open a support ticket about a missing block without first checking the block docs.**</u>
+</Callout>
+
+To add a block to the flow, you can click the "Add Block" button in the flow editor. This will open the block library where you can search for and select the block you want to add.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/add-block.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+## Step 4: Updating the flow for our use case
+
+The objective of this flow is to scrape hackernews and then use an LLM to filter out the posts that are not interesting to us by some variable topic.
+
+Below are the steps we will take to achieve this and what each block's content should be.
+
+### Flow Information Block
+
+- Agent Name: `Hacker News Headline Viewer`
+- Agent Description:
+
+```
+This tool can be used to visit hacker news webpage and extract ALL headlines and links from the page that have to do with a particular topic.
+
+Available options for `page`:
+(empty)
+"front"
+"newest"
+
+the `topic` variable is used as the guide line for what kinds of topic I am interested in and what should be done. Any articles or links that seem interesting should be returned to me as clickable links in markdown
+
+Example:
+"Checkout HackerNews newest and find political posts"
+hackerNewsURLPath => "newest"
+topicOfInterest =>"Political discussions or items"
+
+
+"Checkout HackerNews and find AI posts"
+hackerNewsURLPath => ""
+topicOfInterest =>"Artificial intelligence"
+```
+
+### Flow Variables Block
+
+- `hackerNewsURLPath`: ``- Default to the`/` path
+- `topicOfInterest`: `Political discussions or items` - Default to `Political discussions or items`
+- `pageContentFromSite`: `` - Default to an empty string
+
+### Web Scraper Block
+
+Notice how in this block we are using the `${hackerNewsURLPath}` variable to dynamically change the URL we are scraping as well as storing the result in the `${pageContentFromSite}` variable so we can use it in the next block.
+
+- `URL to scrape`: `https://news.ycombinator.com/${hackerNewsURLPath}`
+- `Result Variable`: `pageContentFromSite`
+
+### LLM Instruction Block
+
+- `Input Variable`: `pageContentFromSite`
+- `Instruction`:
+
+```
+Extract all links from this content that would be relevant to this topic: ${topicOfInterest}
+
+
+Content
+${pageContentFromSite}
+```
+
+- `Result Variable`: _empty_ since we will not be storing the result of this to use in another block. The output of this block will go directly to the LLM running the agent.
+
+## Step 5: Save the flow
+
+All new flows are automatically saved as a "Enabled". You can save the flow by clicking the "Save" button in the top right corner of the flow editor.
+
+## Step 6: Run the flow
+
+Now that we have saved the flow, we can run it via a regular agent call like we would any other agent skill.
+
+<Image
+  src="/images/agent-flows/example-run.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+Voila! You have just created your first agent flow.
+
+## Step 7: Editing the flow
+
+From the agent skill page you can select on any existing flow to disable it, edit it, or delete it. You can start a new flow from the agent skill page as well by clicking the "Open Builder" link.
+
+To edit a specific flow, click on the flow name in the list of flows and then on the right hand side of the flow information block you will see a `Gear` icon.
+Click on this will open a menu where you can delete the flow or edit it
+
+<Image
+  src="/images/agent-flows/has-flows.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>

@@ -1,0 +1,45 @@
+---
+title: "What is an Agent Flow?"
+description: "What are Agent Flows in AnythingLLM and how to use them?"
+---
+
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/agent-flows/flow-example.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Flow example"
+/>
+
+# Agent Flows
+
+Agent Flows are a no-code way to build [agentic skills](../agent/overview.mdx). Using a visual interface, you can build "flows" that can be used in your agents.
+
+The capabilities of agent flows are only limited by your imagination and the tools you have access to. Docker and Desktop versions of AnythingLLM have a built-in agent flow editor and
+have various tools available to use in your flows. In general, the desktop version has more tools available to use in your flows.
+
+## Agent Flows vs Agent skills
+
+In general, agent flows are a more simplified way to build custom agent skills than the traditional [agent skills](../agent/overview.mdx) method. The end result is the same, but the
+process of building the skill is different.
+
+- **Agent flows:** No-code way to build agentic skills. Built for everyone.
+- **Agent skills:** Code way to build agentic skills. Built for power users and developers.
+
+## How to use agent flows
+
+Agent flows _work exactly the same_ as agent skills, the only difference is the way you build them. You can use agent flows in the same way you use agent skills via the `@agent` directive or by asking
+a relevant question while in an agentic chat.
+
+Agent flows are a very flexible way to build agentic skills and depending on the power of your LLM, you can even expect
+the LLM to _chain multiple flows together_ to complete a task, or call a series of flows in a row to complete a task.
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

@@ -1,0 +1,38 @@
+{
+  "overview": {
+    "title": "What is an Agent Flow?",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "create-your-first-flow": {
+    "title": "Creating your first flow",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "blocks": {
+    "title": "All about blocks",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "debugging-flows": {
+    "title": "Debugging flows",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}
