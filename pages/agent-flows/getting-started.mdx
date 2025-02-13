@@ -1,0 +1,111 @@
+---
+title: "Getting Started with Flows"
+description: "Learn how to access and use the flow builder in AnythingLLM"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  The below walkthrough is from the Docker version of AnythingLLM, but the
+  desktop version works the exact same way.
+</Callout>
+
+# Getting Started with Flows
+
+Let's walk through how to access and use the flow builder in AnythingLLM.
+
+## Accessing the Flow Builder
+
+To create a new flow, navigate to your workspace's agent skills page and click the "Create Flow" button. This will open the flow builder with a blank canvas.
+
+<Image
+  src="/images/agent-flows/no-flows.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+
+## Understanding the Canvas
+
+When you first open the flow builder, you'll see a blank canvas with some basic blocks. These are the foundation of every flow:
+
+<Image
+  src="/images/agent-flows/new-flow.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="UI when creating a new flow"
+/>
+
+### Default Blocks
+
+Every new flow starts with three essential blocks:
+
+1. **Flow Information Block** - Defines the flow's name and description
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-info.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+2. **Flow Variables Block** - Sets up any variables needed in your flow
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-vars.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+3. **Flow Complete Block** - Marks the end of your flow
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-complete.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+You can learn more about these blocks in the [Default Blocks documentation](/agent-flows/blocks/default-blocks).
+
+## Adding New Blocks
+
+To add functionality to your flow, you'll need to add blocks. Click the "Add Block" button between any existing blocks to see available options:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/add-block.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+<Callout type="info" emoji="💡">
+  Available blocks will vary depending on your AnythingLLM version. Check the [blocks documentation](/agent-flows/blocks/intro) to see which blocks are available in your deployment.
+</Callout>
+
+## Saving and Managing Flows
+
+- All new flows are automatically saved as "Enabled"
+- Click the "Save" button in the top right to save changes
+- Access existing flows from the agent skills page
+- Click the gear icon on a flow to edit or delete it
+
+<Image
+  src="/images/agent-flows/has-flows.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+## Next Steps
+
+Now that you understand the basics of the flow builder, try creating your first flow by following our [HackerNews Flow Tutorial](/agent-flows/tutorial-hackernews)!
