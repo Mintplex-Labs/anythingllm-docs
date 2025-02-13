@@ -1,0 +1,26 @@
+---
+title: "Debugging flows"
+description: "How to debug agent flows in AnythingLLM"
+---
+
+import { Cards, Callout } from "nextra/components";
+import Image from "next/image";
+
+# Debugging flows
+
+Often times you will want to debug your flows to ensure they are working as expected. When developing flows, you can use the flow editor to debug your flows while also using the workspace chat
+to test the flow and ensure that it is working as expected.
+
+When debugging flows, you will want to **disable all other agent skills** to ensure that the flow is always executed as it will be the only tool available to the LLM.
+
+## Logs
+
+You can view the logs of an executed flow by [opening the logs of AnythingLLM](/installation-desktop/debug).
+In these log files you will see more verbose output about the flow and the blocks that were executed so you can see what happened.
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: cover;
+  }
+`}</style>

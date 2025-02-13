@@ -1,0 +1,49 @@
+{
+  "intro": {
+    "title": "Overview",
+    "theme": {
+      "hidden": true,
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "default-blocks": {
+    "title": "Default Blocks",
+    "theme": {
+      "hidden": true,
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "web-scraper": {
+    "title": "Web Scraper",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "api-call": {
+    "title": "API Call",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "llm-instruction": {
+    "title": "LLM Instruction",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}

@@ -1,0 +1,202 @@
+---
+title: "Tutorial: HackerNews Flow"
+description: "Create your first agent flow by building a HackerNews article filter"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Tutorial: Building a HackerNews Filter Flow
+
+In this tutorial, we'll create a flow that scrapes HackerNews and uses an LLM to filter posts based on topics you're interested in. This flow will help you quickly find articles about topics you care about.
+
+## Overview of What We're Building
+
+This flow will:
+1. Scrape content from HackerNews (from either the front page or newest posts)
+2. Use an LLM to filter and extract articles matching your topic of interest
+3. Return the relevant articles as clickable links
+
+## Step 1: Create a New Flow
+Start by clicking "Create Flow" in your workspace's agent skills page.
+
+<Image
+  src="/images/agent-flows/no-flows.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+
+## Step 2: Configure Flow Information
+
+In the Flow Information block, set up:
+
+**Name**:
+```
+Hacker News Headline Viewer
+```
+
+**Description**:
+```
+This tool can be used to visit hacker news webpage and extract ALL headlines and links from the page that have to do with a particular topic.
+
+Available options for `page`:
+(empty) - front page
+"newest" - newest posts page
+
+Examples of how to use this flow:
+"Find AI-related posts on HackerNews"
+"Show me political discussions from the newest HackerNews posts"
+
+The flow will return relevant articles as clickable markdown links.
+```
+
+Your flow info block should look like this:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+<Image
+  src="/images/agent-flows/hn-flow-info.png"
+  height={200}
+  width={500}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+</div>
+
+## Step 3: Set Up Flow Variables
+
+In the Flow Variables block, create these variables:
+
+1. **hackerNewsURLPath**
+```
+Name: hackerNewsURLPath
+Default Value: (leave empty)
+```
+
+2. **topicOfInterest**
+```
+Name: topicOfInterest
+Default Value: Political discussions or items
+```
+
+3. **pageContentFromSite**
+```
+Name: pageContentFromSite
+Default Value: (leave empty)
+```
+
+Your flow start block should look like this:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+<Image
+  src="/images/agent-flows/hn-flow-start.png"
+  height={200}
+  width={500}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+</div>
+
+## Step 4: Add Web Scraping Block
+
+1. Click "Add Block" below the Flow Variables block
+2. Select "Web Scraper"
+3. Configure the block:
+```
+URL to scrape: https://news.ycombinator.com/${hackerNewsURLPath}
+Result Variable: pageContentFromSite
+```
+
+Your web scraping block should look like this:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+<Image
+  src="/images/agent-flows/hn-web-scraping.png"
+  height={200}
+  width={500}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+</div>
+
+<Callout type="info" emoji="💡">
+  The `${hackerNewsURLPath}` syntax allows us to dynamically change which HackerNews page we scrape based on user input.
+</Callout>
+
+## Step 5: Add LLM Instruction Block
+
+1. Click "Add Block" below the Web Scraper block
+2. Select "LLM Instruction"
+3. Configure the block:
+```
+Input Variable: pageContentFromSite
+```
+
+**Instructions**:
+```
+Extract all links from this content that would be relevant to this topic: ${topicOfInterest}
+
+Content:
+${pageContentFromSite}
+
+Format your response as a list of markdown links, with a brief description of why each link is relevant.
+If no relevant links are found, say "No relevant articles found."
+```
+
+```
+Result Variable: (leave empty)
+```
+
+Your LLM instruction block should look like this:
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+<Image
+  src="/images/agent-flows/hn-llm-instruction.png"
+  height={200}
+  width={500}
+  quality={100}
+  alt="UI when no flows exist"
+/>
+</div>
+
+## Step 6: Save and Test
+
+1. Click "Save" in the top right corner
+2. Disable other agent skills to ensure this flow is used
+3. Test the flow with prompts like:
+```
+Find AI-related posts on HackerNews
+
+Show me political discussions from the newest HackerNews posts
+
+What are the latest cryptocurrency articles on HackerNews?
+```
+
+Example output:
+<Image
+  src="/images/agent-flows/example-run.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Example of HackerNews flow results"
+/>
+
+## Customizing the Flow
+
+You can enhance this flow by:
+- Adding more specific filtering criteria in the LLM instructions
+- Including additional variables for more complex filtering
+- Modifying the output format to include more details about each article
+
+## Troubleshooting
+
+If you're not getting the expected results:
+1. Check that your flow variables are correctly named
+2. Verify the Web Scraper URL is correct
+3. Make sure your LLM instructions are clear and specific
+4. Review the [debugging flows guide](/agent-flows/debugging-flows) for more help
+
+<Callout type="info" emoji="💡">
+  Remember that the quality of results depends on your LLM's capabilities. More powerful models like Claude 3.5 Sonnet will generally provide better filtering and summaries.
+</Callout>

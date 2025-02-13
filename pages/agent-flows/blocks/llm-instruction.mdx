@@ -1,0 +1,44 @@
+---
+title: "LLM Instruction"
+description: "Learn about the LLM instruction block and how to use it."
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+<Image
+  src="/images/agent-flows/llm-instruction.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+<Callout type="warning" emoji="⚠️">
+  Like **any agent call** the LLM instruction block is subject to the ability of
+  the LLM to follow the instructions. If the LLM is unable to follow the
+  instructions, you will not get the desired output.
+  <br />
+  <br />
+  <u>
+    **Please do not open a support ticket about "my LLM is not following the
+    instructions" without first understanding [how LLM tool calling
+    works](../../agent-not-using-tools.mdx).**
+  </u>
+</Callout>
+
+## Usage
+
+_This block will always use the LLM of the workspace agent that is executing the flow._
+
+The LLM instruction block is used to provide instructions to the LLM. This is the most flexible and powerful block in the flow editor.
+
+The LLM instruction block is able to leverage variables so you can drive the output of the LLM based on the flow variables and outputs. The more descriptive and detailed you can be in the prompt, the better the output will be.
+
+The ability for the LLM to follow the instructions is subject to the LLM's ability to follow the instructions and the quality of the prompt. If you are having issues with the LLM not following the instructions, you may need to try a different prompt or model.
+Do not expect a 3B Q4_K_M model to follow the instructions as well as GPT-4, or a 70B Q4_K_M model.
+
+## Input Variables
+
+- `Input Variables`: The variables to send to the LLM.
+- `Instructions`: The instructions to send to the LLM.
+- `Result Variable`: The variable to store the result of the LLM.

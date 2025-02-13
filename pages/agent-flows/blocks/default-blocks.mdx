@@ -1,0 +1,74 @@
+---
+title: "Default Blocks"
+description: "Learn about the default blocks that are available to you in the flow editor."
+---
+
+import Image from "next/image";
+
+### Flow Information Block
+
+The flow information block is used to provide information about the flow. It is the first block on the canvas and is used to give the flow a name and description.
+
+This is **a critical step** as it will be used by the LLM to understand the flow and the purpose of the flow and when it should be used.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-info.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+#### Flow name
+
+This is the name of the flow. It is used to identify the flow in the UI and in the LLM. You should give it a name that is descriptive of the flow but not too long.
+
+#### Flow description
+
+This is the description of the flow. It is used to give the LLM more information about the flow and the purpose of the flow. The best description will include:
+
+- What the flow does
+- Examples of how to use the flow or how it should be called
+- Any variable definitions or limitations the LLM should know about.
+
+_all of this is optional, but the more information you provide, the better!_
+
+### Flow Variables Block
+
+The flow variables block is used to define the variables that will be used in the flow.
+
+Variables are a way to pass data in and out of the flow on a per-step basis. They are defined in the flow variables block and can be used in the flow blocks.
+Any variable defined in the flow variables block can be used in the flow blocks and be used as an input or output for any block.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-vars.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>
+
+#### Variable name
+
+Variable names are used to identify the variable in the flow. You should give it a name that is descriptive of the variable but not too long.
+eg: `HackerNewsPostsPath`
+
+#### Variable default value
+
+Leaving this blank will not affect the flow, but if you provide a default value, it will be used as the value of the variable if no other value is provided.
+It is possible for the LLM agent to provide a value for the variable, and this would override the default value.
+
+### Flow Complete Block
+
+The flow complete block is used to indicate the end of the flow. It is the last block on the canvas and is used to indicate the end of the flow. This block purely serves as a visual indicator for you.
+
+<div style={{ display: "flex", justifyContent: "center" }}>
+  <Image
+    src="/images/agent-flows/flow-complete.png"
+    height={200}
+    width={500}
+    quality={100}
+  />
+</div>

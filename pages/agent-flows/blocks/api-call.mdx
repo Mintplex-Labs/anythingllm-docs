@@ -1,0 +1,40 @@
+---
+title: "API Call"
+description: "Learn about the API call block and how to use it."
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/agent-flows/api-call.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="API Call"
+/>
+
+## Usage
+
+The API call block is used to make a call to an API. Here you can make a call to any API that you have access to. You can define the body, headers, and method for the API call.
+All of the fields are able to leverage variables so you can dynamically change the API call contents and body.
+
+### POST body usage
+
+The body of a POST request can be a JSON, Raw text, or form data.
+Anywhere you want to inject a variable into the body, you can use a the `${variableName}` syntax.
+
+```json
+{
+  "variableProperty": "${variableName}",
+  "staticProperty": "staticValue",
+  "${variableName}": "staticValue"
+}
+```
+
+## Input Variables
+
+- `URL`: The URL of the API to call.
+- `Method`: The HTTP method to use.
+- `Headers`: The headers to send with the API call.
+- `Body`: The body of the API call. (POST only)
+- `Result Variable`: The variable to store the result of the API call.

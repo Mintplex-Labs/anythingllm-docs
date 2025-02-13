@@ -1,0 +1,25 @@
+---
+title: "Web Scraper"
+description: "Learn about the web scraper block and how to use it."
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/agent-flows/web-scraping.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Web Scraper"
+/>
+
+## Usage
+
+The web scraper block is used to scrape a website and extract the content. Currently the web-scraper will return the parsed TEXT content of the page - not the HTML.
+
+The purpose of this block is to allow you to scrape a website and extract the content you need as if you were accessing the website directly. If you are looking for more programmatic access to the HTML, you should use the [API call block](/agent-flows/blocks/api-call).
+
+## Input Variables
+
+- `URL to scrape`: The URL of the website to scrape.
+- `Result Variable`: The variable to store the result of the web scraping.
