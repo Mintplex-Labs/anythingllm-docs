@@ -1,0 +1,59 @@
+---
+title: "v1.7.4"
+description: "AnythingLLM Desktop v.1.7.4 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.4"
+/>
+
+## What's New:
+
+<Image
+  src="/images/agent-flows/flow-example.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent UI"
+/>
+
+- [x] [Agent Flows](/agent-flows/overview) for easier agent skill creation (more blocks coming to desktop soon)
+- [x] Built in native OCR for scannedPDF and Images!
+
+## Improvements:
+
+- [x] QNN NPU model engine bumped for faster loading of models and inference.
+- [x] Include `reasoning_content` in Generic OpenAI connector
+- [x] Include reasonsing for Deeseek API
+- [x] Changed onboarding flow to be native language for system
+- [x] Tokenizer performance improvements for large documents
+- [x] `<thinking>` Inherit UI font size from UI for think
+- [x] Azure O1,O3 support and reasoning
+- [x] Enable `num_ctx` in ollama embdder to match dimensions
+- [x] Patch PPLX timeouts + inchat citations from PPLX
+- [x] Improved agent logging for web scraping
+- [x] Patch Gitlab sub-project pulling
+- [x] PAT on Confluence connector
+- [x] In chat citations for Perplexity API
+
+## Bug Fixes:
+
+- [x] Fixed bad upload UI loop on document loader
+- [x] Fixed light mode SQL connector `X` being invisible
+- [x] Fixed bad codeblock header size on Windows
+- [x] Fixed O3 model temperature being present in requests resulting in 403
