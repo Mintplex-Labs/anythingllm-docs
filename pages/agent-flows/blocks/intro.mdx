@@ -20,16 +20,16 @@ Learn about the blocks that are available to you in the flow editor. Keep in min
 
 ## Available Blocks
 
-{Object.keys(META).filter((key) => key !== "intro").map((key) => {
-return (
-
-<Card
-  key={key}
-  title={META[key].title}
-  href={`/agent-flows/blocks/${key}`}
-  style={{ margin: "1rem" }}
-/>
-); })}
+{Object.keys(META)
+  .filter((key) => key !== "intro")
+  .map((key) => (
+    <Card
+      key={key}
+      title={META[key].title}
+      href={`/agent-flows/blocks/${key}`}
+      style={{ margin: "1rem" }}
+    />
+  ))}
 
 export const Card = Object.assign(
   // Copy card component and add default props
