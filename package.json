@@ -4,7 +4,6 @@
   "description": "AnythingLLM Documentation",
   "scripts": {
     "dev": "next dev --port 3333",
-    "img": "node scripts/compress-images.mjs",
     "build": "next build",
     "start": "next start",
     "lint": "yarn prettier --ignore-path .prettierignore --write ./pages"
@@ -32,9 +31,6 @@
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
     "@types/node": "18.11.10",
-    "imagemin": "^9.0.0",
-    "imagemin-mozjpeg": "^10.0.0",
-    "imagemin-pngquant": "^10.0.0",
     "prettier": "^3.2.5",
     "typescript": "^4.9.3"
   },
