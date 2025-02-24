@@ -1,0 +1,44 @@
+---
+title: "Chroma Vector Database"
+description: "Chroma is an open-source and ai-native vector database that is easy to run and host anywhere."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/local/chroma/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Chroma Cloud"
+/>
+
+# Chroma Cloud
+
+[Chroma](https://trychroma.com) is an [open-source](https://github.com/chroma-core/chroma) and ai-native vector database that is easy to run and host anywhere. Chroma Cloud is a hosted version of Chroma that is easy to use and setup.
+
+AnythingLLM can connect to your Chroma Cloud instance so that AnythingLLM can store and search embeddings on it automatically.
+
+## Connecting to Chroma Cloud
+
+You can configure Chroma Cloud at any time in the **Settings**.
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/cloud/chromacloud/chroma-cloud.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Chroma Vector Database Settings"
+/>
+
+<Callout type="warning" emoji="️⚠️">
+  **Developer Notice**
+
+    Make sure to create a database in Chroma Cloud prior to connecting.
+
+    AnythingLLM will use the embedding model set and **will not** use Chroma's built-in embedders even if defined.
+
+    If you run into any issues please visit Chroma Cloud's [documentation](https://docs.trychroma.com/cloud/getting-started).
+
+</Callout>
