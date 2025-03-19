@@ -1,0 +1,60 @@
+---
+title: "v1.7.6"
+description: "AnythingLLM Desktop v.1.7.6 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.6"
+/>
+
+## What's New:
+
+### Reorder workspaces
+You can now reorder your workspaces by dragging and dropping them into your desired order.
+
+### Ollama 0.6.2
+The internal version of Ollama has been updated to 0.6.2
+
+_note:_ There is a known issue with ollama 0.6.2 where `gemma3` does not work. We will patch this when it is fixed in Ollama.
+
+### Installer skip
+_windows only_
+
+We've added an option to skip instllation of the ollama libraries when installing AnythingLLM. This is useful if you plan to not use the internal ollama shipped with AnythingLLM and want to save disk space and time.
+
+## Improvements:
+
+- [x] Added Danish translations
+- [x] Documentation pinning UI improvements
+- [x] Remove folder endpoint was added to dev API
+
+## Bug Fixes:
+
+- [x] Fixed issue where clicking on gear icon on non-focused workspace on sidebar would open chat page and not it's settings page
+- [x] Fixed issue where `deepseek` thoughts in the UI were being cut off
+- [x] Fixed issue where `stop` button did not show in the UI when streaming responses
+- [x] ChromaDB integrations updated to work with latest chroma version
+- [x] Embedding OpenAI compatible endpoint updated to comply with expected OpenAiI response schema
+
+## Pinned Download Links
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.7.6/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.7.6/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.7.6/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.7.6/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.7.6/AnythingLLMDesktop.AppImage)
