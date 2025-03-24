@@ -3,5 +3,59 @@ title: "What is NVIDIA NIM?"
 description: "Learn about how to use NVIDIA NIM on your RTX GPU to speed up local AI inference."
 ---
 
+_NVIDIA NIM was live on AnythingLLM Desktop 1.7.7 for Windows (x64) on 25th March 2025._
+
 # What is NVIDIA NIM?
+
+NVIDIA NIM (aka: Nvidia Inference Microservices) is a software technology, which packages optimized inference engines, industry-standard APIs and support for AI models into containers for easy deployment.
+
+All of this runs via WSL2 on Windows and makes it easy to deploy and run LLM models locally at the fastest speeds possible on RTX AI PC's. AnythingLLM features a bespoke integration in the AnythingLLM Desktop client that makese
+installation, setup, and usage of NIM a breeze.
+
+NVIDIA NIM is currently in **beta** and is only available on Windows 11 on **AnythingLLM Desktop**.
+
+## Privacy
+
+NVIDIA NIM models run __fully__ locally on your machine using your own GPU. AnythingLLM does not send any data to NVIDIA or any other third party in order to run NIM models.
+After a model is installed, it is present on your local machine and AnythingLLM will use this local engine for inference.
+
+NVIDIA NIM on RTX is __not to be confused__ with NVIDIA's cloud-based NIM offering. This is a __completely__ separate product and service designed to run NIM on your local RTX GPU.
+
+## How does it work?
+
+A NIM is a single model + software stack, packaged into a container designed and maintained by NVIDIA. It is specificially designed to be run on NVIDIA RTX GPUs.
+In AnythingLLM, we use NIM to run the LLM models for chat, agents, and all other tasks that require inference.
+
+See the [NVIDIA NIM system requirements](/nvidia-nims/system-requirements) for the full list of requirements to run NIM models on your system.
+
+## What models are supported?
+
+AnythingLLM supports all of the models that are available in the NIM containers. You can see the full list of models [on build.nvidia.com](https://build.nvidia.com/search?q=chat-run-on-rtx).
+
+## How do I install it?
+
+AnythingLLM will present you with a simple to use UI to install and manage NIM containers if you select the `NVIDIA NIM` LLM provider and are on a compatible operating system.
+
+Once the official NIM installer has finished, you will be able to use NVIDIA NIM models in AnythingLLM.
+
+See the [NVIDIA NIM x AnythingLLM Walkthrough](/nvidia-nims/walkthrough) for the full walkthrough.
+
+## Definitions
+
+- **NIM**: Nvidia Inference Microservice - a single LLM or Model + software stack, packaged into a container designed and maintained by NVIDIA.
+- **WSL2**: Windows Subsystem for Linux 2 - a compatibility layer that allows you to run Linux binaries on Windows 11. You will not need to directly interact with WSL2 - the NIM installer will handle this for you and AnythingLLM will use it automatically.
+- **NIM Installer**: The pre-built NVIDIA NIM installer that runs in the AnythingLLM Desktop client to unlock the use of NIM models in AnythingLLM.
+- **NIM Manager**: The AnythingLLM UI that allows you to install, update, and run a NIM.
+
+## Video Walkthrough & Overview
+
+<iframe  
+  width="100%"
+  height="450" 
+  src="https://www.youtube.com/embed/Q7eZJupnba4" 
+  title="YouTube video player" 
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen
+></iframe>
 

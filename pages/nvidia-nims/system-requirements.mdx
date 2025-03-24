@@ -1,0 +1,25 @@
+---
+title: "System Requirements"
+description: "Learn about the system requirements to run NVIDIA NIM on your machine."
+---
+
+# NVIDIA NIM System Requirements
+
+NVIDIA NIM is a software that runs on NVIDIA RTX GPUs - so you **will need an NVIDIA GPU** to run it. No other GPU providers are supported to run NIM.
+
+## Operating System
+
+NVIDIA NIM runs on Windows 11 and later. You do not need to be on any special developer preview or beta version of Windows 11 - just a normal, stable release version of Windows 11.
+
+## NVIDIA GPU
+
+The **minimum** GPU requirement is an NVIDIA RTX 4080 or better. If your card is incompatible, you will see an error message when you try to run the NIM installer for the first time.
+
+This is **not** a limitation of AnythingLLM - it is a limitation of NVIDIA NIM and we cannot directly change this. 
+
+Please **DO NOT** report this as an issue with AnythingLLM on our issue tracker.
+
+## WSL2
+
+NVIDIA NIM requires WSL2 to be enabled. If you are on Windows 10, you will need to upgrade to Windows 11 to use NVIDIA NIM.
+During the NIM installer that runs in the AnythingLLM Desktop client, it will automatically enable WSL2 for you if it is not already enabled - this may require a restart of your machine post-installation.
