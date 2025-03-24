@@ -1,0 +1,251 @@
+---
+title: "Walkthrough"
+description: "Learn how to use NVIDIA NIM in AnythingLLM."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# NVIDIA NIM Walkthrough
+
+The use of NVIDIA NIM in AnythingLLM is very simple and straightforward - all of the complexity is hidden from you by the AnythingLLM Desktop client or the NVIDIA NIM Installer.
+
+
+## Select the NVIDIA NIM LLM Provider
+
+In AnythingLLM Desktop, select the `NVIDIA NIM` LLM provider from the dropdown menu - this will show your the default NIM connector.
+
+<Callout type="info" emoji="️💡">
+  If you do not see the blue model with the button as show in the below images, your system is **not compatible with running a NIM**.
+  Please see the [system requirements](/nvidia-nims/system-requirements) for more information.
+</Callout>
+
+### Fresh install
+
+If you have **never** run the NVIDIA NIM installer before, you will see the following screen:
+
+<Image
+  src="/images/nvidia-nim/nim-installer-cta.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Post install
+
+If you have already run the NVIDIA NIM installer before or otherwise have all of the NIM pre-requisites installed, you will see the following screen:
+
+<Image
+  src="/images/nvidia-nim/swap-to-managed-mode.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+You can see the blue button has changed to "Swap to Managed Mode" and you can click on it to [enable managed mode](/nvidia-nims/walkthrough#swap-to-managed-mode).
+
+
+## Running the NIM Installer
+
+<Callout type="info" emoji="️💡">
+This step **only** needs to be run once per machine. Once NVIDIA NIM is installed, you will not need to run the installer ever again.
+
+See [Swap to Managed Mode](/nvidia-nims/walkthrough#swap-to-managed-mode) for more information on how to use NVIDIA NIM in managed mode.
+</Callout>
+
+<Callout type="warning" emoji="️💡">
+ If you encounter any issues with the NIM installer you can get help from NVIDIA via:
+ 
+ - [NVIDIA NIM Community Forums - Technical Support](https://forums.developer.nvidia.com/)
+ - [NVIDIA NIM AI RTX PC Discord - General Discussion & Announcements](https://discord.gg/nvidiadeveloper)
+</Callout>
+
+The official NVIDIA NIM installer is a pre-built binary that runs in the AnythingLLM Desktop client built by NVIDIA. If your system or GPU is not compatible with running a NIM, you will see an error message during this step and will be unable to run a NIM on AnythingLLM or your system in general.
+
+Clicking on the "Run NVIDIA NIM Installer" button will prompt your to run the NIM installer as a separate window.
+
+<Callout type="info" emoji="️💡">
+  If you want to run the NIM installer manually, you can download the installer from [NVIDIA directly via their WSL2 docs](https://docs.nvidia.com/nim/wsl2/latest/getting-started.html#use-the-nvidia-nim-wsl2-installer-recommended).
+</Callout>
+
+<Image
+  src="/images/nvidia-nim/nim-installer-window.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+Click through the installer and follow the instructions to install NVIDIA NIM. This process will take a few minutes to complete and may require a restart of your machine post-installation.
+
+<Image
+  src="/images/nvidia-nim/nim-installing.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+
+## Swap to Managed Mode
+
+After closing the completed NIM installer, you will see the blue button change to "Swap to Managed Mode". Clicking on this button will allow AnythingLLM to manage your NIM models for you via a simple UI.
+
+<Image
+  src="/images/nvidia-nim/swap-to-managed-mode.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+This is the recommended mode of operation for AnythingLLM as it will allow you to easily update your NIM models and manage your NIM instances. Once you have swapped to managed mode, you will see the NIM manager UI with no models.
+
+<Image
+  src="/images/nvidia-nim/managed-mode.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Installing your first model
+
+To install your first model, click on the "Import NIM from NVIDIA" button in the NIM manager UI at the top of the screen.
+
+Here you will see a short list of pre-selected and recommended models for you to choose from. Clicking on any of the models will begin the download process after prompting a short license agreement dialog.
+
+<Image
+  src="/images/nvidia-nim/import-nim-from-nvidia.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+<Callout type="info" emoji="️💡">
+  You **can** however select any model from the NVIDIA NIM catalog and paste it's model ID into the input field and click "Pull Model" to install it - however this is not recommended.
+</Callout>
+
+### Monitoring your model download
+
+NIM models are more than just a single GGUF, which you may be used to from other LLM providers. NIM models are the model + software to run the model as fast as possible on your RTX GPU - so they can be a bit larger than your typical GGUF.
+
+You can monitor the progress of the model download in the NIM manager UI by clicking on the blue text link below the the "Import NIM from NVIDIA" button. This will show you the live download progress.
+
+The speed of the download will vary depending on your internet connection speed and the model you are downloading.
+
+You can close this window at any time and it will not affect the download in any way.
+
+<Image
+  src="/images/nvidia-nim/nim-downloading.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+You will see the text "Pulling image from NGC Registry Completed" when the model has finished downloading and is unpacked and ready to use.
+
+<Image
+  src="/images/nvidia-nim/nim-pull-complete.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Starting your first NIM
+
+<Callout type="info" emoji="️💡">
+The **very first** time you start a NIM, it will take a few minutes to download additional model files start its inference service. This is normal and expected and subsequent starts will be much faster.
+
+You can monitor the progress of the NIM starting in the NIM manager UI by clicking on the blue text link below the the "logs" button. This will show you the live startup progress.
+</Callout>
+
+Clicking on the "Refresh" button in the NIM manager UI will show you all of the NIMs you have installed. Models that have never been started will show a "Start NIM" button. You can click on this button to start the NIM.
+
+This will begin the process of starting the NIM and you will see the NIM status change to "Starting NIM..." in the NIM manager UI as well as see VRAM begin to be allocated to the NIM.
+
+<Image
+  src="/images/nvidia-nim/nim-starting.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+Once the NIM has started, you will see the NIM status change to "NIM Started" as well as the ability to Stop and Delete the NIM and see its logs.
+
+<Image
+  src="/images/nvidia-nim/nim-running.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Streaming logs from the NIM
+
+You can stream the logs from the NIM by clicking on the "Logs" button in the NIM manager UI. This will open a new tab with the NIM logs. You can close this window at any time and it will not affect the NIM in any way.
+
+<Image
+  src="/images/nvidia-nim/nim-logs.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### How do I know when my NIM is ready to use?
+
+In the NIM logs, you will see the following message in the log output:
+
+```
+// a bunch of other logs
+Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+```
+
+<Image
+  src="/images/nvidia-nim/nim-ready.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+This means that your NIM is ready to use! You can now start using it in AnythingLLM.
+
+## Selecting your NIM in AnythingLLM
+
+To select your NIM in AnythingLLM, simply click on the model card for the NIM you want to use and click "Save changes" in the top right.
+
+<Image
+  src="/images/nvidia-nim/select-nim.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+You can now use this model in AnythingLLM as you would any other model or provider.
+
+## Stopping your NIM
+
+Since running a NIM will reserve VRAM on your GPU, we recommend that you stop your NIM when you are not using it. You can stop your NIM by clicking on the "Stop NIM" button in the NIM manager UI. This will begin the process of stopping the NIM and you will see the NIM status change to "Stopping NIM..." in the NIM manager UI as well as see VRAM begin to be deallocated from the NIM.
+
+Closing AnythingLLM currently does not stop the NIM - so you will need to manually stop the NIM by clicking on the "Stop NIM" button in the NIM manager UI.
+
+## Deleting your NIM
+
+You can delete your NIM by clicking on the "Delete NIM" button in the NIM manager UI. This will delete the NIM instance, but will **not** delete the model from your system. If you wish to delete the model from your system, you will need to do so manually via WSL.
+
+```powershell
+wsl -d NVIDIA-Workbench
+podman image ls # Will show you all of the images on your system
+podman rmi <image_id> # Will delete the image from your system - the container should be deleted prior to this
+```
+
+This will delete the NIM image from your system totally.
