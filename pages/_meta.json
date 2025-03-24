@@ -213,7 +213,7 @@
     }
   },
   "ollama-connection-troubleshooting": {
-    "title": "Ollama Troubleshooting",
+    "title": "Ollama Connection Debugging",
     "theme": {
       "breadcrumb": true,
       "footer": true,

@@ -1,22 +1,31 @@
 ---
-title: "Ollama Setup and Troubleshooting Guide"
-description: "Quick solutions for setting up Ollama with AnythingLLM"
+title: General Help
+description: General help for connecting to Ollama
 ---
 
 import { Callout, Tabs } from "nextra/components";
 import Image from "next/image";
 
-<Image
-  src="/images/faq/ollama-models-not-loading/header-image.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM and Ollama Setup Guide"
-/>
+Connecting to Ollama is a very simple process, but sometimes things can appear to not being working depending on if you are using the
+AnythingLLM Desktop version or running AnythingLLM via Docker.
 
-# Ollama Connection Troubleshooting
+In general, all AnythingLLM instances just need a valid URL to connect to Ollama running anywhere, however there can be some nuances depending on how you are running AnythingLLM or Ollama - in any case, all that is needed is a reachable URL to connect to Ollama.
 
-## Ensure Ollama is Running
+The most common issue people run into is trying to use `localhost` or `127.0.0.1` to connect to Ollama running on their local machine when running AnythingLLM via Docker - see the [Troubleshooting (Docker)](#troubleshooting-docker) section for how to fix this.
+
+## General Troubleshooting (Desktop & Docker)
+
+On both the Desktop and Docker versions of AnythingLLM, the Ollama URL is automatically detected _if we can detect it_.
+If the Ollama URL is not detected, you will need to manually set the Ollama URL in the AnythingLLM settings.
+
+The list of automatically detected URLs is as follows:
+- `http://127.0.0.1:11434`
+- `http://host.docker.internal:11434`
+- `http://172.17.0.1:11434`
+
+If your Ollama URL is not detected because it is not in the list above, you will need to manually set the Ollama URL in the AnythingLLM settings - which will be shown in the UI for you to modify.
+
+### Ensure Ollama `server` is Running
 
 Before attempting any fixes or URL changes, verify that Ollama is running properly on your device:
 
@@ -31,144 +40,51 @@ Before attempting any fixes or URL changes, verify that Ollama is running proper
   alt="Ollama running in background"
 />
 
-If you don't see this page, troubleshoot your Ollama installation and ensure that it is running properly before moving forward.
-
-## Automatic URL Detection (LLM & Embedding Providers)
+If you don't see this page, troubleshoot your Ollama installation and ensure that it is running properly before moving forward as well as make sure you run the `ollama serve` command.
+Most of the time, Ollama will automatically start the server when ollama is running.
 
 <Callout type="info" emoji="ℹ️">
-  AnythingLLM features automatic URL detection for Ollama. Manual configuration
-  is only necessary if auto-detection fails.
+  Running `ollama run model-name` will not start the server - this is only for running models in your command line and you will not be able to use the Ollama API with this command.
 </Callout>
-### URL Successfully Detected When selecting the Ollama provider, AnythingLLM attempts
-to auto detect your Ollama URL. If the option to input the base URL is hidden, the
-URL was automatically detected by AnythingLLM.
-<Image
-  src="/images/faq/ollama-models-not-loading/ollama-detected-collapsed.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  style={{
-    "border-radius": "20px",
-    "margin-top": "20px",
-    "object-fit": "none",
-    "object-position": "-320px top",
-    width: "100%",
-    height: "600px",
-  }}
-  alt="Ollama URL automatically detected"
-/>
-### URL Detection Failed When manual endpoint input is expanded, the URL was not
-able to be detected.
-<Image
-  src="/images/faq/ollama-models-not-loading/ollama-cannot-detect.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  style={{
-    "border-radius": "20px",
-    "margin-top": "20px",
-    "object-fit": "none",
-    "object-position": "-320px top",
-    width: "100%",
-    height: "650px",
-  }}
-  alt="Ollama URL failed detection"
-/>
-If Ollama was not started when AnythingLLM tried to detect the URL, start up Ollama
-then press the `Auto-Detect` button. This should automatically detect the URL and
-allow you to begin selecting the `Model` and `Max Tokens` values. ## Setting the
-Correct Ollama URL
-<Callout type="error" emoji="🚨">
-  If AnythingLLM was unable to detect your URL automatically, this is most
-  likely an issue with your Ollama setup/configuration NOT AnythingLLM.
+
+
+## Troubleshooting (Docker)
+
+If you are running AnythingLLM via Docker and you are trying to connect to Ollama running locally on your machine.
+
+If you are seeing no models loaded in AnythingLLM or getting error responses from Ollama - 100% of the time this is beacause you are using the wrong URL in the connection in AnythingLLM.
+
+### `localhost` and `127.0.0.1` do not work on Docker.
+
+On Docker, `localhost` and `127.0.0.1` are **not valid URLs** for the Docker container Ollama connection in AnythingLLM because both of these refer to the _container_ network and **not the host machine**.
+
+To fix this, you can use the `host.docker.internal` (Windows/MacOS) or `172.17.0.1` (Linux) URLs to connect to the host machine from the Docker container with the same port (default `11434`).
+
+Running Docker on Windows or MacOS ([available since Docker version 18.03](https://docs.docker.com/desktop/features/networking/#i-want-to-connect-from-a-container-to-a-service-on-the-host)):
+```
+http://localhost:11434 => http://host.docker.internal:11434
+http://127.0.0.1:11434 => http://host.docker.internal:11434
+```
+
+Running Docker on Linux:
+```
+http://localhost:11434 => http://172.17.0.1:11434
+http://127.0.0.1:11434 => http://172.17.0.1:11434
+```
+
+
+## Troubleshooting (Remote Ollama)
+
+If you are running AnythingLLM via Docker and are trying to connect to Ollama running on another machine the underlying principle is the same where the Ollama URL is the IP address of the machine running Ollama.
+
+<Callout type="info" emoji="ℹ️">
+  In the case of a remote Ollama, the Ollama URL is the IP address of the machine running Ollama and it is **your responsibility** to ensure that the IP address is correct, your firewall rules are correct, and that the machine is running ollama.
+  There is no way for AnythingLLM to automatically detect the IP address of the machine running Ollama.
 </Callout>
-If you have confirmed 100% that your Ollama installation is running properly and
-is not being blocked by any firewalls etc, you can choose to set the URLs manually.
 
-Choose your AnythingLLM version to find the correct Ollama URL:
 
-<Tabs items={['Desktop', 'Docker', 'Self-hosted']}>
-  <Tabs.Tab>
-    ### Desktop Version
+## AnythingLLM Cloud + Local Ollama
 
-    Use: `http://127.0.0.1:11434`
+You **cannot** connect to Ollama running on your local machine when using AnythingLLM Cloud. This would require you to expose your local machine to the internet long-term via a service like [ngrok](https://ngrok.com/) which is **not recommended** and **not secure**.
 
-    <Image
-      src="/images/faq/ollama-models-not-loading/ollama-correct-url.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      alt="Correct Ollama Base URL for AnythingLLM Desktop Version"
-    />
-
-  </Tabs.Tab>
-
-  <Tabs.Tab>
-    ### Docker Version
-
-    - Windows/macOS: `http://host.docker.internal:11434`
-    - Linux: `http://172.17.0.1:11434`
-    <Callout type="warning" emoji="⚠️">
-      On Linux, use `http://172.17.0.1:11434` as `host.docker.internal` doesn't work.
-    </Callout>
-    <Image
-      src="/images/faq/ollama-models-not-loading/ollama-correct-url-docker.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      style={{
-        "border-radius": "20px",
-        "margin-top": "20px",
-        "object-fit": "none",
-        "object-position": "-320px top",
-        "width": "100%",
-        "height": "650px",
-      }}
-      alt="Correct Ollama Base URL for AnythingLLM Docker Version"
-    />
-
-  </Tabs.Tab>
-
-  <Tabs.Tab>
-    ### Self-hosted Version
-
-    Use either:
-    - `http://localhost:11434`
-    - `http://127.0.0.1:11434`
-
-  </Tabs.Tab>
-</Tabs>
-
-## AnythingLLM Desktop: Built-in vs. Standalone Ollama
-
-AnythingLLM Desktop offers two Ollama options:
-
-1. **Built-in AnythingLLM LLM Provider**:
-
-   - Runs a separate Ollama instance internally.
-   - Models downloaded to standalone Ollama won't appear here.
-
-2. **Standalone Ollama**:
-   - Run Ollama separately on your system.
-   - Use the URL `http://127.0.0.1:11434`.
-
-<Image
-  src="/images/faq/ollama-models-not-loading/anythingllm-ollama-provider.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM built-in Ollama provider"
-/>
-
-## Troubleshooting
-
-If you're still experiencing issues:
-
-1. Confirm you're using the correct URL for your setup.
-2. Check for firewall or network issues blocking the connection.
-3. Restart both Ollama and AnythingLLM.
-
-<Callout type="info" emoji="💡">
-  If problems persist after trying these steps, please contact visit our Discord
-  to ask your questions.
-</Callout>
+While it is possible, we do not recommend it and it is your discretion to do so if you understand the security implications of SSH tunneling your local machine to the internet. We will not provide support for any issues related to exposing your local machine to the internet.
