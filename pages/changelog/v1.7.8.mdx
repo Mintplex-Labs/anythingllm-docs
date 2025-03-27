@@ -1,0 +1,45 @@
+---
+title: "v1.7.8"
+description: "AnythingLLM Desktop v.1.7.8 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.7.8"
+/>
+
+## Improvements:
+
+- [x] Introduced official [NVIDIA NIM support](/nvidia-nims/introduction) for Windows machines with RTX GPUs - [check system requirements](/nvidia-nims/system-requirements) to see if your GPU is supported
+- [x] [System Variable support](/features/system-prompt-variables) now supported in regular chat via the Workspace `System Prompt` input.
+- [x] Added support for `@agent` usage in slash commands.
+- [x] Added support for Slash commands in Developer API chat requests.
+- [x] Added support for [Agent Flow](/agent-flows/overview) execution via Developer API chat requests.
+
+## Bug Fixes:
+
+- [x] Resolved issue in UI where the frontend would crash on New Workspace creation if the user was on a workspace with multiple threads.
+- [x] Fixed bug in Developer API for workspace chat where attachments were not being persisted in the UI/Chat history.
+- [x] Fixed bug where you could set a slash command the same as a reserved system slash command.
+
+## Pinned Download Links
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.7.8/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.7.8/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.7.8/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.7.8/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.7.8/AnythingLLMDesktop.AppImage)
