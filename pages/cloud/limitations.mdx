@@ -29,4 +29,12 @@ AnythingLLM **does allow** you to use the built-in embedder model, which is extr
 The Starter tier ships with **very minimal** compute resources while Professional ships with much more compute. This means that uploading a large document (in words, not file size) can overwhelm the CPU and cause
 the process to exit. This will result in a 502 error.
 
+## Issues with "Accuracy Optimized" Search in Workspace
+
+Sometimes, your instance may become unresponsive or slow when using the "Accuracy Optimized" search in the Workspace if the workspace has a large number of files.
+
+This is because the "Accuracy Optimized" search requires a lot of memory and CPU to run - which again are limited on the instance we provide for you.
+
+You can prevent this by using the `Default` search mode in the Workspace settings.
+
 ### [How to fix the 502 error on your instance &rarr;](./error-502.mdx)
