@@ -27,6 +27,9 @@ function getInOut(input, output) {
   let dirs = getInOut(input, output);
 
   for (let item of dirs) {
+    // To target a specific directory to prevent duplicate compression, you can uncomment the following
+    // if (!item.input.includes("mcp-compatibility")) continue;
+
     console.log(`Processing ${item.input}`);
     const files = await imagemin([`${item.input}/*.{jpg,png}`], {
       destination: item.output,
