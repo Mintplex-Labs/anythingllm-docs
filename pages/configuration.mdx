@@ -145,3 +145,30 @@ COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED="1"
 ### Disable
 
 Fully remove or comment out the `COMMUNITY_HUB_BUNDLE_DOWNLOADS_ENABLED` environment variable to return to the default behavior.
+
+## Local IP Address Scraping
+
+<Callout type="info" emoji="️💡">
+  **Note:** Enabling this flag should be done at your own risk since it will enable the collector to scrape or reach services running on local IP addresses.
+</Callout>
+
+Modification of the `COLLECTOR_ALLOW_ANY_IP` environment variable allows you to enable scraping of local IP addresses.
+By default, the collector does not allow scraping of [local IP addresses](https://github.com/Mintplex-Labs/anything-llm/blob/master/collector/utils/url/index.js#L24).
+
+However, for many reasons you may want to enable this feature - so we've added this configuration option to allow you to do so.
+
+When enabled, you will see a log message in the collector logs indicating that local IP address scraping is enabled when using the web-scraping feature
+
+### Enable
+
+Set the `COLLECTOR_ALLOW_ANY_IP` environment variable to **`"true"`** to enable.
+_It must be set to a string value of `"true"` to be effective._
+
+```bash
+# Must be set to a string value of "true" to be effective.
+COLLECTOR_ALLOW_ANY_IP="true"
+```
+
+### Disable
+
+Fully remove or comment out the `COLLECTOR_ALLOW_ANY_IP` environment variable to return to the default behavior.
