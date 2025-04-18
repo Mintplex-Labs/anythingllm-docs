@@ -5,8 +5,146 @@ description: "How to use and debug MCP tools on AnythingLLM Desktop"
 
 import { Callout } from "nextra/components";
 
-## MCP on AnythingLLM Desktop
+<Callout type="info" emoji="💡">
+  The use of MCP for AnythingLLM Desktop is available in the [v1.8.0 release](/changelog/v1.8.0) - please [update to at least this version](/changelog/v1.8.0#pinned-download-links) to use this feature.
+</Callout>
 
-The current version of AnythingLLM Desktop does not support MCP at this time.
+## Things to know about MCP on AnythingLLM Desktop
 
-However, we are working on it! Join the [Discord server](https://discord.gg/Dh4zSZCdsC) or Star on [Github](https://github.com/Mintplex-Labs/anything-llm) to stay updated.
+<Callout type="error" emoji="🔒">
+  As always, **never run MCPs you do not trust** - we **do not** endorse or guarantee the security of any MCPs you may find on the internet.
+</Callout>
+
+### MCP Server support
+
+AnythingLLM Desktop supports `Tools` loading via MCP Servers. We **do not** support Resources, Prompts, or Sampling.
+
+### Startup sequence
+
+<Callout type="info" emoji="💡">
+  The more MCP servers you have defined, the longer it will take for them to start up.
+</Callout>
+
+AnythingLLM _does not_ automatically start MCP servers when the application starts to prevent any overloading of resources on boot or unexpected resource consumption.
+
+AnythingLLM _will_ automatically start MCP servers when you open the "Agent Skills" page in the AnythingLLM UI **or** invoke the `@agent` directive.
+All MCP servers will be started in the background - subsequent "boots" will then be much faster since the MCP servers will already be running.
+
+If you mark a tool as `anythingllm.autoStart: false` in your configuration file, it will not be started automatically - you will need to start it manually from the UI.
+
+### Command availability
+
+<Callout type="warning" emoji="⚠️">
+  It is not within the scope of AnythingLLM Desktop to debug when a command is not working or available. This is not a bug and you should instead check the [MCP Server documentation](https://modelcontextprotocol.io/introduction) or [community support channels](https://github.com/orgs/modelcontextprotocol/discussions).
+</Callout>
+
+In order for the `command` of **any MCP Server** to work, you **must** have the respective command installed on your host machine.
+
+AnythingLLM **does not** automatically install the commands for you - you **must** install them manually and also ensure the command is available in your `PATH` or the command is a path directly to the binary being used.
+eg: `npx`, `uv`, `uvx`, `node`, `bash`, etc.
+
+### Where is the MCP Server configuration file?
+
+<Callout type="info" emoji="💡">
+  The configuration file is automatically created if you open the "Agent Skills" page in the AnythingLLM UI and it does not exist.
+</Callout>
+
+The MCP Server configuration file is located in the `plugins/anythingllm_mcp_servers.json` file in the [AnythingLLM storage directory](/installation-desktop/storage).
+
+### Reloading MCP Servers
+
+You can reload MCP Servers *on the fly* by clicking the "Refresh" button in the "Agent Skills" page. This will reload the MCP Servers from the configuration file and restart them. 
+This does not require you to restart the AnythingLLM Desktop application - the currently running MCPs will be killed and rebooted with whatever changes you made to the configuration file.
+
+You can also click "Refresh" to reload the MCP Servers if you are debugging a specific MCP Server.
+
+### Starting and stopping MCP Servers
+
+You can start and stop MCP Servers *on the fly* by clicking the "Start" or "Stop" action via the gear icon in the "Agent Skills" page while selecting the MCP Server you want to start or stop.
+
+This does not require you to restart the AnythingLLM Desktop application - the target MCP Server will be started or stopped immediately.
+
+If you wish to stop an MCP Server from automatically starting - see the [Autostart prevention](#autostart-prevention) section.
+
+### How do I add/remove an MCP Server?
+
+#### Adding an MCP Server
+Adding an MCP Server is as simple as adding a new tool to the `mcpServers` object in the `anythingllm_mcp_servers.json` file in your [AnythingLLM storage directory](/installation-desktop/storage).
+
+#### Removing an MCP Server
+
+You can remove an MCP Server by clicking on an MCP Server in the "Agent Skills" page, select the gear icon, and clicking "Delete".
+Deleting the MCP Server from the UI **will remove** the MCP Server from the file and kill the process running that MCP Server.
+
+You can also manually remove an MCP Server by removing the object from the `mcpServers` object in the `anythingllm_mcp_servers.json` file and clicking "Refresh" in the "Agent Skills" page on the UI afterwards.
+
+### Viewing the status of an MCP Server
+
+On the "Agent Skills" page, you can view the status of an MCP Server by clicking on the MCP Server in the list - if there is an error, it will be displayed in the card.
+
+Additionally, you can quickly see the status of all MCP Servers by clicking the "Agent Skills" page and looking at the MCP Servers list.
+
+### Debugging MCP Servers
+
+If you are having issues with an MCP Server, you can best debug these by looking at the [Desktop application logs](/installation-desktop/debug#general-debugging).
+
+### Issues installing a tool
+
+<Callout type="info" emoji="💡">
+  **Please do not open issues about tool issues on GitHub - we are not the MCP authors or maintainers.** 
+  
+  If you are having issues, you should post on the [MCP Discussion board](https://github.com/orgs/modelcontextprotocol/discussions) - or ask in the AnythingLLM Discord server.
+</Callout>
+
+Sometimes, an MCP Server will require a tool to be installed via `uv tool install xyz`.
+The easiest way to do this is to open command line and run the command manually on your machine. Then you can click "Refresh" in the "Agent Skills" and see if the tool now boots successfully.
+
+### Autostart prevention
+
+_This property is **specific to AnythingLLM only** and will have no effect on other tools._
+
+Sometimes, you may want to optionally start an MCP server manually to prevent it from starting automatically and consuming resources.
+
+To do this, AnythingLLM respects the `anythingllm.autoStart` property in the MCP Server configuration file.
+
+For example, if you want to prevent the `face-generator` MCP Server from starting automatically, you can set the `autoStart` property to `false` in the configuration file.
+
+Any tool that does not have `autoStart: false` explicitly set will be started automatically when the rest of the MCP servers are started.
+
+```json
+{
+  "mcpServers": {
+    "face-generator": {
+      "command": "npx",
+      "args": [
+        "@dasheck0/face-generator"
+      ],
+      "anythingllm": {
+        "autoStart": false
+      }
+    },
+    "mcp-youtube": {
+      "command": "mcp-youtube",
+      "args": []
+    }
+  }
+}
+```
+
+### Tool persistence
+
+Since AnythingLLM Desktop is a desktop application, the tools downloaded for MCP are stored on your host machine and will persist across application restarts and even application uninstalls.
+
+MCP tools are stored outside of AnythingLLM and you should delete them manually if you want to remove them.
+
+### Writing files to the host machine
+
+Often, you may want to write or even read files from the host machine - since the MCP Server is running on your host machine you can use any path on your host machine that would normally function in a command line.
+
+### My LLM is not calling my MCP Server!
+
+First, ensure that the MCP Server is running and that the tool is available in the "Agent Skills" page.
+
+Next, your issue is probably the model you are using - this is especially true if you are using a small local model with a limited context window.
+
+[Learn more about LLMs with Agent Skills &rarr;](/agent-not-using-tools)
