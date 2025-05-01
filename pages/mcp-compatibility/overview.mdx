@@ -113,7 +113,20 @@ _this file will be automatically generated in the proper directory if it doesn't
       "args": [
         "mcp-youtube"
       ]
+    },
+    "postgres-http": {
+      "type": "streamable",
+      "url": "http://localhost:3003",
+      "headers": {
+        "X-API-KEY": "api-key"
+      }
     }
   }
 }
 ```
+
+In addition to stdio, AnythingLLM also supports `SSE` and `Streamable` transport types for MCP servers.
+Use the type field to specify the transport (`SSE` or `Streamable`). If not provided, `SSE` is assumed.
+The optional headers field can be used to send custom HTTP headers with requests to the MCP server.
+If the configuration contains a command field, the server is treated as using the stdio protocol.
+If it contains a url field instead, it is treated as using the `SSE` or `Streamable` transport.
