@@ -99,6 +99,68 @@ The MCP Management UI will show you all the MCP Servers that are available to us
 
 _this file will be automatically generated in the proper directory if it doesn't exist before it is needed. It will be empty by default._
 
+```json5
+// anythingllm_mcp_servers.json
+{
+  "mcpServers": {
+    "face-generator": {
+      "command": "npx",
+      "args": [
+        "@dasheck0/face-generator"
+      ],
+      "env": { // optional, some MCP servers may require additional environment variables
+        "MY_ENV_VAR": "my-env-var-value"
+      }
+    },
+    "mcp-youtube": {
+      "command": "uvx",
+      "args": [
+        "mcp-youtube"
+      ],
+    },
+    "postgres-http": {
+      "type": "streamable", // or "sse"
+      "url": "http://localhost:3003",
+      "headers": {
+        "X-API-KEY": "api-key"
+      }
+    }
+  }
+}
+```
+
+## Supported Transport Types
+
+#### StdIO
+
+The `stdio` transport type is the default and simplest transport type. It is a simple text-based protocol that is easy to implement and use.
+All MCP servers that use the stdio transport type require the `command` field to be set.
+
+#### SSE & Streamable
+
+<Callout type="info">
+  The transport type is dependent on the MCP server implementation you are adding. So you should check the documentation for the MCP server you are adding to see what transport types is supported.
+  
+  Keep in mind, that both `sse` and `streamable` **require** the `url` field to be set. It will not work with the `command` field set.
+</Callout>
+
+The `SSE` and `Streamable` transport types are alternative transport type that is supported by many MCP servers for streaming responses.
+In your configuration file, you can use the `type` field to specify the transport (`sse` or `streamable`). If not provided, `sse` is assumed.
+
+The optional headers field can be used to send custom HTTP headers with requests to the MCP server.
+
+## Autostart prevention
+
+_This property is **specific to AnythingLLM only** and will have no effect on other tools._
+
+Sometimes, you may want to optionally start an MCP server manually to prevent it from starting automatically and consuming resources.
+
+To do this, AnythingLLM respects the `anythingllm.autoStart` property in the MCP Server configuration file.
+
+For example, if you want to prevent the `face-generator` MCP Server from starting automatically, you can set the `autoStart` property to `false` in the configuration file.
+
+Any tool that does not have `autoStart: false` explicitly set will be started automatically when the rest of the MCP servers are started. This is useful if you want to manually start an MCP server when you need it because of resource constraints.
+
 ```json
 {
   "mcpServers": {
@@ -106,13 +168,14 @@ _this file will be automatically generated in the proper directory if it doesn't
       "command": "npx",
       "args": [
         "@dasheck0/face-generator"
-      ]
+      ],
+      "anythingllm": {
+        "autoStart": false
+      }
     },
     "mcp-youtube": {
-      "command": "uvx",
-      "args": [
-        "mcp-youtube"
-      ]
+      "command": "mcp-youtube",
+      "args": []
     }
   }
 }

@@ -102,38 +102,6 @@ If you are having issues with an MCP Server, you can best debug these by looking
 Sometimes, an MCP Server will require a tool to be installed via `uv tool install xyz`.
 The easiest way to do this is to open a shell into the container and run the command manually. Then you can click "Refresh" in the "Agent Skills" and see if the tool now boots successfully.
 
-### Autostart prevention
-
-_This property is **specific to AnythingLLM only** and will have no effect on other tools._
-
-Sometimes, you may want to optionally start an MCP server manually to prevent it from starting automatically and consuming resources.
-
-To do this, AnythingLLM respects the `anythingllm.autoStart` property in the MCP Server configuration file.
-
-For example, if you want to prevent the `face-generator` MCP Server from starting automatically, you can set the `autoStart` property to `false` in the configuration file.
-
-Any tool that does not have `autoStart: false` explicitly set will be started automatically when the rest of the MCP servers are started.
-
-```json
-{
-  "mcpServers": {
-    "face-generator": {
-      "command": "npx",
-      "args": [
-        "@dasheck0/face-generator"
-      ],
-      "anythingllm": {
-        "autoStart": false
-      }
-    },
-    "mcp-youtube": {
-      "command": "mcp-youtube",
-      "args": []
-    }
-  }
-}
-```
-
 ### Tool persistence
 
 If you stop or delete the AnythingLLM Docker container the libraries cached for the MCP servers will be lost and need to be re-downloaded on first start. Typically, this takes much longer for MCP servers that have a large number of dependencies or build steps and can increase boot times when starting MCP servers.
