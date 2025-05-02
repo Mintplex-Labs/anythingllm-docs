@@ -99,38 +99,6 @@ If you are having issues with an MCP Server, you can best debug these by looking
 Sometimes, an MCP Server will require a tool to be installed via `uv tool install xyz`.
 The easiest way to do this is to open command line and run the command manually on your machine. Then you can click "Refresh" in the "Agent Skills" and see if the tool now boots successfully.
 
-### Autostart prevention
-
-_This property is **specific to AnythingLLM only** and will have no effect on other tools._
-
-Sometimes, you may want to optionally start an MCP server manually to prevent it from starting automatically and consuming resources.
-
-To do this, AnythingLLM respects the `anythingllm.autoStart` property in the MCP Server configuration file.
-
-For example, if you want to prevent the `face-generator` MCP Server from starting automatically, you can set the `autoStart` property to `false` in the configuration file.
-
-Any tool that does not have `autoStart: false` explicitly set will be started automatically when the rest of the MCP servers are started.
-
-```json
-{
-  "mcpServers": {
-    "face-generator": {
-      "command": "npx",
-      "args": [
-        "@dasheck0/face-generator"
-      ],
-      "anythingllm": {
-        "autoStart": false
-      }
-    },
-    "mcp-youtube": {
-      "command": "mcp-youtube",
-      "args": []
-    }
-  }
-}
-```
-
 ### Tool persistence
 
 Since AnythingLLM Desktop is a desktop application, the tools downloaded for MCP are stored on your host machine and will persist across application restarts and even application uninstalls.
