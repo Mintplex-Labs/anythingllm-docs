@@ -1,0 +1,33 @@
+---
+title: "Read File"
+description: "Learn about the Read File block and how to use it."
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+<Callout type="warning" emoji="⚠️">
+  The **Read File** block is only available on the <a href="/installation-desktop/overview" target="_blank"><b>Desktop Version (v1.8.1+)</b></a> of AnythingLLM.<br />
+</Callout>
+
+<Image
+  src="/images/agent-flows/read-file.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+## Usage
+
+<Callout type="info" emoji="💡">
+ You can use `${variable}` string to dynamically insert the file path or file name in a fixed folder path.
+</Callout>
+
+_This block allows you to read a file from the local file system. Only text file types are supported._
+
+The Read File block is used to read the contents of a file and store the result in a variable for use in subsequent blocks. This is useful for workflows that require file input or need to process file data.
+
+## Input Variables
+
+- `File Path`: The path to the file you want to read.
+- `Result Variable`: The variable to store the file content.

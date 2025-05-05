@@ -1,0 +1,33 @@
+---
+title: "Write File"
+description: "Learn about the Write File block and how to use it."
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+<Callout type="warning" emoji="⚠️">
+  The **Write File** block is only available on the <a href="/installation-desktop/overview" target="_blank"><b>Desktop Version (v1.8.1+)</b></a> of AnythingLLM.<br />
+</Callout>
+
+<Image
+  src="/images/agent-flows/write-file.png"
+  height={1080}
+  width={1920}
+  quality={100}
+/>
+
+## Usage
+
+<Callout type="info" emoji="💡">
+ You can use `${variable}` string to dynamically insert the file path or file name in a fixed folder path.
+</Callout>
+
+_This block allows you to write content to a file on the local file system. Only text output is supported._
+
+The Write File block is used to save content to a file, which can be useful for exporting results, logging, or passing data to other applications or processes.
+
+## Input Variables
+
+- `File Path`: The path to the file you want to write to.
+- `Content`: The content to write to the file.
