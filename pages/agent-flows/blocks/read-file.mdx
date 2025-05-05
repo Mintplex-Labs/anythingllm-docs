@@ -7,7 +7,7 @@ import Image from "next/image";
 import { Callout } from "nextra/components";
 
 <Callout type="warning" emoji="⚠️">
-  The **Read File** block is only available on the <a href="/installation-desktop/overview" target="_blank"><b>Desktop Version</b></a> of AnythingLLM.<br />
+  The **Read File** block is only available on the <a href="/installation-desktop/overview" target="_blank"><b>Desktop Version (v1.8.1+)</b></a> of AnythingLLM.<br />
 </Callout>
 
 <Image
@@ -18,6 +18,10 @@ import { Callout } from "nextra/components";
 />
 
 ## Usage
+
+<Callout type="info" emoji="💡">
+ You can use `${variable}` string to dynamically insert the file path or file name in a fixed folder path.
+</Callout>
 
 _This block allows you to read a file from the local file system. Only text file types are supported._
 
