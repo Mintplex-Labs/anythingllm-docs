@@ -1,0 +1,57 @@
+---
+title: "v1.8.1"
+description: "AnythingLLM Desktop v.1.8.1 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+<Image
+  src="/images/product/changelog/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Changelog v1.8.1"
+/>
+
+## New Features:
+
+- [x] Agent flow [Read](/agent-flows/blocks/read-file) and [Write](/agent-flows/blocks/write-file) file blocks for Desktop
+- [x] Added Text-to-Speech and Speech-to-Text auto-submit and autoplay settings
+- [x] DrupalWiki data connector
+
+
+## Improvements:
+
+- [x] Updated internal [Ollama to 0.6.7](https://github.com/ollama/ollama/releases/tag/v0.6.7)
+- [x] Deeplinks for connecting Hub to AnythingLLM Desktop
+- [x] Migrate Gemini API to Azure to common OpenAI SDK
+- [x] UI bugs, fixes, and improvements for light mode
+- [x] Translations for main page
+- [x] Allow custom headers on upload-link via `/upload-link` endpoint
+- [x] Fix Windows MCP server restart issues
+- [x] Extended MCP tool use to be included in backend API `/chat` endpoint calls
+- [x] API document upload auto-add to workspace(s)
+- [x] MCP SSE/Streamable support
+
+## Bug Fixes:
+
+- [x] Fix `404` on Ollama large GGUF imports
+- [x] KoboldCPP Max Tokens
+- [x] Fix empty thoughts from reasoning models from showing in chat
+
+## Pinned Download Links
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.1/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.8.1/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.8.1/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.8.1/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.1/AnythingLLMDesktop.AppImage)
