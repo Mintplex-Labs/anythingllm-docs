@@ -6,14 +6,6 @@ description: "AnythingLLM offers two main ways to use AnythingLLM. There are som
 import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
 
-<Image
-  src="/images/getting-started/installation/header-image.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Installation"
-/>
-
 ## Installation Overview
 
 AnythingLLM Docker is both a **single-user** and **multi-user** application you can install on any webserver using docker and leverage local LLMs, RAG, and Agents with little to zero configuration and full privacy.
@@ -21,6 +13,12 @@ AnythingLLM Docker is both a **single-user** and **multi-user** application you 
 Self hosting AnythingLLM via Docker is very popular and can be done locally or on cloud servicers (aws, google cloud, railway etc..).
 
 ## Docker vs Desktop Version
+
+<Callout type="info" emoji="️💡">
+  **Tip:** AnythingLLM Desktop is the easiest way to get started with AnythingLLM.
+
+  If you dont need multi-user support - you should use AnythingLLM Desktop.
+</Callout>
 
 There are some distinct differences in functionality between each offering. Both are open source.
 
@@ -65,106 +63,3 @@ The below table is a non-exhaustive list of features supported between platforms
 | User management                |          ❌          |         ✅          |
 | Workspace access management    |          ❌          |         ✅          |
 | Website scraping               |          ✅          |         ✅          |
-
-<Callout type="info" emoji="️💡">
-  **Tip:** AnythingLLM Desktop is the easiest way to use AnythingLLM.
-</Callout>
-
-<br />
-
-## Quick Links
-
-<Cards>
-  <Card title="System Requirements" href="system-requirements"> 
-    <Image
-      src="/images/getting-started/installation/system-requirements.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM System Requirements"
-    />
-  </Card>
-
-<Card title="MacOS Install" href="/installation-desktop/macos">
-  <Image
-    src="/images/getting-started/installation/macos/header-image.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="AnythingLLM MacOS Install"
-  />
-</Card>
-
-<Card title="Windows Install" href="/installation-desktop/windows">
-  <Image
-    src="/images/getting-started/installation/windows/header-image.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="AnythingLLM Windows Install"
-  />
-</Card>
-
-<Card title="Linux Install" href="/installation-desktop/linux">
-  <Image
-    src="/images/getting-started/installation/linux/header-image.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="AnythingLLM Linux Install"
-  />
-</Card>
-
-<Card title="Local Docker Install" href="/installation-docker/local-docker">
-  <Image
-    src="/images/getting-started/installation/local-docker/header-image.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="AnythingLLM Local Docker Install"
-  />
-</Card>
-
-<Card
-  title="Midori AI Subsystem Manager"
-  href="https://io.midori-ai.xyz/subsystem/manager/"
->
-  <Image
-    src="/images/getting-started/installation/local-docker/midori-subsystem.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Midori AI Subsystem"
-  />
-</Card>
-
-  <Card title="Cloud Docker Install" href="/installation-docker/cloud-docker"> 
-    <Image
-      src="/images/getting-started/installation/cloud-docker/header-image.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Cloud Docker Install"
-    />
-  </Card>  
-</Cards>
-
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
-
-<style global jsx>{`
-  img {
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-`}</style>

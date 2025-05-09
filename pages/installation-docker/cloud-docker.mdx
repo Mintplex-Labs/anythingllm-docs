@@ -16,7 +16,7 @@ import Image from "next/image";
 
 # Run AnythingLLM on Cloud using Docker
 
-Running AnythingLLM on a cloud service is the best way to run a private multi-user instance of AnythingLLM with full control.
+Running AnythingLLM on a cloud service is the best way to run a private multi-user instance of AnythingLLM with full control while not having to worry about the underlying infrastructure.
 
 <Callout type="info" emoji="💡">
   **Easy Cloud Deployment**
@@ -79,3 +79,70 @@ You should provision a folder somewhere on the host machine so that you can re-p
 ```
 
 Done! You are using AnythingLLM!
+
+
+## More Information
+
+### Backwards Compatibility
+
+The Mintplex Labs team takes great care to ensure AnythingLLM is always backward compatible.
+In the event this changes you will be alerted via code, deployment, or our regular communication channels on social, Discord, and email.
+
+### Scaling
+
+Since the AnythingLLM backend uses SQLite for its database, it is not recommended to attempt to scale the AnythingLLM backend horizontally
+since you would then need to have many containers all reading and writing to the same database.
+
+In this case, we recommend using a more robust database like PostgreSQL and our [PostgreSQL image](/installation-docker/available-images#pg) which will centralize the database as well as set `PGVector` as the vector database.
+
+### SSL/HTTPS Support
+
+In order to use SSL/HTTPS with AnythingLLM you should use a reverse proxy like [NGINX](https://www.nginx.com/) with a TLS certificate you can get from [Let's Encrypt](https://letsencrypt.org/).
+
+### NGINX Configuration
+
+Here is an example NGINX configuration that you can use to reverse proxy to AnythingLLM:
+
+```nginx
+# Default server configuration
+# Example config for regular setup + SSL + Websockets.
+server {
+	listen 80;
+	server_name your-domain.com;
+	return 301 https://your-domain.com$request_uri;
+}
+
+server {
+	listen 443 ssl;
+	ssl on;
+	server_name your-domain.com;
+	ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
+	ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;	
+
+  # Enable websocket connections for agent protocol.
+	location ~* ^/api/agent-invocation/(.*) {
+		proxy_pass http://localhost:3001;
+		proxy_http_version 1.1;
+		proxy_set_header Upgrade $http_upgrade;
+		proxy_set_header Connection "Upgrade";
+	}
+
+	# Enable a custom 502 error page.
+	# Must define template at /usr/share/nginx/html/502.html
+	# error_page 502 /502.html;
+    # location /502.html {
+    #   index 502.html;
+    # }
+
+	location / {
+		proxy_connect_timeout       605;
+    proxy_send_timeout          605;
+    proxy_read_timeout          605;
+    send_timeout                605;
+    keepalive_timeout           605;
+    proxy_buffering off;
+    proxy_cache off;
+    proxy_pass         http://your-server-ip:3001$request_uri;
+  }
+}
+```

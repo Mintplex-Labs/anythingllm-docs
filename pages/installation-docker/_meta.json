@@ -8,6 +8,15 @@
       "toc": true
     }
   },
+  "available-images": {
+    "title": "Docker Images",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "system-requirements": {
     "title": "System Requirements",
     "theme": {
@@ -17,8 +26,17 @@
       "toc": true
     }
   },
+  "quickstart": {
+    "title": "Quickstart",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "local-docker": {
-    "title": "Deploy locally",
+    "title": "Local Docker",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -27,7 +45,7 @@
     }
   },
   "cloud-docker": {
-    "title": "Deploy to cloud provider",
+    "title": "Deploy to Cloud VM",
     "theme": {
       "breadcrumb": true,
       "footer": true,
@@ -38,6 +56,15 @@
   "-- FAQ": {
     "type": "separator",
     "title": "Docker FAQ"
+  },
+  "localhost": {
+    "title": "Connecting to localhost",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   },
   "debug": {
     "title": "Debugging & Logs",

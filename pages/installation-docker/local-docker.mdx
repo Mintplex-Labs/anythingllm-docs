@@ -14,70 +14,21 @@ import Image from "next/image";
   alt="AnythingLLM Installation Local Docker"
 />
 
-# How to use Dockerized Anything LLM
+# Get Started with AnythingLLM in Docker
 
-Use the Dockerized version of AnythingLLM for a much faster and complete startup of AnythingLLM.
+## Pull the latest image
 
-## Minimum Requirements
-
-<Callout type="info" emoji="️💡">
-  **Tip** ➤➤ Running AnythingLLM on AWS/GCP/Azure?
-
-➤ You should aim for at least 2GB of RAM. Disk storage is proportional to however much data
-
-➤ You will be storing (documents, vectors, models, etc). Minimum 10GB recommended.
-
-</Callout>
-
-- `docker` installed on your machine
-- `yarn` and `node` on your machine
-- access to an LLM running locally or remotely
-
-<Callout type="info" emoji="️💡">
-  **Note**
-
-➤ AnythingLLM by default uses a built-in vector database powered by [LanceDB](https://github.com/lancedb/lancedb)
-
-➤ AnythingLLM by default embeds text on instance privately [Learn More](../server/storage/models/README.md)
-
-</Callout>
-
-## Recommend way to run dockerized AnythingLLM!
-
-<Callout type="warning" emoji="️⚠️">
-  **Important!**
-
-➤ If you are running another service on localhost like Chroma, LocalAi, or LMStudio you will need to use `http://host.docker.internal:xxxx` to access the service from within
-the docker container using AnythingLLM as `localhost:xxxx` will not resolve for the host system
-
-➤ **Requires** Docker v18.03+ on Win/Mac and 20.10+ on Linux/Ubuntu for host.docker.internal to resolve!
-
-➤ _Linux_: add `--add-host=host.docker.internal:host-gateway` to docker run command for this to resolve.
-
-➤ eg: Chroma host URL running on localhost:8000 on host machine needs to be `http://host.docker.internal:8000` when used in AnythingLLM.
-
-</Callout>
-
-<Callout type="info" emoji="️💡">
-  **Tip** ➤➤ It is best to mount the containers storage volume to a folder on
-  your host machine so that you can pull in future updates without deleting your
-  existing data!
-</Callout>
-
-Pull in the latest image from docker. Supports both `amd64` and `arm64` CPU architectures.
-
-```shell copy
- docker pull mintplexlabs/anythingllm
+```bash copy showLineNumbers
+docker pull mintplexlabs/anythingllm:latest
 ```
 
-<Callout type="info" emoji="️💡">
-  **Note** `--cap-add SYS_ADMIN` is a **required** command if you want to scrape
-  webpages. We use [PuppeeteerJS](https://github.com/puppeteer/puppeteer) to
-  scrape websites links and `--cap-add SYS_ADMIN` lets us use sandboxed Chromium
-  across all runtimes for best security practices.
-</Callout>
+## Run the image
 
-Mount the storage locally and run AnythingLLM in Docker
+<Callout type="warning" emoji="️⚠️">
+  If you do not use the command below - all of your data will be lost when the container is restarted!
+
+  The `-v ${STORAGE_LOCATION}:/app/server/storage` is required to persist your data on your host machine in a persistent way.
+</Callout>
 
 <Tabs items={['Linux/Mac', 'Windows']} defaultIndex="0">
   <Tabs.Tab>
@@ -109,19 +60,18 @@ Mount the storage locally and run AnythingLLM in Docker
  </Tabs.Tab>
 </Tabs>
 
-Go to `http://localhost:3001` and you are now using AnythingLLM! All your data and progress will persist between
-container rebuilds or pulls from Docker Hub.
-
-## How to use the user interface
+## Open the application
 
 To access the full application, visit `http://localhost:3001` in your browser.
 
-## About UID and GID in the ENV
+## Other information
+
+### About UID and GID in the ENV
 
 - The UID and GID are set to 1000 by default. This is the default user in the Docker container and on most host operating systems.
 - If there is a mismatch between your host user UID and GID and what is set in the `.env` file, you may experience permission issues.
 
-## Build locally from source _not recommended for casual use_
+### Build locally from source _not recommended for casual use_
 
 - `git clone` this repo and `cd anything-llm` to get to the root directory.
 - `touch server/storage/anythingllm.db` to create empty SQLite DB file.
@@ -131,9 +81,24 @@ To access the full application, visit `http://localhost:3001` in your browser.
 
 Your docker host will show the image as online once the build process is completed. This will build the app to `http://localhost:3001`.
 
-## Integrations and one-click setups
+---
 
-The integrations below are templates or tooling built by the community to make running the docker experience of AnythingLLM easier.
+## Common questions and fixes
+
+### Cannot connect to service running on localhost!
+
+Please see [How to connect to localhost](/installation-docker/localhost) services.
+
+### Having issues with Ollama?
+
+See [Ollama Connection Troubleshooting](/ollama-connection-troubleshooting) and also read about [How to connect to localhost](/installation-docker/localhost) services. This is 100% of the time the issue.
+
+### Still not working?
+
+Ask for help on our Discord [Community Server](https://discord.gg/6UyHPeGZAC)
+
+---
+## Other Deployment Options
 
 ### Use the Midori AI Subsystem to Manage AnythingLLM
 
@@ -149,45 +114,3 @@ Follow the setup found on [Midori AI Subsystem guide](https://io.midori-ai.xyz/s
 After setting that up, install the AnythingLLM docker backend to the Midori AI Subsystem.
 
 Once that is done, you are all set!
-
-## Common questions and fixes
-
-### 1. Cannot connect to service running on localhost!
-
-If you are in docker and cannot connect to a service running on your host machine running on a local interface or loopback:
-
-- `localhost`
-- `127.0.0.1`
-- `0.0.0.0`
-
-<Callout type="warning" emoji="️⚠️">
-  **Important!**
-
-➤ On linux `http://host.docker.internal:xxxx` does not work.
-
-➤ Use `http://172.17.0.1:xxxx` instead to emulate this functionality.
-
-</Callout>
-
-Then in docker you need to replace that localhost part with `host.docker.internal`. For example, if running Ollama on the host machine, bound to `http://127.0.0.1:11434` you should put `http://host.docker.internal:11434` into the connection URL in AnythingLLM.
-
-### 2. API is not working, cannot login, LLM is "offline"?
-
-You are likely running the docker container on a remote machine like EC2 or some other instance where the reachable URL
-is not `http://localhost:3001` and instead is something like `http://193.xx.xx.xx:3001` - in this case all you need to do is add the following to your `frontend/.env.production` before running `docker-compose up -d --build`
-
-```shell copy showLineNumbers
-# frontend/.env.production
- GENERATE_SOURCEMAP=false
- VITE_API_BASE="http://<YOUR_REACHABLE_IP_ADDRESS>:3001/api"
-```
-
-For example, if the docker instance is available on `192.186.1.222` your `VITE_API_BASE` would look like `VITE_API_BASE="http://192.186.1.222:3001/api"` in `frontend/.env.production`.
-
-### 3. Having issues with Ollama?
-
-If you are getting errors like `llama:streaming - could not stream chat. Error: connect ECONNREFUSED 172.17.0.1:11434` then visit this [README](https://github.com/Mintplex-Labs/anything-llm/tree/master/server/utils/AiProviders/ollama).
-
-### Still not working?
-
-Ask for help on our Discord [Community Server](https://discord.gg/6UyHPeGZAC)

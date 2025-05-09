@@ -46,11 +46,7 @@ This is how you get chat responses. Popular hosted solutions like [OpenAI](https
 
 This is the model which you use to "**embed**" or vectorize text. Likewise, external services connected to AnythingLLM have **zero overhead** impact.
 
-<Callout type="info" emoji="️💡">
-  **Tip:** Host a local embedder on another machine that has a GPU if the device
-  running AnythingLLM does not have a GPU. AnythingLLM can connect to to a
-  provider via API.
-</Callout>
+The default embedder runs on the same machine as AnythingLLM using **CPU-only** vectorization. If your documents are large or you need to vectorize a lot of data, you may want to use an external embedder provider and model.
 
 ## Vector database selection impact
 

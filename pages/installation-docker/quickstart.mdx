@@ -1,0 +1,110 @@
+---
+title: "Quickstart"
+description: "Quickstart guide for AnythingLLM via Docker"
+---
+
+import { Callout, Tabs } from "nextra/components";
+import Image from "next/image";
+
+# How to use Dockerized Anything LLM
+
+Use the Dockerized version of AnythingLLM for a much faster and complete startup of AnythingLLM compared to running the source code directly.
+
+## Start AnythingLLM via Docker
+
+<Tabs items={['Linux/Mac', 'Windows']} defaultIndex="0">
+  <Tabs.Tab>
+  ```shell copy showLineNumbers
+  export STORAGE_LOCATION=$HOME/anythingllm && \
+  mkdir -p $STORAGE_LOCATION && \
+  touch "$STORAGE_LOCATION/.env" && \
+  docker run -d -p 3001:3001 \
+  --cap-add SYS_ADMIN \
+  -v ${STORAGE_LOCATION}:/app/server/storage \
+  -v ${STORAGE_LOCATION}/.env:/app/server/.env \
+  -e STORAGE_DIR="/app/server/storage" \
+  mintplexlabs/anythingllm:latest
+  ```
+ </Tabs.Tab>
+
+ <Tabs.Tab>
+  ```powershell copy showLineNumbers
+  $env:STORAGE_LOCATION="$HOME\Documents\anythingllm"; `
+  If(!(Test-Path $env:STORAGE_LOCATION)) {New-Item $env:STORAGE_LOCATION -ItemType Directory}; `
+  If(!(Test-Path "$env:STORAGE_LOCATION\.env")) {New-Item "$env:STORAGE_LOCATION\.env" -ItemType File}; `
+  docker run -d -p 3001:3001 `
+  --cap-add SYS_ADMIN `
+  -v "$env:STORAGE_LOCATION`:/app/server/storage `
+  -v "$env:STORAGE_LOCATION\.env:/app/server/.env" `
+  -e STORAGE_DIR="/app/server/storage" `
+  mintplexlabs/anythingllm:latest;
+  ```
+ </Tabs.Tab>
+</Tabs>
+
+Go to `http://localhost:3001` and you are now using AnythingLLM! All your data and progress will persist between
+container rebuilds or pulls from Docker Hub.
+
+## How to use the user interface
+
+To access the full application, visit `http://localhost:3001` in your browser.
+
+## About UID and GID in the ENV
+
+- The UID and GID are set to 1000 by default. This is the default user in the Docker container and on most host operating systems.
+- If there is a mismatch between your host user UID and GID and what is set in the `.env` file, you may experience permission issues.
+
+
+## `pg` image startup command
+
+The `pg` image has a slightly different startup command to support the PostgreSQL database connection.
+
+First, ensure you have a PostgreSQL database running and a [PGVector extension installed on that database](https://github.com/pgvector/pgvector).
+
+<Tabs items={['Linux', 'Mac', 'Windows']} defaultIndex="0">
+  <Tabs.Tab>
+  _Assuming you have a PostgreSQL database running on localhost:5432_
+  ```shell copy showLineNumbers
+  export STORAGE_LOCATION=$HOME/anythingllm && \
+  mkdir -p $STORAGE_LOCATION && \
+  touch "$STORAGE_LOCATION/.env" && \
+  docker run -d -p 3001:3001 \
+  --cap-add SYS_ADMIN \
+  -v ${STORAGE_LOCATION}:/app/server/storage \
+  -v ${STORAGE_LOCATION}/.env:/app/server/.env \
+  -e STORAGE_DIR="/app/server/storage" \
+  -e DATABASE_URL="postgresql://dbuser:dbpassword@172.17.0.1:5432/dbname" \
+  mintplexlabs/anythingllm:pg
+  ```
+ </Tabs.Tab>
+ <Tabs.Tab>
+  _Assuming you have a PostgreSQL database running on localhost:5432_
+  ```shell copy showLineNumbers
+  export STORAGE_LOCATION=$HOME/anythingllm && \
+  mkdir -p $STORAGE_LOCATION && \
+  touch "$STORAGE_LOCATION/.env" && \
+  docker run -d -p 3001:3001 \
+  --cap-add SYS_ADMIN \
+  -v ${STORAGE_LOCATION}:/app/server/storage \
+  -v ${STORAGE_LOCATION}/.env:/app/server/.env \
+  -e STORAGE_DIR="/app/server/storage" \
+  -e DATABASE_URL="postgresql://dbuser:dbpassword@host.docker.internal:5432/dbname" \
+  mintplexlabs/anythingllm:pg
+  ```
+ </Tabs.Tab>
+ <Tabs.Tab>
+  _Assuming you have a PostgreSQL database running on localhost:5432_
+  ```powershell copy showLineNumbers
+  $env:STORAGE_LOCATION="$HOME\Documents\anythingllm"; `
+  If(!(Test-Path $env:STORAGE_LOCATION)) {New-Item $env:STORAGE_LOCATION -ItemType Directory}; `
+  If(!(Test-Path "$env:STORAGE_LOCATION\.env")) {New-Item "$env:STORAGE_LOCATION\.env" -ItemType File}; `
+  docker run -d -p 3001:3001 `
+  --cap-add SYS_ADMIN `
+  -v "$env:STORAGE_LOCATION`:/app/server/storage `
+  -v "$env:STORAGE_LOCATION\.env:/app/server/.env" `
+  -e STORAGE_DIR="/app/server/storage" `
+  -e DATABASE_URL="postgresql://dbuser:dbpassword@host.docker.internal:5432/dbname" `
+  mintplexlabs/anythingllm:pg;
+  ```
+ </Tabs.Tab>
+</Tabs>
