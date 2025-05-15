@@ -84,7 +84,7 @@ Some models are aligned too heavily and will refuse to use some tools because of
 
 ## LLM is refusing to even detect or call a tool at all.
 
-Open-source models, with their quantization and limited context window are suspectable to just refusing to discover or correct call a tool properly.
+Open-source models, with their quantization and limited context window are susceptible to just refusing to discover or call a tool properly.
 
 When tools are injected into the LLMs prompt for discovery and execution they can quite often be "overloaded" with information or due to their quantization are unable
 to create valid JSON that _exactly matches_ the schema required for a tool call to succeed. The LLM is simply generating JSON, something lower-param and quantized models are _particularly bad at_!
