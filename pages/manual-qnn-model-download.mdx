@@ -1,0 +1,41 @@
+---
+title: "Manual QNN Model Download"
+description: "Sometimes you need to download the NPU models manually due to connection issues."
+---
+
+import { Callout, Tabs } from "nextra/components";
+import Image from "next/image";
+
+## What is this?
+
+Sometimes you need to download the NPU models manually due to connection issues. This is a manual process but it's quite simple
+to do and should only be done if you are unable to download the models automatically from selecting them in the GUI on the desktop app.
+
+## Download the models
+
+You can download the models from the following links:
+
+- [Llama-3.2-3B-Chat](https://cdn.anythingllm.com/support/qnn/llama_v3_2_3b_chat_8k.zip)
+- [Llama-3.1-8B-Chat](https://cdn.anythingllm.com/support/qnn/llama_v3_1_8b_chat_8k.zip)
+- [Llama-3.1-8B-Chat (16k context)](https://cdn.anythingllm.com/support/qnn/llama_v3_1_8b_chat_16k.zip)
+- [Phi 3.5-mini-instruct](https://cdn.anythingllm.com/support/qnn/phi_3_5_mini_instruct_4k.zip)
+
+## Once your zip file is downloaded
+
+1. Open the `models/QNN` folder (or create it if it doesn't exist) in the [desktop storage folder](installation-desktop/storage).
+2. Move the zip file into this folder.
+3. Extract the zip file.
+
+You should now have a folder named with the same name as the zip file and inside it will be the model files.
+
+```bash
+# Example folder structure
+models/QNN/
+└── llama_v3_2_3b_chat_8k/
+    ├── genie_config.json
+    ├── htp_backend_etc.bin
+    ├── related-model-bin-file.bin
+    └── tokenizer.json
+```
+
+3. Restart the desktop app. Now the model should be available in the GUI to be selected and used for inference.
