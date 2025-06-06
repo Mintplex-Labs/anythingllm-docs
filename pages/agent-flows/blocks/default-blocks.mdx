@@ -60,6 +60,39 @@ eg: `HackerNewsPostsPath`
 Leaving this blank will not affect the flow, but if you provide a default value, it will be used as the value of the variable if no other value is provided.
 It is possible for the LLM agent to provide a value for the variable, and this would override the default value.
 
+#### JSON Object Traversal
+
+When working with variables that contain JSON data (for example, responses from API calls), you can access nested values using dot notation or array indexing. This allows you to extract specific pieces of data from complex JSON structures.
+
+For example, if you have an API response stored in a variable called `apiResponse` that looks like this:
+```json
+{
+  "data": {
+    "users": [
+      {
+        "name": "John",
+        "details": {
+          "age": 30,
+          "city": "New York"
+        }
+      }
+    ]
+  }
+}
+```
+
+You can access specific values using the following syntax:
+- `apiResponse.data.users[0].name` would return "John"
+- `apiResponse.data.users[0].details.city` would return "New York"
+
+This feature is particularly useful when:
+- Working with API responses
+- Processing nested JSON data structures
+- Extracting specific fields from complex objects
+- Chaining multiple API calls where data from one response needs to be used in another
+
+**Note:** JSON object traversal can be used in any block field that accepts variables.
+
 ### Flow Complete Block
 
 The flow complete block is used to indicate the end of the flow. It is the last block on the canvas and is used to indicate the end of the flow. This block purely serves as a visual indicator for you.
