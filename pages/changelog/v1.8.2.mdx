@@ -1,0 +1,102 @@
+---
+title: "v1.8.2"
+description: "AnythingLLM Desktop v.1.8.2 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<style global jsx>{`
+  img {
+    aspect-ratio: 16/9;
+    object-fit: fit;
+    border-radius: 20px;
+  }
+`}</style>
+
+## New Features:
+
+- [x] You can now swap models in the chat window (Cmd/Ctrl + L while on a chat screen or click the "brain" icon in the prompt input)
+ <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
+    <Image
+      src="/images/product/changelog/1.8.2/model-selector.png"
+      height={400}
+      width={600}
+      quality={100}
+      alt="AnythingLLM Changelog v1.8.2"
+    />
+   </div>
+
+- [x] System Prompt History version tracking
+  <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
+    <Image
+      src="/images/product/changelog/1.8.2/system-prompt.png"
+      height={400}
+      width={600}
+      quality={100}
+      alt="AnythingLLM Changelog v1.8.2"
+    />
+   </div>
+
+- [x] PGVector support for your vector database
+- [x] Keyboard shortcuts (`cmd/ctrl + Shift + ?` to see all quick commands)
+ <div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
+    <Image
+      src="/images/product/changelog/1.8.2/keyboard-shortcuts.png"
+      height={400}
+      width={600}
+      quality={100}
+      alt="AnythingLLM Changelog v1.8.2"
+    />
+   </div>
+
+## Improvements:
+
+- [x] Updated internal [Ollama to 0.9.0](https://github.com/ollama/ollama/releases/tag/v0.9.0)
+- [x] Various minor UI/UX improvements
+- [x] Dynamic context window pulling for cloud based LLMs
+- [x] When you create a new API key, it will now be added to the API key list without having to refresh the page
+- [x] Attachments UI loading and active state update
+- [x] UX improvement to disable sending messages when attaching documents is still processing
+- [x] Disable Spellcheck in chat window (available in chat settings)
+- [x] Improved file picker load times when loading large files (150MB+)
+- [x] Latvian language support
+- [x] You can now import Agent Flows from the [Community Hub](https://hub.anythingllm.com/list/agent-flows)
+
+<ul style={{ listStyleType: "none", padding: "10px 0", margin: 0 }}>
+<li><strong>MCP Improvements</strong></li>
+<li> - MCP start/stop text</li>
+<li> - MCP ENV inheritance for desktop clients</li>
+</ul>
+
+<ul style={{ listStyleType: "none", padding: "10px 0", margin: 0 }}>
+<li><strong>Agent Flow improvements</strong></li>
+<li> - removed the `inputVar` requirement for LLM Instruction blocks (you can use any variable anywhere in any block now)</li>
+<li> - You can now enable `Direct Output` on any block in agent flows to avoid the LLM from interacting with the flow outputs when invoked</li>
+<li> - Added `PUT` and `PATCH` support for agent flow API blocks</li>
+<li> - You can now use [JSON object traversal](/agent-flows/blocks/default-blocks#json-object-traversal) in agent flow variables to access nested values in JSON like variables in flows</li>
+</ul>
+
+<ul style={{ listStyleType: "none", padding: "10px 0", margin: 0 }}>
+<li><strong>Citations UI/UX improvements</strong></li>
+<li> - Better rendering animation</li>
+<li> - New layout for citations line items and icons</li>
+<li> - Tooltip for semantic score fixed being under the citaiton modal when open.</li>
+</ul>
+
+## Bug Fixes:
+
+- [x] Fixed Azure image attachment issues where images were not being attached to the chat
+- [x] OpenAI MaxChunkLength was not being respected for splitting text into chunks
+- [x] Fixed bug where agent sessions would not clear any attached files on prompt input
+- [x] Fixed UI bug where file directory tooltip was not wrapping text that was underscored and long
+- [x] Fixed bug where model map cache was not being refreshed or was `null` when stale resulting in incorrect context window sizes
+
+## Pinned Download Links
+
+**Revision 1.8.2:**
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.2/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.8.2/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.8.2/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.8.2/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.2/AnythingLLMDesktop.AppImage)
