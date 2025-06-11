@@ -67,6 +67,7 @@ This feature is most useful for when you have AnythingLLM as a simple sub-servic
 - **Your instance must be in multi-user mode** to use this feature.
 - You should provision an API key for AnythingLLM so you can create new users as well as issue temporary authentication links for users.
 - The user must already exist within AnythingLLM before using this feature. You can create a user via the in-app interface or the API.
+- You may want to disable the login page for your in addition to using this feature. See [Disable Login Page](#disable-login-page-recommended).
 
 ### Enable
 
@@ -109,6 +110,15 @@ https://your-anythingllm-instance.com/sso/simple?token=1234567890&redirectTo=/wo
 ```
 
 Will redirect the user to the `/workspaces/sample-workspace` chat page after logging in. This can be useful if you want to redirect the user to a specific workspace they have access to after logging in.
+
+### Disable Login Page
+
+If you are using the `SIMPLE_SSO_ENABLED` feature, you can disable the login page by setting the `SIMPLE_SSO_NO_LOGIN` environment variable to **_any value_**.
+
+Setting `SIMPLE_SSO_NO_LOGIN` to **_any value_** in addition to `SIMPLE_SSO_ENABLED` & multi-user mode enabled will:
+- Disable the traditional login page for any users
+- Prevent creation of new **Invitations** by any user
+- Prevent any existing **Invitations** from being used for new users to create an account with.
 
 ### Disable
 
