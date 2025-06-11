@@ -64,6 +64,13 @@ This feature is most useful for when you have AnythingLLM as a simple sub-servic
 
 ### Prerequisites
 
+<Callout type="warning" emoji="️⚠️">
+  **NOTE:** You should enable these configurations _after_ you have enabled multi-user mode, created at least one `admin` user, and have completed the onboarding flow
+  in the AnythingLLM instance. 
+  <br/>
+  Do **not** enabled these configurations before you have done this or else you may find yourself soft-locked out of the instance until you disable these flags.
+</Callout>
+
 - **Your instance must be in multi-user mode** to use this feature.
 - You should provision an API key for AnythingLLM so you can create new users as well as issue temporary authentication links for users.
 - The user must already exist within AnythingLLM before using this feature. You can create a user via the in-app interface or the API.
@@ -119,6 +126,12 @@ Setting `SIMPLE_SSO_NO_LOGIN` to **_any value_** in addition to `SIMPLE_SSO_ENAB
 - Disable the traditional login page for any users
 - Prevent creation of new **Invitations** by any user
 - Prevent any existing **Invitations** from being used for new users to create an account with.
+
+```bash copy
+# This can be any value, number, boolean, or string and it will have the same effect.
+SIMPLE_SSO_ENABLED="enable"
+SIMPLE_SSO_NO_LOGIN="enable"
+```
 
 ### Disable
 
