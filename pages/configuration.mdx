@@ -195,3 +195,28 @@ COLLECTOR_ALLOW_ANY_IP="true"
 ### Disable
 
 Fully remove or comment out the `COLLECTOR_ALLOW_ANY_IP` environment variable to return to the default behavior.
+
+## Disable Streaming for Generic OpenAI Provider
+
+<Callout type="info" emoji="️💡">
+  **Note:** This setting only affects the Generic OpenAI provider and does not impact other LLM providers. Use this when your custom LLM endpoint does not support streaming responses.
+</Callout>
+
+Modification of the `GENERIC_OPENAI_STREAMING_DISABLED` environment variable allows you to disable streaming responses when using the Generic OpenAI provider. This is particularly useful when you're using a custom LLM that doesn't support streaming responses.
+
+By default, AnythingLLM attempts to use streaming for a better user experience. However, some custom LLM implementations may not support this feature, resulting in errors or unexpected behavior.
+
+When this setting is enabled, all responses from your Generic OpenAI provider will be returned as complete responses rather than streamed chunks.
+
+### Enable
+
+Set the `GENERIC_OPENAI_STREAMING_DISABLED` environment variable to **_any value_** to enable.
+
+```bash
+# Must be set to a string value of "true" to be effective.
+GENERIC_OPENAI_STREAMING_DISABLED="true"
+```
+
+### Disable
+
+Fully remove or comment out the `GENERIC_OPENAI_STREAMING_DISABLED` environment variable to return to the default behavior of using streaming responses.
