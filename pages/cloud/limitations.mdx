@@ -29,6 +29,8 @@ AnythingLLM **does allow** you to use the built-in embedder model, which is extr
 The Starter tier ships with **very minimal** compute resources while Professional ships with much more compute. This means that uploading a large document (in words, not file size) can overwhelm the CPU and cause
 the process to exit. This will result in a 502 error.
 
+###
+
 ## Issues with "Accuracy Optimized" Search in Workspace
 
 Sometimes, your instance may become unresponsive or slow when using the "Accuracy Optimized" search in the Workspace if the workspace has a large number of files.
@@ -37,4 +39,17 @@ This is because the "Accuracy Optimized" search requires a lot of memory and CPU
 
 You can prevent this by using the `Default` search mode in the Workspace settings.
 
-### [How to fix the 502 error on your instance &rarr;](./error-502.mdx)
+## No custom Agent supported
+
+While AnythingLLM does support [custom coded Agents](/agent/custom/introduction), we do not support custom Agents in the hosted cloud due to security concerns
+as well other general limitations to running arbitrary code in a hosted environment.
+
+If attempting to use a custom Agent, you will see an error about the system administrator not allowing custom Agents. This cannot be changed on hosted cloud.
+
+If you need to use a custom Agent, you can use the [AnythingLLM Desktop](/installation-desktop/overview) or a [self-hosted AnythingLLM](/installation-docker/overview) instance.
+
+## No MCP support
+
+AnythingLLM does not support [MCP (Model-Context Protocol)](mcp-compatibility/overview) in the hosted cloud due to security concerns as well other general limitations to running arbitrary code in a hosted environment.
+
+If you need to use MCPs, you can use the [AnythingLLM Desktop](/installation-desktop/overview) or a [self-hosted AnythingLLM](/installation-docker/overview) instance.
