@@ -1,0 +1,70 @@
+---
+title: "Chat Modes"
+description: "Understanding the difference between Query and Chat modes in AnythingLLM"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Chat Modes in AnythingLLM
+
+AnythingLLM offers two ways to chat with your documents: Query mode and Chat mode. Let's understand what each does and how to get the best results.
+
+## Query Mode vs Chat Mode
+
+**Query Mode**:
+- Only uses information from your uploaded documents
+- Will tell you if it can't find relevant information
+- Best for when you need accurate, document-based answers
+
+**Chat Mode**:
+- Uses both your documents and the AI's general knowledge
+- More conversational and flexible
+- Good for brainstorming and exploring topics
+
+## Common Questions
+
+### "It keeps saying 'No relevant information found' in Query mode"
+
+This usually means one of three things:
+1. The information might be in your document but worded differently
+2. The similarity settings might be too strict
+3. The document might be too large and split in a way that makes finding information difficult
+
+**Quick fixes to try:**
+1. Go to workspace settings → Vector Database Settings
+2. Change "Document similarity threshold" to "No restriction"
+3. Try asking your question using words that match how it's written in your document
+
+<Callout type="info" emoji="💡">
+  Instead of asking "How do I start the app?", try using terms from your document like "How do I initialize the application?"
+</Callout>
+
+### "When should I use Query mode vs Chat mode?"
+
+Use **Query mode** when:
+- You need factual answers from your documents
+- You're working with technical documentation
+- You want to prevent made-up information
+
+Use **Chat mode** when:
+- You want more conversational responses
+- You need additional context or examples
+- You're brainstorming ideas
+
+### "Why does it work better with some documents than others?"
+
+Documents are processed in chunks, and each chunk is analyzed separately. This means:
+- Large documents might need more specific questions
+- Technical documents work better with technical questions
+
+## Tips for Better Results
+
+1. **Start with Query mode** and "No restriction" similarity if you're not finding information
+2. **Use specific terms** from your documents in your questions
+3. **Switch to Chat mode** if you need more context or explanation
+4. **Try rephrasing your question** if you're not getting good results
+
+<Callout type="warning" emoji="⚠️">
+  If you're still not getting good results, check your workspace settings and try adjusting the "Document similarity threshold" between No restriction, Low (≥ .25), Medium (≥ .50), or High (≥ .75) to find what works best for your documents.
+</Callout>
