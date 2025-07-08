@@ -1,25 +1,41 @@
 ---
 title: "Private Browser Tool"
-description: "Securely access and scrape authenticated content with AnythingLLM's Private Browser"
+description: "Have your LLM access and scrape authenticated content with AnythingLLM's Private Browser tool"
 ---
 
 import { Callout } from "nextra/components";
+import Image from "next/image";
 
 <Callout type="info" emoji="🖥️">
-  **Desktop Only Feature**
-  The Private Browser Tool is exclusively available in the AnythingLLM Desktop application.
+  **Desktop Only Feature (v1.8.3+)**<br/>
+  The Private Browser Tool is exclusively available in the AnythingLLM Desktop application!
 </Callout>
 
 # Private Browser Tool
 
-The Private Browser Tool enables you to access and scrape content from websites that require authentication, such as LinkedIn profiles or internal company portals. It provides a secure, isolated browser environment that maintains your login sessions while keeping credentials safely stored on your local machine.
+<Callout type="warning" emoji="⚠️">
+  **Security Note**
+  All credentials and session data are stored locally on your machine. AnythingLLM never transmits or stores your login information outside of your local machine.
+</Callout>
+
+The Private Browser Tool enables you to access and scrape gated online content from websites or services that require authentication but hold critical contexual content you might want to use in your workflows, such as your personal LinkedIn feed or internal company portals that you have access to.
+
+Your LLM can now access these websites and scrape and view content just like you would in a regular browser!
+
+<Image
+  src="/images/features/browser-tool/browser-tool.png"
+  height={500}
+  width={500}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10, margin: "auto" }}
+/>
 
 ## Key Features
 
 - **Secure Session Storage**: Credentials are stored locally using isolated browser sessions
-- **Session Persistence**: Login sessions persist between app restarts until explicitly cleared
-- **Isolated Environment**: Separate from your main browser and AnythingLLM's main session
-- **Full User Control**: Clear stored data at any time with a single click
+- **Session Persistence**: Login sessions persist between app restarts until explicitly cleared or the authentication expires for the associated service
+- **Isolated Environment**: Separate from your actual web browser
+- **Full User Control**: Clear stored data or sessions at any time with a single click
 
 ## Using the Private Browser
 
@@ -28,40 +44,47 @@ The Private Browser Tool enables you to access and scrape content from websites 
 2. Navigate to Settings > Tools > Browser Tool
 3. Click "Open Private Browser" to launch the isolated browser window
 
-### Authentication Process
-1. Log into your desired service (e.g., LinkedIn, Gmail) through the Private Browser
-2. Your session will persist until you explicitly clear the browser data
-3. AnythingLLM can now access authenticated content from these services when scraping
+<Image
+  src="/images/features/browser-tool/manager.png"
+  height={1000}
+  width={1000}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10, margin: "auto" }}
+/>
 
-<Callout type="warning" emoji="⚠️">
-  **Security Note**
-  All credentials and session data are stored locally on your machine. AnythingLLM never transmits or stores your login information in the cloud.
+### Authentication Process
+1. Log into your desired service (e.g., LinkedIn, Gmail) through the Private Browser tool.
+2. Your session will persist until you explicitly clear the browser data or the authentication expires for the associated service.
+3. AnythingLLM can now access authenticated content from these services when scraping or via agentic workflow execution.
+4. The returned content will be text only. No images, videos, or other media will be returned.
+
+<Callout type="info" emoji="💡">
+  **Heads up!**
+  The private browser tool is not a magic bullet. It is a tool that allows you to access authenticated content from websites that require authentication. It cannot currently **interact** with the content of the page you are accessing (eg: browser automation, RPA, etc).
 </Callout>
 
 ### Managing Browser Data
 
 - **Clearing Data**: Use the "Clear Browser Data" button to remove all stored credentials and sessions
-- **When to Clear**:
-  - After completing your scraping tasks
+- **When should you clear the browser data?**:
   - When switching between different service accounts
-  - If you encounter authentication issues
+  - If you encounter authentication issues when the LLM tries to access the site you want to scrape
 
 ## Common Use Cases
 
-- Scraping protected LinkedIn profiles
-- Accessing internal company documentation
-- Collecting data from authenticated web services
-- Scraping content from behind login walls
+<Callout type="warning" emoji="⚠️">
+  **Warning!**
+  Some web services may not you doing this. While the private browser tool is by any proxy, just a regular browser, some services may not like it. So use this tool at your discretion to prevent whatever service you are trying to access from blocking your account!
+</Callout>
+
+- Scraping your personal linkedin profile or feed.
+- Accessing internal company documentation that is behind a login or SSO portal.
+- Collecting or accessing data from paid or authenticated web service you have access to normally.
 
 ## Troubleshooting
 
 If you encounter issues:
 1. Clear the browser data and try again
-2. Ensure you're fully logged into the service
-3. Check if the service allows automated access
-4. Restart the AnythingLLM Desktop application
+2. Ensure you're fully logged into the service by opening the private browser and navigating to the site you want the LLM to access.
 
-<Callout type="info" emoji="💡">
-  **Tip**
-  The Private Browser Tool works best when used in conjunction with AnythingLLM's web scraping features for authenticated content collection.
-</Callout>
+Some services have very short lived sessions, those services may require you to log in again after a certain amount of time or might be a bad use-case for this tool. You can always re-authenticate with the service by opening the private browser and navigating to the site you want the LLM to access and logging in again to refresh the session.
