@@ -4,7 +4,6 @@ description: "Learn about the blocks that are available to you in the flow edito
 ---
 
 import { Callout, Cards } from "nextra/components";
-import META from "./_meta.json";
 
 <Callout type="info" emoji="💡">
   If you expect to use a block in your flow, but it is not available - you are probably using the wrong version of AnythingLLM.
@@ -20,16 +19,12 @@ Learn about the blocks that are available to you in the flow editor. Keep in min
 
 ## Available Blocks
 
-{Object.keys(META)
-  .filter((key) => key !== "intro")
-  .map((key) => (
-    <Card
-      key={key}
-      title={META[key].title}
-      href={`/agent-flows/blocks/${key}`}
-      style={{ margin: "1rem" }}
-    />
-  ))}
+<Card title="Default Blocks" href="/agent-flows/blocks/default-blocks" style={{ margin: "1rem" }} />
+<Card title="Web Scraper" href="/agent-flows/blocks/web-scraper" style={{ margin: "1rem" }} />
+<Card title="API Call" href="/agent-flows/blocks/api-call" style={{ margin: "1rem" }} />
+<Card title="LLM Instruction" href="/agent-flows/blocks/llm-instruction" style={{ margin: "1rem" }} />
+<Card title="Read File" href="/agent-flows/blocks/read-file" style={{ margin: "1rem" }} />
+<Card title="Write File" href="/agent-flows/blocks/write-file" style={{ margin: "1rem" }} />
 
 export const Card = Object.assign(
   // Copy card component and add default props
