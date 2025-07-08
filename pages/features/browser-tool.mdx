@@ -1,0 +1,67 @@
+---
+title: "Private Browser Tool"
+description: "Securely access and scrape authenticated content with AnythingLLM's Private Browser"
+---
+
+import { Callout } from "nextra/components";
+
+<Callout type="info" emoji="🖥️">
+  **Desktop Only Feature**
+  The Private Browser Tool is exclusively available in the AnythingLLM Desktop application.
+</Callout>
+
+# Private Browser Tool
+
+The Private Browser Tool enables you to access and scrape content from websites that require authentication, such as LinkedIn profiles or internal company portals. It provides a secure, isolated browser environment that maintains your login sessions while keeping credentials safely stored on your local machine.
+
+## Key Features
+
+- **Secure Session Storage**: Credentials are stored locally using isolated browser sessions
+- **Session Persistence**: Login sessions persist between app restarts until explicitly cleared
+- **Isolated Environment**: Separate from your main browser and AnythingLLM's main session
+- **Full User Control**: Clear stored data at any time with a single click
+
+## Using the Private Browser
+
+### Accessing the Tool
+1. Open AnythingLLM Desktop
+2. Navigate to Settings > Tools > Browser Tool
+3. Click "Open Private Browser" to launch the isolated browser window
+
+### Authentication Process
+1. Log into your desired service (e.g., LinkedIn, Gmail) through the Private Browser
+2. Your session will persist until you explicitly clear the browser data
+3. AnythingLLM can now access authenticated content from these services when scraping
+
+<Callout type="warning" emoji="⚠️">
+  **Security Note**
+  All credentials and session data are stored locally on your machine. AnythingLLM never transmits or stores your login information in the cloud.
+</Callout>
+
+### Managing Browser Data
+
+- **Clearing Data**: Use the "Clear Browser Data" button to remove all stored credentials and sessions
+- **When to Clear**:
+  - After completing your scraping tasks
+  - When switching between different service accounts
+  - If you encounter authentication issues
+
+## Common Use Cases
+
+- Scraping protected LinkedIn profiles
+- Accessing internal company documentation
+- Collecting data from authenticated web services
+- Scraping content from behind login walls
+
+## Troubleshooting
+
+If you encounter issues:
+1. Clear the browser data and try again
+2. Ensure you're fully logged into the service
+3. Check if the service allows automated access
+4. Restart the AnythingLLM Desktop application
+
+<Callout type="info" emoji="💡">
+  **Tip**
+  The Private Browser Tool works best when used in conjunction with AnythingLLM's web scraping features for authenticated content collection.
+</Callout>
