@@ -1,6 +1,6 @@
 ---
-title: "Private Browser Tool"
-description: "Have your LLM access and scrape authenticated content with AnythingLLM's Private Browser tool"
+title: "Authenticated Scraping"
+description: "Have your LLM access and scrape authenticated content with AnythingLLM's Authenticated Scraping tool"
 ---
 
 import { Callout } from "nextra/components";
@@ -8,17 +8,17 @@ import Image from "next/image";
 
 <Callout type="info" emoji="🖥️">
   **Desktop Only Feature (v1.8.3+)**<br/>
-  The Private Browser Tool is exclusively available in the AnythingLLM Desktop application!
+  The Authenticated Scraping tool is exclusively available in the AnythingLLM Desktop application!
 </Callout>
 
-# Private Browser Tool
+# Authenticated Scraping
 
 <Callout type="warning" emoji="⚠️">
   **Security Note**
   All credentials and session data are stored locally on your machine. AnythingLLM never transmits or stores your login information outside of your local machine.
 </Callout>
 
-The Private Browser Tool enables you to access and scrape gated online content from websites or services that require authentication but hold critical contexual content you might want to use in your workflows, such as your personal LinkedIn feed or internal company portals that you have access to.
+The Authenticated Scraping tool enables you to access and scrape gated online content from websites or services that require authentication but hold critical contexual content you might want to use in your workflows, such as your personal LinkedIn feed or internal company portals that you have access to.
 
 Your LLM can now access these websites and scrape and view content just like you would in a regular browser!
 
@@ -37,7 +37,7 @@ Your LLM can now access these websites and scrape and view content just like you
 - **Isolated Environment**: Separate from your actual web browser
 - **Full User Control**: Clear stored data or sessions at any time with a single click
 
-## Using the Private Browser
+## Using the Authenticated Scraping Tool
 
 ### Accessing the Tool
 1. Open AnythingLLM Desktop
@@ -53,14 +53,14 @@ Your LLM can now access these websites and scrape and view content just like you
 />
 
 ### Authentication Process
-1. Log into your desired service (e.g., LinkedIn, Gmail) through the Private Browser tool.
+1. Log into your desired service (e.g., LinkedIn, Gmail) through the Authenticated Scraping tool.
 2. Your session will persist until you explicitly clear the browser data or the authentication expires for the associated service.
 3. AnythingLLM can now access authenticated content from these services when scraping or via agentic workflow execution.
 4. The returned content will be text only. No images, videos, or other media will be returned.
 
 <Callout type="info" emoji="💡">
   **Heads up!**
-  The private browser tool is not a magic bullet. It is a tool that allows you to access authenticated content from websites that require authentication. It cannot currently **interact** with the content of the page you are accessing (eg: browser automation, RPA, etc).
+  The Authenticated Scraping tool is not a magic bullet. It is a tool that allows you to access authenticated content from websites that require authentication. It cannot currently **interact** with the content of the page you are accessing (eg: browser automation, RPA, etc).
 </Callout>
 
 ### Managing Browser Data
