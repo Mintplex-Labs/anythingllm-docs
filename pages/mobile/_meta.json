@@ -1,0 +1,24 @@
+{
+  "--- Legal": {
+    "type": "separator",
+    "title": "Legal & Privacy"
+  },
+  "terms": {
+    "title": "Terms of Service",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}
