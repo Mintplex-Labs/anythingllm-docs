@@ -221,3 +221,33 @@ GENERIC_OPENAI_STREAMING_DISABLED="true"
 ### Disable
 
 Fully remove or comment out the `GENERIC_OPENAI_STREAMING_DISABLED` environment variable to return to the default behavior of using streaming responses.
+
+## Custom TTL for Sessions
+
+<Callout type="info" emoji="️💡">
+  **Note:** This configuration is only available for _self-hosted instances_.
+</Callout>
+
+Modification of the `JWT_EXPIRY` environment variable allows you to set a custom TTL for sessions.
+
+By default, AnythingLLM will use a TTL of **30 days** for sessions.
+
+### Enable
+
+<Callout type="warning" emoji="️⚠️">
+  **Notice:** The minimum TTL is 5 minutes.
+</Callout>
+
+Set the `JWT_EXPIRY` environment variable to **a valid duration string** to enable.
+Valid duration strings can be found [from the Vercel `ms` library](https://github.com/vercel/ms?tab=readme-ov-file#examples).
+
+```bash
+# Must be set to a string value of a valid duration string.
+JWT_EXPIRY="1d" # 1 day
+#JWT_EXPIRY="60d" # 60 days
+#JWT_EXPIRY="30m" # 30 minutes
+```
+
+### Disable
+
+Fully remove or comment out the `JWT_EXPIRY` environment variable to return to the default behavior.
