@@ -1,0 +1,78 @@
+---
+title: "Introduction"
+description: "AnythingLLM Mobile Introduction"
+---
+
+import { Callout, Cards } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="️💡">
+  AnythingLLM Mobile is currently in **closed beta**.
+</Callout>
+
+
+# Introduction
+
+_this documentation is currently in progress while we work on a public release - it may be incomplete or incorrect_
+
+AnythingLLM Mobile is a mobile app that brings the entire AnythingLLM experience onto your phone.
+
+It is currently in **closed beta** for Android. You can join the beta by [filling out this form](https://forms.gle/CT1UEadRBbz4EraLA) and joining the `#anythingllm-mobile` channel in the [AnythingLLM Discord](https://discord.gg/Dh4zSZCdsC).
+
+## Features
+
+- **Chat with local SLM** - Chat with your local SLM (small language model) on your phone. Supports both reasoning and non-reasoning models.
+- **Change models on the fly** - Easily swap between different models
+- **Workspace and Threads** - Create workspaces and threads to organize your chats
+- **On device RAG** - Locally process your documents and use them in your chats all fully offline
+- **Agentic Tools** - Leverage the power of AnythingLLM's agentic tools like web search, web scraping, deep research, and even cross app interactions like drafting emails or managing your calendar
+- **Sync with AnythingLLM Desktop & Cloud** - Sync your chats, workspaces, and threads with AnythingLLM Desktop or AnythingLLM Cloud/Self-hosted instances
+
+### For Beta Testers
+
+If you are a beta tester, you should have received an email with a link to the app to download from Google Play or via Direct Download (APK).
+
+<Callout type="warning" emoji="️⚠️">
+  **DO NOT** share the app with anyone outside of the beta testers. This is a closed beta and external access will only slow down the development process.
+</Callout>
+
+If you have any general questions, please join the `#anythingllm-mobile` channel in the [AnythingLLM Discord](https://discord.gg/Dh4zSZCdsC) and we'll help you out.
+
+#### Feedback Reporting
+
+All feedback should be officially reported via the [AnythingLLM Feedback Form](https://forms.gle/8kN3n48DQTo6R8t4A).
+
+#### Public Issue Tracking
+
+All public issues should be reported via the [AnythingLLM Mobile Beta Issue Tracker](https://trello.com/b/QdAtVa7U/anythingllm-mobile-issue-tracking).
+
+### Common Questions
+
+#### IOS support?
+
+We are planning to support iOS in the future. Currently, we are focusing on Android for a full release by the end of September 2025. iOS support coming after that in October 2025.
+
+#### Can I download any model I want?
+
+Right now, for performance reasons, we only support a hand-picked models. Eventually we will support any model you want, but for now, we are focusing on performance and stability.
+
+#### How does syncing with AnythingLLM Desktop & Cloud work?
+
+<Callout type="info" emoji="️💡">
+  Requires _version 1.8.5_ or higher of AnythingLLM Desktop or AnythingLLM Cloud. In 1.8.5, this feature is hidden behind the ["Experimental features"](/beta-preview/enable-feature) sidebar item.
+</Callout>
+
+AnythingLLM Mobile while functional and complete standalone, is designed to be also be a companion to AnythingLLM Desktop and AnythingLLM Cloud.
+
+Since mobile devices have limited resources, we now have the ability to sync your chats, workspaces, and threads with AnythingLLM Desktop or AnythingLLM Cloud/Self-hosted instances in addition
+to being able to **delegate** inference across your local network or cloud instances for more compute and more powerful models, but in the mobile form factor!
+
+This technology is called **Distributed Inference**<sup>TM</sup> and is a key part of AnythingLLM's vision for the future of local AI.
+
+#### How does the on device RAG work?
+
+AnythingLLM Mobile runs a small embedding model + local vector database on your device to provide RAG capabilities with citations.
+
+#### How can I add my own agent tools?
+
+Currently, to use custom agent tools, MCPs or otherwise, you should use the sync feature with AnythingLLM Desktop or AnythingLLM Cloud. Customization of agent tools on mobile standalone is not yet supported.
