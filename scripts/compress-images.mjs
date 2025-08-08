@@ -24,11 +24,13 @@ function getInOut(input, output) {
 (async () => {
   let input = path.join(process.cwd(), INPUT);
   let output = path.join(process.cwd(), OUTPUT);
+  fs.mkdirSync(output, { recursive: true });
+
   let dirs = getInOut(input, output);
 
   for (let item of dirs) {
     // To target a specific directory to prevent duplicate compression, you can uncomment the following
-    // if (!item.input.includes("mcp-compatibility")) continue;
+    // if (!item.input.includes("document-chat")) continue;
 
     console.log(`Processing ${item.input}`);
     const files = await imagemin([`${item.input}/*.{jpg,png}`], {

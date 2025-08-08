@@ -1,0 +1,82 @@
+---
+title: "Why does the LLM not use my documents"
+description: "We get this question many times a week - here are some common reasons for why an LLM may not appear to 'use' your documents."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="️💡">
+    This is the legacy documentation for how documents in AnythingLLM worked. 
+    
+    As of AnythingLLM 1.8.5, we have a new way to use documents in chat. Upgrade to the latest version to get the best experience.
+
+    [Learn about the new UX for documents in chat](/chatting-with-documents/introduction)
+</Callout>
+
+
+# Why does the LLM not use my documents?
+
+We get this question many times a week, where someone is confused, or even upset the LLM does not appear to "just know everything" about the documents that are embedded into a workspace.
+
+So to understand why this occurs we first need to clear up some confusion on how RAG (retrieval augmented generation) works inside of AnythingLLM.
+
+This will not be deeply technical, but once you read this you will be an expert on how traditional RAG works.
+
+## LLMs are not omnipotent
+
+Unfortunately, LLMs are not yet sentient and so it is vastly unrealistic with even the most powerful models for the model you are using to just "know what you mean".
+
+That being said there are a ton of factors and moving parts that can impact the output and salience of an LLM and even to complicate things further, each factor can impact your output depending on what your specific use case is!
+
+## LLMs do not introspect
+
+In AnythingLLM, we do not read your entire filesystem and then report that to the LLM, as it would waste tokens 99% of the time.
+
+Instead, your query is processed against your vector database of document text and we get back 4-6 text chunks from the documents that are deemed "relevant" to your prompt.
+
+For example, let's say you have a workspace of hundreds of recipes, don't ask "Get me the title of the 3 high-calorie meals". This LLM will outright refuse this! but why?
+
+When you use RAG for document chatbots your entire document text cannot possibly fit in most LLM context windows. Splitting the document into chunks of text and then saving those chunks in a vector database makes it easier to "augment" an LLM's base knowledge with snippets of relevant information based on your query.
+
+Your entire document set is not "embedded" into the model. It has no idea what is in each document nor where those documents even are.
+
+If this is what you want, you are thinking of agents, which are coming to AnythingLLM soon.
+
+## So how does AnythingLLM work?
+
+Let's think of AnythingLLM as a framework or pipeline.
+
+1. A workspace is created. The LLM can only "see" documents embedded in this workspace. If a document is not embedded, there is no way the LLM can see or access that document's content.
+
+2. You upload a document, this makes it possible to "Move into a workspace" or "embed" the document. Uploading takes your document and turns it into text - that's it.
+
+3. You "Move document to workspace". This takes the text from step 2 and chunks it into more digestable sections. Those chunks are then sent to your embedder model and turned into a list of numbers, called a vector.
+
+4. This string of numbers is saved to your vector database and is fundamentally how RAG works. There is no guarantee that relevant text stays together during this step! This is an area of active research.
+
+5. You type a question into the chatbox and press send.
+
+6. Your question is then embedded just like your document text was.
+
+7. The vector database then calculates the "nearest" chunk-vector. AnythingLLM filters any "low-score" text chunks (you can modify this). Each vector has the original text it was derived from attached to it.
+
+<Callout type="warning" emoji="️⚠️">
+  **IMPORTANT!**
+
+    This is not a purely semantic process so the vector database would not "know what you mean".
+
+    It's a mathematical process using the "Cosine Distance" formula.
+
+    However, here is where the embedder model used and other AnythingLLM settings can make the most difference. Read more in the next section.
+
+</Callout>
+
+8. Whatever chunks deemed valid are then passed to the LLM as the original text. Those texts are then appended to the LLM as its "System message". This context is inserted below your system prompt for that workspace.
+
+9. The LLM uses the system prompt + context, your query, and history to answer the question as best as it can.
+
+Done.
+
+
+_This informative document is now deprecated. [Learn more about using documents in chat](/chatting-with-documents/introduction)_

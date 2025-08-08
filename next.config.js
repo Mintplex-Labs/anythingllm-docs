@@ -19,6 +19,11 @@ module.exports = withNextra({
         destination: '/cloud/error-502',
         permanent: true,
       },
+      {
+        source: '/llm-not-using-my-docs',
+        destination: '/chatting-with-documents/rag-in-anythingllm',
+        permanent: true,
+      },
     ];
   },
 });
