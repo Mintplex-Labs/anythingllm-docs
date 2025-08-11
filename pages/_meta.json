@@ -212,8 +212,8 @@
     "type": "separator",
     "title": "Frequently Asked Questions"
   },
-  "llm-not-using-my-docs": {
-    "title": "LLM not using my docs!",
+  "chatting-with-documents": {
+    "title": "Using Documents in Chat",
     "theme": {
       "breadcrumb": true,
       "footer": true,
