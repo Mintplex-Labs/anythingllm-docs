@@ -1,0 +1,82 @@
+---
+title: "TrueFoundry AI gateway"
+---
+
+import Image from "next/image";
+
+
+TrueFoundry provides an enterprise-ready [AI Gateway](https://www.truefoundry.com/ai-gateway) which can integrate with applications like AnythingLLM and provides governance and observability for your AI Applications. TrueFoundry AI Gateway serves as a unified interface for LLM access, providing:
+
+- **Unified API Access**: Connect to 250+ LLMs (OpenAI, Claude, Gemini, Groq, Mistral) through one API
+- **Low Latency**: Sub-3ms internal latency with intelligent routing and load balancing  
+- **Enterprise Security**: SOC 2, HIPAA, GDPR compliance with RBAC and audit logging
+- **Quota and cost management**: Token-based quotas, rate limiting, and comprehensive usage tracking
+- **Observability**: Full request/response logging, metrics, and traces with customizable retention
+
+## Prerequisites
+
+Before integrating AnythingLLM with TrueFoundry, ensure you have:
+
+1. **TrueFoundry Account**: Create a [Truefoundry account](https://www.truefoundry.com/register) and follow our [Quick Start Guide](https://docs.truefoundry.com/gateway/quick-start)
+2. **AnythingLLM Installation**: Set up AnythingLLM using either the [Desktop application](https://anythingllm.com/download) or [Docker deployment](https://github.com/Mintplex-Labs/anything-llm)
+
+## Integration Steps
+
+This guide assumes you have AnythingLLM installed and running, and have obtained your TrueFoundry AI Gateway base URL and authentication token.
+
+### Step 1: Access AnythingLLM LLM Settings
+
+1. Launch your AnythingLLM application (Desktop or Docker).
+
+2. Navigate to **Settings** and go to **LLM Preference**:
+
+  <Image
+    src="/images/setup/llm-providers/truefoundry/llmprovider.png"
+    alt="AnythingLLM settings page showing LLM provider selection interface"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+### Step 3: Configure Generic OpenAI Provider
+
+1. In the LLM provider search box, type "Generic OpenAI" and select it from the available options.
+
+2. Configure the TrueFoundry connection with the following settings:
+   - **Base URL**: Enter your TrueFoundry Gateway base URL (e.g., `https://internal.devtest.truefoundry.tech/api/llm/api/inference/openai`)
+   - **API Key**: Enter your TrueFoundry Personal Access Token
+   - **Chat Model Name**: Enter the model name from the unified code snippet (e.g., `openai-main/gpt-4o`)
+   - **Token Context Window**: Set based on your model's limits (e.g., 16000, 128000)
+   - **Max Tokens**: Configure according to your needs (e.g., 1024, 2048)
+
+### Step 4: Get Configuration from TrueFoundry
+
+Get the api key, base URL and model name from the unified code snippet in our playground (ensure you use the same model name as written):
+
+  <Image
+    src="/images/setup/llm-providers/truefoundry/new-code-snippet.png"
+    alt="Get API key, Base URL and Model Name from Unified Code Snippet"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+Copy the api key, base URL and model ID and paste them into AnythingLLM's configuration fields.
+
+### Step 5: Test Your Integration
+
+1. Save your configuration in AnythingLLM.
+
+2. Create a new workspace or open an existing one to test the integration:
+
+  <Image
+    src="/images/setup/llm-providers/truefoundry/test-anythingllm.png"
+    alt="AnythingLLM chat interface showing successful test message with TrueFoundry integration"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+3. Send a test message to verify that AnythingLLM is successfully communicating with TrueFoundry's AI Gateway.
+
+Your AnythingLLM application is now integrated with TrueFoundry's AI Gateway and ready for AI chat, RAG, and agent operations.
