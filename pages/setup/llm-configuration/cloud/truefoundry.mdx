@@ -2,6 +2,9 @@
 title: "TrueFoundry AI gateway"
 ---
 
+import Image from "next/image";
+
+
 TrueFoundry provides an enterprise-ready [AI Gateway](https://www.truefoundry.com/ai-gateway) which can integrate with applications like AnythingLLM and provides governance and observability for your AI Applications. TrueFoundry AI Gateway serves as a unified interface for LLM access, providing:
 
 - **Unified API Access**: Connect to 250+ LLMs (OpenAI, Claude, Gemini, Groq, Mistral) through one API
@@ -27,12 +30,13 @@ This guide assumes you have AnythingLLM installed and running, and have obtained
 
 2. Navigate to **Settings** and go to **LLM Preference**:
 
-<Frame>
-  <img
-    src="/images/truefoundry/llm provider .png"
+  <Image
+    src="/images/setup/llm-providers/truefoundry/llmprovider.png"
     alt="AnythingLLM settings page showing LLM provider selection interface"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
   />
-</Frame>
 
 ### Step 3: Configure Generic OpenAI Provider
 
@@ -49,11 +53,13 @@ This guide assumes you have AnythingLLM installed and running, and have obtained
 
 Get the api key, base URL and model name from the unified code snippet in our playground (ensure you use the same model name as written):
 
-<Frame caption="Get API key, Base URL and Model Name from Unified Code Snippet">
-  <img
-    src="/images/truefoundry/new-code-snippet.png"
+  <Image
+    src="/images/setup/llm-providers/truefoundry/new-code-snippet.png"
+    alt="Get API key, Base URL and Model Name from Unified Code Snippet"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
   />
-</Frame>
 
 Copy the api key, base URL and model ID and paste them into AnythingLLM's configuration fields.
 
@@ -63,12 +69,13 @@ Copy the api key, base URL and model ID and paste them into AnythingLLM's config
 
 2. Create a new workspace or open an existing one to test the integration:
 
-<Frame>
-  <img
-    src="/images/truefoundry/test anything llm.png"
+  <Image
+    src="/images/setup/llm-providers/truefoundry/test-anythingllm.png"
     alt="AnythingLLM chat interface showing successful test message with TrueFoundry integration"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
   />
-</Frame>
 
 3. Send a test message to verify that AnythingLLM is successfully communicating with TrueFoundry's AI Gateway.
 
