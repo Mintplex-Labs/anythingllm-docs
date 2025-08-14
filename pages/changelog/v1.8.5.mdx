@@ -1,0 +1,55 @@
+---
+title: "v1.8.5"
+description: "AnythingLLM Desktop v.1.8.5 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## File Chat Overhaul 🎉
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="/images/document-chat/upload-documents.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+When we first launched AnythingLLM the average local model context window was around 2K tokens. Now that local models are very powerful with 16K+ context windows it is time we overhaul our file UX.
+
+Now, in AnythingLLM Desktop chatting with files is a breeze. When available we will now use the **full** file content to answer your questions when your model's context window is appropriate.
+
+If you upload a file that is too large to fit in the context window, we will ask you to embed the file instead (RAG). If you want to have a file only for RAG, you can do that too via the regular file upload window on the workspace.
+
+Now you can have the best of both worlds. Read more about this change [here](/chatting-with-documents/introduction#rag-vs-attached-documents).
+
+## Improvements: 🚀
+
+- [x] Modal to clear embedding cache when you change the text splitter options so all files share the same splitting logic
+- [x] Moonshot AI LLM support
+- [x] The native embedder model can now easily be configured. Supports [`nomic-embed-text-v1`](https://huggingface.co/Xenova/nomic-embed-text-v1) and [`multilingual-e5-small`](https://huggingface.co/intfloat/multilingual-e5-small) now!
+- [x] PostgresSQL now supports non-public schemas for tables.
+- [x] STT now appends spoken text in input instead of replacing it.
+- [x] Mobile Sync support for [AnythingLLM Mobile Beta](/mobile/overview)
+- [x] More translations including new Romanian translation
+- [x] New Agent [EXA SERP provider](https://exa.ai)
+- [x] New Vector Database [Chroma Cloud DB support](https://trychroma.com)
+
+## Bug Fixes:
+
+- [x] Fixed YT and XLSX folder name bug where title had odd characters
+- [x] Fix multimodal chats for OpenAI Compatible API
+- [x] Fix issue where microphone tooltip was duplicated
+- [x] Fix issue with API chat export endpoint
+- [x] Fix issue with bedrock agents implied role
+
+
+## Pinned Download Links
+
+**Revision 1.8.5:**
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.5/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.8.5/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.8.5/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.8.5/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.8.5/AnythingLLMDesktop.AppImage)
