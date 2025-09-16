@@ -317,7 +317,7 @@
     "display": "hidden"
   },
   "community-hub": {
-    "type": "hidden"
+    "display": "hidden"
   },
   "support": {
     "title": "Support",
