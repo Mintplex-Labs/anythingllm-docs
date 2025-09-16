@@ -26,15 +26,6 @@ Learn about the blocks that are available to you in the flow editor. Keep in min
 <Card title="Read File" href="/agent-flows/blocks/read-file" style={{ margin: "1rem" }} />
 <Card title="Write File" href="/agent-flows/blocks/write-file" style={{ margin: "1rem" }} />
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
+export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
+  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
+};

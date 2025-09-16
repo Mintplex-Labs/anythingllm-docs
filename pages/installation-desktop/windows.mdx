@@ -50,18 +50,9 @@ Here is the download link for the latest version of Anything LLM Windows.
   href="https://cdn.anythingllm.com/latest/AnythingLLMDesktop-Arm64.exe"
 ></Card>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: false,
-      arrow: true,
-      target: "_blank",
-    },
-  }
-);
+export const Card = ({ image = false, arrow = true, target = "_blank", ...props }) => {
+  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
+};
 
 Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
 

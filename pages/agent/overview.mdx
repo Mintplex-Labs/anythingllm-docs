@@ -44,18 +44,9 @@ All agents share the same tools across workspaces, but operate within the worksp
   </Card>
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
+export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
+  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
+};
 
 <style global jsx>{`
   img {

@@ -71,18 +71,9 @@ Join Mintplex Labs Discord [Community Server](https://discord.gg/Dh4zSZCdsC) and
   </Card>
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
+export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
+  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
+};
 
 <style global jsx>{`
   img {

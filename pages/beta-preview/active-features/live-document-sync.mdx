@@ -5,14 +5,9 @@ description: "Access the automatic remote and local document sync beta preview"
 
 import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
-export const Card = Object.assign(Cards.Card.bind(), {
-  displayName: "Card",
-  defaultProps: {
-    image: true,
-    arrow: true,
-    target: "_self",
-  },
-});
+export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
+  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
+};
 
 <style global jsx>{`
   img {
