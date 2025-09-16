@@ -5,6 +5,7 @@ description: "Learn about AnythingLLM's features and how to use them"
 
 import { Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../components/card";
 
 # AnythingLLM Documentation
 
@@ -74,18 +75,6 @@ Learn about AnythingLLM's features and how to use them
   </Card>  
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
 
 <style global jsx>{`
   img {

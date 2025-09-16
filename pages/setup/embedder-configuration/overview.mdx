@@ -5,6 +5,7 @@ description: "Embedding models are specific types of models that turn text into 
 
 import { Cards, Callout } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../../components/card";
 
 <Image
   src="/images/anythingllm-setup/embedder-configuration/header-image.png"
@@ -118,18 +119,6 @@ You can modify your embedding provider and model at any time in AnythingLLM. How
   </Card>  
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
 
 <style global jsx>{`
   img {

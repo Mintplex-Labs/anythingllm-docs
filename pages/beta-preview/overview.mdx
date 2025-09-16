@@ -5,18 +5,7 @@ description: "Access cutting-edge beta previews and features of AnythingLLM"
 
 import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
+import { Card } from "../../components/card";
 
 <style global jsx>{`
   img {

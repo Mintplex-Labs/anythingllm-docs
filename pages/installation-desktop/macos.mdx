@@ -5,6 +5,7 @@ description: "MacOS Installation guide for AnythingLLM"
 
 import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/getting-started/installation/macos/header-image.png"
@@ -56,18 +57,6 @@ Here is the download links for the latest version of Anything LLM MacOS.
   </Card>
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: false,
-      arrow: true,
-      target: "_blank",
-    },
-  }
-);
 
 Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
 

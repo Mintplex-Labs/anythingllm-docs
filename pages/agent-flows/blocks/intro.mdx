@@ -4,6 +4,7 @@ description: "Learn about the blocks that are available to you in the flow edito
 ---
 
 import { Callout, Cards } from "nextra/components";
+import { Card } from "../../../components/card";
 
 <Callout type="info" emoji="💡">
   If you expect to use a block in your flow, but it is not available - you are probably using the wrong version of AnythingLLM.
@@ -26,15 +27,3 @@ Learn about the blocks that are available to you in the flow editor. Keep in min
 <Card title="Read File" href="/agent-flows/blocks/read-file" style={{ margin: "1rem" }} />
 <Card title="Write File" href="/agent-flows/blocks/write-file" style={{ margin: "1rem" }} />
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);

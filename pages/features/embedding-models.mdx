@@ -5,6 +5,7 @@ description: "AnythingLLM supports many embedding model providers out of the box
 
 import { Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/features/embedding-models/header-image.png"
@@ -103,18 +104,6 @@ Embedding models are specific types of models that turn text into vectors, which
   </Card> 
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
 
 <style global jsx>{`
   img {

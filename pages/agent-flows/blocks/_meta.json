@@ -1,8 +1,8 @@
 {
   "intro": {
     "title": "Overview",
+    "display": "hidden",
     "theme": {
-      "hidden": true,
       "breadcrumb": true,
       "footer": true,
       "pagination": true,
@@ -11,8 +11,8 @@
   },
   "default-blocks": {
     "title": "Default Blocks",
+    "display": "hidden",
     "theme": {
-      "hidden": true,
       "breadcrumb": true,
       "footer": true,
       "pagination": true,

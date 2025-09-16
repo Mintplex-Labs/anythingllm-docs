@@ -5,6 +5,7 @@ description: "Your vector database is set system-wide and cannot be configured a
 
 import { Cards, Callout } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../../components/card";
 
 <Image
   src="/images/anythingllm-setup/vector-database-configuration/header-image.png"
@@ -119,18 +120,6 @@ AnythingLLM supports many vector databases providers out of the box.
   </Card>
 </Cards>
 
-export const Card = Object.assign(
-  // Copy card component and add default props
-  Cards.Card.bind(),
-  {
-    displayName: "Card",
-    defaultProps: {
-      image: true,
-      arrow: true,
-      target: "_self",
-    },
-  }
-);
 
 <style global jsx>{`
   img {
