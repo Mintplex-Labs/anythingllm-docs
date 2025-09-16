@@ -7,6 +7,7 @@ import { Cards } from "nextra/components";
 import Image from "next/image";
 import Link from "next/link";
 import META from "./_meta.json";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/product/changelog/header-image.png"
@@ -42,9 +43,6 @@ You can read the recent changelogs by clicking the cards below:
     })}
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

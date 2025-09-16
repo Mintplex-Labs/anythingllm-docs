@@ -5,6 +5,7 @@ description: "AnythingLLM supports custom audio transcription providers."
 
 import { Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../../components/card";
 
 <Image
   src="/images/anythingllm-setup/transcription-model-configuration/header-image.png"
@@ -48,9 +49,6 @@ AnythingLLM supports custom audio transcription providers.
   </Card>
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

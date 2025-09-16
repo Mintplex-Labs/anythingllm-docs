@@ -5,6 +5,7 @@ description: "Contribute to AnythingLLM"
 
 import { Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../components/card";
 
 <Image
   src="/images/home/contribute.png"
@@ -105,9 +106,6 @@ Thank you for considering contributing to AnythingLLM. Your support helps make t
   </Card>
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

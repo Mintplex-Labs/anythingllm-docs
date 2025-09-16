@@ -5,6 +5,7 @@ description: "AnythingLLM allows you to use a host of LLM providers for chatting
 
 import { Cards, Callout } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/features/language-models/header-image.png"
@@ -220,9 +221,6 @@ Depending on your selection additional configuration might be required.
   
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

@@ -5,6 +5,7 @@ description: "All the features of AnythingLLM"
 
 import { Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/features/header-image.png"
@@ -156,9 +157,6 @@ Click the below cards to know more about the features
   </Card>
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

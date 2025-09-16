@@ -5,6 +5,7 @@ description: "Large language models are AI systems capable of understanding and 
 
 import { Cards, Callout } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../../components/card";
 
 <Image
   src="/images/anythingllm-setup/llm-configuration/header-image.png"
@@ -227,9 +228,6 @@ We allow you to connect to both local and cloud-based LLMs - even at the same ti
   </Card>
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {

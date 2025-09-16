@@ -5,9 +5,7 @@ description: "Use existing MCP Servers with AnythingLLM Agents"
 
 import { Cards, Callout } from "nextra/components";
 import Image from "next/image";
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
+import { Card } from "../../components/card";
 
 <Image
   src="/images/mcp-compatibility/mcp.png"

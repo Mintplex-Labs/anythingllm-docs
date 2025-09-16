@@ -5,6 +5,7 @@ description: "AnythingLLM desktop is the easiest way to use AnythingLLM for most
 
 import { Callout, Cards } from "nextra/components";
 import Image from "next/image";
+import { Card } from "../../components/card";
 
 <Image
   src="/images/getting-started/installation/header-image.png"
@@ -147,9 +148,6 @@ The below table is a non-exhaustive list of features supported between platforms
   </Card>  
 </Cards>
 
-export const Card = ({ image = true, arrow = true, target = "_self", ...props }) => {
-  return <Cards.Card image={image} arrow={arrow} target={target} {...props} />;
-};
 
 <style global jsx>{`
   img {
