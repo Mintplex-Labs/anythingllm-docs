@@ -87,11 +87,11 @@ SIMPLE_SSO_ENABLED="enable"
 
 ### Integration
 
-Once enabled, you can issue a temporary authentication link for a user leveraging the `/v1/users/{id}/issue-auth-token` endpoint via the AnythingLLM API.
+Once enabled, you can issue a temporary authentication link for a user leveraging the `/api/v1/users/{id}/issue-auth-token` endpoint via the AnythingLLM API.
 You simply need to provide the user ID and the API key you created earlier to generate a temporary authentication token that can be used by the target user to login to AnythingLLM.
 
 ```bash copy
-curl -X POST "https://your-anythingllm-instance.com/v1/users/{id}/issue-auth-token" \
+curl -X GET "https://your-anythingllm-instance.com/api/v1/users/{id}/issue-auth-token" \
   -H "Authorization: Bearer {api_key}"
 # Example Response
 # {
@@ -108,7 +108,7 @@ https://your-anythingllm-instance.com/sso/simple?token=1234567890
 
 All temporary authentication tokens expire after 1 hour and are single-use only. Once logged in, the user sessions will be valid for 30 days.
 The user will be redirected to the home page of AnythingLLM after logging in.
-You can optionally redirect the user to a different URL after logging in by appending `&redirectTo={path/to/redirect}` to the query string of the login path.
+You can optionally redirect the user to a different URL after successfully logging in by appending `&redirectTo={path/to/redirect}` to the query string of the login path.
 
 For example:
 
@@ -116,14 +116,14 @@ For example:
 https://your-anythingllm-instance.com/sso/simple?token=1234567890&redirectTo=/workspaces/sample-workspace
 ```
 
-Will redirect the user to the `/workspaces/sample-workspace` chat page after logging in. This can be useful if you want to redirect the user to a specific workspace they have access to after logging in.
+Will redirect the user to the `/workspaces/sample-workspace` chat page after a successful login. This can be useful if you want to redirect the user to a specific workspace they have access to after logging in.
 
 ### Disable Login Page
 
 If you are using the `SIMPLE_SSO_ENABLED` feature, you can disable the login page by setting the `SIMPLE_SSO_NO_LOGIN` environment variable to **_any value_**.
 
 Setting `SIMPLE_SSO_NO_LOGIN` to **_any value_** in addition to `SIMPLE_SSO_ENABLED` & multi-user mode enabled will:
-- Disable the traditional login page for any users
+- Disable the traditional login page for any users including the instance administrator
 - Prevent creation of new **Invitations** by any user
 - Prevent any existing **Invitations** from being used for new users to create an account with.
 
@@ -136,6 +136,25 @@ SIMPLE_SSO_NO_LOGIN="enable"
 ### Disable
 
 Fully remove or comment out the `SIMPLE_SSO_ENABLED` environment variable to return to the default behavior.
+
+### Automatic Redirect for unauthenticated users
+
+If you are using the `SIMPLE_SSO_ENABLED` feature, you can automatically redirect unauthenticated users to your bespoke login page by setting the `SIMPLE_SSO_NO_LOGIN_REDIRECT` environment variable to **_any valid full URL_**.
+
+Setting `SIMPLE_SSO_NO_LOGIN_REDIRECT` to **_any valid full URL_** in addition to `SIMPLE_SSO_ENABLED` & `SIMPLE_SSO_NO_LOGIN` will:
+- Automatically redirect unauthenticated users to the provided URL when they attempt to access the AnythingLLM instance home URL.
+- If the user is using a token URL `/sso/simple?token=123...abcd`, they will still see the error page if their token is invalid or expired.
+
+```bash copy
+SIMPLE_SSO_ENABLED="enable"
+SIMPLE_SSO_NO_LOGIN="enable"
+# This must be a valid full URL - invalid or relative URLs will be ignored.
+SIMPLE_SSO_NO_LOGIN_REDIRECT="https://your-bespoke-login-page.com"
+```
+
+### Disable
+
+Fully remove or comment out the `SIMPLE_SSO_NO_LOGIN_REDIRECT` environment variable to return to the default behavior.
 
 ## AnythingLLM Hub Agent Skills
 
