@@ -14,16 +14,14 @@ import Image from "next/image";
   alt="AnythingLLM Installation"
 />
 
-# Linux Installation
-
-**1. Install using the [installer script](#install-using-the-installer-script)**
-
 ## Install using the installer script
 
-<Callout type="warning" emoji="⚠️">
-  **NOTICE**
+<Callout type="info" emoji="ℹ️">
+  **Heads up!**
 
-➤ AnythingLLM packages as an AppImage but you **will not** be able to boot if you run just the AppImage. Please only use the script below.
+➤ The AnythingLLM Desktop app is packaged as an AppImage and is available for **x64** and **arm64** architectures.
+
+➤ The Linux Arm64 AppImage is currently only available for AnythingLLM Desktop **1.9.0** and higher.
 
 ➤ Please open a [Github Issue](https://github.com/Mintplex-Labs/anything-llm/issues) if you have installation or bootup troubles.
 
@@ -32,12 +30,46 @@ import Image from "next/image";
 First, open a terminal on your Linux machine and run this command.
 
 ```shell copy
-curl -fsSL https://cdn.anythingllm.com/latest/installer.sh | sh
+# Download the installer script to wherever you want to run it from
+curl -fsSL https://cdn.anythingllm.com/latest/installer.sh -o installer.sh
+
+# Make the script executable
+chmod +x installer.sh
+
+# Run the script
+./installer.sh
 ```
 
-You can view the raw script contents [here](https://github.com/Mintplex-Labs/anything-llm/blob/desktop/linux_installer.sh).
+<Callout type="info" emoji="ℹ️">
+By default, the installer will download the appropriate architecture of AnythingLLM Desktop for your system into the `$HOME` directory.
 
-This will download the latest version of AnythingLLM's AppImage, unpack it, and then supply a symlink to seamlessly run AnythingLLM.
-This script will unpack the app in `$HOME/AnythingLLMDesktop`.
+You can also re-run the installer script to update the app to the latest version as new versions are released.
+</Callout>
 
-You can start the app at any time by running `./AnythingLLMDesktop/start`. This will boot the app with full logging.
+This will download the latest version of AnythingLLM's AppImage as well as **ask to create** the Ubuntu `apparmor` rule to allow the app to run
+without any additional configuration. **You need to create an `apparmor` rule to allow the app to run or else you will run into SUID issues during bootup.**
+
+Lastly, it will create a simple `.desktop` file so the app can be launched from the desktop and pinned to the launcher.
+
+You can start the app via the UI or from the command line at any time by running `./AnythingLLMDesktop.AppImage`. This will boot the app with full logging.
+
+## Uninstalling
+
+To uninstall AnythingLLM, you can run the following commands:
+
+```shell
+# Remove the installer script
+rm installer.sh
+
+# Remove the AppImage
+rm AnythingLLMDesktop.AppImage
+
+# Remove the .desktop file
+rm ~/.local/share/applications/anythingllmdesktop.desktop
+
+# Remove the apparmor rules
+sudo rm /etc/apparmor.d/anythingllmdesktop
+
+# Remove the app data fully
+rm -rf ~/.config/anythingllm-desktop
+```
