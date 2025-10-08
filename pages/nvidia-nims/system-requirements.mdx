@@ -3,6 +3,16 @@ title: "System Requirements"
 description: "Learn about the system requirements to run NVIDIA NIM on your machine."
 ---
 
+import { Callout } from "nextra/components";
+
+<Callout type="warning">
+NVIDIA NIM is being **phased out** of AnythingLLM Desktop and will be removed in a future version.
+  
+As an alternative, we recommend using [Microsoft Foundry Local](https://github.com/microsoft/Foundry-Local) which is a free and open source LLM engine that runs on your local machine.
+
+You are also welcome to use any other local LLM engine like [Ollama](https://ollama.com/) or [LM Studio](https://lmstudio.ai/) or our internal built in LLM engine that comes with AnythingLLM Desktop.
+</Callout>
+
 # NVIDIA NIM System Requirements
 
 NVIDIA NIM is a software that runs on NVIDIA RTX GPUs - so you **will need an NVIDIA GPU** to run it. No other GPU providers are supported to run NIM.
@@ -16,7 +26,7 @@ NVIDIA NIM runs on Windows 11 and later. You do not need to be on any special de
 The **minimum** GPU requirement is an NVIDIA RTX 4080 or better. If your card is incompatible, you will see an error message when you try to run the NIM installer for the first time.
 Note - **NVIDIA** has excluded the NVIDIA RTX 4080 **Super** from NIM Setup executable Verion 0.1.9 and the associated models that would have been used.
 
-This is **not** a limitation of AnythingLLM - it is a limitation of NVIDIA NIM and we cannot directly change this. 
+This is **not** a limitation of AnythingLLM - it is a limitation of NVIDIA NIM and we cannot directly change this.
 
 Please **DO NOT** report this as an issue with AnythingLLM on our issue tracker.
 
