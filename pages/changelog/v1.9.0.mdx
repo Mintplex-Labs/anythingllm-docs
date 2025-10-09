@@ -1,0 +1,139 @@
+---
+title: "v1.9.0"
+description: "AnythingLLM Desktop v.1.9.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## `@agent` Overhaul & streaming ⚡️️
+
+<video
+  width="1000"
+  height="1000"
+  controls={false}
+  preload="auto"
+  autoPlay
+  muted
+  loop
+  style={{ borderRadius: "10px", padding: "10px" }}
+>
+  <source
+    src="/images/product/changelog/1.9.0/agent-streaming.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+When anythingllm first launched, the word "agent" was not in the vocabulary of the LLM world. Agents are quickly becoming the standard for building AI applications and also
+the core expierience for interacting with LLMs.
+
+For too long, due to the complexity of building agents, spotty tool call support, models that **cant even use tools** and more nerd stuff we
+often had to settle an experience that was not really fun to use since 99% of the time you were just looking at at loading spinners waiting for the response.
+
+### The new agent experience is now here
+
+- Streams tool calls and responses in real time (all providers, all models, any hardware)
+- Agents can now real-time download and ingest files from the web (eg: link to PDF, excel, csv). Anything you would use a document can be read in real time by the agent.
+
+_Upcoming:_
+
+- Agent real-time API calling without agent flows
+- Agent image understanding
+- Agent system prompt passthrough + user context awareness
+- Realtime file searching cross-platform default skill
+
+## Microsoft Local Foundry support 🤖
+
+<Image
+  src="/images/product/changelog/1.9.0/foundry-local.png"
+  alt="Microsoft Foundry Local"
+  width={1000}
+  height={1000}
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+Are you using [Microsoft Foundry Local](https://github.com/microsoft/Foundry-Local)? We have you covered.
+
+AnythingLLM Desktop now supports a deep integration with Microsoft Foundry Local.
+
+This means you can now use AnythingLLM Desktop to chat with your data on your Microsoft Foundry Local device.
+
+- AnythingLLM will automatically start Microsoft Foundry Local when you start AnythingLLM Desktop, if installed.
+- AnythingLLM will automatically unload models for you to keep your system resources free.
+- Can pull optimized models based on your system hardware (CPU, GPU, NPU, etc.)
+
+_btw_, **Foundry Local is free** and runs on Apple Silicon, Windows (x64 & ARM64), and Linux (x64 & ARM64)! Its worth checking out if you are looking for a local LLM solution.
+
+_currently the model selection in AnythingLLM only shows currently downloaded models. So pulling of models still needs to be done via `foundry cli`_
+
+You can download the latest version of [Microsoft Foundry Local here](https://github.com/microsoft/Foundry-Local/releases).
+
+## Linux improvements & ARM64 support 🖥️
+
+Linux ARM64 is quickly becoming the most popular architecture for Linux devices and even personal compute devices like the upcoming [NVIDIA DGX Spark](https://www.nvidia.com/en-us/products/workstations/dgx-spark/), Framework desktops, and
+even people who tinker around with ARM based Raspberry Pi devices.
+
+Additionally, we overhauled our [Linux Installation guide](/installation-desktop/linux) to make it more user friendly and easier to install.
+
+- Auto created the `apparmor` rule to allow the app to run without any additional configuration. (Ubuntu only)
+- Auto created the `.desktop` file so the app can be launched from the desktop and pinned to the launcher. (GNOME based desktops only)
+
+## Linux x64 and ARM64 now ships with Ollama 🚀
+
+Linux for a long time has been lacking a local LLM support. We are happy to announce that we have now shipped Ollama (0.11.4) with Linux.
+
+This does increase the size of the Linux AppImage, but it is a small price to pay for local LLM support with zero setup or installation required.
+
+Happy chatting!
+
+## Major Improvements: 🚀
+
+- [x] All models and providers now support agentic streaming
+- [x] Microsoft Foundry Local integration
+- [x] Ephemerally scrape any web-resource via agent or uploader
+
+### Other still cool, but not major improvements
+
+- [x] Workspace/Thread Tooltips
+- [x] Resize chat area on paste in main chat UI
+- [x] Web-scraper can now handle URLs with no protocol
+- [x] Generic OpenAI Embedder allow artificial delay
+- [x] Anthropic computer-use tool updated to newest model and tool version.
+- [x] Ollama and LMStudio automatic model context window size detection
+- [x] Render HTML live in chat responses
+- [x] Update how chats are rendered in chat history viewer
+- [x] Youtube transcript improvements for ASR
+- [x] Custom HTTP Response timeout for ollama
+- [x] New System Prompt variables (workspace.name, workspace.id)
+- [x] Generic OpenAI Embedder allow artificial delay
+- [x] Report sources in API responses on last chunk in stream via developer API
+- [x] Add user agent to Generic OpenAI requests
+- [x] Patch folder GET request response code for developer API
+- [x] CometAPI integration
+- [x] Portuguese translations
+- [x] Export JSON/JSONL with attachments from Workspace Chats viewer
+
+## Bug Fixes:
+
+- [x] Upgraded core Electron version
+- [x] Migrated OpenAI inteface to Responses API
+- [x] Fixed orphan docs bug with filenames that have spaces being pruned
+- [x] Update UI icons to be normalized in spacing under chat messages
+- [x] PGVector metadata sanitization to prevent bad byte in `jsonb` vector metadata field
+- [x] Fix Dell Pro AI Studio default URL
+
+## Deprecated Feature Notices:
+
+- [x] NVIDIA NIM is being **phased out** of AnythingLLM Desktop starting with v.1.9.0 and will be removed in the next version or patch.
+
+## Pinned Download Links
+
+**Revision 1.9.0:**
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop.AppImage)
+- Linux (ARM64) [Download](https://cdn.anythingllm.com/legacy/1.9.0/AnythingLLMDesktop-Arm64.AppImage)
