@@ -270,3 +270,27 @@ JWT_EXPIRY="1d" # 1 day
 ### Disable
 
 Fully remove or comment out the `JWT_EXPIRY` environment variable to return to the default behavior.
+
+## Disable Swagger API Documentation
+
+<Callout type="info" emoji="️💡">
+  **Note:** It is recommended to disable this endpoint in production deployments for security purposes.
+</Callout>
+
+Modification of the `DISABLE_SWAGGER_DOCS` environment variable allows you to disable the Swagger API documentation endpoint at `/api/docs`.
+
+By default, AnythingLLM exposes the Swagger API documentation at the `/api/docs` endpoint. While this can be useful for development and testing, it is recommended to disable this endpoint in production deployments to prevent exposing your API structure and available endpoints.
+
+### Enable
+
+Set the `DISABLE_SWAGGER_DOCS` environment variable to **`"true"`** to enable.
+_It must be set to a string value of `"true"` to be effective._
+
+```bash
+# Must be set to a string value of "true" to be effective.
+DISABLE_SWAGGER_DOCS="true"
+```
+
+### Disable
+
+Fully remove or comment out the `DISABLE_SWAGGER_DOCS` environment variable to return to the default behavior and re-enable the Swagger documentation endpoint.
