@@ -21,15 +21,6 @@ import { Card } from "../../components/card";
 
 ## Install using the installation file
 
-<Callout type="warning" emoji="⚠️">
-  **Application is not signed!**
-
-➤ The AnythingLLM windows application is currently unsigned and Windows defender or other anti-virus software will sometimes flag the application as malicious.
-
-➤ If you do not want to bypass that alert for any reason - please use AnythingLLM another way.
-
-</Callout>
-
 <Callout type="warning" emoji="️⚠️">
   **OPERATING SYSTEM NOTICE**
 
@@ -69,21 +60,21 @@ Click "**Keep**" when downloading to allow the file to download.
 After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process.
 
 <Callout type="info" emoji="️💡">
-  **Anti-Virus false positive**
+  **Windows SmartScreen Warning**
 
-➤ Since the application is unsigned. Native windows defender will want to ensure you mean to execute this application. Click on "more details" and the **"Run anyway"** button will be visible.
-
-**➤ This alert is temporary until the application signing process is completed on our end.**
-
-</Callout>
+  Versions **prior** to 1.9.0 may show a warning from Windows SmartScreen. This is because versions prior to 1.9.0 were not digitally signed. You can click on "more details" and the **"Run anyway"** button will be visible to bypass the warning.
+  
+  Versions 1.9.0 and higher **are digitally signed** and will not show this warning.
 
 <Image
   src="/images/getting-started/installation/windows/anti-virus-warning.png"
-  height={1080}
-  width={1920}
+  height={500}
+  width={500}
   quality={100}
+  style={{ margin: "0 auto" }}
   alt="AnythingLLM Windows Install Anti Virus Warning"
 />
+</Callout>
 
 After which, now the regular installer can run to install AnythingLLM Desktop!
 
