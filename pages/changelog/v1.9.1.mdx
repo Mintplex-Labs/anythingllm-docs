@@ -5,15 +5,23 @@ description: "AnythingLLM Desktop v.1.9.1 Changelog"
 
 ## Notable Improvements: 🚀
 
-- [x] Refactored MCP support. Patches issues with MCPs not starting or not working correctly.
-- [x] Chat input now persistent when navigating between workspaces if not sent when navigating away.
-- [x] Internal Ollama version bumped to [0.13.0](https://github.com/ollama/ollama/releases/tag/v0.13.0)
-- [x] Realtime scraping of YouTube videos is now supported. 
+**Windows Installer Optimization**<br />
+Fixed bug where installation time on Windows would take a very long time to complete. Installation time is now significantly faster.
+
+**MCP Support Improvements**<br />
+Refactored MCP support. Patches issues with MCPs not starting or not working correctly.
+
+**Chat Input Persistence**<br />
+Chat input now persistent when navigating between workspaces if not sent when navigating away.
+
+**Realtime YouTube Scraping**
+Realtime scraping of YouTube videos is now supported. 
 
 > Ask `@agent` to scrape a YouTube video and it will be used to answer your question.
 
-### Other Improvements
+## Other Improvements
 
+- [x] Internal Ollama version bumped to [0.13.0](https://github.com/ollama/ollama/releases/tag/v0.13.0)
 - [x] Managed NVIDIA NIM has been removed from AnythingLLM Desktop.
 - [x] Dell Pro AI Studio model URL updated to new specification.
 - [x] Improved error handling for MCPs not starting or not working correctly.
@@ -33,7 +41,7 @@ description: "AnythingLLM Desktop v.1.9.1 Changelog"
 - [x] OpenRouter Embedder support
 - [x] Ollama batch embedding support
 
-## Bug Fixes:
+## Bug Fixes
 
 - [x] Fixed runtime issue with Ollama and LMStudio model caching causing model list to be empty or incorrect.
 - [x] Fixed bug where the MCP panel was not scrollable for certain models.
