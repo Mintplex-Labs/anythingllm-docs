@@ -1,0 +1,61 @@
+---
+title: "v1.9.1"
+description: "AnythingLLM Desktop v.1.9.1 Changelog"
+---
+
+## Notable Improvements: 🚀
+
+- [x] Refactored MCP support. Patches issues with MCPs not starting or not working correctly.
+- [x] Chat input now persistent when navigating between workspaces if not sent when navigating away.
+- [x] Internal Ollama version bumped to [0.13.0](https://github.com/ollama/ollama/releases/tag/v0.13.0)
+- [x] Realtime scraping of YouTube videos is now supported. 
+
+> Ask `@agent` to scrape a YouTube video and it will be used to answer your question.
+
+### Other Improvements
+
+- [x] Managed NVIDIA NIM has been removed from AnythingLLM Desktop.
+- [x] Dell Pro AI Studio model URL updated to new specification.
+- [x] Improved error handling for MCPs not starting or not working correctly.
+- [x] General language improvements and fixes.
+- [x] Keyboard navigation of slash command when showing slash command list.
+- [x] Paperless NGX data connector support
+- [x] Agent workspace system prompt can now use system variables for variable expansion.
+- [x] Use `eval_duration` from Ollama for accurate TPS calculations.
+- [x] Add SerpAPI web search as agent web-search provider
+- [x] Support AWS Bedrock API key connection method
+- [x] ZAI LLM provider support
+- [x] Anthropic prompt caching and config
+- [x] Ability to set global default prompt for new workspaces
+- [x] Add base64 document attachment support for chat API
+- [x] SSL bypass for local confluence
+- [x] GiteeAI LLM provider support
+- [x] OpenRouter Embedder support
+- [x] Ollama batch embedding support
+
+## Bug Fixes:
+
+- [x] Fixed runtime issue with Ollama and LMStudio model caching causing model list to be empty or incorrect.
+- [x] Fixed bug where the MCP panel was not scrollable for certain models.
+- [x] Fix relevance score not showing for Astra, QDrant, Zilliz, and Weaviate citations
+- [x] EPub upload for certain file layouts were failing on upload - this is now fixed.
+- [x] Fixed bug where Gemini thinking output was not showing in chat or hanging the response.
+- [x] Fix infinite loop logic in GitLabLoader
+- [x] Add Svelte renderer to markdown output
+- [x] Disable Prisma CLI telemetry
+- [x] Patch Ollama broken thought output from chat template update
+- [x] Extend HTTP TTL on extension  requests for timeout
+- [x] Fix undefined result in llm-instruction blocks
+- [x] Fix directOutput causing hanging response for agent flow calls when streaming
+- [x] Fixed Chroma cloud limitations on payload size for upsert of embeddings.
+
+## Pinned Download Links
+
+**Revision 1.9.1:**
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop.AppImage)
+- Linux (ARM64) [Download](https://cdn.anythingllm.com/legacy/1.9.1/AnythingLLMDesktop-Arm64.AppImage)
