@@ -1,0 +1,230 @@
+---
+title: "Features"
+description: "Features of AnythingLLM's Meeting Assistant"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  The Meeting Assistant is only available in AnythingLLM Desktop v1.10.0 and later for [supported platforms](/meeting-assistant/introduction#supported-platforms).
+</Callout>
+
+
+## Record and transcribe meetings
+
+<Callout type="info" emoji="💡">
+The Meeting Assistant is not limited to just recording and transcribing meetings. You can also upload meetings, audio files, or recordings that you have already have.
+
+You can also just start a recording in AnythingLLM and speak to your computer if you want!
+</Callout>
+
+By default, the Meeting Assistant is able to record and transcribe meetings you join on any software like Zoom, Google Meet, Microsoft Teams, etc. You can also upload meetings, audio files, or recordings that you have already have.
+
+<Image
+  src="/images/meeting-assistant/summary.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Speaker identification
+
+<Callout type="info" emoji="💡">
+ We recommend to keep speaker identification off by default as it has **zero impact** on the meeting summary or follow-up actions and can lead to longer processing times.
+ 
+ If you want to enable speaker identification, you can do so in the Meeting Assistant > Preferences > Speaker Identification option.
+</Callout>
+
+The Meeting Assistant is able to identify unique speakers in the transcript. It **does not** rename the speakers in the transcript based on your meeting, it simply identifies them by their unique voice characteristics.
+This process is done using a combination of LLM-based speaker identification and speaker diarization. That being said, it is not perfect and may not always be able to identify speakers correctly.
+
+<Image
+  src="/images/meeting-assistant/transcript.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Edit speaker names
+
+For any transcript with speaker identification enabled, you can click on a speaker to rename them across the entire transcript as well as correct any mis-identifications.
+
+After editing, any speakers who are no longer mentioned will be removed from the speaker list.
+
+<Image
+  src="/images/meeting-assistant/edit-speaker.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Edit transcript text
+
+For any transcript, you can double-click on a piece of text to edit it. This will allow you to correct any mis-transcriptions or add any additional context that was not captured by the transcription.
+
+After editing, the transcript will be updated. However, you may want to re-summarize the meeting to apply the changes to the meeting summary.
+
+### Play from a specific time
+
+For any transcript, you can replay the audio from the top recording player as well as click to jump to a specific time in the transcript. If you have speaker identification enabled, you can also click on a speaker segment to jump to that exact time in the audio.
+
+<Image
+  src="/images/meeting-assistant/play-segment.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Real-time transcription
+
+<Callout type="warning" emoji="⚠️">
+  This feature is only available when recording a meeting and is **disabled** by default. It is purely for convenience and to help you follow along with the meeting if you wish
+  and we only recommend enabling it if you are on high-end hardware.
+</Callout>
+
+The Meeting Assistant is able show a rolling transcript of the meeting as it is happening. This can be helpful to follow along with the meeting if you wish and is purely for convenience.
+
+
+## Joined meeting Notification
+
+The Meeting Assistant is able to send you a desktop notification when you join a meeting. Clicking the notification will open the Meeting Assistant and start recording the meeting in the background.
+
+When you stop or leave a meeting, the Meeting Assistant will automatically stop recording and save the meeting to your local device. You will be notified about the summary processing as it completes.
+
+<Image
+  src="/images/meeting-assistant/notifications.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+
+## Meeting summary
+
+The Meeting Assistant is able to summarize your meetings using your LLM provider and model of choice (Cloud or Local). By default, this is using whatever model you have configured as the "system" model in the AnythingLLM Settings > AI Providers > LLM.
+
+<Image
+  src="/images/meeting-assistant/summary.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Meeting summary templates
+
+By default, the Meeting Assistant will use a generic summary template that is designed to be a good starting point for most meetings. AnythingLLM provides 3 pre-built summary templates for you to choose from:
+
+- **General Meeting**: This is a basic summary template that is designed to be a good starting point for most meetings.
+- **Sales Call**: This is a summary template that is designed to be a good starting point for sales calls.
+- **Engineering Meeting**: This is a summary template that is designed to be a good starting point for engineering meetings.
+
+You can change the summary template you want to use by clicking on the 3-dot menu icon next to the meeting recording and selecting the summary template you want to use.
+
+<Image
+  src="/images/meeting-assistant/custom-template.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Custom summary templates
+
+On any meeting recording, you can also click on the 3-dot menu icon next to the meeting recording and create a custom summary template for that specific meeting or re-use an existing summary template.
+
+If you change the summary template for a meeting you can instantly apply it to the meeting summary by clicking the "Apply Summary Template" action at the top of the meeting summary. This will apply the summary template to the meeting summary that will be sent to your LLM for processing.
+
+<Image
+  src="/images/meeting-assistant/apply-template.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### Regenerate meeting summary
+
+By clicking the 3-dot menu next to the recording player, you can click `Regenerate Summary` to regenerate the meeting summary. This will regenerate the meeting summary available.
+
+You may want to do this if you apply major changes to your summary template or transcript.
+
+## Agentic follow-up actions
+
+The Meeting Assistant is able to propose agentic follow-up actions based on the meeting summary and transcript. **No action is taken until you click the "Run" button.**
+
+Every "Agent Skill", including MCPs, Agent Flows, and anything else you can use in AnythingLLM, is instantly available to the Meeting Assistant as a possible follow-up action.
+
+<Image
+  src="/images/meeting-assistant/agent-items.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+### View action item details
+
+For any action item, you can click on the `View Arguments` hint text to get a breakdown of the arguments that will be passed to the action item and how they will be used in the tool of choice.
+
+### Regenerate action items
+
+By clicking the 3-dot menu next to the recording player, you can click `Regenerate Action Items` to regenerate the action items. This will regenerate the action items available.
+
+You may want to do this if you apply major changes to your summary template or transcript.
+
+### Meeting title
+
+On summary, we will automatically generate a title for the meeting based on the meeting summary. You can also manually edit the title by clicking on the title and typing in the new title.
+
+## Ask Questions
+
+Clicking on the `Ask Questions` tab at the top of the meeting UI will open new workspace with the meeting transcript embedded in the workspace where you can ask questions about the meeting.
+
+This is a great way to get quick answers to questions about the meeting without having to re-summarize the meeting.
+
+<Image
+  src="/images/meeting-assistant/ask-questions.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Meeting Search
+
+<Callout type="info" emoji="💡">
+Meeting search is run using a local on-device vector database and embedding model. No data is sent to the cloud.
+</Callout>
+
+On the right sidebar of the meeting UI, you will find every meeting you have recorded or uploaded in the Meeting Assistant.
+
+You can use the search bar to find a specific meeting by name, date, or even semantically. Every transcript and summary for every meeting is indexed and searchable.
+
+<Image
+  src="/images/meeting-assistant/search.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
+
+## Preferences
+
+The Meeting Assistant has a set of preferences that you can configure to your liking. You can access them by click on the "Sliders" icon in the top right corner of the meeting UI.
+
+Any changes you make to the preferences will be saved and applied to the Meeting Assistant and will be applied to all future meetings recorded or uploaded.
+
+<Image
+  src="/images/meeting-assistant/preferences.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+/>
