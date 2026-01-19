@@ -191,7 +191,7 @@
     }
   },
   "browser-extension": {
-    "title": "AnythingLLM Browser Extension",
+    "title": "Browser Extension",
     "theme": {
       "breadcrumb": true,
       "footer": true,
