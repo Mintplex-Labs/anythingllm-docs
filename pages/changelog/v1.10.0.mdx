@@ -1,0 +1,96 @@
+---
+title: "v1.10.0"
+description: "AnythingLLM Desktop v.1.10.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Major New Features:
+
+### Meeting Assistant is live!
+
+The AnythingLLM Meeting Assistant is live! The meeting assistant is a tool that can help you with your meetings or just any recordings. 
+
+The Meeting Assistant is an on-device solution for meeting transcription, summarization, agentic follow-up actions with no limits or paywalls, and complete customization.
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/preview.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+You can learn more about the meeting assistant [on its introduction page](/meeting-assistant/introduction#the-meeting-assistant-does-this-and-more).
+
+### AnythingLLM Mobile is live on Google Play!
+
+AnythingLLM Mobile is [live on Google Play](https://play.google.com/store/apps/details?id=com.anythingllm)! You can now download the app from the Google Play Store and start using AnythingLLM on your Android phone.
+
+<iframe 
+    width="100%" 
+    height="315" 
+    src="https://www.youtube.com/embed/6bfVvZwC0vk?si=tvtQmrYerKF9B7mQ" 
+    title="YouTube video player" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerPolicy="strict-origin-when-cross-origin" 
+allowFullScreen></iframe>
+
+## Notable Improvements: 🚀
+
+**Installer Optimization**<br />
+Now, on Windows and MacOS we will not attempt to reinstall dependencies if they are already installed. This speeds up installation time significantly. We also made some improvements to the installer to
+shrink the installer size even though we are still packing more features!
+
+---
+
+**Docker Model Runner**<br />
+We now have first class support for running models via the [Docker Model Runner & MCP Toolkit](https://docs.docker.com/ai/model-runner/). If you have the latest Docker Desktop installed you can use Docker for models and MCP servers!
+
+<Image
+  src="/images/product/changelog/1.10.0/dmr-preview.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM Docker Model Runner Preview"
+/>
+
+---
+
+**Windows ARM64 Qualcomm NPU improvements**<br />
+We have made some improvements to the Windows ARM64 Qualcomm NPU engine. You should now see faster tokens and model loading times.
+
+## Other Improvements
+
+- [x] Migrate Azure OpenAI to enable streaming via V1 endpoint
+- [x] Remove workspace creation onboarding page
+- [x] Refactor WorkspaceFileRow Comp (handlers)
+- [x] FoundryLocal Improvements
+- [x] Implement global error boundary format
+- [x] Cohere agent implementation
+- [x] Privacy policy page improvements
+- [x] Track model name on chat send so you can see what model was used to answer your question.
+- [x] Add auth token support to Ollama embedding
+- [x] Move AnythingLLM Mobile to live under tools
+- [x] Refactor local whisper to use custom FFMPEG class.
+
+## Bug Fixes
+
+- [x] Patch Pagination bug in paperless-nix
+- [x] Many dependency updates and patches
+- [x] Patch XLSX files not being uploaded correctly on drag-and-drop.
+- [x] Patch YT scraper
+- [x] Patch docker AWS cred issue
+
+## Pinned Download Links
+
+**Revision 1.10.0:**
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop.AppImage)
+- Linux (ARM64) [Download](https://cdn.anythingllm.com/legacy/1.10.0/AnythingLLMDesktop-Arm64.AppImage)
