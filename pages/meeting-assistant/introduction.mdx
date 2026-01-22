@@ -29,12 +29,14 @@ The AnythingLLM Meeting Assistant is a tool that brings all the power of paid Sa
 - Upload meetings or recordings that you have already have.
   - This includes podcasts, YouTube videos, or any other audio or video file.
 - Identify speakers in the transcript
+- Joined meeting notifications to start recording the meeting in the background
 - Summarize meetings using your LLM provider and model of choice (Cloud or Local)
   - You can fully customize the summary prompt to your liking or use case and apply it to any meeting.
 - Propose agentic follow-up actions based on the meeting summary and transcript to run in a click.
   - Every agent skill or MCP is now instantly available to the Meeting Assistant.
-- Indexes and makes every meeting searchable and findable
+- Indexes and makes every meeting searchable
   - You can search for meetings by topic, speaker, date, or even semantically.
+- Chat with your transcript to ask specific questions about the meeting.
 
 **all of this done locally on your device - 100% free with no limits.**
 
@@ -44,7 +46,7 @@ The AnythingLLM Meeting Assistant is a tool that brings all the power of paid Sa
 width="100%"
 style={{ borderRadius: "10px", padding: "10px" }}
 height="500"
-src="https://www.youtube.com/embed/vR2WAv8DSkM?si=CJgJEa5WsySu1AdJ"
+src="https://www.youtube.com/embed/TrM1FzKrz5I?si=sqbGPJoOtPUpsft_"
 title="YouTube video player"
 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
 referrerPolicy="strict-origin-when-cross-origin"
@@ -56,10 +58,12 @@ allowFullScreen
 
 ### Privacy
 
-All processing is done locally on your device - 100% free with no limits. We download the transcription and other small models to support this feature
+All processing is done locally on your device - 100% free with no limits. We download a [transcription model](https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3) to support this feature
 as needed on the first time a file is uploaded or a recording is made. These models are stored locally on your device for re-use.
 
-Your meetings, recordings, and other files are never uploaded to our servers. They are all processed locally on your device and never leave your device.
+Your meetings, recordings, and other files are never uploaded to **any** servers. They are all processed locally on your device and never leave your device.
+
+_If you are using a cloud model, only the transcript is sent to produce your summary and follow-up actions. If you are using a local model everything is processed locally on your device._
 
 ### Performance
 
