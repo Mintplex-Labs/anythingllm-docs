@@ -32,9 +32,26 @@ If you have any general questions, please join the `#anythingllm-mobile` channel
 
 All feedback should be officially reported via the [AnythingLLM Discord](https://discord.gg/Dh4zSZCdsC) in the `#anythingllm-mobile` channel.
 
-#### Public Issue Tracking
 
-All public issues should be reported via the [AnythingLLM Mobile Beta Issue Tracker](https://trello.com/b/QdAtVa7U/anythingllm-mobile-issue-tracking).
+### Syncing with AnythingLLM Desktop or Cloud
+
+AnythingLLM Mobile while functional and complete standalone, is designed to be also be a companion to AnythingLLM Desktop and AnythingLLM Cloud. 
+You can sync your chats, workspaces, and threads with AnythingLLM Desktop or AnythingLLM Cloud/Self-hosted instances to leverage the full power of AnythingLLM.
+
+To do this, click on the `AnythingLLM Mobile` text on the sidebar settings under `Tools`. From here you can scan the QR code with AnythingLLM Mobile app to connect the two apps.
+
+<Image
+  src="/images/mobile/menu.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM Mobile Menu"
+/>
+
+<Callout type="info" emoji="️💡">
+  In older versions of AnythingLLM (< 1.10.0), you will find this feature hidden behind the ["Experimental features"](/beta-preview/enable-feature) sidebar item.
+</Callout>
 
 ### Common Questions
 
@@ -45,21 +62,6 @@ We are planning to support iOS in the future. Currently, we are focusing on Andr
 #### Can I download any model I want?
 
 Right now, for performance reasons, we only support a hand-picked models. Eventually we will support any model you want, but for now, we are focusing on performance and stability.
-
-#### How does syncing with AnythingLLM Desktop & Cloud work?
-
-<Callout type="info" emoji="️💡">
-  Requires _version 1.8.5_ or higher of AnythingLLM Desktop or AnythingLLM Cloud/Self-hosted instances. In 1.8.5, this feature is hidden behind the ["Experimental features"](/beta-preview/enable-feature) sidebar item.
-
-**To enable experimental features**, you need to follow the instructions [here](/beta-preview/enable-feature).
-</Callout>
-
-AnythingLLM Mobile while functional and complete standalone, is designed to be also be a companion to AnythingLLM Desktop and AnythingLLM Cloud.
-
-Since mobile devices have limited resources, we now have the ability to sync your chats, workspaces, and threads with AnythingLLM Desktop or AnythingLLM Cloud/Self-hosted instances in addition
-to being able to **delegate** inference across your local network or cloud instances for more compute and more powerful models, but in the mobile form factor!
-
-This technology is called **Distributed Inference**<sup>TM</sup> and is a key part of AnythingLLM's vision for the future of local AI.
 
 #### How does the on device RAG work?
 
