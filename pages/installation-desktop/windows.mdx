@@ -9,15 +9,13 @@ import { Card } from "../../components/card";
 
 <Image
   src="/images/getting-started/installation/windows/header-image.png"
-  height={1080}
-  width={1920}
+  height={500}
+  width={500}
   quality={100}
   alt="AnythingLLM Windows Installation"
 />
 
 # Windows Installation
-
-**[1. Install using the Installation `.exe` file](#install-using-the-installation-file)**
 
 ## Install using the installation file
 
@@ -28,7 +26,9 @@ import { Card } from "../../components/card";
 
 </Callout>
 
-## Downloading the installation file
+**[1. Download the installer for your hardware](#downloading-the-installation-file)**
+
+### Downloading the installation file
 
 Here is the download link for the latest version of Anything LLM Windows.
 
@@ -36,45 +36,20 @@ Here is the download link for the latest version of Anything LLM Windows.
   title="Windows 10+ (Home, Professional - x86 64-bit)"
   href="https://cdn.anythingllm.com/latest/AnythingLLMDesktop.exe"
 ></Card>
-
+<br />
 <Card
   title="Windows 10+ (Home, Professional - ARM 64-bit)"
   href="https://cdn.anythingllm.com/latest/AnythingLLMDesktop-Arm64.exe"
 ></Card>
 
-
-Your internet browser may need you to verify you want to download and run the AnythingLLM Desktop app since it may be marked as "untrusted" depending on your browser security settings.
-
-Click "**Keep**" when downloading to allow the file to download.
-
-<Image
-  src="/images/getting-started/installation/windows/browser-warning.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Windows Install Browser Warning"
-/>
-
 ## Installing the application
 
-After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process.
-
-<Callout type="info" emoji="️💡">
-  **Windows SmartScreen Warning**
-
-  Versions **prior** to 1.9.0 may show a warning from Windows SmartScreen. This is because versions prior to 1.9.0 were not digitally signed. You can click on "more details" and the **"Run anyway"** button will be visible to bypass the warning.
-  
-  Versions 1.9.0 and higher **are digitally signed** and will not show this warning.
-
-<Image
-  src="/images/getting-started/installation/windows/anti-virus-warning.png"
-  height={500}
-  width={500}
-  quality={100}
-  style={{ margin: "0 auto" }}
-  alt="AnythingLLM Windows Install Anti Virus Warning"
-/>
+<Callout type="warning" emoji="️⚠️">
+  We **do not** recommend installing AnythingLLM Desktop for "all users" on a Windows machine.
+  Instead, install for "Current User" only. Installing for all users will cause issues with the app and is not supported.
 </Callout>
+
+After downloading the windows `exe` installer for AnythingLLM, you can double-click the installer and it will display the installation process.
 
 After which, now the regular installer can run to install AnythingLLM Desktop!
 
@@ -97,15 +72,9 @@ If these extra dependencies are not installed, you will see a warning in the UI 
 
 </Callout>
 
-<Image
-  src="/images/getting-started/installation/windows/external-support.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Windows Install External Support"
-/>
-
 Click on the application name "**AnythingLLM**" on your desktop to boot up AnythingLLM!
+
+_your first boot may take a few minutes to complete on some systems, but subsequent boots will be much near instant._
 
 <Image
   src="/images/getting-started/installation/windows/desktop.png"
