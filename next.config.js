@@ -1,27 +1,35 @@
-const withNextra = require('nextra')({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.tsx',
-})
+const withNextra = require("nextra")({
+  theme: "nextra-theme-docs",
+  themeConfig: "./theme.config.tsx",
+});
 
 module.exports = withNextra({
   webpack(config) {
     config.module.rules.push({
       test: /\.svg$/,
-      use: ['@svgr/webpack'],
+      use: ["@svgr/webpack"],
     });
 
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "webassets.anythingllm.com",
+      },
+    ],
+  },
   async redirects() {
     return [
       {
-        source: '/anythingllm-cloud/502',
-        destination: '/cloud/error-502',
+        source: "/anythingllm-cloud/502",
+        destination: "/cloud/error-502",
         permanent: true,
       },
       {
-        source: '/llm-not-using-my-docs',
-        destination: '/chatting-with-documents/rag-in-anythingllm',
+        source: "/llm-not-using-my-docs",
+        destination: "/chatting-with-documents/rag-in-anythingllm",
         permanent: true,
       },
     ];

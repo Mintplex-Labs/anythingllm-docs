@@ -1,0 +1,62 @@
+---
+title: "v1.11.0"
+description: "AnythingLLM Desktop v.1.11.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## AnythingLLM Desktop Assistant is live!
+
+The AnythingLLM Desktop Assistant is live! The desktop assistant is a context-aware assistant that lives across your entire OS. 
+
+In a single keystroke, you can open the Desktop Assistant and start chatting, creating agents, and more with full context from any open applications as well as all other chat functionality in AnythingLLM.
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/anythingllm-assistant-desktop-promo.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+You can learn more about the desktop assistant [on its introduction page](/desktop-assistant/introduction).
+
+## Onboarding Improvements
+
+We have made some improvements to the onboarding process to make it more user-friendly and intuitive. Now, on a fresh install of AnythingLLM Desktop, we will suggest the best model for your hardware and system for the most optimal performance and experience.
+
+By default, this will always be an on-device multi-modal model. You can still choose any other model or provider if you prefer. This does not impact your ability to customize what LLM provider and model you want in settings or per-workspace.
+
+<Image
+  src="/images/product/changelog/1.11.0/onboarding.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM Desktop Assistant Onboarding"
+/>
+
+## Other Improvements
+
+- [x] General UI improvements and fixes
+- [x] Ability to edit SQL connectors in SQL Agent skill builder
+- [x] [PrivateMode](https://privatemode.ai) LLM provider support
+- [x] [SambaNova](https://sambanova.ai) LLM provider support
+- [x] Support for Auth tokens for LM Studio provider (LLM and Embedder)
+- [x] Smarter automatic context window size detection for models that support it.
+
+## Bug Fixes
+
+- [x] General dependency updates and patches
+
+## Pinned Download Links
+
+**Revision 1.11.0:**
+
+- Mac (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop.dmg)
+- Mac (Apple Silicon) [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop-Silicon.dmg)
+- Windows [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop.exe)
+- Windows (ARM) [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop-Arm64.exe)
+- Linux (x86_64) [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop.AppImage)
+- Linux (ARM64) [Download](https://cdn.anythingllm.com/legacy/1.11.0/AnythingLLMDesktop-Arm64.AppImage)
