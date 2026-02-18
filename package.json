@@ -22,12 +22,15 @@
   "dependencies": {
     "@next/third-parties": "^14.2.3",
     "@vercel/og": "^0.6.2",
-    "next": "^14.2.10",
+    "next": "^14.2.25",
     "nextra": "^2.13.4",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sharp": "^0.33.3"
+  },
+  "resolutions": {
+    "next-mdx-remote": "^6.0.0"
   },
   "devDependencies": {
     "@svgr/webpack": "^8.1.0",
