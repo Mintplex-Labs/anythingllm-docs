@@ -1,0 +1,80 @@
+---
+title: "AnythingLLM's Desktop Assistant"
+description: "AnythingLLM's Desktop Assistant is an on-screen overlay that exists across your entire OS. Instantly available to you for any application for chats, agents, and more."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  **Note:** The Desktop Assistant is a **free** and **desktop exclusive** feature and is available in AnythingLLM Desktop v1.11.0 and later.
+
+  The Desktop Assistant is an on-screen overlay that exists across your entire OS. It is the preferred way to interact with AnythingLLM.
+</Callout>
+
+
+# AnythingLLM's Desktop Assistant
+
+The AnythingLLM Desktop Assistant is an on-screen overlay that exists across your entire OS. In a single keystroke, you can open the Desktop Assistant and start chatting, creating agents, and more with full context from any open applications.
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/anythingllm-assistant-desktop-promo.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+
+## The Desktop Assistant does this and more...
+- Instantly open with `CMD+/` (MacOS) or `CTRL+/` (Windows/Linux) anywhere on your screen
+- Chat with any open application using the full context of any application (Chrome, Slack, VS Code, etc.)
+- Leverage any installed agent skills or MCPs to perform tasks and answer questions
+- Uses your LLM provider and model of choice (Cloud or Local) to perform tasks and answer questions
+
+> The Desktop Assistant is the preferred way to interact with AnythingLLM. It is faster, more efficient, and more powerful than the traditional AnythingLLM UI.
+
+## Privacy
+
+Any chats, agentic tasks, or MCPs are processed using your LLM provider and model of choice (Cloud or Local). If you are using non-local models then your interactions are under the terms of your LLM provider's privacy policy.
+
+### Supported Platforms
+- [x] MacOS Silicon (M-Series)
+- [x] MacOS Intel
+- [x] Windows x64
+- [x] Windows ARM64
+- [x] Linux x64
+- [x] Linux ARM64
+
+## Frequently Asked Questions
+
+### What is the default shortcut to open the Desktop Assistant?
+
+The default shortcut to open the Desktop Assistant is `CMD+/` (MacOS) or `CTRL+/` (Windows/Linux).
+
+### What if I want to change the shortcut?
+
+You can change the shortcut by going to the main AnythingLLM menu and clicking on "Settings" > "Desktop Assistant". Here you can change the shortcut to your liking.
+
+### What if I want to use a cloud model?
+
+If you are using a cloud model, we will blindly send the text + image content to the provider. If you cloud provider model does not support images - you will likely get an error back from the model.
+Most models are multi-modal and support images, but some do not. It is up to you to choose a model that supports images when using the Desktop Assistant.
+
+### What if my model is not a Vision-enabled model?
+
+<Callout type="info" emoji="💡">
+  If you are using the **default LLM provider**, **Ollama**, or **LM Studio**, we will automatically handle the image processing for you on device, even if your model does not support images.
+</Callout>
+
+If your model is not a Vision-enabled model, we will instead OCR the text from the screen and use that to answer your questions. This is not as efficient and will impact the accuracy of your answers.
+
+### What models are supported?
+
+Any model is supported, but we highly recommend using a local multi-modal model that can process images. Something like Gemma3 4B+ or Qwen3-VL 4B are great choices. This selection and performance will vary depending on your hardware.
+
+**Recommended Models:**
+- Qwen3-VL 2B Instruct (Q8)
+- Qwen3-VL 4B Instruct (Q4)
+- Qwen3-VL 8B Instruct (Q4)
+- Gemma3 4B+ (Q4)
