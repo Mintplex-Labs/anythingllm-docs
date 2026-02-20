@@ -12,6 +12,7 @@ import { Card } from "../../components/card";
   height={500}
   width={500}
   quality={100}
+  style={{ borderRadius: "10px", padding: "10px", margin: "0 auto"}}
   alt="AnythingLLM Windows Installation"
 />
 
@@ -74,7 +75,7 @@ If these extra dependencies are not installed, you will see a warning in the UI 
 
 Click on the application name "**AnythingLLM**" on your desktop to boot up AnythingLLM!
 
-_your first boot may take a few minutes to complete on some systems, but subsequent boots will be much near instant._
+_your first boot may take a minute or two to complete on some systems, but subsequent boots will be near instant._
 
 <Image
   src="/images/getting-started/installation/windows/desktop.png"
@@ -83,3 +84,32 @@ _your first boot may take a few minutes to complete on some systems, but subsequ
   quality={100}
   alt="AnythingLLM Windows Open"
 />
+
+## Troubleshooting
+
+### "AnythingLLM cannot be closed" when trying to install
+
+<Image
+  src="/images/getting-started/installation/windows/installation-error-cc.png"
+  height={400}
+  width={500}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px", margin: "0 auto"}}
+  alt="AnythingLLM Windows Installation Error"
+/>
+
+If you are trying to install AnythingLLM and you are getting an error that says "AnythingLLM cannot be closed" during installation the following steps will solve your issue.
+
+1. **You previously installed AnythingLLM and it is still running in the background.**
+
+ - Since v1.11.0, AnythingLLM minimizes to the system tray when closed. Check your system tray for the AnythingLLM icon and click on it. "Quit AnythingLLM" to close it.
+ - You can then click on "Retry" and the installation will continue.
+
+2. **You previously installed AnythingLLM for all users instead of just the current user.**
+
+ - Prior to v1.11.0, AnythingLLM was allowed to be installed for all users. This is no longer the case - this can cause issues during installation since you must run the installer as administrator to uninstall programs from your primary drive.
+ - To fix this, you must uninstall AnythingLLM for all users and then reinstall for the current user only. Right- Click on the AnythingLLM Desktop icon and click "Open File Location" to open the installation folder.
+ - Click on the "Uninstall AnythingLLM.exe" file and run it. You may or may not have to run it as administrator.
+ - After uninstalling, you can then reinstall for the current user only.
+
+ **Performing the above steps WILL NOT remove your data or settings. You can do this safely without losing any of your data.**
