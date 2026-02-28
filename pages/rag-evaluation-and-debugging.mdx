@@ -1,0 +1,209 @@
+# RAG evaluation and debugging
+
+Retrieval augmented generation sounds simple.  
+You put documents into a vector store, let the model retrieve them, and answer questions.
+
+In production it never stays that simple.
+
+This page is a practical checklist for evaluating and debugging RAG style pipelines built with AnythingLLM.  
+You can use it even if your stack mixes different databases, models, or agents.
+
+The core ideas:
+
+- Always keep a small set of failing examples.
+- Look at the full pipeline, not only the final answer.
+- Classify the failure into a small number of patterns.
+- Apply a structural fix instead of random prompt tweaks.
+
+---
+
+## 1. What to log for each run
+
+For every bad conversation or failed evaluation, try to log at least:
+
+1. **Question (Q)**  
+   The exact user message, without paraphrasing.
+
+2. **Expected outcome (E)**  
+   A short description of what a correct answer should contain.  
+   This can be a reference snippet, a ground truth label, or bullet points.
+
+3. **Retrieved context (P)**  
+   The documents or chunks that were sent to the model, including titles and source ids.
+
+4. **Answer (A)**  
+   The model response, plus any tool calls, citations, or intermediate steps.
+
+5. **System and config**  
+   Model name, temperature, top-k, retriever type, vector index type, and any special flags.
+
+Once you have Q, E, P, A, and config for a few examples, you can start to see patterns instead of one-off bugs.
+
+---
+
+## 2. A simple triage loop
+
+Use this loop whenever a RAG answer looks wrong.
+
+1. **Check coverage**
+
+   - Does P contain the passage that E expects?
+   - If not, you have a retrieval or indexing issue, not a prompt issue.
+
+2. **Check alignment**
+
+   - If the right passage is present, does the answer A actually use it?
+   - Look for missing citations, wrong section, or invented details.
+
+3. **Check stability**
+
+   - Re run the same question with small variations or paraphrases.
+   - If answers jump around, the system is unstable even if some runs look correct.
+
+4. **Classify the failure**
+
+   - Map the example to one of the failure patterns in the table below.
+   - You do not need a perfect label. A rough family is enough.
+
+5. **Apply a structural fix**
+
+   - Change the data, retrieval, or prompt schema first.
+   - Only then fine tune model parameters or style prompts.
+
+The rest of this page gives you a common vocabulary for step 4 and concrete ideas for step 5.
+
+---
+
+## 3. Six questions that catch most RAG issues
+
+Before the full taxonomy, here is a short checklist that already solves many problems.
+
+1. **Did the right documents enter the index at all?**  
+   Ingestion mistakes, missing files, or parse errors are very common.
+
+2. **Does the retriever actually see the same text the user sees?**  
+   Tokenization, chunking, and normalization can silently distort content.
+
+3. **Are you mixing different embedding models, metrics, or normalizations?**  
+   Storing with one setting and querying with another can make similarity scores meaningless.
+
+4. **Is the prompt schema stable?**  
+   If you keep rearranging system prompts, roles, or section headers, the model will learn a different task every run.
+
+5. **Do long conversations slowly drift away from the original topic?**  
+   This usually means context windows are overfilled or history is replayed in a lossy way.
+
+6. **Can you explain why the system failed in one sentence?**  
+   If not, your tracing and logging are too weak. Fix observability first.
+
+Once these are under control, the deeper patterns below become much easier to see.
+
+---
+
+## 4. The 16 problem RAG failure map
+
+Real world RAG failures are rarely unique.  
+They tend to fall into a small number of recurring patterns that show up across tools, databases, and models.
+
+The table below lists sixteen common families.  
+Use it as a jump table from symptom to likely cause and fix direction.
+
+### 4.1 Retrieval, context, and perception
+
+| No. | Name                           | What you see                                                                 | Where to look first                          |
+| --- | ------------------------------ | ---------------------------------------------------------------------------- | -------------------------------------------- |
+| 1   | Hallucination and chunk drift  | Answer sounds plausible but citations miss or point to unrelated snippets.  | Chunking rules, window sizes, retriever k, document boundaries. |
+| 3   | Context drift                  | Answers start correct then degrade over long chains or multi turn chats.    | How history is summarized, truncation policy, replayed context size. |
+| 5   | Semantic vs embedding mismatch | High similarity scores but the retrieved text does not match the question.  | Embedding model choice, distance metric, normalization, index type. |
+| 9   | Entropy collapse               | Long contexts blur into one topic, attention smears, capitalization or style drifts. | Max context length, chunk joins, noisy OCR or HTML. |
+
+Practical fixes often include:
+
+- Re-chunking with sentence or section awareness instead of raw token windows.
+- Normalizing embeddings consistently at write and read time.
+- Rebuilding the index with the correct metric and dimensionality.
+- Limiting maximum history tokens or summarizing in a structured way.
+
+### 4.2 Prompting and reasoning
+
+| No. | Name                          | What you see                                                     | Where to look first                          |
+| --- | ----------------------------- | ---------------------------------------------------------------- | -------------------------------------------- |
+| 2   | Interpretation collapse       | Retrieved chunks are correct but the reasoning or conclusion is wrong. | System prompts, task description, role instructions, chain steps. |
+| 4   | Bluffing and overconfidence   | Confident, fluent answers that contradict the source documents.  | Citation requirements, temperature, penalty for uncited claims. |
+| 6   | Logic collapse and recovery   | Dead end chains, retry loops, or answers that never reach a conclusion. | Number of reasoning steps, intermediate checks, tool call design. |
+| 10  | Creative freeze               | Output becomes flat, literal, and refuses to explore alternatives. | Over restrictive instructions, excessive penalties, missing examples. |
+| 11  | Symbolic collapse             | Abstract, formula heavy, or symbolic prompts fail while concrete ones pass. | Formatting of equations, code blocks, and symbolic hints in the context. |
+| 12  | Philosophical recursion       | Self referential or paradoxical questions make the agent loop or crash. | Guardrails around self reference, maximum recursion depth, escape hatches. |
+
+Typical fixes:
+
+- Make the prompt schema explicit: system, task, constraints, context, answer, in a fixed order.
+- Require cite-then-answer for factual questions and reject claims without sources.
+- Add intermediate questions or checklist style steps for complex reasoning chains.
+- Provide small, focused examples for symbolic or abstract tasks.
+
+### 4.3 Memory, multi agent, and observability
+
+| No. | Name                             | What you see                                                     | Where to look first                                |
+| --- | -------------------------------- | ---------------------------------------------------------------- | -------------------------------------------------- |
+| 7   | Memory breaks across sessions    | A fix seems to work in one session and disappear in the next.   | How state is stored, versioned, and loaded per workspace or user. |
+| 8   | Debugging is a black box         | You cannot reconstruct why an answer was wrong from existing logs. | Logging, tracing, and ability to inspect retrieved context and tools. |
+| 13  | Multi agent chaos                | Agents overwrite each other, roles blur, or they undo fixes.    | Agent boundaries, shared memory, and coordination protocol. |
+
+Fixes in this group focus on:
+
+- Giving each workspace or agent a clear memory contract.
+- Logging at least question, retrieved context ids, and answer for every run.
+- Separating read and write paths so that one agent cannot silently corrupt another.
+
+### 4.4 Operations and deployment
+
+| No. | Name                 | What you see                                                         | Where to look first                         |
+| --- | -------------------- | -------------------------------------------------------------------- | ------------------------------------------- |
+| 14  | Bootstrap ordering   | Tools or chains fire before the underlying data is fully ready.      | Ingestion jobs, index build status, warm up flows. |
+| 15  | Deployment deadlock  | Pipelines pass tests but stall or hang once deployed to production.  | Differences between staging and production config, credentials, or index versions. |
+| 16  | Pre deploy collapse  | First call after a deploy crashes before any useful work happens.    | Startup scripts, lazy initialization, cold cache behavior. |
+
+Typical fixes:
+
+- Add explicit health checks for vector stores and retrievers before serving traffic.
+- Version indexes and embeddings so that old processes cannot read half written state.
+- Run a minimal smoke test that exercises ingestion, retrieval, and answering before you accept real requests.
+
+---
+
+## 5. Using the map with AnythingLLM
+
+Here is a practical way to apply the table in your own environment.
+
+1. Pick three failing conversations or evaluation examples.  
+   For each, save Q, E, P, A, and the current config.
+
+2. For each example, answer two questions:
+
+   - Did the right document ever reach the context window?
+   - If yes, did the model use it correctly?
+
+3. Use the descriptions above to assign a primary problem number.  
+   It is fine if more than one applies. Choose the dominant one.
+
+4. For that problem family, make exactly one structural change. Examples:
+
+   - Change chunking rules and rebuild the index for problem 1.
+   - Tighten the prompt schema and require citations for problem 2 or 4.
+   - Fix embedding model or metric mismatches for problem 5.
+   - Add better tracing and per run logging for problem 8.
+
+5. Re-run the same examples and check if the failure mode changed.  
+   If the number changes, that is already progress. You are moving to a better class of problem.
+
+Over time this gives you a shared vocabulary inside your team:  
+instead of saying "the bot is weird again", you can say "this looks like problem 5 plus a bit of 3".
+
+---
+
+## 6. Further reading
+
+This failure taxonomy is adapted from an open 16 problem RAG map that is used as a diagnostic reference in several RAG frameworks and tutorials.
+
+If you want deeper mathematical details, worked examples, and more edge cases, you can study the original material and copy only the parts that fit your stack.
