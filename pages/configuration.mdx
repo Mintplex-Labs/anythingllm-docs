@@ -294,3 +294,34 @@ DISABLE_SWAGGER_DOCS="true"
 ### Disable
 
 Fully remove or comment out the `DISABLE_SWAGGER_DOCS` environment variable to return to the default behavior and re-enable the Swagger documentation endpoint.
+
+## Native Tool Calling for LLM Providers
+
+<Callout type="info" emoji="️💡">
+  **Note:** This setting only applies to local LLM providers. It has no impact on cloud LLMs like OpenAI, Anthropic, or Azure.
+</Callout>
+
+Modification of the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable allows you to enable native tool calling for supported LLM providers that cannot automatically detect tool calling support.
+
+Some providers like Ollama, LM Studio, and the default built-in LLM provider automatically support native tool calling if your model supports it. However, other providers require this environment variable to be set.
+
+Providers that require this flag:
+- Generic OpenAI
+- Groq
+- AWS Bedrock
+- Lemonade
+- LiteLLM
+- Local AI
+- OpenRouter
+
+### Enable
+
+Set the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to a comma-separated list of provider identifiers you want to enable.
+
+```bash
+PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING="bedrock,generic-openai,groq,lemonade,litellm,local-ai,openrouter"
+```
+
+### Disable
+
+Fully remove or comment out the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to return to the default behavior.
