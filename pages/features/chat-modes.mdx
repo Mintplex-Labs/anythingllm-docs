@@ -8,19 +8,33 @@ import Image from "next/image";
 
 # Chat Modes in AnythingLLM
 
-AnythingLLM offers two ways to chat with your documents: Query mode and Chat mode. Let's understand what each does and how to get the best results.
+AnythingLLM offers multiple ways to chat with your documents. Let's understand what each does and how to get the best results for your use case and expectations.
 
-## Query Mode vs Chat Mode
+## Available Chat Modes
 
-**Query Mode**:
-- Only uses information from your uploaded documents
-- Will tell you if it can't find relevant information
-- Best for when you need accurate, document-based answers
+**Automatic Mode** (recommended & default):
+
+<Callout type="info" emoji="💡">
+  All versions later than v1.11.1 will create workspaces with Automatic Mode enabled by default. Existing workspaces will need to be manually updated to Automatic Mode.
+
+  You can change the chat mode in the workspace's settings by clicking the "Gear" icon under the "Chat Settings" tab.
+</Callout>
+
+- Will automatically use all available agent-skills, tools, and MCPs to answer your questions
+- This feature is fully dependent on the capabilities of your LLM provider and model to call tools natively.
+- Most providers do not expose tool calling capabilities to the public API, so you may need to set the [`PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING`](/configuration#native-tool-calling-for-llm-providers) environment variable have a always-on agent experience.
+
+_if you see the "@" symbol in your prompt input you will need to use `@agent` to start an agentic chat session. If it is not there, you are will be using agentic chat mode._
 
 **Chat Mode**:
 - Uses both your documents and the AI's general knowledge
 - More conversational and flexible
 - Good for brainstorming and exploring topics
+
+**Query Mode**:
+- Only uses information from your uploaded documents
+- Will tell you if it can't find relevant information
+- Best for when you need accurate, document-based answers and nothing else
 
 ## Common Questions
 
