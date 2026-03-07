@@ -20,6 +20,20 @@ Open your `Finder` and navigate to the `Applications` folder. Then, drag the Any
 
 To remove all AnythingLLM desktop data from your system, please also delete the `/Users/<usr>/Library/Application Support/anythingllm-desktop` folder. This folder is where your database, documents, and vector cache are located.
 
+## Uninstalling on macOS using Homebrew
+
+Run this command and the application will be uninstalled:
+
+```shell copy
+brew uninstall --cask anythingllm
+```
+
+To remove the AnythingLLM desktop app and all app data from your system (this deletes the `/Users/<usr>/Library/Application Support/anythingllm-desktop` folder, which contains your database, documents, and vector cache), run this command:
+
+```shell copy
+brew uninstall --zap --cask anythingllm
+```
+
 ---
 
 ## Uninstalling on Linux
