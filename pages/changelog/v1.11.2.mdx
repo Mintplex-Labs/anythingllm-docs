@@ -1,0 +1,63 @@
+---
+title: "v1.11.2"
+description: "AnythingLLM Desktop v.1.11.2 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## More UI Improvements
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/changelog-1.11.2-uiv2.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+Now, in the main chat UI we added some much desired UI improvements and fixes.
+- [x] New prompt input
+- [x] Better Citations UI and reporting
+- [x] Metrics for Agent calls
+- [x] Report document and web-search citations during Agent calls!
+- [x] Ability to each toggle on/off Agent skills from the prompt
+- [x] Ability to select the provider and model for the workspace without leaving the page.
+
+
+## Install time improvements
+
+On Windows x64 machines with GPUs, we will automatically detect your GPU vendor and download **only** the appropriate GPU support files for your hardware. This will greatly improve the install time of AnythingLLM on Windows machines with GPUs.
+
+This dramatically decreases the install time of AnythingLLM on Windows machines with AMD GPUs since the supporting binaries are much smaller.
+
+## Other Improvements
+
+- [x] Agents now report metrics and citations from docs + websites used
+- [x] OpenRouter stream metrics are now accurate
+- [x] Native tool calling for Novita
+- [x] Removed Google SERP as a default web-search provider (Google killed it)
+- [x] Add long-timeout fetch to Ollama embedder
+- [x] Better addtoworkspace errors in API
+- [x] Remove `use_mlock` from Ollama for API compatibility
+- [x] Added document count indicators to workspace document picker
+- [x] Perplexity search SERP is now available as a web-search provider
+
+## Bug Fixes
+
+- [x] Show LMStudio error state in model picker
+- [x] More Confluence Wiki fixes
+- [x] Strip thinking outputs from copy message in chat window
+- [x] Meeting Assistant - auto-verify model files before transcription to prevent errors during transcription
+
+## Pinned Download Links
+
+**Revision 1.11.2:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.11.2/AnythingLLMDesktop-Arm64.AppImage) |
