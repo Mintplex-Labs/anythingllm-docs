@@ -3,48 +3,47 @@ title: "AI Agents"
 description: "What are AI Agents in AnythingLLM and how to use them?"
 ---
 
-import { Cards, Callout } from "nextra/components";
+import { Cards, Card, Callout } from "nextra/components";
 import Image from "next/image";
-import { Card } from "../../components/card";
+import {
+  GearIcon,
+  BrainIcon,
+  ChatsIcon,
+} from "/components/icons";
 
-<Image
-  src="/images/guides/ai-agents/header-image.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM AI Agents"
-/>
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/docs-agent-example.mov"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
 
 # AI Agents
 
-Agents are basically an LLM that has access to some simple tools. We will be adding much more customization in this area soon.
+Agents are LLMs that have the ability to use tools to perform tasks to complete your requests. There are a number of pre-provided tools by default, but you can also create your [own custom tools](/agent/custom/introduction), [use MCPs](/mcp-compatibility/overview), or even use [Agent Flows](/agent-flows/overview) to build your own custom tools.
 
-All agents share the same tools across workspaces, but operate within the workspace they were invoked via `@agent`.
+AnythingLLM will automatically determine if your LLM can use tools so that every chat is more intelligent. However, now all LLMs can use tools, you can still choose to use the `@agent` directive at the start of your chat to start an agentic chat session.
 
 ## Quick Links
 
 <Cards>
-  <Card title="Agent Setup Guide" href="/agent/setup"> 
-    <Image
-      src="/images/guides/ai-agents/setup.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Github Issues"
-    />
-  </Card>
-
-  <Card title="Agent Usage Guide" href="/agent/usage"> 
-    <Image
-      src="/images/guides/ai-agents/usage.png" 
-      height={1080} 
-      width={1920}
-      quality={100} 
-      alt="AnythingLLM Discord Community"
-    />
-  </Card>
+  <Card
+    icon={<GearIcon />}
+    title="Agent Setup Guide"
+    href="/agent/setup"
+  />
+  <Card
+    icon={<BrainIcon />}
+    title="Intelligent Tool Selection"
+    href="/agent/setup#intelligent-tool-selection"
+  />
+  <Card
+    icon={<ChatsIcon />}
+    title="Agent Usage Guide"
+    href="/agent/usage"
+  />
 </Cards>
-
 
 <style global jsx>{`
   img {

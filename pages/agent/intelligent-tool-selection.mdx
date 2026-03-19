@@ -1,0 +1,50 @@
+---
+title: "Intelligent Tool Selection"
+description: "Load unlimited tools into context with better performance and save up to 80% on token usage every single chat"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="️💡">
+  **Tip:** Intelligent Tool Selection is an opt-in feature for now. You can enable it in the Agent Skills page via `Settings > Agent Skills`.
+</Callout>
+
+AnythingLLM is pioneering the concept of **Intelligent Tool Selection**. This allows any model to have access to **unlimited** tools but without the trade-off bloated token usage and performance bottlenecks **saving up to 80% every single chat**.
+
+In other providers like OpenWebUI, Claude, or others, every single tool and MCP will be added to the prompt window **every chat!** This is a major performance bottleneck and can quickly lead to context limits being reached within a few chats as well
+as decreased performance and increased token usage or costs.
+
+With Intelligent Tool Selection, AnythingLLM will only add the tools that are actually useful for the chat to the prompt window.
+
+## How to enable Intelligent Tool Selection?
+
+In the Agent Skills page via `Settings > Agent Skills`, you can enable Intelligent Tool Selection by clicking the settings icon on this page.
+
+<Image
+  src="/images/anythingllm-setup/agent-configuration/settings-menu-icon-location.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Settings Menu Icon Location"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+From this menu, you can enable Intelligent Tool Selection by clicking the "Intelligent Tool Selection" toggle.
+
+<Image
+  src="/images/anythingllm-setup/agent-configuration/settings-menu.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Settings Menu"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+## Benefits of Intelligent Tool Selection
+
+- **Better Performance**: Only add the tools that are actually useful for the chat to the prompt window. This means less tokens overall so you get a faster response time - this is especially useful for local models
+- **Save up to 80% on token usage every single chat**: This is a major performance improvement and can help you save on token usage and costs. For local models, this leads to much faster response times. For cloud models, this leads to lower costs and faster response times.
+- **Better Context Management**: This allows you to keep your context for actual chats and information instead of just tools that are not useful for the chat.
+
+With Intelligent Tool Selection, you dont have to worry about the granular selection of tools every single chat - it is automatically done for you so you can continue to just add more and more tools to help you be more productive.

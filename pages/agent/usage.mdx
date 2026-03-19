@@ -33,7 +33,9 @@ import Image from "next/image";
 
 </Callout>
 
-Mention the agent by `@agent` to start an agent session. You can start an agent session anytime when using a workspace.
+When in the main chat UI, check to see if the `@` symbol is present in the prompt input. 
+If this symbol is present, you **must** mention the agent by `@agent` to start an agent session to use tools.
+If this symbol is not present, you are automatically in agentic chat mode with every chat.
 
 <Image
   src="/images/guides/ai-agents/trigger.png"
@@ -242,39 +244,16 @@ When a Agent session is started you will see the log `Agent @agent invoked` on y
 
 When a Agent session is ended you will see the log `Agent session completed` on your chat.
 
-<Image
-  src="/images/guides/ai-agents/start-end.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM AI Agents"
-/>
-
 ### 2) How can I end a Agent Session?
 
 Simply use the slash command `/exit` to end a agent session
 
-<Image
-  src="/images/guides/ai-agents/end-slash-command.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM AI Agents"
-/>
-
 ### 3) Do I have to always mention `@agent` to interact with the agent?
 
-No, you only have to use `@agent` to start an agent session, during the agent session you don't have to mention the agent by `@agent`, you can just keep chatting with the agent like you chat with an LLM.
+AnythingLLM will automatically determine if your LLM can use tools so that every chat is more intelligent. However, you can still choose to use the `@agent` directive at the start of your chat to start an agentic chat session.
 
-### 4) My Agent says it cannot access the internet, what can I do?
+Not all providers allow AnythingLLM to automatically determine if your LLM can use tools so you may need to use the `@agent` directive at the start of your chat to start an agentic chat session.
 
-This is because of the LLM you are using, not all LLMs are great of even useable for `tool-calling`. With AnythingLLM we make every model possible to be used as an agent, but the strength of your model to comprehend the instruction and examples of tool calling is still reliant on the model itself. Smaller models with 4-Bit Quantization won't respond properly as an agent most times, but the very same model at 8Bit Quantization will give better response as an Agent -- same LLM but different quantization. If your agent is not responding properly then try using a higher quantization model or a larger model altoghether.
+You will notice the `@` symbol in the prompt input if you are required to use the `@agent` directive at the start of your chat to start an agentic chat session.
 
-### 5) My Agent says it saved a file on my machine, but when I checked the location there is no file like the agent mentioned, what can I do?
-
-If you dont see `@agent is attempting to call save-file-to-browser` when you ask, it never really called the tool and just pretended it did, AKA: **Hallucinated**.
-
-To fix this issue you can do one of the following things:
-
-- Be more explicit and say verbatim for it to call the specific tool `save-file-to-browser`
-- Use a better model that is more capable of tool calling.
+If this symbol is not present, you are automatically in agentic chat mode with every chat.

@@ -6,17 +6,11 @@ description: "This guide explain how to setup AI Agents on AnythingLLM"
 import { Callout } from "nextra/components";
 import Image from "next/image";
 
-<Image
-  src="/images/guides/ai-agents/setup.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM AI Agents"
-/>
-
 # Setting up AI Agents
 
-### 1) Go to Agent configuration
+## Configure your Agent
+
+By default, your workspace will use the system LLM for agentic chat sessions. You can optionally change the model and provider _per workspace_ if you want to use a different LLM for agentic chat sessions for a given workspace.
 
 Open the workspace settings and go to the agent configuration menu
 
@@ -25,108 +19,65 @@ Open the workspace settings and go to the agent configuration menu
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM Agent Configuration Menu"
+  alt="AnythingLLM Agent Workspace Configuration Menu"
 />
 
-### 2) Choose the LLM for your Agent
+## Configure your available skills
 
-On workspace settings, select your LLM Provider and the Model you want your Agent to use. Be sure to click the "Update workspace agent" button or your settings will not be saved.
+On the Agent Skills page via `Settings > Agent Skills`, you can granularly choose which skills you want your Agent to be able to use. Some skills are enabled by default. Some skills require additional configuration.
+You can click on a skill to see more information about it, including the required configuration - if any.
 
-<Image
-  src="/images/anythingllm-setup/agent-configuration/llm.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Agent LLM"
-/>
-
-After updating the workspace agent settings, click the "Configure Agent Skills" button.
+Be sure to click the "Save" button to save your changes.
 
 <Image
   src="/images/anythingllm-setup/agent-configuration/configure-agent-skills-button.png"
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM Agent LLM"
+  alt="AnythingLLM Agent Skills Configuration"
 />
 
-<Callout type="error" emoji="️⚠️">
-  **Caution**
-
-    Not all LLM Models works well as Agents, you may need to use higher quantization models for better responses.
-    Example: `Llama 3 8B 8Bit Quantization` gives better responses as an Agent
-
-</Callout>
-
-<Callout type="info" emoji="️ℹ️">
-  **Note**
-
-    AnythingLLM supports a lot of LLM providers for use with `@agent`s and you can see all the supported LLMs from [here](https://docs.anythingllm.com/features/language-models#supported-language-model-providers)
-
-</Callout>
-
-### 3) Choose your Agent skills
-
-Choose the skills, or tools, for your Agent to use. The skills labled "Default" are default skills that cannot be disabled.
+You can also toggle skills from the prompt input in the chat UI by clicking on the "Tools" button.
 
 <Image
-  src="/images/anythingllm-setup/agent-configuration/tools.png"
+  src="/images/anythingllm-setup/agent-configuration/prompt-tools-menu.png"
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM Agent Skills"
+  alt="AnythingLLM Agent Prompt Tools Menu"
 />
 
-<Callout type="info" emoji="️ℹ️">
-  **Note**
-
-    Some tools like `RAG`, `Summarize Documents` and `Scrape Websites` are enabled by default and you cannot disable them.
-
-</Callout>
-
-### 4) Choose your Search Provider (Optional)
+## Example: Configure your search provider
 
 One of the tools agents can use is `Web-Browsing` which allows agents to browse the internet.
 
-Currently we support the following search providers:
-
-- [SerpApi](https://serpapi.com/) - Scrapes the major search engines including Google, Amazon, Google Maps, Google News, Google Shopping, Baidu, and more.
-- [SearchApi](https://www.searchapi.io/) - Supports multiple search engines like Google, Bing, Baidu, Google News, YouTube, and etc.
-- [Google](https://www.google.com/)
-- [Serper](https://serper.dev/)
-- [Bing Search](https://azure.microsoft.com/en-us/pricing/details/cognitive-services/bing-entity-search-api/)
-- [Serply](https://serply.io/)
-
-<Callout type="info" emoji="️ℹ️">
-  **Note**
-
-    You can ignore this step if you don't plan to use the `Web-Browsing` tool
-
-</Callout>
+By default, AnythingLLM will use the DuckDuckGo search engine to browse the internet - this requires no additional configuration. You can change this to use a different search provider by clicking on the "Search Provider" button.
 
 <Image
   src="/images/anythingllm-setup/agent-configuration/search.png"
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM Agent Web Browsing"
+  alt="AnythingLLM Agent Search Provider Configuration"
 />
 
-To use Google Search, create a Programmable Search Engine and generate an API key via the [Google Programmable Search Engine control panel](https://programmablesearchengine.google.com/controlpanel/create). For rate limit information, see the [Google Custom Search API documentation](https://developers.google.com/custom-search/v1/overview).
+# Intelligent Tool Selection
 
-**That's it! You can now use AnythingLLM's Agents!**
+AnythingLLM is pioneering the concept of **Intelligent Tool Selection**. This allows any model to have access to **unlimited** tools but without the trade-off bloated token usage and performance bottlenecks saving up to 80% every single chat.
 
-If you want to learn how to use AI Agents then you can read our [AI Agent Guide](/agent/usage) or watch the below video:
+In other providers like OpenWebUI, Claude, or others, every single tool and MCP will be added to the prompt window **every chat!** This is a major performance bottleneck and can quickly lead to context limits being reached within a few chats as well
+as decreased performance and increased token usage or costs.
 
-<br />
+With Intelligent Tool Selection, AnythingLLM will only add the tools and MCPs that are actually useful for the chat to the prompt window.
 
-<iframe
-  width="100%"
-  height="450"
-  src="https://www.youtube.com/embed/4UFrVvy7VlA?si=TtWQ-Sg5fxytVsKI"
-  title="YouTube video player"
-  frameBorder="0"
-  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-  referrerPolicy="strict-origin-when-cross-origin"
-  allowFullScreen
-></iframe>
+## How to enable Intelligent Tool Selection?
+
+In the Agent Skills page via `Settings > Agent Skills`, you can enable Intelligent Tool Selection by clicking the settings icon on this page.
+
+<Image
+  src="/images/anythingllm-setup/agent-configuration/intelligent-tool-selection.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Intelligent Tool Selection Configuration"
+/>
