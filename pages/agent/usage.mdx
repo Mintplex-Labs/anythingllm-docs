@@ -13,6 +13,7 @@ import {
   FileIcon,
   BoxIcon,
   Database,
+  FolderTreeIcon,
 } from "/components/icons";
 import Image from "next/image";
 
@@ -90,6 +91,11 @@ When you mention the agent, you will see a popup with the tools enabled for the 
     icon={<Database />}
     title="SQL Agent"
     href="#what-is-sql-agent-and-how-to-use-it"
+  />
+  <Card
+    icon={<FolderTreeIcon />}
+    title="File Search Agent"
+    href="#file-search-agent"
   />
 </Cards>
 
@@ -198,14 +204,6 @@ Example 1: `@agent can you plot y=mx+b where m=10 and b=0?`
 
 Example 2: `@agent can you look at data.csv and plot that as a pie chat by age?` (_assuming data.csv is in the workspace_)
 
-<Image
-  src="/images/guides/ai-agents/graph.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM AI Agents Chart Generation"
-/>
-
 ## What is SQL Agent and how to use it?
 
 The built-in SQL agent is a skill that you can leverage to run real-time analytics and queries against a real relational database. The agent can do all of the following:
@@ -228,13 +226,69 @@ _Example 1:_ <br/>
 _Example 2:_ (_assuming you have the `save-file` skill enabled_)<br/>
 `@agent can you grab the emails of the most recent 10 customers and save that to customer.csv?`
 
+
+## File search agent
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/filesearch-agent-demo.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+The file search agent is a skill that you can leverage to search for files across your entire filesystem on the host machine or specific folders you allow it to search.
+
+By default, this skill is disabled and you can granularly choose which folders you want the agent to have read/write access to in the Configuration menu.
+
 <Image
-  src="/images/guides/ai-agents/sql-agent.png"
+  src="/images/guides/ai-agents/fs-main-panel.png"
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM AI Agents SQL Agent skill"
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents File Search Agent Main Panel"
 />
+
+<Image
+  src="/images/guides/ai-agents/fs-options.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents File Search Agent Options"
+/>
+
+### Docker setup
+
+On Docker, you **must bind volumes** to the container to the `/app/server/storage/anythingllm-fs/` directory. The file search tool **will not** search outside of this directory to prevent any security risks or unauthorized access to your host machine.
+This is easy to do by simply modifying the startup command to include the following:
+
+```shell
+export STORAGE_LOCATION=$HOME/anythingllm && \
+mkdir -p $STORAGE_LOCATION && \
+touch "$STORAGE_LOCATION/.env" && \
+docker run -d -p 3001:3001 \
+--cap-add SYS_ADMIN \
+-v ${STORAGE_LOCATION}:/app/server/storage \
+-v ${STORAGE_LOCATION}/.env:/app/server/.env \
+# This is an example of binding a volume to the container to 
+# the /app/server/storage/anythingllm-fs directory as subfolders.
+-v /home/ubuntu/Documents:/app/server/storage/anythingllm-fs/docs
+-v /home/ubuntu/Downloads:/app/server/storage/anythingllm-fs/downloads
+-v /home/ubuntu/special-folder/subfolder:/app/server/storage/anythingllm-fs/special-folder
+# ... and so on and so forth. 
+# You can also use suffixes to make a folder read-only at the OS level.
+-v /home/ubuntu/readonly-folder:/app/server/storage/anythingllm-fs/readonly:ro
+-e STORAGE_DIR="/app/server/storage" \
+mintplexlabs/anythingllm
+```
+
+Changing files in the host will automatically be reflected and available to the agent since it is a bound volume.
+
+### Desktop setup
+
+_coming soon :)_
 
 ## Frequently Asked Questions
 
