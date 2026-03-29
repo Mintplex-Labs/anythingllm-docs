@@ -38,6 +38,7 @@ docker pull mintplexlabs/anythingllm:latest
   touch "$STORAGE_LOCATION/.env" && \
   docker run -d -p 3001:3001 \
   --cap-add SYS_ADMIN \
+  --name anythingllm \
   -v ${STORAGE_LOCATION}:/app/server/storage \
   -v ${STORAGE_LOCATION}/.env:/app/server/.env \
   -e STORAGE_DIR="/app/server/storage" \
@@ -52,6 +53,7 @@ docker pull mintplexlabs/anythingllm:latest
   If(!(Test-Path "$env:STORAGE_LOCATION\.env")) {New-Item "$env:STORAGE_LOCATION\.env" -ItemType File}; `
   docker run -d -p 3001:3001 `
   --cap-add SYS_ADMIN `
+  --name anythingllm `
   -v "$env:STORAGE_LOCATION`:/app/server/storage" `
   -v "$env:STORAGE_LOCATION\.env:/app/server/.env" `
   -e STORAGE_DIR="/app/server/storage" `
