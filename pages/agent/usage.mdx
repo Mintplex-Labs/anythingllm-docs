@@ -227,7 +227,7 @@ _Example 2:_ (_assuming you have the `save-file` skill enabled_)<br/>
 `@agent can you grab the emails of the most recent 10 customers and save that to customer.csv?`
 
 
-## File search agent
+## File system agent
 
 <video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
   <source
@@ -248,15 +248,6 @@ By default, this skill is disabled and you can granularly choose which folders y
   quality={100}
   style={{ borderRadius: "10px", padding: "10px" }}
   alt="AnythingLLM AI Agents File Search Agent Main Panel"
-/>
-
-<Image
-  src="/images/guides/ai-agents/fs-options.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  style={{ borderRadius: "10px", padding: "10px" }}
-  alt="AnythingLLM AI Agents File Search Agent Options"
 />
 
 ### Docker setup
@@ -288,7 +279,45 @@ Changing files in the host will automatically be reflected and available to the 
 
 ### Desktop setup
 
-_coming soon :)_
+<Callout type="info" emoji="️💡">
+  **Note** The file system agent is a available as a feature in AnythingLLM v1.12.0+
+</Callout>
+
+On Desktop, you will have a `Permissions` section in the skills config panel that allows you to grant the agent access to **specific folders** on your host machine. The permissions are applied to the entire folder and subfolders for both read and write access.
+
+By default, the file system agent has no access to any folders. You will need to grant access to the folders you want the agent to have access to.
+
+<Image
+  src="/images/guides/ai-agents/fs-desktop-config.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents File Search Agent Main Panel"
+/>
+
+## Document Generation Agent
+
+<Callout type="info" emoji="️💡">
+  **Note** We recommend using 8B+ models for PowerPoint generation as they are the most accurate and performant for complex tooling.
+</Callout>
+
+Document Generation agent allows your LLM to create documents based on the given prompt/data. This is a built-in agent that is available in AnythingLLM v1.12.0+ but must be enabled in the Agent Skills page via `Settings > Agent Skills`.
+
+**Available document types:**
+- Text files
+- PDFs
+- Excel files
+- Docx files
+- PowerPoint presentations
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/docgen.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
 
 ## Frequently Asked Questions
 

@@ -1,0 +1,114 @@
+---
+title: "v1.12.0"
+description: "AnythingLLM Desktop v.1.12.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Notable Improvements
+
+### Automatic Mode for native tool calling
+
+For [Select providers](/features/chat-modes#available-chat-modes) that support native tool calling, you no longer need to use `@agent` to use tools. You can now just use the tools directly in your prompt.
+
+If your prompt input does not have the "@" symbol, your chats will automatically use tools as needed.
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/docs-agent-example.mov"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+## Intelligent Tool Selection
+
+We have added a new feature called [Intelligent Tool Selection](/agent/intelligent-tool-selection). This feature allows you to load **unlimited** tools for your agent to use into context with better performance and save up to 80% on token usage every single chat.
+
+<Image
+  src="/images/anythingllm-setup/agent-configuration/settings-menu-icon-location.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Settings Menu Icon Location"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+## Filesystem Agent
+
+We have added a new feature called [Filesystem Agent](/agent/usage#file-system-agent). This feature allows you to use the filesystem of your host machine to search for files and directories.
+
+<Image
+  src="/images/guides/ai-agents/fs-desktop-config.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents File Search Agent Main Panel"
+/>
+
+## Document Generation Agent
+
+We have added a new built-in agent for [Document Generation](/agent/usage#document-generation-agent). With document generation, you can generate text files, PDFs, Excel files, Docx, and even entire PowerPoint presentations.
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/docgen.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+## Telegram Bot
+
+AnythingLLM Docker and Desktop now support a [Telegram bot](/channels/telegram) so you can connect to your AnythingLLM instance anywhere in the world.
+
+**Supports**:
+- Text chat (streaming & thinking)
+- Image understanding
+- Voice messages & Attachments
+- Automatic mode and @agent support
+- Workspace and thread selection
+- Model selection
+- Citations
+- Any agent skill available in AnythingLLM
+
+<Image
+  src="/images/guides/channels/telegram/image-understanding.png"
+  height={2735}
+  width={1320}
+  quality={100}
+  style={{
+    borderRadius: "20px",
+    marginBottom: 10,
+    maxWidth: "350px",
+    height: "auto",
+  }}
+  alt="Telegram bot analyzing an image"
+/>
+
+## Other Improvements
+
+- [x] Creation agent skills now will "Ask for confirmation" before creating files or documents.
+- [x] Removed cost estimation from the embedder window
+- [x] Uploaded files in embed window are now auto-selected in the document picker.
+- [x] Added API Key support to Lemonade Provider
+- [x] Granualar tool managment for MCP sub-skills to prevent tool call bloat.
+
+## Bug Fixes
+
+- [x] Fixed bug where checking URLs did not check MIME type before attempting to fetch.
+- [x] Fixed bug with chat window UI performance.
+
+## Pinned Download Links
+
+**Revision 1.12.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.12.0/AnythingLLMDesktop-Arm64.AppImage) |
