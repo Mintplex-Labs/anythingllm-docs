@@ -325,3 +325,142 @@ PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING="bedrock,generic-openai,groq,lemonade,lite
 ### Disable
 
 Fully remove or comment out the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to return to the default behavior.
+
+
+## Azure AD / Microsoft Entra ID Login
+
+<Callout type="info" emoji="️💡">
+  **Note:** This configuration is only available for _self-hosted instances_. This provides an OIDC Login for Azure AD (Entra ID) and we DONT need `SIMPLE_SSO_ENABLED` for this to function. 
+</Callout>
+
+
+Use Azure AD environment variables to enable Microsoft Entra ID sign-in for AnythingLLM.
+
+<Callout type="info" emoji="️💡">
+  **Tip:** Restart the AnythingLLM service/container after setting environment variables.
+</Callout>
+
+### Prerequisites
+
+- AnythingLLM running in multi-user mode.
+- Access to a Microsoft Entra tenant.
+- Permission to create App Registrations in Azure.
+- A public or local URL where AnythingLLM is reachable (for redirect URI).
+
+### 1) Create an Azure App Registration
+
+1. Open [Azure Portal](https://portal.azure.com).
+2. Go to **Microsoft Entra ID** → **App registrations** → **New registration**.
+3. Set a name (example: `AnythingLLM Login`).
+4. Choose account type (single-tenant or multi-tenant).
+5. Under **Redirect URI**:
+   - Platform: **Single-page application (SPA)**
+   - URI: your AnythingLLM URL root with trailing slash  
+     Example: `https://anythingllm.example.com/` or `http://localhost:3000/`
+6. Click **Register**.
+
+### 2) Get the Azure Keys/IDs
+
+From your App Registration in Azure:
+
+- **Directory (tenant) ID** (Overview page) → `AZURE_AD_TENANT_ID`
+- **Application (client) ID** (Overview page) → `AZURE_AD_CLIENT_ID`
+- **Redirect URI** (Authentication page, SPA entry) → `AZURE_AD_REDIRECT_URI`
+
+### 3) Configure AnythingLLM Environment Variables
+
+Set the following in `server/.env` or your deployment environment:
+
+```bash
+# Enable Azure AD login
+AZURE_AD_ENABLED=true
+
+# Required
+AZURE_AD_TENANT_ID="xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+AZURE_AD_CLIENT_ID="yyyyyyyy-yyyy-yyyy-yyyy-yyyyyyyyyyyy"
+AZURE_AD_REDIRECT_URI="https://anythingllm.example.com/"
+
+# Optional: force first-time Azure users into a workspace id
+# AZURE_AD_DEFAULT_WORKSPACE_ID=
+
+# Optional: custom sign-in button text (default: "Sign in with Entra ID")
+# AZURE_AD_BUTTON_TEXT="Sign in with Microsoft"
+
+# Optional: hide local username/password fields and show Azure only
+# Accepted truthy values: 1, true, yes
+# AZURE_AD_HIDE_PASSWORD_LOGIN=false
+
+# Optional: bootstrap admin username if Azure env triggers first-time multi-user enablement
+# AZURE_BOOTSTRAP_ADMIN_USERNAME=admin
+```
+
+Please note that `AZURE_AD_BUTTON_TEXT` gives you the text on the button, we can use it to set something like - "Login with your *Org Name* account"
+If you want to disable the regular login form from Anything LLM, please set the `AZURE_AD_HIDE_PASSWORD_LOGIN` to true. If this is set to false, the local users and also the Azure AD users can log-in.
+
+
+Logging in the first time, automatically creates a local user account as a "Default" user and adds it to the first workspace (lowest ID number), you can change that to a particular workspace by setting the `AZURE_AD_DEFAULT_WORKSPACE_ID` to the ID from the DB. 
+
+<Callout type="info" emoji="️💡">
+  **Bootstrap Feature:** Anything LLM needs to be put in Multi-User mode for using the Azure AD integration, however, we can do a bootstrap (if creating the system for the first time) by setting the `AZURE_BOOTSTRAP_ADMIN_USERNAME` to a username. If the system sees this, it will create a user, put the system in a "Multi-user" mode and generate a password, which you can see in the container / server logs - Please see the sample logs below. You dont need to use it if the anything LLM system is already running in Multi-User mode. 
+
+  Sample logs
+
+```
+[backend] info: [AnythingLLM Azure bootstrap] Created default workspace "My Workspace" (id=1).
+[backend] info: [AnythingLLM Azure bootstrap]
+[backend] info: [AnythingLLM Azure bootstrap] Multi-user mode enabled.
+[backend] info: [AnythingLLM Azure bootstrap] Admin username: admin
+[backend] info: [AnythingLLM Azure bootstrap] Admin password: izeA-TI&2-K+r^R#9j5Sj@4w-jBibrA2
+[backend] info: [AnythingLLM Azure bootstrap] Change this password after first login. Anyone with access to container logs can see this.
+```
+</Callout>
+
+
+When integrating Azure AD with AnythingLLM, and you want Azure AD to be the only authentication mechanism, please follow this specific order of operations to avoid administrative lockout. By default, new Azure AD users are assigned the **"Default"** role and do not have administrative privileges. Please follow the above, but
+
+#### **Step 1: Initial Deployment**
+Do **not** set `AZURE_AD_HIDE_PASSWORD_LOGIN` to `true` during the initial run. Keeping this value `false` ensures the local login form remains accessible.
+
+#### **Step 2: Administrative Delegation**
+1. Log in using your **Local Administrator** credentials.
+2. Direct the Azure AD user to sign in for the first time to create their profile.
+3. From the **User Management** dashboard, locate the Azure AD user and elevate their role to **Administrator**.
+
+#### **Step 3: Enforce SSO (Optional)**
+Once you have verified that you can successfully manage the system via your Azure AD account, you may then set `AZURE_AD_HIDE_PASSWORD_LOGIN` to `true`. This disables local password authentication and enforces Azure AD as the exclusive login method.
+
+## 4) Restart and Verify
+
+1. Restart AnythingLLM.
+2. Open the login page.
+3. Confirm Azure/Entra sign-in button is visible.
+4. Sign in with an Entra user and verify successful access.
+
+## Troubleshooting
+
+- **AADSTS50011 / redirect mismatch**  
+  `AZURE_AD_REDIRECT_URI` must exactly match the Azure app redirect URI.
+- **No Azure sign-in button**  
+  Ensure `AZURE_AD_ENABLED=true` and restart service.
+- **Local password login hidden unexpectedly**  
+  Check `AZURE_AD_HIDE_PASSWORD_LOGIN` value.
+
+## Disable
+
+Set:
+
+```bash
+AZURE_AD_ENABLED=false
+```
+
+or remove/comment out the Azure AD variables entirely.
+
+## Security Recommendations
+
+<Callout type="warning" emoji="️⚠️">
+  **Security Tip:** Use HTTPS in production and least-privilege access in Azure.
+</Callout>
+
+- Restrict account type to only what your org needs.
+- Keep redirect URIs explicit and minimal.
+- Periodically audit app registration settings.
