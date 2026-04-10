@@ -325,3 +325,26 @@ PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING="bedrock,generic-openai,groq,lemonade,lite
 ### Disable
 
 Fully remove or comment out the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to return to the default behavior.
+
+
+## Automatic Tool Call Approval
+
+Modification of the `AGENT_AUTO_APPROVED_SKILLS` environment variable allows you to automatically approve tool calls for all users.
+
+Not all agent-skills ask for approval. Only skills that can be long-running, computationally expensive, or otherwise risky should ask for approval.
+
+### Enable
+
+Set the `AGENT_AUTO_APPROVED_SKILLS` environment variable to a comma-separated list of agent-skill-ids you want to automatically approve tool calls for. You can find the agent-skill-id by the `name` property in the [AnythingLLM Repository](https://github.com/Mintplex-Labs/anything-llm/tree/master/server/utils/agents/aibitat/plugins).
+
+Optionally, you can just use the special `<all>` keyword to automatically approve tool calls for every agent-skill.
+
+```bash
+AGENT_AUTO_APPROVED_SKILLS="<all>" # Automatically approve tool calls for every agent-skill.
+AGENT_AUTO_APPROVED_SKILLS="create-pdf-file,create-docx-file" # Automatically approve tool calls for specific agent-skills.
+```
+
+### Disable
+
+Fully remove or comment out the `AGENT_AUTO_APPROVED_SKILLS` environment variable to return to the default behavior.
+
