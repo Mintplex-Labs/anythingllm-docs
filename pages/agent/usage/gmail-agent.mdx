@@ -81,6 +81,10 @@ You will see a popup with the `Deployment Id` of the new deployment. Copy this I
 
 Dont worry, if you mess up, you can always edit the script and redeploy it!
 
+<Callout type="info" emoji="️💡">
+  **NOTE:** Once you deploy, you may have to wait a few minutes for the deployment to be fully activated.
+</Callout>
+
 ## Capabilities
 
 The Gmail Agent provides a comprehensive set of tools organized into the following categories:
@@ -236,6 +240,42 @@ Get Gmail mailbox statistics including unread counts for:
 **Example:** `@agent how many unread emails do I have?`
 
 ---
+
+## Update the script
+
+If you ever need to update the script to sync with the latest version of script, you can do the following:
+
+1. Go to the [Google App Script editor](https://script.google.com/home)
+2. Click on the "AnythingLLM Gmail Bridge" project or the project name you gave it when you created it.
+3. Click on the "Code.gs" file.
+4. Edit the script and click on the "Deploy > Manage deployments" button.
+5. Click on the "Pencil" icon to edit the script.
+
+<Image
+  src="/images/guides/ai-agents/gmail-manage-deployments.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Gmail Manage Deployments"
+/>
+
+
+6. In the first dropdown, select "New Version" and give is some short description.
+
+<Image
+  src="/images/guides/ai-agents/gmail-new-version.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Gmail Manage Deployments"
+/>
+
+
+7. Click Deploy New Version! 
+
+When updating, you don't need to update AnythingLLM's configuration page, it will automatically point to the new version of the script.
 
 ## Delete the app connection
 
