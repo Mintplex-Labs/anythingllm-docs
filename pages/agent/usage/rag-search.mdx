@@ -1,0 +1,24 @@
+---
+title: "RAG Search"
+description: "Use RAG Search to query embedded knowledge in your workspace"
+---
+
+import Image from "next/image";
+
+## What is RAG Search and how to use it?
+
+RAG search allows the agent to check what are the things the agent already know about a specific topic (requires some data to be embedded in workspace)
+
+You can use RAG search by asking the agent something like `@agent can you check what you already know about AnythingLLM?`
+
+<Image
+  src="/images/guides/ai-agents/rag-search.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM AI Agents RAG Search"
+/>
+
+RAG search can update agent's own memory and that can be later used for recall in agent or regular chat. This embeds a virtual document you cannot manage.
+
+Example: `Ah, great point. Can you summarize and save that summary for later to your memory`

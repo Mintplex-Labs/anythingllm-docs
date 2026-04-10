@@ -1,0 +1,29 @@
+---
+title: "Document Generation Agent"
+description: "Use Document Generation Agent to create various document types"
+---
+
+import { Callout } from "nextra/components";
+
+## Document Generation Agent
+
+<Callout type="info" emoji="️💡">
+  **Note** We recommend using 8B+ models for PowerPoint generation as they are the most accurate and performant for complex tooling.
+</Callout>
+
+Document Generation agent allows your LLM to create documents based on the given prompt/data. This is a built-in agent that is available in AnythingLLM v1.12.0+ but must be enabled in the Agent Skills page via `Settings > Agent Skills`.
+
+**Available document types:**
+- Text files
+- PDFs
+- Excel files
+- Docx files
+- PowerPoint presentations
+
+<video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
+  <source
+    src="https://webassets.anythingllm.com/docgen.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>

@@ -1,0 +1,122 @@
+---
+title: "AI Agent Usage"
+description: "How to use AI Agents on AnythingLLM"
+---
+
+import { Cards, Card, Callout } from "nextra/components";
+import {
+  CardsIcon,
+  RowsIcon,
+  GlobeIcon,
+  DiagramIcon,
+  NewsletterIcon,
+  FileIcon,
+  BoxIcon,
+  Database,
+  FolderTreeIcon,
+} from "/components/icons";
+import Image from "next/image";
+
+<Image
+  src="/images/guides/ai-agents/usage.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AI Agent Usage"
+/>
+
+## How to use AI Agents?
+
+<Callout type="warning" emoji="️⚠️">
+  **Note**
+
+    Before you use AI Agents, you have to configure your AI Agents by following our [Agent Setup Guide](/agent/setup)
+
+</Callout>
+
+When in the main chat UI, check to see if the `@` symbol is present in the prompt input. 
+If this symbol is present, you **must** mention the agent by `@agent` to start an agent session to use tools.
+If this symbol is not present, you are automatically in agentic chat mode with every chat.
+
+<Image
+  src="/images/guides/ai-agents/trigger.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM AI Agents Trigger"
+/>
+
+When you mention the agent, you will see a popup with the tools enabled for the agent on the workspace.
+
+<br />
+**Agents have access to the following tools:**
+
+<Cards>
+  <Card
+    icon={<BoxIcon />}
+    title="RAG Search"
+    href="/agent/usage/rag-search"
+  />
+  <Card
+    icon={<GlobeIcon />}
+    title="Web Browsing"
+    href="/agent/usage/web-browsing"
+  />
+  <Card
+    icon={<RowsIcon />}
+    title="Web Scraping"
+    href="/agent/usage/web-scraping"
+  />
+  <Card
+    icon={<FileIcon />}
+    title="Save Files"
+    href="/agent/usage/save-files"
+  />
+  <Card
+    icon={<NewsletterIcon />}
+    title="List Documents"
+    href="/agent/usage/list-documents"
+  />
+  <Card
+    icon={<CardsIcon />}
+    title="Summarize Documents"
+    href="/agent/usage/summarize-documents"
+  />
+  <Card
+    icon={<DiagramIcon />}
+    title="Chart Generation"
+    href="/agent/usage/chart-generation"
+  />
+  <Card
+    icon={<Database />}
+    title="SQL Agent"
+    href="/agent/usage/sql-agent"
+  />
+  <Card
+    icon={<FolderTreeIcon />}
+    title="File System Agent"
+    href="/agent/usage/file-system-agent"
+  />
+</Cards>
+
+## Frequently Asked Questions
+
+### 1) How can I know if the agent session is started or ended?
+
+When a Agent session is started you will see the log `Agent @agent invoked` on your chat.
+
+When a Agent session is ended you will see the log `Agent session completed` on your chat.
+
+### 2) How can I end a Agent Session?
+
+Simply use the slash command `/exit` to end a agent session
+
+### 3) Do I have to always mention `@agent` to interact with the agent?
+
+AnythingLLM will automatically determine if your LLM can use tools so that every chat is more intelligent. However, you can still choose to use the `@agent` directive at the start of your chat to start an agentic chat session.
+
+Not all providers allow AnythingLLM to automatically determine if your LLM can use tools so you may need to use the `@agent` directive at the start of your chat to start an agentic chat session.
+
+You will notice the `@` symbol in the prompt input if you are required to use the `@agent` directive at the start of your chat to start an agentic chat session.
+
+If this symbol is not present, you are automatically in agentic chat mode with every chat.
