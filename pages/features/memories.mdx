@@ -1,0 +1,125 @@
+---
+title: "Memories"
+description: "Let AnythingLLM remember facts about you across conversations and inject them into the system prompt for more personalized responses."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Memories
+
+Memories let AnythingLLM remember useful facts about you (your name, preferences, ongoing projects, communication style, etc.) and use them to give more personalized responses.
+
+There are two kinds of memories:
+
+- **Workspace memories** only affect chats inside a single workspace. Up to **20** per workspace.
+- **Global memories** apply to every workspace you use. Up to **5** total.
+
+<Callout type="info" emoji="💡">
+  Memories are always tied to your user account. In multi-user mode, every user
+  has their own separate memories. No one else can see yours.
+</Callout>
+
+## Enabling Personalization
+
+Memories are **off by default**. An admin (or the single user on a non multi-user instance) has to turn the feature on before any memories are created or used.
+
+1. Open any workspace and start a chat.
+2. Click the **settings** icon in the top right of the chat window.
+3. Choose **Memories** from the menu to open the Memories sidebar.
+4. Toggle **Enable Personalization** on.
+
+<Image
+  src="/images/features/memories/chat-settings-menu.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Opening the Memories sidebar from the chat settings menu"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+Once it's on, the Memories sidebar will show the workspace and global tabs, and AnythingLLM will start pulling memories from your chats in the background. In multi-user mode, non-admin users can still open the sidebar and manage their own memories, but only an admin can turn the feature on or off.
+
+## Managing memories manually
+
+From the Memories sidebar you can add, edit, delete, and move memories between scopes.
+
+<Image
+  src="/images/features/memories/memories-sidebar.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Memories sidebar showing the Personalization toggle, workspace and global tabs, and memory cards"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+- **Add**: Click the **+** button in the tab header and write a single-sentence fact (for example, _"User prefers Python over JavaScript"_).
+- **Edit**: Open a memory's menu (the three-dot icon on the card) and choose **Edit**.
+- **Delete**: Open the memory's menu and choose **Delete**.
+- **Move to global**: From a workspace memory's menu, choose **Move to global** to make it apply everywhere.
+- **Move to workspace**: From a global memory's menu, choose **Move to workspace** to scope it back to just the current workspace.
+
+Each tab shows how many memories you have versus the limit (like `3/20` for workspace or `1/5` for global). If the destination is already full, adding or moving a memory will fail. Delete or move another memory out of that scope to make room.
+
+## Automatic memory extraction
+
+AnythingLLM can also build memories for you automatically. A background job reviews your recent chats every so often and turns useful facts into workspace memories so you don't have to write them by hand.
+
+**How it works**
+
+- The job looks at your unprocessed chats in each workspace and sends them to that workspace's LLM.
+- The LLM returns an updated list of up to 20 workspace memories, combining anything new with what you already had and dropping anything that's been contradicted by newer messages.
+- That list replaces your workspace memories for that workspace. Only workspace memories are written this way. Global memories are only ever added or edited by you.
+- Chats that have been reviewed are marked so they aren't looked at again.
+
+**When it runs**
+
+- On a schedule (default: every **15 minutes**).
+- Only when you've been idle. If anyone on the instance has chatted in the last **20 minutes**, the job skips that round so it doesn't process a conversation that's still going.
+- Only when Personalization is turned on.
+
+You can change the schedule and idle window with the environment variables in [Configuration](#configuration).
+
+## How memories are used in chat
+
+When Personalization is on and you send a message, AnythingLLM adds a short `## Things I Remember About You` section to the end of the workspace's system prompt before sending it to the model.
+
+That section includes:
+
+- **All of your global memories** (up to 5).
+- **Your top 5 workspace memories** for the current workspace.
+
+If you have more than 5 workspace memories, AnythingLLM scores them against your current message and recent chat history and picks the 5 most relevant. If that scoring step fails for any reason, it falls back to the 5 most recently created memories.
+
+This happens for regular chats, streamed chats, and chats made through the API.
+
+<Callout type="warning" emoji="⚠️">
+  Memory content is sent to your LLM provider as part of the system prompt.
+  If you're using a third-party provider, assume they can see it. Don't store
+  passwords, API keys, or sensitive personal information as memories.
+</Callout>
+
+## Single-user vs. multi-user mode
+
+Memories work the same way in both modes. A few things to know:
+
+- **Single-user mode**: All memories belong to the one local user. Enabling Personalization and managing memories are done by the same person.
+- **Multi-user mode**: Memories are always tied to the user who created them. Only admins can turn Personalization on or off, but every user can view and manage their own memories from the Memories sidebar. No user can see, edit, move, or delete another user's memories.
+- **Switching from single-user to multi-user**: When you turn on multi-user mode on an existing instance, any memories created beforehand are reassigned to the new admin account so nothing is lost.
+
+## Configuration
+
+These environment variables control the background extraction job. All are optional.
+
+| Variable                     | Default   | Description                                                                  |
+| ---------------------------- | --------- | ---------------------------------------------------------------------------- |
+| `MEMORY_EXTRACTION_INTERVAL` | `15m`     | How often the extraction job runs.                                           |
+| `MEMORY_IDLE_THRESHOLD_MS`   | `1200000` | How long (in milliseconds) the instance has to be idle before a run can start. Default is 20 minutes. |
+
+## Limits
+
+| Scope                      | Limit per user               |
+| -------------------------- | ---------------------------- |
+| Global memories            | 5                            |
+| Workspace memories         | 20 (per workspace)           |
+| Memories injected per chat | All global + top 5 workspace |
