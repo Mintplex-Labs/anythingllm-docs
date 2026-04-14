@@ -63,19 +63,12 @@ Each tab shows how many memories you have versus the limit (like `3/20` for work
 
 ## Automatic memory extraction
 
-AnythingLLM can also build memories for you automatically. A background job reviews your recent chats every so often and turns useful facts into workspace memories so you don't have to write them by hand.
-
-**How it works**
-
-- The job looks at your unprocessed chats in each workspace and sends them to that workspace's LLM.
-- The LLM returns an updated list of up to 20 workspace memories, combining anything new with what you already had and dropping anything that's been contradicted by newer messages.
-- That list replaces your workspace memories for that workspace. Only workspace memories are written this way. Global memories are only ever added or edited by you.
-- Chats that have been reviewed are marked so they aren't looked at again.
+AnythingLLM can build memories for you automatically by reviewing your recent chats and turning useful facts into workspace memories, so you don't have to write them by hand. Only **workspace memories** are created this way (up to 20 per workspace) — global memories are always added or edited by you.
 
 **When it runs**
 
 - On a schedule (default: every **15 minutes**).
-- Only when you've been idle. If anyone on the instance has chatted in the last **20 minutes**, the job skips that round so it doesn't process a conversation that's still going.
+- Only when your workspace has been idle. If you've chatted in a given workspace within the last **20 minutes**, extraction for that workspace is skipped that round so it doesn't process a conversation that's still going. Other users and workspaces aren't affected.
 - Only when Personalization is turned on.
 
 You can change the schedule and idle window with the environment variables in [Configuration](#configuration).
@@ -91,7 +84,7 @@ That section includes:
 
 If you have more than 5 workspace memories, AnythingLLM scores them against your current message and recent chat history and picks the 5 most relevant. If that scoring step fails for any reason, it falls back to the 5 most recently created memories.
 
-This happens for regular chats, streamed chats, and chats made through the API.
+This happens for regular chats, streamed chats, agent chats, and chats made through the API.
 
 <Callout type="warning" emoji="⚠️">
   Memory content is sent to your LLM provider as part of the system prompt.
@@ -114,7 +107,7 @@ These environment variables control the background extraction job. All are optio
 | Variable                     | Default   | Description                                                                  |
 | ---------------------------- | --------- | ---------------------------------------------------------------------------- |
 | `MEMORY_EXTRACTION_INTERVAL` | `15m`     | How often the extraction job runs.                                           |
-| `MEMORY_IDLE_THRESHOLD_MS`   | `1200000` | How long (in milliseconds) the instance has to be idle before a run can start. Default is 20 minutes. |
+| `MEMORY_IDLE_THRESHOLD_MS`   | `1200000` | How long (in milliseconds) a user's workspace has to be idle before its chats are processed. Default is 20 minutes. |
 
 ## Limits
 
