@@ -1,0 +1,262 @@
+---
+title: "Google Calendar Agent"
+description: "Use Google Calendar Agent to view, create, and manage calendar events"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Google Calendar Agent
+
+<Callout type="info" emoji="️💡">
+  **Tip:** Any read-only actions will not ask for approval, but any actions that could potentially modify your calendar in any way will ask for approval so nothing can be modified without your explicit permission.
+
+  Any skill below that has the ✏️ icon next to it will ask for approval before performing the action.
+</Callout>
+
+The Google Calendar Agent skill allows your LLM to interact with your Google Calendar account. It can list calendars, view events, create new events, update existing events, and manage your RSVP status.
+
+## Setup
+
+Setup of the Google Calendar Agent skill is **much** easier than other applications you may have used in the past, since we do not want to inconvenience you by setting up a Google Cloud Project and OAuth2 credentials.
+
+Instead, we will use a simple [Google App Script](https://developers.google.com/apps-script) you
+can simply **copy and paste** to provide the same functionality. Google App Scripts are 100% free and have very generous usage limits for your usage.
+
+### Grab the script
+
+You can grab the open-source script designed for AnythingLLM from [our GApps Github Repository](https://github.com/Mintplex-Labs/anythingllm-gapps/blob/main/calendar/index.gs).
+
+### Paste the script into the Google App Script editor
+
+Open the [Google App Script editor](https://script.google.com/home) click on the "New Project" button.
+
+Click on the "Untitled Project" and give it a name like "AnythingLLM Calendar Bridge".
+
+Paste the script you copied from the Github Repository into the `Code.gs` file. This should overwrite the existing script text if any exists.
+
+<Callout type="info" emoji="️💡">
+  **IMPORTANT** 
+  
+  Edit the line near the top of the script that says `const API_KEY = "CHANGE_ME_TO_SOMETHING_SECURE";` and replace `CHANGE_ME_TO_SOMETHING_SECURE` with a unique and random string
+  of your choice. This is used as an additional layer of security to authenticate your script with only AnythingLLM.
+</Callout>
+
+Once you have edited the `API_KEY` click on the "Deploy > New deployment" button.
+
+On the "Select Type" side of the panel, click on the gear icon and select "Web App".
+
+<Image
+  src="/images/guides/ai-agents/gmail-select-type.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Select Type"
+/>
+
+Ensure your "Execute as" is set to "Me" and "Who has access to the app" is set to "Anyone".
+
+<Image
+  src="/images/guides/ai-agents/gmail-deployment-options.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Deployment Options"
+/>
+
+Click on the "Deploy" button! You will then be prompted to authorize the script to access your Google Calendar account. Click on the "Review Permissions" button and configure the permissions as needed or desired for what you want the agent to be able to do.
+
+You will see a popup with the `Deployment Id` of the new deployment. Copy this Id and paste that into the "Deployment ID" field in the AnythingLLM configuration page along with the `API_KEY` you edited earlier.
+
+<Image
+  src="/images/guides/ai-agents/gmail-deployment-id.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Deployment Id"
+/>
+
+Dont worry, if you mess up, you can always edit the script and redeploy it!
+
+<Callout type="info" emoji="️💡">
+  **NOTE:** Once you deploy, you may have to wait a few minutes for the deployment to be fully activated.
+</Callout>
+
+## Capabilities
+
+The Google Calendar Agent provides a comprehensive set of tools organized into the following categories:
+
+### Calendars
+
+These tools allow the agent to view your calendars.
+
+#### List Calendars
+
+List all calendars the user owns or is subscribed to. Returns calendar names, IDs, time zones, and ownership information.
+
+**Example:** `@agent list all my calendars`
+
+#### Get Calendar
+
+Get details of a specific calendar by ID, including name, description, time zone, and settings.
+
+**Example:** `@agent show me details about my work calendar`
+
+### View Events
+
+These tools allow the agent to view and search your calendar events without making any changes.
+
+#### Get Event
+
+Get a single event by its ID. Returns full event details including title, time, location, description, guests, and RSVP status.
+
+**Example:** `@agent show me the details of event abc123`
+
+#### Get Events for Day
+
+Get all events for a specific day. Useful for checking your schedule for a particular date.
+
+**Example:** `@agent what's on my calendar for tomorrow?`
+
+#### Get Events
+
+Get events within a date range, optionally filtered by a search query. Supports searching for specific keywords in event titles and descriptions.
+
+**Example:** `@agent find all meetings next week`
+
+**Example:** `@agent search for events containing "standup" in January`
+
+#### Get Upcoming Events
+
+Get upcoming events starting from now. A convenient way to see what's coming up on your calendar.
+
+**Example:** `@agent what are my upcoming events?`
+
+### Create Events
+
+These tools allow the agent to create new calendar events.
+
+#### Quick Add ✏️
+
+Create an event from a natural language description. Google Calendar will parse the description to extract the event title, date, and time automatically.
+
+**Example:** `@agent add a meeting with John tomorrow at 3pm`
+
+**Example:** `@agent schedule lunch with Sarah next Tuesday at noon`
+
+#### Create Event ✏️
+
+Create a calendar event with full control over all event properties. Supports:
+- **Timed events**: Specify start and end times
+- **All-day events**: Create events that span entire days
+- **Multi-day events**: Create events spanning multiple days
+- **Recurring events**: Create daily, weekly, monthly, or yearly recurring events
+- **Guests**: Invite attendees by email
+- **Location**: Add a physical or virtual location
+- **Description**: Add notes or details
+
+**Example:** `@agent create a meeting called "Team Standup" tomorrow from 9am to 9:30am`
+
+**Example:** `@agent create an all-day event for my birthday on March 15th`
+
+**Example:** `@agent create a weekly team meeting every Monday at 10am`
+
+### Update Events
+
+These tools allow the agent to modify existing calendar events.
+
+#### Update Event ✏️
+
+Update an existing calendar event. You can change:
+- Title
+- Description
+- Location
+- Start and end times
+- Guest list
+
+Only provide the fields you want to update - other fields will remain unchanged.
+
+**Example:** `@agent change the title of event abc123 to "Updated Meeting"`
+
+**Example:** `@agent move event xyz789 to 3pm`
+
+**Example:** `@agent add Conference Room A as the location for event abc123`
+
+### RSVP
+
+These tools allow the agent to manage your attendance status for events.
+
+#### Set My Status ✏️
+
+Set your RSVP status for a calendar event. Available statuses:
+- **YES**: Accept the invitation
+- **NO**: Decline the invitation
+- **MAYBE**: Tentatively accept
+- **INVITED**: Reset to invited status
+
+**Example:** `@agent accept the meeting invitation for event abc123`
+
+**Example:** `@agent decline event xyz789`
+
+**Example:** `@agent mark myself as maybe for event def456`
+
+---
+
+## Update the script
+
+If you ever need to update the script to sync with the latest version of script, you can do the following:
+
+1. Go to the [Google App Script editor](https://script.google.com/home)
+2. Click on the "AnythingLLM Calendar Bridge" project or the project name you gave it when you created it.
+3. Click on the "Code.gs" file.
+4. Edit the script and click on the "Deploy > Manage deployments" button.
+5. Click on the "Pencil" icon to edit the script.
+
+<Image
+  src="/images/guides/ai-agents/gmail-manage-deployments.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Manage Deployments"
+/>
+
+
+6. In the first dropdown, select "New Version" and give is some short description.
+
+<Image
+  src="/images/guides/ai-agents/gmail-new-version.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Manage Deployments"
+/>
+
+
+7. Click Deploy New Version! 
+
+When updating, you don't need to update AnythingLLM's configuration page, it will automatically point to the new version of the script.
+
+## Delete the app connection
+
+If you ever need to delete the app connection, you can do the following:
+
+1. Go to the [Google App Script editor](https://script.google.com/home)
+2. Click on the "AnythingLLM Calendar Bridge" project or the project name you gave it when you created it.
+3. Click on the "Deploy > Manage deployments" button.
+4. Click on the "Archive" button for the deployment(s).
+
+<Image
+  src="/images/guides/ai-agents/gmail-archive-deployment.png"
+  height={800}
+  width={1200}
+  quality={100}
+  style={{ borderRadius: "10px", padding: "10px" }}
+  alt="AnythingLLM AI Agents Google Calendar Archive Deployment"
+/>
+
+5. You can now delete the project by clicking on the "Delete" button in the "Project Settings" page.
