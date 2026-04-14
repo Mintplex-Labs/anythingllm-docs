@@ -106,5 +106,14 @@
       "pagination": true,
       "toc": true
     }
+  },
+  "outlook-agent": {
+    "title": "Outlook Agent",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
 }
