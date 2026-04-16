@@ -4,6 +4,7 @@ description: "How to schedule scheduled jobs using the visual Cron Builder or a 
 ---
 
 import { Callout } from "nextra/components";
+import Image from "next/image";
 
 # Scheduling & The Cron Builder
 
@@ -19,11 +20,29 @@ You'll pick a **frequency** first, and the builder shows the relevant options fo
 
 Runs the job every N minutes. You choose the interval (1, 5, 15, 30, etc.).
 
+<Image
+  src="/images/guides/scheduled-jobs/cron-builder-minute.png"
+  height={416}
+  width={1244}
+  quality={100}
+  style={{ borderRadius: "12px", marginBottom: 10 }}
+  alt="Cron Builder set to 'Run every minute' with an 'Every 1 minute' interval dropdown"
+/>
+
 > _Use case:_ a very fast polling job. Most jobs don't need this frequency — it can produce a lot of runs quickly.
 
 ### Hourly
 
 Runs at a chosen minute-offset every hour. For example, "at minute 15 of every hour" means 12:15, 1:15, 2:15, and so on.
+
+<Image
+  src="/images/guides/scheduled-jobs/cron-builder-hourly.png"
+  height={416}
+  width={1244}
+  quality={100}
+  style={{ borderRadius: "12px", marginBottom: 10 }}
+  alt="Cron Builder set to 'Run hourly' with an 'At minute 00 past every hour' selector"
+/>
 
 > _Use case:_ hourly checks, periodic scrapes.
 
@@ -31,17 +50,44 @@ Runs at a chosen minute-offset every hour. For example, "at minute 15 of every h
 
 Runs once a day at a time you choose using a time picker.
 
+<Image
+  src="/images/guides/scheduled-jobs/cron-builder-daily.png"
+  height={418}
+  width={1244}
+  quality={100}
+  style={{ borderRadius: "12px", marginBottom: 10 }}
+  alt="Cron Builder set to 'Run daily' with a time picker showing 09:00 AM"
+/>
+
 > _Use case:_ a morning digest, an end-of-day recap, a nightly backup summary.
 
 ### Weekly
 
 Runs on one or more selected days of the week at a chosen time. Click the day pills (Mon, Tue, Wed…) to toggle which days are included.
 
+<Image
+  src="/images/guides/scheduled-jobs/cron-builder-weekly.png"
+  height={490}
+  width={1244}
+  quality={100}
+  style={{ borderRadius: "12px", marginBottom: 10 }}
+  alt="Cron Builder set to 'Run weekly' with 09:00 AM time picker and Mon, Tue, Wed day pills selected"
+/>
+
 > _Use case:_ Monday planning summary, Friday recap, weekday-only checks.
 
 ### Monthly
 
 Runs once a month on a day number you pick, at a chosen time.
+
+<Image
+  src="/images/guides/scheduled-jobs/cron-builder-monthly.png"
+  height={520}
+  width={1244}
+  quality={100}
+  style={{ borderRadius: "12px", marginBottom: 10 }}
+  alt="Cron Builder set to 'Run monthly' with a 09:00 AM time picker and 'On day 1 of every month' selector"
+/>
 
 > _Use case:_ monthly reports, first-of-month cleanup, end-of-month summaries.
 

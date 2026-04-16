@@ -4,6 +4,7 @@ description: "Walk through creating, editing, and managing a scheduled job in An
 ---
 
 import { Callout } from "nextra/components";
+import Image from "next/image";
 
 # Creating Your First Job
 
@@ -11,7 +12,32 @@ This page walks through creating a scheduled job from scratch. Everything is don
 
 ## 1. Open the Scheduled Jobs page
 
-Click the **gear icon** to open Settings, then select **Scheduled Jobs** from the sidebar. You'll see a list of your existing jobs (empty the first time) along with a **New Job** button.
+Click the **wrench icon** to open Settings, expand the **Tools** section in the sidebar, and click **Scheduled Jobs**.
+
+<Image
+  src="/images/guides/scheduled-jobs/scheduled-jobs-settings-sidebar-location.png"
+  height={562}
+  width={518}
+  quality={100}
+  style={{
+    borderRadius: "12px",
+    marginBottom: 10,
+    maxWidth: "280px",
+    height: "auto",
+  }}
+  alt="Settings sidebar with the Tools section expanded and Scheduled Jobs highlighted"
+/>
+
+You'll land on a list of your existing jobs (empty the first time) along with a **New Job** button.
+
+<Image
+  src="/images/guides/scheduled-jobs/scheduled-jobs-empty.png"
+  height={2074}
+  width={2802}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+  alt="The Scheduled Jobs page with no jobs yet and a New Job button in the middle"
+/>
 
 ## 2. Click "New Job"
 
@@ -21,6 +47,20 @@ Clicking **New Job** opens a form with four things to fill out:
 - **Prompt** — the instruction sent to the agent each time it runs
 - **Schedule** — when the job should run
 - **Tools** — which agent tools the job is allowed to use
+
+<Image
+  src="/images/guides/scheduled-jobs/new-scheduled-job.png"
+  height={1592}
+  width={1344}
+  quality={100}
+  style={{
+    borderRadius: "20px",
+    marginBottom: 10,
+    maxWidth: "420px",
+    height: "auto",
+  }}
+  alt="The New Scheduled Job modal with name, prompt, schedule, and tools fields filled in"
+/>
 
 New jobs are **enabled by default** as soon as they're created — there's no toggle in the modal itself. If you want to pause a job after creating it, use the enable/disable toggle on its row in the main jobs list.
 
@@ -100,6 +140,15 @@ From the main Scheduled Jobs page, each job row gives you:
 - **Edit** — change the name, prompt, schedule, or tools
 - **View Runs** — open the run history for this job
 - **Delete** — permanently remove the job and all of its run history
+
+<Image
+  src="/images/guides/scheduled-jobs/scheduled-jobs-populated.png"
+  height={2074}
+  width={2802}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10 }}
+  alt="The Scheduled Jobs page with one job listed and action icons on the right side of the row"
+/>
 
 <Callout type="info" emoji="💡">
   **Run Now** still respects the one-run-at-a-time rule. If a run is already in
