@@ -141,14 +141,22 @@ Click **Create**. The job is registered with the scheduler immediately and will 
 
 ## Managing existing jobs
 
-From the main Scheduled Jobs page, each job row gives you:
+From the main Scheduled Jobs page, each job row shows:
 
-- **The job's name, schedule, last run, and next run** at a glance
-- **An enable/disable toggle** — flip it off to pause the job without deleting it
-- **Run Now** — trigger an immediate run, bypassing the schedule
-- **Edit** — change the name, prompt, schedule, or tools
-- **View Runs** — open the run history for this job
-- **Delete** — permanently remove the job and all of its run history
+- **Name**
+- **Schedule** — a human-readable description of the cron (e.g. _"At 10:00 AM"_, _"Every 6 hours"_)
+- **Status** — the status of the most recent run, or _"Never run"_ for brand-new jobs
+- **Last run** — timestamp of the most recent run (or `—` if it hasn't run yet)
+- **Next run** — timestamp of the next scheduled run (or `—` if the job is disabled)
+
+Clicking anywhere on the row opens the job's run history. The icons on the right side of the row are where you act on the job itself:
+
+| Icon | Action | Description |
+| :--: | ------ | ----------- |
+| <img src="/images/guides/scheduled-jobs/run-history-action-button-x.png" alt="Delete icon" width="24" height="24" /> | **Delete** | Permanently remove the job and all of its run history. |
+| <img src="/images/guides/scheduled-jobs/run-history-action-button-pencil.png" alt="Edit icon" width="24" height="24" /> | **Edit** | Open the job in the same form you used to create it, letting you change the name, prompt, schedule, or tools. |
+| <img src="/images/guides/scheduled-jobs/run-history-action-button-play.png" alt="Run Now icon" width="24" height="24" /> | **Run Now** | Trigger an immediate run, bypassing the schedule. Greyed out while a run is already queued or running for this job. |
+| <img src="/images/guides/scheduled-jobs/run-history-action-button-toggle.png" alt="Enable/disable toggle" width="42" height="24" /> | **Enable/disable** | Flip it off to pause the job without deleting it; flip it back on to resume scheduling. |
 
 <Image
   src="/images/guides/scheduled-jobs/scheduled-jobs-populated.png"
