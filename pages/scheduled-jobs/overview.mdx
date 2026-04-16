@@ -1,0 +1,52 @@
+---
+title: "Scheduled Jobs"
+description: "Automate recurring agent tasks in AnythingLLM with Scheduled Jobs."
+---
+
+import { Callout } from "nextra/components";
+
+<Callout type="warning" emoji="⚠️">
+  Scheduled Jobs is **only available in single-user mode**. Instances running
+  in multi-user mode will not see the Scheduled Jobs settings page.
+</Callout>
+
+# Scheduled Jobs
+
+Scheduled Jobs let you run an AI agent on a recurring schedule — unattended, with access to your agent tools, and with every result saved for you to review later.
+
+Pick a prompt, pick a schedule, pick which tools the agent is allowed to use, and let it run. Every time a job runs, AnythingLLM records what the agent thought, which tools it called, any files it produced, and its final response — all browsable from the Scheduled Jobs page.
+
+## What you can do with Scheduled Jobs
+
+Scheduled Jobs are useful any time you want an agent to do the same kind of work on a regular cadence. A few examples:
+
+- **Daily digests** — "Every morning at 8 AM, search my inbox for overnight messages and summarize anything that needs a response."
+- **Weekly reports** — "Every Monday at 9 AM, pull this week's numbers and write a status report."
+- **Routine data pulls** — "Every 6 hours, check this site and note anything new."
+- **Scheduled reminders** — "Every Friday at 4 PM, draft a recap of what I worked on this week."
+- **Long-running research** — "Once a week, run a deep-dive research task using the web search tool and save the results."
+
+Anything you can do by talking to an agent in a chat, you can schedule — with the added benefit that results are archived, searchable, and can be continued as a normal workspace thread whenever you want to follow up.
+
+## Key concepts
+
+- **Job** — A saved task with a name, prompt, schedule, and list of allowed tools. A job can be enabled or disabled at any time.
+- **Run** — A single execution of a job. Every run has a status (`queued`, `running`, `completed`, `failed`, or `timed out`), a start time, a duration, and — once it finishes — a full result including the agent's thoughts, tool calls, and final response.
+- **Schedule** — A [cron expression](/scheduled-jobs/scheduling) that tells AnythingLLM when to run the job. You can build it visually or enter it directly.
+- **Tools** — The subset of agent skills, plugins, flows, and MCP servers the job is allowed to use when it runs. See the [Creating Your First Job](/scheduled-jobs/getting-started#choosing-tools) guide for details.
+- **Generated files** — Any files the agent creates while running (charts, documents, exports) are saved with the run and can be downloaded later.
+- **Scheduled Jobs workspace** — A workspace that AnythingLLM creates automatically the first time a job runs. It stores job results and backs the "Continue in Thread" button.
+- **Push notifications** — Optional browser notifications sent when a job finishes, so you don't have to keep the AnythingLLM tab open to know a result is ready. See [Push notifications on job completion](/scheduled-jobs/configuration#push-notifications-on-job-completion) for setup.
+
+## Where to find it
+
+Open **Settings** and look for **Scheduled Jobs** in the sidebar. From there you can:
+
+- See all your jobs at a glance, including their schedule and next run time
+- Create, edit, enable, disable, or delete jobs
+- Trigger a job immediately with **Run Now**
+- Open a job's run history to see past results
+
+## Next steps
+
+Start with [Creating Your First Job](/scheduled-jobs/getting-started), then dig into [Scheduling & The Cron Builder](/scheduled-jobs/scheduling) for everything you can do with cron expressions. When you're ready to look at results, see [Viewing Runs & Results](/scheduled-jobs/viewing-runs).

@@ -1,0 +1,111 @@
+---
+title: "Creating Your First Job"
+description: "Walk through creating, editing, and managing a scheduled job in AnythingLLM."
+---
+
+import { Callout } from "nextra/components";
+
+# Creating Your First Job
+
+This page walks through creating a scheduled job from scratch. Everything is done from **Settings > Scheduled Jobs**.
+
+## 1. Open the Scheduled Jobs page
+
+Click the **gear icon** to open Settings, then select **Scheduled Jobs** from the sidebar. You'll see a list of your existing jobs (empty the first time) along with a **New Job** button.
+
+## 2. Click "New Job"
+
+Clicking **New Job** opens a form with four things to fill out:
+
+- **Name** — what you want to call the job
+- **Prompt** — the instruction sent to the agent each time it runs
+- **Schedule** — when the job should run
+- **Tools** — which agent tools the job is allowed to use
+
+New jobs are **enabled by default** as soon as they're created — there's no toggle in the modal itself. If you want to pause a job after creating it, use the enable/disable toggle on its row in the main jobs list.
+
+## 3. Give the job a name and prompt
+
+### Name
+
+Pick something descriptive — you'll see this in the jobs list and in notifications. Examples: "Morning inbox digest", "Weekly sales report", "Competitor news check".
+
+### Prompt
+
+The prompt is the message the agent receives every time the job runs. Treat it exactly like the first message you would send in an agentic chat. Be specific about:
+
+- **What the agent should do** — the task itself
+- **What format you want** — summary, bullet list, table, etc.
+- **Any constraints** — date ranges, sources to use, things to ignore
+
+<Callout type="info" emoji="💡">
+  A scheduled job starts with a clean slate each run — there is no back-and-forth.
+  Write the prompt as a complete, self-contained instruction the agent can act
+  on without any follow-up questions.
+</Callout>
+
+**Example prompt:**
+
+> Search my inbox for emails received in the last 24 hours that appear to require a response. For each one, list: sender, subject, a one-sentence summary, and a suggested reply. Ignore newsletters and automated notifications.
+
+## 4. Pick a schedule
+
+The schedule is a standard cron expression that tells AnythingLLM when to run the job.
+
+You have two ways to set it:
+
+- **Cron Builder** — a visual editor with dropdowns for frequency, time, and day selection. Recommended for most people.
+- **Custom cron** — type a cron expression directly if you know exactly what you want.
+
+Either way, the form shows a live, human-readable description below your schedule (for example, _"At 09:00 AM, only on Monday"_) so you can confirm it matches your intent before saving.
+
+For a deep dive on cron expressions and the builder, see [Scheduling & The Cron Builder](/scheduled-jobs/scheduling).
+
+## 5. Choose tools
+
+The **Tools** picker controls which agent capabilities are available when the job runs. This includes:
+
+- Built-in agent skills (web search, web scraping, document search, chart generation, etc.)
+- Imported plugins
+- Agent flows you have built
+- MCP servers you have connected
+
+Use the search box at the top to filter. Click a category header to toggle every tool inside it at once, or check individual tools.
+
+<Callout type="warning" emoji="⚠️">
+  If you leave the tool list **empty**, the job will run without any tools — the
+  agent will only be able to produce a response from the LLM alone. Be sure to
+  select at least the tools your prompt needs (for example, web search if you're
+  asking it to look things up online).
+</Callout>
+
+### Tips for choosing tools
+
+- **Only pick what the job needs.** A focused tool list makes the agent faster and more reliable.
+- **Turn on web search** if the job needs current information from the internet.
+- **Turn on document search** if the job should reference your embedded documents.
+- **Add your MCP servers or agent flows** only if the job actually uses them.
+
+## 6. Create the job
+
+Click **Create**. The job is registered with the scheduler immediately and will fire on its next scheduled time. New jobs are enabled by default; if you'd rather not have it run right away, flip the enable/disable toggle off on its row in the jobs list after creating it.
+
+## Managing existing jobs
+
+From the main Scheduled Jobs page, each job row gives you:
+
+- **The job's name, schedule, last run, and next run** at a glance
+- **An enable/disable toggle** — flip it off to pause the job without deleting it
+- **Run Now** — trigger an immediate run, bypassing the schedule
+- **Edit** — change the name, prompt, schedule, or tools
+- **View Runs** — open the run history for this job
+- **Delete** — permanently remove the job and all of its run history
+
+<Callout type="info" emoji="💡">
+  **Run Now** still respects the one-run-at-a-time rule. If a run is already in
+  progress for that job, a second one won't start until the first finishes.
+</Callout>
+
+## What happens next
+
+Once the job is enabled, AnythingLLM runs it on schedule in the background. Every run is saved — see [Viewing Runs & Results](/scheduled-jobs/viewing-runs) to learn how to review them, download generated files, and continue a run as a workspace thread.
