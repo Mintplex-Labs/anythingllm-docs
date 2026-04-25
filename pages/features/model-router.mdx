@@ -1,0 +1,177 @@
+---
+title: "Model Router"
+description: "Automatically route chat messages to different LLM providers and models based on rules you define"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Model Router
+
+The Model Router lets you send each chat message to a different LLM provider and model based on rules you define. Instead of locking a workspace to a single model, you can route math questions to a reasoning model, translations to a fast multilingual model, and legal questions to your most capable model — all from the same chat input.
+
+This is useful when:
+
+- You want to save money by sending simple messages to cheap models and only the hard ones to expensive models.
+- You have a model that is best at one task (math, code, translation) and want to use it only when relevant.
+- You want a fallback model to handle anything that doesn't match a specific rule.
+
+## Creating a Router
+
+Open the settings page and go to **AI Providers → Model Router**. The first time you visit, the page will be empty.
+
+<Image
+  src="/images/features/model-router/empty-state.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Empty Model Router page"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+Click **New Router** and fill out the form:
+
+- **Name** — what you want to call this router.
+- **Description** — optional, just a short note about what the router does.
+- **Fallback Provider & Model** — used whenever no rule matches the incoming message. This same model is also used to evaluate any LLM-classified rules (more on that below), so pick something reliable.
+- **Cache Cooldown (seconds)** — how long a routing decision is remembered for the conversation before rules are re-evaluated. Set to `0` to evaluate every message.
+
+<Image
+  src="/images/features/model-router/new-router-modal.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Create a new Model Router"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+After saving, your router shows up in the list with a count of its rules and the workspaces using it.
+
+<Image
+  src="/images/features/model-router/router-list.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Model Router list"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+## Adding Rules
+
+Click into your router to open the rule builder. Rules are evaluated top-to-bottom by priority, and the first matching rule wins. You can drag rules to reorder them.
+
+<Image
+  src="/images/features/model-router/empty-rules.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Empty rules page for a Model Router"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+There are two types of rules.
+
+### Calculated rules
+
+Calculated rules match on properties of the message itself — things like keywords in the prompt, total token count, message count, time of day, or whether an image is attached. These are fast and free to evaluate because they don't call an LLM.
+
+For example, here's a rule that catches math questions and routes them to OpenAI's `o4-mini` reasoning model:
+
+- **Title** — `route_math_to_o4_mini`
+- **Rule Type** — Calculated
+- **Property** — Prompt Content
+- **Comparator** — contains
+- **Value** — `math, mathematics, equation, calculate, solve`
+- **Route to** — OpenAI / `o4-mini`
+
+<Image
+  src="/images/features/model-router/calculated-rule.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Creating a calculated rule for math"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+<Callout type="info" emoji="💡">
+  When the comparator is **contains**, the value is a comma-separated list and matching is case-insensitive. The rule fires if the prompt contains **any** of the values.
+</Callout>
+
+You can also add multiple conditions to a single rule and toggle between **AND** and **OR** logic by clicking the badge between conditions.
+
+### LLM-classified rules
+
+Sometimes you can't catch a topic with keywords alone. For these cases, use an **LLM Classified** rule. You write a plain-English description of when the rule should match, and the router's fallback model reads each incoming message and decides whether it fits.
+
+For example, a rule that catches legal questions:
+
+- **Title** — `route_legal_to_gpt_5`
+- **Rule Type** — LLM Classified
+- **Match Description** — `The user is asking for help with legal documentation, contracts, terms of service, compliance, or any law-related topic`
+- **Route to** — OpenAI / `gpt-5`
+
+<Image
+  src="/images/features/model-router/llm-rule.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Creating an LLM-classified rule for legal questions"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+<Callout type="warning" emoji="⚠️">
+  LLM-classified rules add one extra LLM call per message (the classification step) using your router's **fallback model**. Use them when keyword matching isn't enough, and prefer a fast, cheap fallback model so the classification doesn't add noticeable latency.
+</Callout>
+
+## Putting it all together
+
+With three rules in place, the router will:
+
+1. Send anything that mentions math to `o4-mini`.
+2. Send anything that mentions translation or another language to `gpt-4o`.
+3. Send anything the fallback model classifies as a legal question to `gpt-5`.
+4. Send everything else to the fallback model (`gpt-4o-mini`).
+
+<Image
+  src="/images/features/model-router/rules-list.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="All three routing rules in priority order"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+## Using a router
+
+Once a router exists, it shows up as its own provider in the **LLM Provider** picker.
+
+<Image
+  src="/images/features/model-router/llm-provider-option.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Model Router shown in the LLM provider list"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+Set the provider to **Model Router**, select the router you created, and save.
+
+<Image
+  src="/images/features/model-router/llm-provider-selected.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Selecting the Smart Routing router"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
+
+From then on, every message will be evaluated against your rules and a small badge above each response will show which model and rule handled it.
+
+<Image
+  src="/images/features/model-router/chat-routed.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="Chat showing routing notifications above each response"
+  style={{ borderRadius: 20, marginBottom: 10 }}
+/>
