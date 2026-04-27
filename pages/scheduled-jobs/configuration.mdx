@@ -122,10 +122,3 @@ To stop receiving notifications, revoke the permission from your browser's site 
 - **Safari:** **Safari > Settings > Websites > Notifications** and set the AnythingLLM site to **Deny**.
 
 The job itself will keep running on schedule — you just won't be alerted when it finishes. You can still open the run history at any time to see results.
-
-## Tips for production use
-
-- **Start with the defaults.** `SCHEDULED_JOB_MAX_CONCURRENT=1` and a 5-minute timeout are reasonable starting points for most setups.
-- **Watch the first few runs.** After creating a new job, open its run history and inspect the first couple of runs to confirm the agent is doing what you want and not eating unexpected cost.
-- **Use the `Enabled` toggle as a kill switch.** If a job starts misbehaving, disable it from the jobs list instead of deleting it. You keep the run history and can re-enable it once you've fixed the prompt.
-- **Stagger schedules.** If you have many jobs, avoid scheduling them all at the top of the hour — stagger their minute offsets so they don't all compete for the same concurrency slot.
