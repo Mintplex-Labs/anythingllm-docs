@@ -51,6 +51,45 @@ The page polls automatically, so new runs and status changes show up without a m
 
 Click any row to open the run detail page.
 
+## Stopping a run
+
+If a run is taking too long or doing the wrong thing, you can stop it before it finishes. Any run in **Queued** or **Running** status can be stopped — completed, failed, and timed-out runs cannot.
+
+There are two places to do this.
+
+**From the run history list** — click the small red stop icon next to the status badge on any in-flight row.
+
+<Image
+  src="/images/guides/scheduled-jobs/stop-in-flight-run.png"
+  height={26}
+  width={200}
+  quality={100}
+  style={{
+    display: "block",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="A Running status badge with a small red square stop button next to it on the run history page"
+/>
+
+**From the run detail page** — click the red **Stop Job** button in the header. It only appears while the run is queued or running.
+
+<Image
+  src="/images/guides/scheduled-jobs/stop-in-flight-run-run-details-page.png"
+  height={106}
+  width={862}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="The run detail page header for a Running run, with a red Stop Job button on the right"
+/>
+
+A stopped run is recorded as **Failed** with the error _"Job killed by user"_ and is automatically marked as read, so it won't show up in your unread indicator. Any thoughts, tool calls, or output captured before the stop are preserved on the run detail page.
+
 ## Run detail page
 
 The run detail page is where you go to see exactly what the agent did. It's organized into collapsible sections so you can scan the parts you care about and ignore the rest.
