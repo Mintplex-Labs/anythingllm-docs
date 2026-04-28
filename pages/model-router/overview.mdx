@@ -1,0 +1,45 @@
+---
+title: "What is the Model Router?"
+description: "Automatically route chat messages to different LLM providers and models based on rules you define"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Model Router
+
+The Model Router lets you send each chat message to a different LLM provider and model based on rules you define. Instead of locking a workspace to a single model, the same chat input can route math questions to a reasoning model, translations to a fast multilingual model, and legal questions to your most capable model.
+
+<Callout type="info" emoji="💡">
+  **Availability**
+  - Available on **AnythingLLM Self-hosted** (single-user and multi-user mode)
+  - Available on **AnythingLLM Desktop**: _coming soon_
+</Callout>
+
+## Why use a Model Router?
+
+A single LLM rarely fits every kind of question. Some are best answered by a fast, cheap model. Others benefit from a reasoning model. Some require your most capable (and most expensive) model. The Model Router picks the right one for each message automatically, without forcing your users to pick a model themselves.
+
+Common reasons to use it:
+
+- **Save money.** Send simple messages to cheap models and only the hard ones to expensive models.
+- **Use the right tool for the job.** Pair specific topics (math, code, translation, legal) with the model that handles them best.
+- **Always have a fallback.** Anything that doesn't match a rule falls back to a default model you choose.
+
+## How it works
+
+A router is made up of:
+
+- A **fallback** provider and model, used when no rule matches and to evaluate LLM-classified rules.
+- One or more **rules**, evaluated top to bottom by priority. The first rule that matches wins.
+
+There are two types of rules:
+
+- **Calculated rules** match on properties of the message itself, like keywords in the prompt, conversation token count, time of day, or whether an image is attached. These are fast and don't call an LLM.
+- **LLM-classified rules** use a plain-English description (for example, "user is asking about legal topics, contracts, or compliance"). The router's fallback model reads each message and decides whether it fits the description.
+
+Once a router is set up, it shows up as its own provider in the **LLM Provider** picker. Pick **Model Router**, choose your router, and every message in that workspace is routed by your rules.
+
+<div className="center-cta mt-12">
+  Ready to set one up? &rarr; [**Setting up a Model Router**](/model-router/setup)
+</div>

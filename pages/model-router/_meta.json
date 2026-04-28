@@ -1,0 +1,20 @@
+{
+  "overview": {
+    "title": "What is the Model Router?",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
+  "setup": {
+    "title": "Setting up a Model Router",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  }
+}
