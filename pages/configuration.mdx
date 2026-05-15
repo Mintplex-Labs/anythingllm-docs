@@ -48,6 +48,27 @@ DISABLE_VIEW_CHAT_HISTORY="enable"
 
 Fully remove or comment out the `DISABLE_VIEW_CHAT_HISTORY` environment variable to return to the default behavior.
 
+## Workspace Deletion Protection
+
+Modification of the `WORKSPACE_DELETION_PROTECTION` environment variable prevents workspaces from being deleted from both the frontend UI and the API.
+
+- This hides the delete workspace button in workspace settings as well as the delete action in the admin workspaces interface.
+- This blocks workspace deletion via the developer API endpoint (`DELETE /v1/workspace/:slug`), which will return a `403` error.
+- **No workspaces or their data are deleted when this is enabled. Existing workspaces are simply protected from being removed.**
+
+### Enable
+
+Set the `WORKSPACE_DELETION_PROTECTION` environment variable to **_any value_** to enable.
+
+```bash
+# This can be any value, number, boolean, or string and it will have the same effect.
+WORKSPACE_DELETION_PROTECTION="enable"
+```
+
+### Disable
+
+Fully remove or comment out the `WORKSPACE_DELETION_PROTECTION` environment variable to return to the default behavior.
+
 ## Simple SSO Passthrough
 
 <Callout type="error" emoji="️🚨">
