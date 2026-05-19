@@ -45,3 +45,20 @@ You can update your configuration at any time in the **Settings**.
   quality={100}
   alt="OpenAI (Generic) LLM settings"
 />
+
+## Verified examples
+
+### QuickSilver Pro
+
+[QuickSilver Pro](https://quicksilverpro.io) is an OpenAI-compatible gateway for 12 frontier open-source models (DeepSeek V4 Flash/Pro, V3, R1, Qwen 3.5/3.6, Kimi K2.6, and the Gemini 2.5/3 family). Get a key from the [QSP dashboard](https://quicksilverpro.io/dashboard/) and configure:
+
+| Field | Value |
+| --- | --- |
+| **Base URL** | `https://api.quicksilverpro.io/v1` |
+| **API Key** | Your QSP key (starts with `sk-`) |
+| **Chat Model Name** | `deepseek-v4-flash` (or any of [the 12 supported](https://quicksilverpro.io/docs/models/)) |
+| **Token Context Window** | `1000000` for V4 Flash; varies per model |
+| **Max Tokens** | `8192` |
+
+Pricing runs ~20% below OpenRouter on the shared model set, and standard `usage.cost` is returned on every response. Full integration reference: <https://quicksilverpro.io/docs/integrations/>.
+
