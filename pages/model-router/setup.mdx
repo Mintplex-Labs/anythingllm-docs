@@ -175,3 +175,40 @@ From then on, every message will be evaluated against your rules and a small bad
   alt="Chat showing routing notifications above each response"
   style={{ borderRadius: 20, marginBottom: 10 }}
 />
+
+
+## Cooldowns and Caching
+
+Obviously, having the router evaluate every message would be too slow and expensive and also be very annoying if you were being bounced around between models every chat! To solve this, AnythingLLM implements an advanced cooldown and caching system that we believe serves an ideal balance of performance and user experience.
+
+The router uses a **two-layer caching strategy**:
+
+1. **LLM classification cache** — prevents expensive LLM calls on every message. When an LLM rule evaluation occurs, the result is cached for the duration of the sticky window.
+2. **Sticky route** — when a rule matches, that model "sticks" so follow-up messages that don't match any rule stay on the same model instead of bouncing back to the fallback.
+
+### Evaluation flow
+
+This is the logic that happens behind the scenes on every message:
+
+1. **Evaluate calculated rules** — these are always re-evaluated since they are instant (regex, keyword matching, token counts, etc). If a calculated rule matches, route to that model immediately.
+2. **Evaluate LLM rules (with cache)** — if no calculated rule matched, check the LLM classification cache. If there's a cached result, use it. If not, call the LLM to classify the message against all LLM rules and cache the result.
+3. **Check sticky route** — if no rule matched at all, check if a previous rule match is still within the sticky window. If so, keep using that model.
+4. **Fall back to default** — if the sticky route has expired and no rules matched, use the fallback (primary) model.
+
+### TTL and timing
+
+All caching is purely time-based — no additional model or service is used for cache invalidation.
+
+- **Sticky window**: Defaults to **5 minutes**. This is the cooldown period configured in your router settings. When a rule matches, the routed model stays active for this duration. The timer **resets on every message** that uses the sticky route, so continuous conversation keeps the same model active.
+- **LLM "match" cache**: When the LLM classifies a message and finds a matching rule, that result is cached for the full sticky window (5 minutes by default).
+- **LLM "no match" cooldown**: When the LLM classifies a message but finds **no** matching rule, the "no match" result is only cached for **30 seconds**. This short cooldown avoids spamming the LLM with repeated calls on rapid messages, while still re-evaluating quickly when the conversation topic changes.
+
+### Why this matters
+
+This design means:
+- You won't be bounced between models on every message — once a model is selected, it stays for the sticky window.
+- Calculated rules (keywords, regex, token thresholds) are always checked first and are free to evaluate.
+- LLM classification only happens when the cache expires, keeping overhead low.
+- If you change topics after the short 30s "no match" cooldown, the router will re-evaluate and potentially route to a different model.
+
+Since LLM-evaluated rules are more complex and expensive to evaluate, we are very careful about how often we call the LLM so that your responses remain fast and responsive, but you are still able to use this "semantic" routing to save money and get the best model for the job without complex rulesets.

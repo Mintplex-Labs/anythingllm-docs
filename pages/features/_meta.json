@@ -151,5 +151,9 @@
       "pagination": true,
       "toc": true
     }
+  },
+  "model-router": {
+    "title": "Model Router",
+    "href": "/model-router/overview"
   }
 }
