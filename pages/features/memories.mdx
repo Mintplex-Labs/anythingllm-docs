@@ -38,7 +38,7 @@ Memories are **off by default**. An admin (or the single user on a non multi-use
   style={{ borderRadius: 20, marginBottom: 10 }}
 />
 
-Once it's on, the Memories sidebar will show the workspace and global tabs, and AnythingLLM will start pulling memories from your chats in the background. In multi-user mode, non-admin users can still open the sidebar and manage their own memories, but only an admin can turn the feature on or off.
+Once it's on, the Memories sidebar will show the workspace and global tabs. In multi-user mode, non-admin users can still open the sidebar and manage their own memories, but only an admin can turn the feature on or off.
 
 ## Managing memories manually
 
@@ -63,15 +63,38 @@ Each tab shows how many memories you have versus the limit (like `3/20` for work
 
 ## Automatic memory extraction
 
-AnythingLLM can build memories for you automatically by reviewing your recent chats and turning useful facts into workspace memories, so you don't have to write them by hand. Only **workspace memories** are created this way (up to 20 per workspace) — global memories are always added or edited by you.
+AnythingLLM can build memories for you automatically by reviewing your recent chats and extracting useful facts — your name, what you're working on, your preferences, and so on.
 
-**When it runs**
+Automatic extraction is a separate toggle from Personalization itself. You can keep Personalization **on** (so manually created memories are still injected into chats) while turning automatic extraction **off** if you prefer to manage memories entirely by hand.
+
+To toggle automatic extraction, open the Memories sidebar and look for the **Automatic Memory Extraction** toggle below the main Personalization toggle. It is on by default when Personalization is enabled.
+
+### How extraction works
+
+Extraction uses a two-phase **Observer/Reflector** pipeline:
+
+1. **Observer** — Reviews your recent conversations and identifies candidate facts (up to 3 per run). Each candidate includes a confidence rating. The Observer is deliberately selective: it looks for things like your name, role, what you're working on, and stated preferences. It skips assistant opinions, emotional assessments, and conversational filler.
+
+2. **Reflector** — Reviews the Observer's candidates against your existing memories. For each candidate it:
+   - **Classifies scope**: Would this fact be useful in a completely different workspace? If yes, it becomes a **global** memory. If it's specific to the current project, it becomes a **workspace** memory.
+   - **Deduplicates**: Drops candidates that overlap with existing memories, even if worded differently.
+   - **Consolidates**: If a candidate updates an existing workspace memory, the existing memory is revised rather than creating a duplicate.
+   - **Filters**: Drops low-confidence candidates unless they are clear identity facts.
+
+This two-phase approach means the system is conservative about what it saves and accurate about scope. A conversation about a specific project will produce workspace memories, while your name or communication preferences become global memories.
+
+### When it runs
 
 - On a schedule (default: every **15 minutes**).
 - Only when your workspace has been idle. If you've chatted in a given workspace within the last **20 minutes**, extraction for that workspace is skipped that round so it doesn't process a conversation that's still going. Other users and workspaces aren't affected.
-- Only when Personalization is turned on.
+- Only when both Personalization and Automatic Memory Extraction are turned on.
+- Only when there are at least **5 unprocessed chats** in a workspace — short exchanges are skipped.
 
 You can change the schedule and idle window with the environment variables in [Configuration](#configuration).
+
+### Model requirements
+
+Automatic extraction uses the workspace's configured chat model (falling back to the agent model, then the system default). The model must support **tool calling** — if the model can't produce structured tool calls, extraction will log a warning and skip the run. Most modern models (OpenAI, Anthropic, Ollama models 8B+, etc.) support this.
 
 ## How memories are used in chat
 
@@ -116,3 +139,4 @@ These environment variables control the background extraction job. All are optio
 | Global memories            | 5                            |
 | Workspace memories         | 20 (per workspace)           |
 | Memories injected per chat | All global + top 5 workspace |
+| Candidates per extraction  | 3 (per run, per workspace)   |
