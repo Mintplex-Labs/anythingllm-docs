@@ -142,5 +142,14 @@
       "pagination": true,
       "toc": true
     }
+  },
+  "memories": {
+    "title": "Memories",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
 }
