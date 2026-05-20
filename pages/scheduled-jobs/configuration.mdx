@@ -1,0 +1,124 @@
+---
+title: "Configuration & Limits"
+description: "Environment variables, limits, and caveats for the Scheduled Jobs feature in AnythingLLM."
+---
+
+import { Callout } from "nextra/components";
+
+# Configuration & Limits
+
+Scheduled Jobs works out of the box with sensible defaults — you don't need to configure anything to create your first job. This page covers the knobs you can turn if you want to fine-tune how jobs execute, plus the important limits and caveats to know about.
+
+## Environment variables
+
+Both environment variables below are optional. If you don't set them, AnythingLLM uses the defaults listed here.
+
+### `SCHEDULED_JOB_MAX_CONCURRENT`
+
+The maximum number of scheduled jobs that can run **at the same time** across the entire instance.
+
+- **Default:** `1` (jobs run one at a time)
+- **When to raise it:** if you use a cloud LLM provider with high rate limits and you have several jobs that need to run close together. Setting this to, say, `3` lets up to three jobs run in parallel.
+- **When to keep it at 1:** if you use a local model, a provider with strict rate limits, or if your jobs compete for the same resources (the same MCP server, the same external API, etc.).
+
+### `SCHEDULED_JOB_TIMEOUT_MS`
+
+The per-run time limit, in milliseconds. Any run that takes longer than this is forcibly stopped and marked **timed out**.
+
+- **Default:** `300000` (5 minutes)
+- **When to raise it:** if you have jobs that do legitimately long work — large research tasks, summarizing a lot of content, chaining many tool calls.
+- **When to lower it:** if you want runaway jobs to fail fast and you know your jobs should never take more than a minute or two.
+
+### Example `.env` configuration
+
+```env
+# Allow up to 3 scheduled jobs to run in parallel
+SCHEDULED_JOB_MAX_CONCURRENT=3
+
+# Give jobs up to 15 minutes before they're killed
+SCHEDULED_JOB_TIMEOUT_MS=900000
+```
+
+<Callout type="info" emoji="💡">
+  Environment variables apply at startup. If you change either value, restart
+  AnythingLLM for the new value to take effect.
+</Callout>
+
+## Availability & requirements
+
+- **Single-user mode only.** Scheduled Jobs is not available on instances running in multi-user mode. The settings page and all related features are hidden in that configuration.
+- **Supported on Docker and Desktop.** The feature works the same way on both.
+- **The host must be running.** Jobs only fire when AnythingLLM is running. If the machine is off, asleep, or the Docker container is stopped, any scheduled times that pass during that window are missed. The next run still happens on the next scheduled time.
+
+## Limits to know about
+
+### One run at a time per job
+
+A single job can only have one run in flight at any moment. If a scheduled time fires while the previous run is still going (or still queued), the new firing is dropped. This prevents a long-running job from stacking up and overwhelming your instance.
+
+<Callout type="info" emoji="💡">
+  Different jobs can run at the same time (subject to `SCHEDULED_JOB_MAX_CONCURRENT`),
+  but the same job can't overlap itself.
+</Callout>
+
+### Global concurrency cap
+
+Across all jobs, the number of simultaneous runs is capped by `SCHEDULED_JOB_MAX_CONCURRENT`. When the cap is reached, additional firings are queued and picked up as soon as a worker frees up.
+
+### Per-run timeout
+
+Every run is bounded by `SCHEDULED_JOB_TIMEOUT_MS`. A run that exceeds it is stopped mid-execution and marked **timed out**. Any partial thoughts, tool calls, or output captured before the timeout are still visible on the run detail page.
+
+### Run history depth
+
+The run history page shows the **50 most recent runs** per job, newest first. Older runs remain in the database but aren't displayed in the UI.
+
+### Generated file access
+
+Files produced during a scheduled job run are only retrievable from within the Scheduled Jobs UI, and only while the instance is in single-user mode. Switching to multi-user mode hides these files.
+
+## Push notifications on job completion
+
+Scheduled Jobs can send a browser push notification every time a job finishes, so you don't have to keep the AnythingLLM tab open to find out when a run is ready. Notifications are delivered by your browser — the same mechanism websites use to alert you about new messages or updates — and work even when the AnythingLLM tab is in the background or closed (as long as your browser is still running).
+
+### What you'll see
+
+Each notification includes:
+
+- **Title** — `Scheduled Job: <job name>`
+- **Body** — a short preview of the agent's final response (first 100 characters), or _"Job completed"_ if the run produced no text output
+- **Click action** — clicking the notification opens AnythingLLM directly on that run's detail page, so you can jump straight to the full result
+
+### Enabling notifications
+
+Notifications are opt-in and controlled by your browser's standard permissions.
+
+1. Open **Settings > Scheduled Jobs** in AnythingLLM.
+2. The first time you visit the page, your browser will ask whether you want to allow notifications from AnythingLLM. Click **Allow**.
+3. That's it — any future scheduled-job completion will trigger a notification.
+
+There's nothing to configure inside AnythingLLM itself. Once the browser permission is granted, a service worker is registered automatically and the server will push notifications to it whenever jobs finish.
+
+<Callout type="info" emoji="💡">
+  If you dismissed the permission prompt or clicked **Block**, you won't get
+  notifications. Re-enable them from your browser's site settings for your
+  AnythingLLM URL (look for the lock or tune icon in the address bar and find
+  the **Notifications** setting), then reload the Scheduled Jobs page.
+</Callout>
+
+### Requirements & caveats
+
+- **Browser support.** Push notifications require a browser that supports the Notifications and Push APIs — all modern desktop browsers (Chrome, Edge, Firefox, Brave, Safari 16+) do. Mobile browser support varies.
+- **HTTPS (or localhost).** Browsers only allow notifications on secure origins. If you're running AnythingLLM over plain HTTP on a non-localhost address, notifications will not work. Access the app over HTTPS or through `localhost` for push notifications to register successfully.
+- **Your browser must be running.** Notifications are delivered by the browser, not by AnythingLLM directly. If the browser is fully closed, the notification will typically appear the next time the browser launches (behavior depends on the browser and OS). Keep your browser running in the background to get notifications in real time.
+- **Single-user mode.** Because Scheduled Jobs itself is single-user-only, notifications are sent to the single "primary" subscription for this instance.
+
+### Turning notifications off
+
+To stop receiving notifications, revoke the permission from your browser's site settings:
+
+- **Chrome / Edge / Brave:** click the tune/lock icon to the left of the address bar → **Site settings** → set **Notifications** to **Block**.
+- **Firefox:** click the lock icon → **Clear permissions and cookies** or adjust **Notifications** to **Block**.
+- **Safari:** **Safari > Settings > Websites > Notifications** and set the AnythingLLM site to **Deny**.
+
+The job itself will keep running on schedule — you just won't be alerted when it finishes. You can still open the run history at any time to see results.

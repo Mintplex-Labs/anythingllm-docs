@@ -1,0 +1,263 @@
+---
+title: "Viewing Runs & Results"
+description: "Review scheduled job runs, download generated files, and continue a run as a workspace thread."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Viewing Runs & Results
+
+Every time a scheduled job runs, AnythingLLM saves a complete record of what happened. This page covers where to find those records, how to read them, and what you can do with them afterward.
+
+## Run statuses
+
+Each run moves through a small set of statuses:
+
+| Status        | Meaning                                                                                |
+| ------------- | -------------------------------------------------------------------------------------- |
+| **Queued**    | The run is waiting for a worker. This is usually brief.                                |
+| **Running**   | A worker has picked up the run and the agent is actively executing it.                 |
+| **Completed** | The run finished successfully. A full result is available.                             |
+| **Failed**    | The run stopped because of an error. The error message is shown on the run detail page. |
+| **Timed out** | The run exceeded the configured per-run time limit and was stopped. See [Configuration & Limits](/scheduled-jobs/configuration). |
+
+## Run history
+
+From the main **Scheduled Jobs** page, click **View Runs** on any job to open its run history.
+
+Run history shows the **50 most recent runs**, newest first, with:
+
+- **Status** — one of the statuses above
+- **Start time** — when the run actually began
+- **Duration** — how long it took, once finished
+- **Error** — a short message if the run failed
+
+The page polls automatically, so new runs and status changes show up without a manual refresh. You can also click **Run Now** from this page to trigger a fresh run on demand.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-history-populated.png"
+  height={2074}
+  width={2802}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "20px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Run History page showing one completed run with status, started timestamp, duration, and error columns"
+/>
+
+Click any row to open the run detail page.
+
+## Stopping a run
+
+If a run is taking too long or doing the wrong thing, you can stop it before it finishes. Any run in **Queued** or **Running** status can be stopped — completed, failed, and timed-out runs cannot.
+
+There are two places to do this.
+
+**From the run history list** — click the small red stop icon next to the status badge on any in-flight row.
+
+<Image
+  src="/images/guides/scheduled-jobs/stop-in-flight-run.png"
+  height={26}
+  width={200}
+  quality={100}
+  style={{
+    display: "block",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="A Running status badge with a small red square stop button next to it on the run history page"
+/>
+
+**From the run detail page** — click the red **Stop Job** button in the header. It only appears while the run is queued or running.
+
+<Image
+  src="/images/guides/scheduled-jobs/stop-in-flight-run-run-details-page.png"
+  height={106}
+  width={862}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="The run detail page header for a Running run, with a red Stop Job button on the right"
+/>
+
+A stopped run is recorded as **Failed** with the error _"Job killed by user"_ and is automatically marked as read, so it won't show up in your unread indicator. Any thoughts, tool calls, or output captured before the stop are preserved on the run detail page.
+
+## Run detail page
+
+The run detail page is where you go to see exactly what the agent did. It's organized into collapsible sections so you can scan the parts you care about and ignore the rest.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-sections-collapsed.png"
+  height={2074}
+  width={2802}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "20px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Run detail page with Prompt and Metrics visible and Thinking, Tool Calls, Files, and Response sections collapsed"
+/>
+
+<Callout type="info" emoji="💡">
+  While a run is still in progress, the detail page updates live. Status, new
+  thinking steps, and tool calls appear as they happen, so you can watch a run
+  unfold in real time.
+</Callout>
+
+### Prompt
+
+The exact prompt the job was configured with at the time of this run. Handy for checking what the agent was told to do on this particular occurrence.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-prompt.png"
+  height={164}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Prompt section showing the job's configured instruction for this run"
+/>
+
+### Thinking
+
+A numbered, step-by-step record of what the agent did while working through the task — each entry is a short, narrated note from the agent (e.g. _"Using DuckDuckGo to search for..."_, _"Scraping the content of..."_, _"Creating PDF document..."_). The section header shows the total step count so you can tell at a glance how much work the agent did.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-thinking-expanded.png"
+  height={470}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Expanded Thinking section showing 6 numbered steps the agent took during the run"
+/>
+
+This section is useful for understanding _why_ the agent did what it did — especially when the final response is unexpected.
+
+### Tool calls
+
+Every tool the agent invoked during the run, in order. Each entry shows:
+
+- **The tool's name** (for example, `web-browsing`, `web-scraping`, or the name of a custom skill)
+- **The time it was called**
+- **The arguments** the agent passed to it, displayed as JSON
+- **A "Show result" toggle** that expands to reveal what the tool returned
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-tool-calls-expanded.png"
+  height={1298}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Expanded Tool Calls section showing three tool invocations with their arguments and Show result toggles"
+/>
+
+Tool calls are the most detailed view of what the agent actually _did_, as opposed to what it concluded.
+
+### Files
+
+Any files the agent produced during the run — exports, charts, documents, reports — appear here with their filename, size, and type, ready to download. Files stay attached to the run for as long as the run itself exists.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-files-expanded.png"
+  height={278}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Expanded Files section showing a PDF file generated by the run with a download button"
+/>
+
+<Callout type="warning" emoji="⚠️">
+  Files generated by a scheduled job are only accessible from within scheduled
+  jobs in single-user mode. If you switch an instance to multi-user mode, these
+  files are no longer retrievable through AnythingLLM.
+</Callout>
+
+### Response
+
+The agent's final, human-readable answer — the same kind of message you'd see at the end of an agentic chat. This is rendered as markdown, so tables, code blocks, bullet lists, and links all display properly.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-responses-expanded.png"
+  height={212}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Expanded Response section showing the agent's final markdown-rendered reply"
+/>
+
+### Metrics
+
+Usage information for the run, including prompt and completion token counts. Useful for keeping an eye on cost, especially for jobs that run many times a day.
+
+<Image
+  src="/images/guides/scheduled-jobs/run-details-metrics-expanded.png"
+  height={164}
+  width={2654}
+  quality={100}
+  style={{
+    display: "block",
+    borderRadius: "12px",
+    marginTop: 24,
+    marginBottom: 24,
+  }}
+  alt="Metrics section showing prompt tokens and completion tokens for the run"
+/>
+
+## Continue in Thread
+
+Scheduled jobs are one-shot by design — there's no back-and-forth inside a run. But once a run has **completed**, you can carry the conversation forward.
+
+Click **Continue in Thread** on the run detail page and AnythingLLM:
+
+1. Opens the **Scheduled Jobs** workspace (creating it first if it doesn't exist yet)
+2. Starts a new thread pre-filled with the job's prompt and the agent's final response
+3. Drops you into that thread so you can reply, ask follow-up questions, or refine the output as a normal chat
+
+From there, the thread behaves like any other workspace thread — same tools, same history, same agent capabilities.
+
+<Callout type="info" emoji="💡">
+  The **Scheduled Jobs** workspace is created automatically the first time a
+  job runs or the first time you continue a run in a thread. You can treat it
+  like any other workspace — rename it, change its LLM provider, adjust its
+  settings — but it's generally simplest to leave it as-is and use it as your
+  archive of scheduled-job output.
+</Callout>
+
+## Mark as read
+
+New runs show up with an unread indicator. Opening a run's detail page marks it as read, so your run history doubles as a lightweight inbox for "things the agent did while you weren't looking".
+
