@@ -85,12 +85,12 @@ This two-phase approach means the system is conservative about what it saves and
 
 ### When it runs
 
-- On a schedule (default: every **15 minutes**).
-- Only when your workspace has been idle. If you've chatted in a given workspace within the last **20 minutes**, extraction for that workspace is skipped that round so it doesn't process a conversation that's still going. Other users and workspaces aren't affected.
-- Only when both Personalization and Automatic Memory Extraction are turned on.
-- Only when there are at least **5 unprocessed chats** in a workspace — short exchanges are skipped.
+- On a schedule (default: every **3hours**).
+- Only when your workspace has been idle (defined by `MEMORY_IDLE_THRESHOLD_MS` which defaults to **20 minutes**). If you've chatted in a given workspace within the idle threshold, extraction for that workspace is skipped that round so it doesn't process a conversation that's still going. Other users and workspaces aren't affected.
+- Only when both Personalization and Automatic Memory Extraction are turned on. Default is both are enabled if you have Personalization turned on.
+- Only when there are at least **5 unprocessed chats** in a workspace — short exchanges are skipped since they are not likely to contain useful information.
 
-You can change the schedule and idle window with the environment variables in [Configuration](#configuration).
+You can change the schedule and idle window with the environment variables listed in this document in the instance/installation .env
 
 ### Model requirements
 
