@@ -1,0 +1,100 @@
+---
+title: "Clarifying Questions"
+description: "Give your AI agents the ability to pause and ask clarifying questions before proceeding, resulting in better and more accurate responses."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Clarifying Questions
+
+When an agent receives an ambiguous or incomplete prompt, it typically has to guess at the missing details. The **Clarifying Questions** skill gives your agent a structured way to pause mid-turn and ask the user for the information it needs before continuing — no need to restart the conversation.
+
+This opt-in agent skill presents an interactive survey card directly in the chat. The agent decides when to invoke it and what to ask, then resumes with the user's answers fully in context.
+
+## Why use Clarifying Questions?
+
+- **More accurate results** — Instead of guessing, the agent gets the exact details it needs before acting.
+- **Fewer back-and-forth messages** — The agent can batch multiple independent questions into a single survey card.
+- **Structured input** — Supports free-form text, URLs, numbers, dates, emails, and single/multi-select choice lists so answers are clean and unambiguous.
+- **Persistent context** — Answers are saved with the chat history, so both the agent and normal chat can reference them in follow-up turns.
+
+<Callout type="info" emoji="💡">
+  This skill is **off by default** and must be enabled by an admin. It only works in the desktop/browser UI (websocket sessions) — it is not available for API or programmatic agent runs.
+</Callout>
+
+## Enabling the Skill
+
+1. Navigate to **Settings → AI Agents** in the admin sidebar.
+2. Under agent skills, click on the slider icon in the top right corner to open agent settings modal.
+3. Click on the **Clarifying Questions** section and toggle it on.
+3. Set the **Max questions per turn** (1–10, default 3). This caps how many questions the agent can ask in a single invocation.
+
+<Callout type="warning" emoji="⚠️">
+  This skill is model-dependent. Smaller or less capable models may not reliably choose to call the tool, even when clarification would be helpful. For best results, use a capable model as your agent LLM.
+</Callout>
+
+<Image
+  src="/images/anythingllm-setup/agent-configuration/settings-menu-icon-location.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Settings Menu Icon Location"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+<Image
+  src="/images/features/agent-surveys/modal.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Agent Settings Menu"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+## How It Works
+
+Once enabled, the agent has access to a tool that lets it present questions to the user. The agent autonomously decides when clarification is needed based on the prompt it received.
+
+### Question Types
+
+| Type | Description |
+|------|-------------|
+| **Text input** | Free-form text, URL, number, date, or email fields |
+| **Single-select choice** | Pick one option from a list |
+| **Multi-select choice** | Pick one or more options from a list |
+
+Choice questions can optionally include an "Other" field so the user can provide a custom answer that wasn't in the original list.
+
+### User Experience
+
+When the agent asks questions, the user sees an interactive card in the chat:
+
+- **Single question** — A simple form with the question and input or choices.
+- **Multiple questions** — A paginated card the user can navigate through.
+- **Skip** — Users can skip individual questions or dismiss the entire survey if they'd rather let the agent proceed on its own.
+
+After the user responds (or skips/times out), the agent receives the answers and continues its task with that information in context.
+
+<Image
+  src="/images/features/agent-surveys/multi-choice.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Multi-Choice Survey"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+### Persistence
+
+Completed surveys are saved alongside the chat message. When you reload a conversation, surveys render as read-only cards showing the questions and answers that were provided. The Q&A transcript is also injected into prompt history, so the agent retains awareness of what was discussed in future turns.
+
+
+<Image
+  src="/images/features/agent-surveys/saved-survey.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Saved Survey"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
