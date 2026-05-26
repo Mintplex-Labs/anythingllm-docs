@@ -157,7 +157,7 @@
     "theme": {
       "breadcrumb": true,
       "footer": true,
-      "pagination": true,
+      "pagination": false,
       "toc": true
     }
   },
