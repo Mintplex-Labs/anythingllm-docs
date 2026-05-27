@@ -15,7 +15,7 @@ AnythingLLM offers multiple ways to chat with your documents. Let's understand w
 **Agent Mode** (recommended):
 
 <Callout type="info" emoji="💡">
-  All versions later than v1.11.1 have agent mode available as an option for workspaces, but it is **not** yet enabled by default.
+  All versions later than v1.11.1 have agent mode available as an option for workspaces, enabled by default for new workspaces.
 
   You can change the chat mode in the workspace's settings by clicking the "Gear" icon under the "Chat Settings" tab.
 </Callout>
@@ -24,7 +24,7 @@ AnythingLLM offers multiple ways to chat with your documents. Let's understand w
 - This feature is fully dependent on the capabilities of your LLM provider and model to call tools natively.
 - Most providers do not expose tool calling capabilities to the public API, so you may need to set the [`PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING`](/configuration#native-tool-calling-for-llm-providers) environment variable have a always-on agent experience.
 
-_if you see the "@" symbol in your prompt input you will need to use `@agent` to start an agentic chat session. If it is not there, you are will be using agentic chat mode._
+_if you see the "@" symbol in your prompt input you will need to use `@agent` to start an agentic chat session. If it is not there, you are using agentic chat mode._
 
 **Chat Mode**:
 - Uses both your documents and the AI's general knowledge
