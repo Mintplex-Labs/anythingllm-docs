@@ -3,17 +3,8 @@ title: "Embedding Models"
 description: "AnythingLLM supports many embedding model providers out of the box with very little, if any setup"
 ---
 
-import { Cards } from "nextra/components";
-import Image from "next/image";
-import { Card } from "../../components/card";
-
-<Image
-  src="/images/features/embedding-models/header-image.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Embedding Models"
-/>
+import { Cards, Card } from "nextra/components";
+import { ExternalLinkIcon } from "/components/icons";
 
 # Embedding Models
 
@@ -26,88 +17,23 @@ Embedding models are specific types of models that turn text into vectors, which
 ### Local Embedding Model Providers
 
 <Cards>
-  <Card title="Built-in (default)" href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2"> 
-    <Image
-      src="/images/features/embedding-models/built-in.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Built-in (default)"
-    />
-  </Card>
-
-<Card title="Ollama" href="https://ollama.com/">
-  <Image
-    src="/images/features/embedding-models/ollama.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Ollama"
-  />
-</Card>
-
-<Card title="LM Studio" href="https://lmstudio.ai/">
-  <Image
-    src="/images/features/embedding-models/lm-sudio.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="LM Studio"
-  />
-</Card>
-
-  <Card title="Local AI" href="https://localai.io/"> 
-    <Image
-      src="/images/features/embedding-models/local-ai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Local AI"
-    />
-  </Card> 
+  <Card icon={<ExternalLinkIcon />} title="Built-in (default)" href="https://huggingface.co/sentence-transformers/all-MiniLM-L6-v2" />
+  <Card icon={<ExternalLinkIcon />} title="Ollama" href="https://ollama.com/" />
+  <Card icon={<ExternalLinkIcon />} title="LM Studio" href="https://lmstudio.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Local AI" href="https://localai.io/" />
+  <Card icon={<ExternalLinkIcon />} title="Lemonade" href="https://lemonade-server.ai/" />
 </Cards>
 
 ### Cloud Embedding Model Providers
 
 <Cards>
-  <Card title="OpenAI" href="https://platform.openai.com/"> 
-    <Image
-      src="/images/features/embedding-models/openai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="OpenAI"
-    />
-  </Card>
-
-<Card
-  title="Azure OpenAI"
-  href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"
->
-  <Image
-    src="/images/features/embedding-models/azure-openai.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Azure OpenAI"
-  />
-</Card>
-
-  <Card title="Cohere" href="https://cohere.com/"> 
-    <Image
-      src="/images/features/embedding-models/cohere.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Cohere"
-    />
-  </Card> 
+  <Card icon={<ExternalLinkIcon />} title="OpenAI" href="https://platform.openai.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Azure OpenAI" href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" />
+  <Card icon={<ExternalLinkIcon />} title="Cohere" href="https://cohere.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Voyage AI" href="https://www.voyageai.com/" />
+  <Card icon={<ExternalLinkIcon />} title="LiteLLM" href="https://litellm.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Mistral" href="https://mistral.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Generic OpenAI" href="https://openai.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Gemini" href="https://ai.google.dev/" />
+  <Card icon={<ExternalLinkIcon />} title="OpenRouter" href="https://openrouter.ai/" />
 </Cards>
-
-
-<style global jsx>{`
-  img {
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-`}</style>
