@@ -3,17 +3,8 @@ title: "Large Language Models"
 description: "AnythingLLM allows you to use a host of LLM providers for chatting and generative AI."
 ---
 
-import { Cards, Callout } from "nextra/components";
-import Image from "next/image";
-import { Card } from "../../components/card";
-
-<Image
-  src="/images/features/language-models/header-image.png"
-  height={1080}
-  width={1920}
-  quality={100}
-  alt="AnythingLLM Large Language Models"
-/>
+import { Cards, Card, Callout } from "nextra/components";
+import { ExternalLinkIcon } from "/components/icons";
 
 # Large Language Models
 
@@ -31,200 +22,54 @@ Depending on your selection additional configuration might be required.
 ### Local Language Model Providers
 
 <Cards>
-  <Card title="Built-in (default)" href="#"> 
-    <Image
-      src="/images/features/embedding-models/built-in.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="AnythingLLM Built-in (default)"
-    />
-  </Card>
-
-<Card title="Ollama" href="https://ollama.com/">
-  <Image
-    src="/images/features/language-models/ollama.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Ollama"
-  />
-</Card>
-
-<Card title="LM Studio" href="https://lmstudio.ai/">
-  <Image
-    src="/images/features/language-models/lm-sudio.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="LM Studio"
-  />
-</Card>
-
-  <Card title="Local AI" href="https://localai.io/"> 
-    <Image
-      src="/images/features/language-models/local-ai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="Local AI"
-    />
-  </Card> 
+  <Card icon={<ExternalLinkIcon />} title="Built-in (default)" href="#" />
+  <Card icon={<ExternalLinkIcon />} title="Ollama" href="https://ollama.com/" />
+  <Card icon={<ExternalLinkIcon />} title="LM Studio" href="https://lmstudio.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Local AI" href="https://localai.io/" />
+  <Card icon={<ExternalLinkIcon />} title="KoboldCPP" href="https://github.com/LostRuins/koboldcpp" />
+  <Card icon={<ExternalLinkIcon />} title="Text Generation WebUI" href="https://github.com/oobabooga/text-generation-webui" />
+  <Card icon={<ExternalLinkIcon />} title="Docker Model Runner" href="https://docs.docker.com/desktop/features/model-runner/" />
+  <Card icon={<ExternalLinkIcon />} title="Lemonade" href="https://lemonade-server.ai/" />
 </Cards>
 
 ### Cloud Language Model Providers
 
 <Cards>
-  <Card title="OpenAI" href="https://platform.openai.com/"> 
-    <Image
-      src="/images/features/language-models/openai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="OpenAI"
-    />
-  </Card>
-
-<Card
-  title="Azure OpenAI"
-  href="https://azure.microsoft.com/en-us/products/ai-services/openai-service"
->
-  <Image
-    src="/images/features/language-models/azure-openai.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Azure OpenAI"
-  />
-</Card>
-
-<Card title="AWS Bedrock" href="https://aws.amazon.com/bedrock">
-  <Image
-    src="/images/anythingllm-setup/llm-configuration/cloud/aws-bedrock/header-image.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="AWS Bedrock"
-  />
-</Card>
-
-<Card title="Anthropic" href="https://anthropic.com/">
-  <Image
-    src="/images/features/language-models/anthropic.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Anthropic"
-  />
-</Card>
-
-<Card title="Cohere" href="https://cohere.com/">
-  <Image
-    src="/images/features/language-models/cohere.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Cohere"
-  />
-</Card>
-
-<Card title="Google Gemini Pro" href="https://ai.google.dev/">
-  <Image
-    src="/images/features/language-models/google-gemini.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Google Gemini Pro"
-  />
-</Card>
-
-    <Card title="Hugging Face" href="https://huggingface.co/">
-    <Image
-      src="/images/features/language-models/hugging-face.png"
-      height={1080}
-      width={1920}
-      quality={100}
-      alt="Hugging Face"
-    />
-
-  </Card>
-
-<Card title="Together AI" href="https://www.together.ai/">
-  <Image
-    src="/images/features/language-models/together-ai.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Together AI"
-  />
-</Card>
-
-<Card title="OpenRouter" href="https://openrouter.ai/">
-  <Image
-    src="/images/features/language-models/openrouter.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="OpenRouter"
-  />
-</Card>
-
-<Card title="Perplexity AI" href="https://www.perplexity.ai/">
-  <Image
-    src="/images/features/language-models/perplexity-ai.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Perplexity AI"
-  />
-</Card>
-
-<Card title="Mistral API" href="https://mistral.ai/">
-  <Image
-    src="/images/features/language-models/mistral-ai.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Mistral API"
-  />
-</Card>
-
-<Card title="Groq" href="https://groq.com/">
-  <Image
-    src="/images/features/language-models/groq.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="Groq"
-  />
-</Card>
-
-<Card title="KobaldCPP" href="https://github.com/LostRuins/koboldcpp">
-  <Image
-    src="/images/features/language-models/koboldcpp.png"
-    height={1080}
-    width={1920}
-    quality={100}
-    alt="KobaldCPP"
-  />
-</Card>
-
-  <Card title="OpenAI (generic)" href="/anythingllm-setup/llm-configuration/cloud/openai-generic"> 
-    <Image
-      src="/images/features/language-models/openai.png" 
-      height={1080} 
-      width={1920} 
-      quality={100}
-      alt="OpenAI (generic)"
-    />
-  </Card>
-  
+  <Card icon={<ExternalLinkIcon />} title="OpenAI" href="https://platform.openai.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Azure OpenAI" href="https://azure.microsoft.com/en-us/products/ai-services/openai-service" />
+  <Card icon={<ExternalLinkIcon />} title="AWS Bedrock" href="https://aws.amazon.com/bedrock" />
+  <Card icon={<ExternalLinkIcon />} title="Anthropic" href="https://anthropic.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Cohere" href="https://cohere.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Google Gemini" href="https://ai.google.dev/" />
+  <Card icon={<ExternalLinkIcon />} title="Hugging Face" href="https://huggingface.co/" />
+  <Card icon={<ExternalLinkIcon />} title="Together AI" href="https://www.together.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Fireworks AI" href="https://fireworks.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="OpenRouter" href="https://openrouter.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Perplexity AI" href="https://www.perplexity.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Mistral" href="https://mistral.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Groq" href="https://groq.com/" />
+  <Card icon={<ExternalLinkIcon />} title="LiteLLM" href="https://litellm.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="DeepSeek" href="https://www.deepseek.com/" />
+  <Card icon={<ExternalLinkIcon />} title="APIPie" href="https://apipie.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Novita AI" href="https://novita.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="xAI" href="https://x.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="NVIDIA NIM" href="https://www.nvidia.com/en-us/ai/" />
+  <Card icon={<ExternalLinkIcon />} title="PPIO" href="https://www.ppinfra.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Dell Pro AI Studio" href="https://www.dell.com/en-us/dt/solutions/artificial-intelligence/index.htm" />
+  <Card icon={<ExternalLinkIcon />} title="Moonshot AI" href="https://www.moonshot.cn/" />
+  <Card icon={<ExternalLinkIcon />} title="Comet API" href="https://www.comet.com/" />
+  <Card icon={<ExternalLinkIcon />} title="Foundry" href="https://www.foundrylocal.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="zAI" href="https://zai.chat/" />
+  <Card icon={<ExternalLinkIcon />} title="Gitee AI" href="https://ai.gitee.com/" />
+  <Card icon={<ExternalLinkIcon />} title="SambaNova" href="https://sambanova.ai/" />
+  <Card icon={<ExternalLinkIcon />} title="Minimax" href="https://www.minimaxi.com/" />
+  <Card icon={<ExternalLinkIcon />} title="OpenAI (generic)" href="/anythingllm-setup/llm-configuration/cloud/openai-generic" />
 </Cards>
 
+### Specialized Providers
 
-<style global jsx>{`
-  img {
-    aspect-ratio: 16/9;
-    object-fit: cover;
-  }
-`}</style>
+_The model router is not a provider, but it is a feature that allows you to route your sessions to different LLM providers and models based on rules you define within a chat without having to change the model manually._
+
+<Cards>
+  <Card icon={<ExternalLinkIcon />} title="AnythingLLM Model Router" href="/model-router/overview" />
+</Cards>
