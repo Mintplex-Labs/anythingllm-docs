@@ -369,3 +369,45 @@ AGENT_AUTO_APPROVED_SKILLS="create-pdf-file,create-docx-file" # Automatically ap
 
 Fully remove or comment out the `AGENT_AUTO_APPROVED_SKILLS` environment variable to return to the default behavior.
 
+## LLM Provider Timeout
+
+<Callout type="info" emoji="️💡">
+  **Note:** This setting is useful for users with slow local models that need longer request timeouts.
+</Callout>
+
+Modification of the `ANYTHINGLLM_FETCH_TIMEOUT` environment variable allows you to override the default timeout (10 minutes) for all outbound SDK requests to LLM providers.
+
+Both the underlying HTTP transport layer (undici) and the SDK-level AbortController deadline are raised to the specified value.
+
+### Enable
+
+Set the `ANYTHINGLLM_FETCH_TIMEOUT` environment variable to a timeout value in **milliseconds**.
+
+```bash
+ANYTHINGLLM_FETCH_TIMEOUT="1200000" # 20 minutes
+```
+
+### Disable
+
+Fully remove or comment out the `ANYTHINGLLM_FETCH_TIMEOUT` environment variable to return to the default behavior (10 minutes).
+
+## SDK Max Retries
+
+<Callout type="info" emoji="️💡">
+  **Note:** By default, retries are disabled (set to 0) to avoid duplicate requests to local models.
+</Callout>
+
+Modification of the `ANYTHINGLLM_MAX_RETRIES` environment variable allows you to configure how many times a failed SDK request to an LLM provider will be retried before giving up.
+
+### Enable
+
+Set the `ANYTHINGLLM_MAX_RETRIES` environment variable to a non-negative integer.
+
+```bash
+ANYTHINGLLM_MAX_RETRIES="2" # Retry failed requests up to 2 times.
+```
+
+### Disable
+
+Fully remove or comment out the `ANYTHINGLLM_MAX_RETRIES` environment variable to return to the default behavior (0 retries).
+
