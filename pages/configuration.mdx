@@ -411,3 +411,22 @@ ANYTHINGLLM_MAX_RETRIES="2" # Retry failed requests up to 2 times.
 
 Fully remove or comment out the `ANYTHINGLLM_MAX_RETRIES` environment variable to return to the default behavior (0 retries).
 
+## Require Allowlist for Embed Widgets
+
+By default, a public chat embed widget created **without** an allowed-domains allowlist responds to requests from **any** origin. Setting the `EMBED_REQUIRE_ALLOWLIST` environment variable makes embeds that have no allowlist configured reject all requests (deny-by-default). Embeds that already have an allowlist set are unaffected.
+
+- Useful for administrators who want to ensure an embed cannot be queried cross-origin until its allowed domains are explicitly set.
+- Added in [Mintplex-Labs/anything-llm#5759](https://github.com/Mintplex-Labs/anything-llm/pull/5759).
+
+### Enable
+
+Set the `EMBED_REQUIRE_ALLOWLIST` environment variable to any value to enable.
+
+```bash
+EMBED_REQUIRE_ALLOWLIST="enable"
+```
+
+### Disable
+
+Fully remove or comment out the `EMBED_REQUIRE_ALLOWLIST` environment variable to return to the default behavior, where an embed with no allowlist answers requests from any origin.
+
