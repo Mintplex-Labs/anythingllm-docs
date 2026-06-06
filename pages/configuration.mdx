@@ -411,7 +411,7 @@ ANYTHINGLLM_MAX_RETRIES="2" # Retry failed requests up to 2 times.
 
 Fully remove or comment out the `ANYTHINGLLM_MAX_RETRIES` environment variable to return to the default behavior (0 retries).
 
-## Require an allowlist for embed widgets
+## Require Allowlist for Embed Widgets
 
 By default, a public chat embed widget created **without** an allowed-domains allowlist responds to requests from **any** origin. Setting the `EMBED_REQUIRE_ALLOWLIST` environment variable makes embeds that have no allowlist configured reject all requests (deny-by-default). Embeds that already have an allowlist set are unaffected.
 
