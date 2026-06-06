@@ -38,3 +38,20 @@ AnythingLLM collects anonymous telemetry and never collects any of your personal
 We collect telemetry to help improve our product.
 
 If for any reason you would not like to participate in sharing telemetry with us, you can disable it in this menu.
+
+## Deleting documents and full erasure
+
+Removing a document can mean two different things in AnythingLLM, and they behave differently:
+
+- **Removing a document from a workspace** stops that workspace from using it and deletes its vectors from that workspace — but the document stays in **My Documents** (your document library) so it can be re-used in other workspaces without re-parsing.
+- **Deleting a document from My Documents** removes it from the system entirely: it deletes the parsed source file and the cached embeddings, and removes the document from **every** workspace.
+
+<Callout type="warning" emoji="⚠️">
+  **Right-to-erasure / data-deletion requests:**
+
+  To completely erase a document — both its parsed text and its cached
+  embeddings — delete it from **My Documents**, not just from a workspace.
+  Removing a document from a single workspace intentionally leaves the parsed
+  file and cache in place so it can be re-used.
+
+</Callout>
