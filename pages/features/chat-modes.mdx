@@ -22,7 +22,7 @@ AnythingLLM offers multiple ways to chat with your documents. Let's understand w
 
 - Will automatically use available agent-skills, tools, and MCPs to answer your questions
 - This feature is fully dependent on the capabilities of your LLM provider and model to call tools natively.
-- Most providers do not expose tool calling capabilities to the public API, so you may need to set the [`PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING`](/configuration#native-tool-calling-for-llm-providers) environment variable have a always-on agent experience.
+- Native tool calling is enabled by default for providers that support it, giving you an always-on agent experience. If a provider's native tool calling misbehaves, you can fall back to prompt-based tool calling with the [`PROVIDER_DISABLE_NATIVE_TOOL_CALLING`](/configuration#native-tool-calling-for-llm-providers) environment variable.
 
 _if you see the "@" symbol in your prompt input you will need to use `@agent` to start an agentic chat session. If it is not there, you are using agentic chat mode._
 
