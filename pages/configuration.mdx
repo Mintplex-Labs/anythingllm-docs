@@ -326,14 +326,7 @@ Native tool calling is now **enabled by default** for all providers that support
 
 Previously, native tool calling was opt-in via `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING`. That variable has been replaced — you no longer need to enable native tool calling, only to disable it for providers where it misbehaves.
 
-Providers affected by this flag:
-- Generic OpenAI (`generic-openai`)
-- AWS Bedrock (`bedrock`)
-- Groq (`groq`)
-- Lemonade (`lemonade`)
-- LiteLLM (`litellm`)
-- Local AI (`localai`)
-- OpenRouter (`openrouter`)
+Only `OpenAI` and `Anthropic` are unaffected by this setting and will always use native tool calling regardless of this ENV config.
 
 <Callout type="info" emoji="️💡">
   Because native tool calling is now on by default, workspaces in automatic chat mode using these providers will run the agent automatically without requiring the `@agent` prefix. Disabling native tool calling for a provider restores the previous behavior, where the agent must be invoked explicitly.
