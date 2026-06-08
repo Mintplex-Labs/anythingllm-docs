@@ -322,30 +322,31 @@ Fully remove or comment out the `DISABLE_SWAGGER_DOCS` environment variable to r
   **Note:** This setting only applies to local LLM providers. It has no impact on cloud LLMs like OpenAI, Anthropic, or Azure.
 </Callout>
 
-Modification of the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable allows you to enable native tool calling for supported LLM providers that cannot automatically detect tool calling support.
+Native tool calling is now **enabled by default** for all providers that support it. The `PROVIDER_DISABLE_NATIVE_TOOL_CALLING` environment variable lets you force specific providers to fall back to prompt-based (UnTooled) tool calling instead.
 
-Some providers like Ollama, LM Studio, and the default built-in LLM provider automatically support native tool calling if your model supports it. However, other providers require this environment variable to be set.
+Previously, native tool calling was opt-in via `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING`. That variable has been replaced — you no longer need to enable native tool calling, only to disable it for providers where it misbehaves.
 
-Providers that require this flag:
-- Generic OpenAI
-- Groq
-- AWS Bedrock
-- Lemonade
-- LiteLLM
-- Local AI
-- OpenRouter
+Only `OpenAI` and `Anthropic` are unaffected by this setting and will always use native tool calling regardless of this ENV config.
 
-### Enable
-
-Set the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to a comma-separated list of provider identifiers you want to enable.
-
-```bash
-PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING="bedrock,generic-openai,groq,lemonade,litellm,local-ai,openrouter"
-```
+<Callout type="info" emoji="️💡">
+  Because native tool calling is now on by default, workspaces in automatic chat mode using these providers will run the agent automatically without requiring the `@agent` prefix. Disabling native tool calling for a provider restores the previous behavior, where the agent must be invoked explicitly.
+</Callout>
 
 ### Disable
 
-Fully remove or comment out the `PROVIDER_SUPPORTS_NATIVE_TOOL_CALLING` environment variable to return to the default behavior.
+Set the `PROVIDER_DISABLE_NATIVE_TOOL_CALLING` environment variable to a comma-separated list of provider identifiers you want to revert to prompt-based tool calling. Add a provider here only if its native tool calling misbehaves and you want to fall back.
+
+```bash
+# Disable native tool calling for specific providers.
+PROVIDER_DISABLE_NATIVE_TOOL_CALLING="groq,openrouter"
+
+# Disable for all affected providers.
+PROVIDER_DISABLE_NATIVE_TOOL_CALLING="generic-openai,bedrock,localai,groq,litellm,openrouter,lemonade"
+```
+
+### Enable
+
+Native tool calling is enabled by default. Fully remove or comment out the `PROVIDER_DISABLE_NATIVE_TOOL_CALLING` environment variable (or omit a provider from the list) to use native tool calling.
 
 
 ## Automatic Tool Call Approval
