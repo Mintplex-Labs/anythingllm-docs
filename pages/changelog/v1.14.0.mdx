@@ -1,0 +1,41 @@
+---
+title: "v1.14.0"
+description: "AnythingLLM Desktop v.1.14.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Improvements
+
+- [x] Cerebres provider
+- [x] The default chat thread is now killed when you create a new thread. If you have chats on the default thread, it will be available still. New workspaces or workspaces with no chats on default will no longer show it.
+- [x] All model providers are now *opt-out* of tool calling by default. Everything will call tools by default unless you opt-out offering better performance for agents everywhere
+- [x] STT Support for Deepgram, GenericOAI, Lemonade, & OpenAI
+- [x] TTS Support for KokoroTTS
+- [x] Web-scraping now will convert to markdown for better parsing and chat followup tasks with minimal context bloat
+- [x] Summary tool was overhauled. Now it will so better summaries with transparency as well as ask before continuing for longer summaries
+- [x] Improvements to the GenericOAI provider
+- [x] 24hour system variable formats
+- [x] Better LaTex rendering support
+
+## Bug Fixes
+
+- [x] Context limit detection issue for agents: https://github.com/Mintplex-Labs/anything-llm/pull/5716
+- [x] SEARXNG double encoding: https://github.com/Mintplex-Labs/anything-llm/pull/5723
+- [x] Timeouts for all fetch requests https://github.com/Mintplex-Labs/anything-llm/pull/5721
+- [x] Escape illegal XML in word docs, etc https://github.com/Mintplex-Labs/anything-llm/pull/5760
+- [x] (Windows) On unisntall, checkbox to remove **all** AnythingLLM data is now present
+- [x] Tray Fixes when app starts in background or Desktop Assistant feature is toggled.
+
+## Pinned Download Links
+
+**Revision 1.14.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.0/AnythingLLMDesktop-Arm64.AppImage) |
