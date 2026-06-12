@@ -25,10 +25,10 @@ This opt-in agent skill presents an interactive survey card directly in the chat
 
 ## Enabling the Skill
 
-1. Navigate to **Settings → AI Agents** in the admin sidebar.
-2. Under agent skills, click on the slider icon in the top right corner to open agent settings modal.
-3. Click on the **Clarifying Questions** section and toggle it on.
-3. Set the **Max questions per turn** (1–10, default 3). This caps how many questions the agent can ask in a single invocation.
+1. Navigate to **Settings → Agent Skills** in the admin sidebar.
+2. Under agent skills, click on the slider icon in the top right corner to open agent skill settings modal.
+3. Toggle on **Allow agent to ask clarifying questions** to enable the skill.
+4. Set the **Max questions per turn** (1–10, default 3). This caps how many questions the agent can ask in a single invocation.
 
 <Callout type="warning" emoji="⚠️">
   This skill is model-dependent. Smaller or less capable models may not reliably choose to call the tool, even when clarification would be helpful. For best results, use a capable model as your agent LLM.
