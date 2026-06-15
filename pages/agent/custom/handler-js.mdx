@@ -88,6 +88,58 @@ this.config.hubId; // 'open-meteo-weather-api'
 this.config.version; // '1.0.0'
 ```
 
+### `this.requestToolApproval`
+
+The `this.requestToolApproval` method pauses the agent and asks the user to approve a potentially destructive action **before** your skill performs it. It shows the same Approve/Reject card that AnythingLLM's built-in tools use (for example, the Gmail send/reply tools), and resolves once the user responds.
+
+Use this whenever your skill is about to do something irreversible or high-impact — deleting records, sending messages, making purchases, writing to external systems, etc.
+
+```js
+const approval = await this.requestToolApproval({
+  payload: { recordId }, // optional: arbitrary data shown/recorded alongside the request
+  description: `Permanently delete record ${recordId}? This cannot be undone.`,
+});
+
+if (!approval.approved) return approval.message; // user rejected - stop and report back
+// ...proceed with the destructive action
+```
+
+It returns a `{ approved, message }` object:
+
+<ul className="nx-list-disc nx-list-inside nx-flex nx-flex-col nx-gap-2 nx-mt-2">
+  <li>
+    `approved` (`boolean`) — `true` if the user approved (or if approval is not
+    required in the current context), `false` if they rejected.
+  </li>
+  <li>
+    `message` (`string`) — a human-readable result message. On rejection, return
+    this string from your handler so the agent and user know the action was
+    declined.
+  </li>
+</ul>
+
+Both arguments are optional — `payload` defaults to `{}` and `description` defaults to `null` — but you should always pass a clear `description` so the user understands exactly what they are approving.
+
+A few behaviors worth knowing:
+
+<ul className="nx-list-disc nx-list-inside nx-flex nx-flex-col nx-gap-2 nx-mt-2">
+  <li>
+    The approval is keyed to **your** skill automatically (by its `hubId`). You
+    cannot pass a `skillName` to impersonate another tool, and the "Always
+    allow" whitelist a user grants applies only to your skill.
+  </li>
+  <li>
+    In non-interactive contexts where there is no user to approve (for example,
+    a scheduled agent run), the method resolves as approved
+    (`{ approved: true, message: "Approval not required in this context." }`) so
+    your skill still runs.
+  </li>
+  <li>
+    The user has 120 seconds to respond. If they do not respond in time, the
+    request is treated as rejected.
+  </li>
+</ul>
+
 # Example `handler.js`
 
 Objective: Get the weather for a given location latitude and longitude using the open-meteo API.
