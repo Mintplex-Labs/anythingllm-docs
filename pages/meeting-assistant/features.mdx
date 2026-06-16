@@ -33,13 +33,6 @@ By default, the Meeting Assistant is able to record and transcribe meetings you 
 />
 
 ## Speaker identification
-
-<Callout type="info" emoji="💡">
- We recommend to keep speaker identification off by default as it has **zero impact** on the meeting summary or follow-up actions and can lead to longer processing times.
- 
- If you want to enable speaker identification, you can do so in the Meeting Assistant > Preferences > Speaker Identification option.
-</Callout>
-
 The Meeting Assistant is able to identify unique speakers in the transcript. It **does not** rename the speakers in the transcript based on your meeting, it simply identifies them by their unique voice characteristics.
 This process is done using a combination of LLM-based speaker identification and speaker diarization. That being said, it is not perfect and may not always be able to identify speakers correctly.
 
@@ -50,6 +43,33 @@ This process is done using a combination of LLM-based speaker identification and
   quality={100}
   style={{ borderRadius: "20px", marginBottom: 10 }}
 />
+
+### Types of speaker identification
+
+There are three types of speaker identification available - each with their own unique benefits and trade-offs.
+
+<Image
+  src="/images/meeting-assistant/speaker-identification.png"
+  height={800}
+  width={300}
+  quality={100}
+  style={{ borderRadius: "20px", marginBottom: 10, marginTop: 10, marginLeft: 'auto', marginRight: 'auto' }}
+/>
+
+#### No Diarization
+If you dont care about speaker identification, you can disable it entirely but you will not be able to see speaker names in the transcript. 
+This can lead to worse summaries since the models will be unable to identify even you from other speakers.
+
+#### Basic Diarization
+This is the default mode and is the most basic form of speaker identification. It is able to identity **what you are saying** from other speakers. However, the "Other" speaker will be used for any audio that is not you.
+This takes a minimal amount of additional processing power or time to run and is the fastest way to get speaker identification and yeilds great results for most meetings since you will at least be able to identify yourself from other speakers and the summary
+will reflect that.
+
+#### Full Diarization
+This is the most advanced form of speaker identification and is able to identify speakers based on their unique voice characteristics. It is also able to identify speakers based on their unique voice characteristics.
+This takes more processing power and time to run and is not recommended for most meetings. However, it is the most accurate way to get speaker identification and will yield the best results for most meetings.
+
+This can lead to a 20-40% increase in processing time depending on your hardware and the length of the meeting. GPU hardware is recommended for this mode for optimal performance.
 
 ### Edit speaker names
 
