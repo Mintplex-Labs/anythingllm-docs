@@ -1,0 +1,56 @@
+---
+title: "v1.14.1"
+description: "AnythingLLM Desktop v.1.14.1 Changelog"
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Meeting Assistant Overhaul
+
+We have overhauled a large portion of the Meeting Assistant to make it smaller, faster, and more efficient across all devices and platforms.
+
+- [x] Now supports Intel, AMD, and NVIDIA GPUs for a 80% smaller binary and 15% faster processing times.
+- [x] Support for Developer API for transcription on audio (POST: `/v1/transcription/transcribe`)
+- [x] Meeting Assistant context window overflow handling is much better now - so small models can summarize longer meetings.
+- [x] Introduction of [Basic Speaker Identification]() for 60% better summarizes from any audio.
+- [x] Dual channel stero recordings for meetings now - leading to 80% better speaker identification in "Full Diarization" mode.
+
+## Improvements
+
+- [x] Linux AppImage now **91%** smaller in size and caches Ollama engine downloads for faster startup times.
+- [x] Meeting Assistant title fix on meetings post-summary now auto-updates in UI
+- [x] AgentFLow variable highlight so its clear what is and is not a valid variable
+- [x] "Copy chat link" in UI to quickly re-open a chat in the desktop app via deeplinking.
+- [x] Re-enabled audio and video uploads via chat UI - uses Tinyscribe engine now.
+- [x] Export Chat as (PDF, JSON, Markdown, etc) from chat UI.
+- [x] Desktop Assistant Setting - HD screenshots now available for screenshot capture area.
+- [x] Request approval internal function is now available for custom skills.
+
+## Bug Fixes
+
+- [x] Removed DPAIS and HuggingFace providers from AnythingLLM
+- [x] Fixed memory leak in embedder from it constantly reloading in server process
+- [x] Fixed text clearing bug when dragging and dropping files into the chat and text was already present in prompt.
+- [x] Massive performance improvements to the frontend UI for long running chats.
+- [x] Cohere SDK removed and ported to OpenAI SDK for compatibility.
+- [x] Desktop Assistant Capture Area not showing on windows multi-monitor setups.
+- [x] Strip thinking from fork thread name when forking a chat that had thoughts.
+- [x] Fix toast light mode always showing regardless of system theme.
+- [x] Mistral embedder encoding issue fixed.
+- [x] Better error messages for API
+- [x] Omit temp in Claude Bedrock for Claude 4.8
+- [x] Fixed event emitter leak in server process for web-scraping and summarize process
+
+
+## Pinned Download Links
+
+**Revision 1.14.1:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.14.1/AnythingLLMDesktop-Arm64.AppImage) |
