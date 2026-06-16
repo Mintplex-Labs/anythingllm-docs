@@ -24,13 +24,23 @@ AnythingLLM can be a wrapper around many external services that all accomplish s
 
 ## Recommended configuration for AnythingLLM
 
-This is the minimum value for running AnythingLLM. This will be enough for you to store some documents, send chats, and use AnythingLLM features.
+The minimum requirements for running AnythingLLM vary based on your use case. Fundamentally, if want to use a local LLM on-device this will be the main factor in determining your requirements.
+AnythingLLM itself is very lightweight and can run on very small machines, but the LLM is often the bottleneck to a decent experience and will limit what kind and size of models you can use.
+
+In general, better model = better AnythingLLM experience. If you are wondering what the minimum requirements are for a "basic" AnythingLLM experience, they are as follows:
 
 | Property | Recommended Value |
 | -------- | ----------------- |
-| RAM      | 2GB               |
-| CPU      | 2-core CPU (any)  |
-| Storage  | 5GB               |
+| RAM      | 16GB              |
+| CPU      | 8-core CPU (any)  |
+| Storage  | _varies_          |
+
+On Windows, a GPU is recommended to leverage your GPU for faster processing of local LLMs (8-12GB+ VRAM is great!)
+On MacOS, any M-Series chip will be able to handle local LLMs with no additional hardware. Intel-based Macs will be a bit slower - mostly limited by RAM.
+
+The storage requirements are based on the size of the local LLM model you want to use since AnythingLLM stores the models on your PC.
+
+If you are using a cloud-based LLM, the requirements will be much lower since the AnythingLLM client is very lightweight and does not need to store the models on your PC.
 
 ## LLM selection impact
 
