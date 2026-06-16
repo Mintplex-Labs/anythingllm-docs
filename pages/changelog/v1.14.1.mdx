@@ -11,6 +11,8 @@ import Image from "next/image";
 We have overhauled a large portion of the Meeting Assistant to make it smaller, faster, and more efficient across all devices and platforms.
 
 - [x] Now supports Intel, AMD, and NVIDIA GPUs for a 92% smaller binary and 15% faster processing times.
+   - If you already have the NVIDIA GPU binary installed, you can safely delete it if you want. It will still work and is backwards compatible.
+
 - [x] Support for Developer API for transcription on audio (POST: `/v1/transcription/transcribe`)
 - [x] Meeting Assistant context window overflow handling is much better now - so small models can summarize longer meetings.
 - [x] Introduction of [Basic Speaker Identification]() for 60% better summarizes from any audio.
