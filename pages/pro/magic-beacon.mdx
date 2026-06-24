@@ -1,0 +1,144 @@
+---
+title: "Magic Beacon"
+description: "Highlight text in any application and instantly revise, research, summarize, or ask questions about it — fully local and offline."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  Magic Beacon is an [AnythingLLM Pro](/pro/overview) feature with a free daily
+  usage tier. It is available in AnythingLLM Desktop for macOS and Windows.
+</Callout>
+
+# Magic Beacon
+
+Magic Beacon is an on-screen AI tool that lets you highlight text anywhere on your computer and instantly take action on it — revise, research, summarize, translate, or ask questions — without ever leaving the app you're working in.
+
+<video
+  width="1000"
+  height="1000"
+  controls={false}
+  preload="auto"
+  autoPlay
+  muted
+  loop
+  style={{ borderRadius: "20px", padding: "10px" }}
+>
+  <source
+    src="https://webassets.anythingllm.com/magic-feature-promos-desktop/MagicBeacon-promo.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+## How it works
+
+1. **Highlight text** in any application — an email, a document, a webpage, a code editor, anything.
+2. **A small beacon dot appears** near your selection.
+3. **Click the dot** (or interact with it) to open the Magic Beacon panel.
+4. **Choose a Quick Action** or type a custom prompt to process the highlighted text.
+5. **The response appears inline** — you can insert it directly (in editable fields) or copy it to your clipboard.
+
+Magic Beacon uses your local LLM to process everything, so it works fully offline and your data never leaves your machine.
+
+## Quick Actions
+
+Magic Beacon comes with two categories of configurable Quick Actions that appear when you highlight text:
+
+### Edit Actions
+
+These appear when you highlight text in **editable fields** (text inputs, text areas, code editors, etc.). The response can be **inserted directly** to replace the selected text.
+
+Default edit actions typically include things like fixing grammar, making text more professional, simplifying language, and more.
+
+### Static Actions
+
+These appear when you highlight **non-editable text** (web pages, PDFs, rendered documents, etc.). The response can be **copied to clipboard**.
+
+Default static actions typically include summarizing, explaining, translating, and researching the selected text.
+
+### Customizing Quick Actions
+
+You can fully customize Quick Actions in **Settings** → **Magic Beacon** → **Customize Quick Actions**:
+
+- Add, edit, or remove actions for both Edit and Static categories
+- Each action has a **Label** (what you see in the menu) and a **Prompt** (the instruction sent to the LLM along with your highlighted text)
+- Reset to defaults at any time
+
+<Image
+  src="/images/pro/magic-beacon-settings.png"
+  alt="Magic Beacon Quick Actions configuration"
+  width={1000}
+  height={1000}
+  style={{ borderRadius: "10px", padding: "10px", margin: "0 auto" }}
+/>
+
+## Use cases
+
+Magic Beacon shines in workflows where you're constantly switching between reading and acting on text:
+
+- **Writing & editing** — Highlight a paragraph and ask to rephrase, shorten, or make it more formal
+- **Research** — Highlight a technical term or passage and ask for an explanation or deeper context
+- **Code review** — Highlight a code snippet and ask what it does, or request improvements
+- **Email triage** — Highlight an email and get a quick summary or draft a reply
+- **Translation** — Highlight text in any language and get an instant translation
+- **Learning** — Highlight unfamiliar text and ask questions about it
+
+## Agent & Chat Modes
+
+Magic Beacon sessions can operate in different modes:
+
+- **Chat** — Simple question and response about the highlighted text
+- **Agent** — Uses your configured agent skills, MCPs, and tools for more complex tasks (like generating files, running searches, etc.)
+
+Past sessions show which mode was used and can include generated files and sources.
+
+## Ignored Apps
+
+If Magic Beacon is distracting in certain applications, you can dismiss it with **"Ignore this app"** from the options menu in the widget. Ignored apps are managed in **Settings** → **Magic Beacon** → **Ignored Apps**, where you can remove apps from the ignore list at any time.
+
+<Image
+  src="/images/pro/magic-beacon-ignore.png"
+  alt="Magic Beacon Ignore App"
+  width={1000}
+  height={1000}
+  style={{ borderRadius: "10px", padding: "10px", margin: "0 auto" }}
+/>
+
+## Past Beacon Sessions
+
+Every Magic Beacon interaction is saved and viewable in the **Past Beacon Sessions** panel on the settings page. Each session includes:
+
+- The input text and prompt
+- The AI-generated output
+- Any generated files or sources
+- Whether it was a Chat or Agent session
+
+## Settings & Configuration
+
+Navigate to **Settings** → **Magic Beacon** to configure:
+
+| Setting                 | Description                                                             |
+| ----------------------- | ----------------------------------------------------------------------- |
+| **Enable Magic Beacon** | Toggle the feature on or off                                            |
+| **Quick Actions**       | Customize the actions available for editable and static text selections |
+| **Ignored Apps**        | Manage which applications should not trigger Magic Beacon               |
+
+{/* TODO: Add screenshot of Magic Beacon settings page */}
+
+## Platform Requirements
+
+- **macOS**: Requires **Accessibility permission** for text highlighting detection. You'll be prompted to grant this on first use.
+- **Windows**: No special permissions required.
+- **Linux**: Not currently supported.
+
+## Privacy
+
+All processing happens locally using your configured LLM provider and model. The highlighted text is sent to your LLM for processing — if you're using a local model, nothing ever leaves your machine. If you're using a cloud provider, the text is sent under the terms of that provider's privacy policy.
+
+## Free Tier & Pro
+
+Magic Beacon includes a daily allowance of free invocations.
+
+With [AnythingLLM Pro](/pro/overview), Beacon invocations become unlimited. [Get your Pro key](/pro/getting-started) to remove all daily limits.

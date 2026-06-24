@@ -1,0 +1,139 @@
+---
+title: "Magic Echo"
+description: "Dictate anywhere on your computer and get back clean, punctuated text — even aware of what's on your screen. Powered by your local models."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Callout type="info" emoji="💡">
+  Magic Echo is an [AnythingLLM Pro](/pro/overview) feature with a free daily
+  usage tier. It is available in AnythingLLM Desktop and requires a microphone.
+</Callout>
+
+# Magic Echo
+
+Magic Echo is voice-to-text dictation that works in any application on your computer. Speak naturally and your words are transcribed, cleaned up, and inserted right where your cursor is — no copy-pasting, no switching apps. It even uses on-screen context to improve accuracy.
+
+<video
+  width="1000"
+  height="1000"
+  controls={false}
+  preload="auto"
+  autoPlay
+  muted
+  loop
+  style={{ borderRadius: "20px", padding: "10px" }}
+>
+  <source
+    src="https://webassets.anythingllm.com/magic-feature-promos-desktop/MagicEcho-promo.mp4"
+    type="video/mp4"
+  />
+  Your browser does not support the video tag
+</video>
+
+## How it works
+
+1. Press the activation shortcut (default: `Option+Z` on macOS, `Alt+Z` on Windows/Linux) to start dictating.
+2. Speak naturally — Magic Echo listens and transcribes your speech in real-time.
+3. When you stop speaking (or press the shortcut again), the transcribed text is automatically inserted at your cursor position in whatever app you're using.
+
+Magic Echo runs entirely on-device using a local transcription model that is downloaded automatically when you first enable the feature.
+
+## Two modes of dictation
+
+### Quick dictation
+
+A short press-and-speak interaction. Magic Echo listens until it detects a pause in your speech, then auto-submits the transcription. The **Silence Detection** setting lets you control how aggressively it detects pauses.
+
+### Extended dictation
+
+Hold the shortcut for a longer dictation session. This mode is useful for longer-form content where you want to keep speaking without auto-submission interrupting your flow.
+
+## Smart Transcription vs. Raw Transcription
+
+Magic Echo offers two processing modes:
+
+- **Smart Transcription** — Your speech is transcribed and then processed by your configured LLM to clean up grammar, add punctuation, fix formatting, and apply context-aware corrections. Smart transcriptions count toward your daily free-tier limit (unlimited with [Pro](/pro/overview)).
+- **Raw Transcription** — Your speech is transcribed directly without any LLM processing. This is faster and does not count toward any usage limits, but the output may include filler words and lack proper punctuation.
+
+You can set your **Default Processing Mode** in settings and use the alternate keybind to quickly switch between modes.
+
+## On-Screen Awareness
+
+When enabled, Magic Echo can see what's currently on your screen and use that visual context to improve transcription accuracy. For example, if you're looking at a PDF on your screen and dictating a comment into a Microsoft Teams chat, Magic Echo can use the visible PDF to better understand the context of the comment you're saying **if you mention it** in your dictation.
+
+<Callout type="info" emoji="💡">
+  On-Screen Awareness requires your LLM provider to support vision/multi-modal
+  models. If your provider doesn't report vision capabilities, this setting will
+  be unavailable.
+</Callout>
+
+## Voice Commands
+
+Define trigger phrases that instantly paste a predefined snippet when spoken. Voice commands bypass smart processing entirely and **don't count** toward Pro invocations.
+
+For example, you could set up:
+
+- **"PRD Template"** → pastes a markdown template into whatever application you're using
+- **"sign off"** → pastes `Best regards,\nYour Name`
+- **"boilerplate header"** → pastes a code template
+
+Voice commands are configured in **Settings** → **Magic Echo** → **Voice Commands**.
+
+You can have as many voice commands as you want, and they will all be available to you when you speak. Keep in mind, voice commands should have very clear and distinct names to avoid confusion
+they must also be the **exact phrase** you speak to trigger them. AnythingLLM Magic Echo will do some basic fuzzy matching to help you out when it comes to dialect, punctuation, and other variations.
+
+## Custom Vocabulary
+
+Add words to help with transcription accuracy — names, technical terms, brand names, or jargon specific to your use case. This is especially useful for uncommon words that the transcription model might not recognize.
+
+Examples: `AnythingLLM`, `GPT-4`, `Kubernetes`, your company name, etc.
+
+## Settings & Configuration
+
+Navigate to **Settings** → **Magic Echo** to configure:
+
+| Setting                     | Description                                                                                    |
+| --------------------------- | ---------------------------------------------------------------------------------------------- |
+| **Activation Key**          | The key used with `Option` (macOS) / `Alt` (Windows/Linux) to activate dictation. Default: `Z` |
+| **Default Processing Mode** | Choose Smart or Raw transcription as default                                                   |
+| **On-Screen Awareness**     | Let Magic Echo use visual screen context for better accuracy                                   |
+| **Preferred Microphone**    | Select which microphone to use for dictation                                                   |
+| **Silence Detection**       | How quickly Magic Echo auto-submits after you stop speaking (Aggressive / Average / Relaxed)   |
+| **Widget Size**             | Adjust the on-screen widget size (Default / Large / Huge / Max)                                |
+| **Voice Commands**          | Define trigger phrases that paste predefined snippets                                          |
+| **Custom Vocabulary**       | Add words to improve transcription accuracy                                                    |
+
+<Image
+  src="/images/pro/magic-echo-settings.png"
+  alt="Magic Echo Settings"
+  width={1000}
+  height={1000}
+  style={{ borderRadius: "20px", padding: "10px", margin: "0 auto" }}
+/>
+
+## Past Echoes
+
+Every dictation session is saved and can be reviewed in the **Past Echoes** panel on the settings page. Each session shows:
+
+- The raw transcription
+- The processed output (for Smart sessions)
+- Any context screenshots used (if On-Screen Awareness was active)
+- Which model processed the transcription
+
+## Platform Requirements
+
+- **macOS**: Requires **Accessibility permission** to insert text into other applications. You'll be prompted to grant this on first use.
+- **Windows**: No special permissions required.
+- **Linux**: Not currently supported.
+
+## Privacy
+
+All transcription and processing happens locally on your device using your configured LLM provider and model. If you're using a cloud-based LLM provider, your transcribed text will be sent to that provider for smart processing — but the audio itself never leaves your machine.
+
+## Free Tier & Pro
+
+Magic Echo includes a daily allowance of free **Smart Transcriptions**. Raw transcriptions and Voice Commands are always free and unlimited.
+
+With [AnythingLLM Pro](/pro/overview), Smart Transcriptions become unlimited. [Get your Pro key](/pro/getting-started) to remove all daily limits.
