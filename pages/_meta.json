@@ -66,6 +66,14 @@
       "toc": true
     }
   },
+  "-- AnythingLLM Desktop Pro": {
+    "type": "separator",
+    "title": "AnythingLLM Desktop Pro"
+  },
+  "pro": {
+    "title": "Pro",
+    "display": "children"
+  },
   "-- AnythingLLM Community Hub": {
     "type": "separator",
     "title": "AnythingLLM Community Hub"
