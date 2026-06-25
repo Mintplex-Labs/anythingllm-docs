@@ -144,3 +144,18 @@ All processing happens locally using your configured LLM provider and model. The
 Magic Beacon includes a daily allowance of free invocations.
 
 With [AnythingLLM Pro](/pro/overview), Beacon invocations become unlimited. [Get your Pro key](/pro/getting-started) to remove all daily limits.
+
+## MacOS permissions & Troubleshooting
+
+Due to how MacOS stores permissions, sometimes just flicking the switch on the Privacy & Security settings window seems to not take effect. In this case, you can try the following:
+
+1. Quit AnythingLLM fully.
+2. Open the Privacy & Security settings window and add an entry for AnythingLLM for `Input Monitoring` and `Accessibility` permissions.
+3. Restart AnythingLLM.
+4. Go to Magic Beacon settings, disable the feature and re-enable it.
+5. Now open an application and highlight some text. If the feature is working, you should see a beacon dot appear near the selection by your cursor.
+
+### Permissions required
+
+- `Input Monitoring` permission is required to detect text highlighting in any application.
+- `Accessibility` permission is required to detect text highlighting in any application.

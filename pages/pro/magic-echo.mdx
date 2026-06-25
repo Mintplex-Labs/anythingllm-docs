@@ -130,6 +130,18 @@ Every dictation session is saved and can be reviewed in the **Past Echoes** pane
 - **Windows**: No special permissions required.
 - **Linux**: Not currently supported.
 
+## Tips for Magic Echo
+
+### On screen awareness
+
+When using on screen awareness, you should mention the app name in your dictation. For example, if you're dictating a comment into a Microsoft Teams chat, you should say "Microsoft Teams, comment". This will help Magic Echo understand the context of the comment you're saying.
+
+### Speeding up dictation
+
+- Usually your first dictation session will slightly slower than subsequent sessions. AnythingLLM keeps the model warm for you so subsequent sessions are much faster but unloads it after a few minutes of inactivity.
+- Disabling on screen awareness will speed up dictation significantly since you do not need to process any image data which takes a lot of time compared to raw-text processing.
+- Change you default processing mode to Raw Transcription for faster dictation. You lose the "intelligence" of the transcription, but you gain speed and get your raw transcription back faster.
+
 ## Privacy
 
 All transcription and processing happens locally on your device using your configured LLM provider and model. If you're using a cloud-based LLM provider, your transcribed text will be sent to that provider for smart processing — but the audio itself never leaves your machine.
@@ -139,3 +151,13 @@ All transcription and processing happens locally on your device using your confi
 Magic Echo includes a daily allowance of free **Smart Transcriptions**. Raw transcriptions and Voice Commands are always free and unlimited.
 
 With [AnythingLLM Pro](/pro/overview), Smart Transcriptions become unlimited. [Get your Pro key](/pro/getting-started) to remove all daily limits.
+
+## MacOS permissions & Troubleshooting
+
+Due to how MacOS stores permissions, sometimes just flicking the switch on the Privacy & Security settings window seems to not take effect. In this case, you can try the following:
+
+1. Quit AnythingLLM fully.
+2. Open the Privacy & Security settings window and add an entry for AnythingLLM for `Accessibility` and `Screen Recording` permissions.
+3. Restart AnythingLLM.
+4. Go to Magic Echo settings, disable the feature and re-enable it.
+5. Now open an application and start a dictation session. If the feature is working, you should see a transcription appear within a few milliseconds (depending on your hardware, model, provider, etc.)
