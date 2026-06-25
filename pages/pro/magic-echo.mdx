@@ -48,9 +48,17 @@ Magic Echo runs entirely on-device using a local transcription model that is dow
 
 A short press-and-speak interaction. Magic Echo listens until it detects a pause in your speech, then auto-submits the transcription. The **Silence Detection** setting lets you control how aggressively it detects pauses.
 
+> You can press `Esc` while in quick dictation mode to cancel a quick dictation session.
+> 
+> You can press `Enter` while in quick dictation mode to submit a quick dictation session - useful if you have a loud background keeping the microphone open.
+
 ### Extended dictation
 
 Hold the shortcut for a longer dictation session. This mode is useful for longer-form content where you want to keep speaking without auto-submission interrupting your flow.
+
+> You can press `Esc` while in extended dictation mode to cancel the session without submitting.
+>
+> You must manually click the "Stop" button in the widget to submit the extended dictation session.
 
 ## Smart Transcription vs. Raw Transcription
 
@@ -60,6 +68,12 @@ Magic Echo offers two processing modes:
 - **Raw Transcription** — Your speech is transcribed directly without any LLM processing. This is faster and does not count toward any usage limits, but the output may include filler words and lack proper punctuation.
 
 You can set your **Default Processing Mode** in settings and use the alternate keybind to quickly switch between modes.
+
+<Callout type="info" emoji="💡">
+If you are doing a smart transcription and for whatever reason it fails to process, we will automatically fall back to the raw transcription and use that instead.
+
+This way, you dont lose what you said and can still review it in the past echoes section.
+</Callout>
 
 ## On-Screen Awareness
 
@@ -89,6 +103,10 @@ You can have as many voice commands as you want, and they will all be available 
 they must also be the **exact phrase** you speak to trigger them. AnythingLLM Magic Echo will do some basic fuzzy matching to help you out when it comes to dialect, punctuation, and other variations.
 
 ## Custom Vocabulary
+
+<Callout type="info" emoji="💡">
+  Custom vocabulary is only applied to Smart Transcriptions. Raw Transcriptions will not use custom vocabulary.
+</Callout>
 
 Add words to help with transcription accuracy — names, technical terms, brand names, or jargon specific to your use case. This is especially useful for uncommon words that the transcription model might not recognize.
 
@@ -128,9 +146,10 @@ Every dictation session is saved and can be reviewed in the **Past Echoes** pane
 
 ## Platform Requirements
 
-- **macOS**: Requires **Accessibility permission** to insert text into other applications. You'll be prompted to grant this on first use.
+- **macOS**: Requires **Accessibility permission** to insert text into other applications. You'll be prompted to grant this on first use. See [MacOS permissions & Troubleshooting](#macos-permissions--troubleshooting) for more details.
 - **Windows**: No special permissions required.
 - **Linux**: Not currently supported.
+
 
 ## Tips for Magic Echo
 
@@ -146,7 +165,9 @@ When using on screen awareness, you should mention the app name in your dictatio
 
 ## Privacy
 
-All transcription and processing happens locally on your device using your configured LLM provider and model. If you're using a cloud-based LLM provider, your transcribed text will be sent to that provider for smart processing — but the audio itself never leaves your machine.
+For Raw Dictations, all processing is done on device using our internal transcription pipeline - the same one used for the [Meeting Assistant](/meeting-assistant/introduction). Nothing is sent to the cloud.
+
+When using Smart Transcriptions, the transcribed text and screenshots are sent to your provider for processing — if you're using a local model, nothing ever leaves your machine. If you're using a cloud provider, the text and screenshots are sent under the terms of that provider's privacy policy.
 
 ## Free Tier & Pro
 

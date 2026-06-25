@@ -133,13 +133,13 @@ The typing pause delay controls how responsive Magic Tab is. A shorter delay (e.
 
 ## Platform Requirements
 
-- **macOS**: Requires **Input Monitoring** and **Accessibility** permissions to detect keystrokes and insert text. You'll be prompted to grant these on first use. A restart of AnythingLLM may be needed after granting permissions.
+- **macOS**: Requires **Input Monitoring** and **Accessibility** permissions to detect keystrokes and insert text. You'll be prompted to grant these on first use. A restart of AnythingLLM may be needed after granting permissions. See [MacOS permissions & Troubleshooting](#macos-permissions--troubleshooting) for more details.
 - **Windows**: No special permissions required.
 - **Linux**: Not currently supported.
 
 ## Privacy
 
-All suggestion generation happens locally on your device. The text context around your cursor is processed by your local model to generate suggestions — nothing is sent to the cloud (unless you've explicitly configured a cloud LLM provider).
+All suggestion generation is done on device using your configured LLM provider and model. The text context around your cursor is processed by your provider to generate suggestions — nothing is sent to the cloud (unless you've explicitly configured a cloud LLM provider).
 
 ## Free Tier & Pro
 
