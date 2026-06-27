@@ -1,0 +1,108 @@
+---
+title: "Image Generation"
+description: "Generate images directly in your workspace chats using the /img command and your preferred image generation provider."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/features/image-generation/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Image Generation"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+# Image Generation
+
+AnythingLLM can generate images directly inside your workspace and thread chats using the **`/img`** command. Type `/img` followed by a description and AnythingLLM sends the prompt to your configured image generation provider, then renders the result inline in the conversation.
+
+Generated images are saved with your chat history, persist across page reloads, and can be referenced as context in follow-up messages.
+
+<Callout type="info" emoji="💡">
+  Image generation must be configured by an admin before the `/img` command can
+  be used. Images are generated at **512x512**.
+</Callout>
+
+## Setting Up Image Generation
+
+1. Navigate to **Settings → AI Providers → Image Generation**.
+2. Click the provider selector and choose your **Image Generation Provider**.
+
+<Image
+  src="/images/features/image-generation/provider-list.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Image Generation Providers"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+3. Enter the **API Key** for the provider (this reuses the same credentials as your other configured providers) and select a **Model**. If a provider does not support listing models, you can enter the model name manually.
+4. Click **Save changes**.
+
+<Image
+  src="/images/features/image-generation/configuration.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Image Generation Configuration"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+### Supported Providers
+
+| Provider | Description |
+|----------|-------------|
+| **OpenAI** | Generate images with OpenAI's DALL-E and image models. |
+| **OpenRouter** | Generate images from image models available on OpenRouter. |
+| **Ollama** | Generate images locally on your own machine (macOS only). |
+| **Lemonade** | Generate images locally on your own machine using Lemonade. |
+
+## Generating Images
+
+Open the **Tools** menu in the chat input and select the **`/img`** slash command, or simply type `/img` followed by your prompt.
+
+<Image
+  src="/images/features/image-generation/slash-command.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM /img Slash Command"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+Send a message like:
+
+```
+/img a cute robot painting a landscape on an easel, warm studio lighting
+```
+
+While the image is being created, a placeholder card appears in the chat. You do not need to resend the prompt — the image replaces the placeholder as soon as it is ready.
+
+<Image
+  src="/images/features/image-generation/generating.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Generating Image"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+The finished image renders as a card in the conversation. Hover over it to **download** or **copy** the image, and click it to view the full-size version.
+
+<Image
+  src="/images/features/image-generation/generated-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Generated Image"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+<Callout type="info" emoji="💡">
+  Generated images are stored with the chat that created them and remain
+  available on reload. Unreferenced images are cleaned up automatically.
+</Callout>
