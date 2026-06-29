@@ -14,6 +14,7 @@ import {
   BoxIcon,
   Database,
   FolderTreeIcon,
+  LightningIcon,
 } from "/components/icons";
 import Image from "next/image";
 
@@ -96,6 +97,11 @@ When you mention the agent, you will see a popup with the tools enabled for the 
     icon={<FolderTreeIcon />}
     title="File System Agent"
     href="/agent/usage/file-system-agent"
+  />
+  <Card
+    icon={<LightningIcon />}
+    title="Create Scheduled Jobs"
+    href="/agent/usage/create-scheduled-job"
   />
 </Cards>
 
