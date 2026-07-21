@@ -26,6 +26,13 @@ Generated images are saved with your chat history, persist across page reloads, 
   be used. Images are generated at **512x512**.
 </Callout>
 
+<Callout type="warning" emoji="⚠️">
+  For a generated image to be used as context in follow-up messages, your
+  workspace's chat model must support **image (vision) input**. Models without
+  vision input can still generate images, but won't be able to reference them in
+  later turns.
+</Callout>
+
 ## Setting Up Image Generation
 
 1. Navigate to **Settings → AI Providers → Image Generation**.
