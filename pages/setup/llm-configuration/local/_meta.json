@@ -43,5 +43,14 @@
       "pagination": true,
       "toc": true
     }
+  },
+  "omlx": {
+    "title": "oMLX",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
 }

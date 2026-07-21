@@ -1,0 +1,69 @@
+---
+title: "Create Scheduled Jobs"
+description: "Use the Create Scheduled Jobs agent skill to set up recurring agent tasks conversationally."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+## Create Scheduled Jobs
+
+<Callout type="warning" emoji="️💡">
+  This agent skill is **only available in single-user mode**. Self-hosted
+  instances running in multi-user mode will not see this skill, and it is hidden
+  from the agent in those environments.
+</Callout>
+
+The **Create Scheduled Jobs** agent skill lets you set up a [Scheduled Job](/scheduled-jobs/overview)
+just by talking to the agent — no need to open **Settings > Scheduled Jobs** and fill out
+the form yourself. Describe what you want done and when, and the agent will create the job
+for you.
+
+This is the conversational counterpart to the [Scheduled Jobs](/scheduled-jobs/overview)
+settings page. Anything you can build by hand in that form — a name, a prompt, a schedule, and
+a set of allowed tools — the agent can create from a single natural-language request.
+
+## Enabling the skill
+
+Create Scheduled Jobs is an **opt-in default agent skill**. To turn it on:
+
+1. Open **Settings** > **Agent Skills**
+2. Find **Create Scheduled Jobs** in the skills list and enable it.
+
+Once enabled, the skill is available to the agent in any workspace on that instance.
+
+## How to use it
+
+Just ask the agent to schedule something, in plain language. Be clear about three things:
+
+- **What** the job should do (the task/prompt)
+- **When** it should run (the frequency and time)
+- **Which tools** it needs, if any
+
+**Example:** `@agent every weekday at 9am, summarize my inbox and email me a digest`
+
+**Example:** `@agent schedule a job to check anythingllm.com every Monday at 8am and note anything new`
+
+**Example:** `@agent create a job that runs every 6 hours and pulls the latest numbers into a report`
+
+When you describe a time, give it in **your local time**. AnythingLLM converts your local
+schedule to the correct UTC cron expression deterministically, so you don't need to do any
+timezone math — "9am" means 9am where you are.
+
+The agent will only let a job use tools that are actually configured and ready on your instance,
+mirroring the tool list you'd see in the manual job form. You can also create a job with no
+tools at all, in which case it runs against the LLM alone.
+
+## After the job is created
+
+When the agent successfully creates a job, it returns a clickable card in the conversation.
+Click it to jump straight to that job in **Settings > Scheduled Jobs**, where you can review,
+edit the prompt or schedule, run it now, or disable it.
+
+<Callout type="info" emoji="️💡">
+  New jobs are **enabled by default** as soon as they're created and will fire
+  on their next scheduled time. See [Creating Your First
+  Job](/scheduled-jobs/getting-started) for everything you can configure, and
+  [Viewing Runs & Results](/scheduled-jobs/viewing-runs) for how to review what
+  each run produced.
+</Callout>

@@ -24,7 +24,7 @@ to be available in multiple threads, you will need to upload it to the workspace
 [Learn more about RAG vs Attached Documents](#rag-vs-attached-documents)
 </Callout>
 
-Using documents in chat is simple - simply drag and drop your documents into the chat window **or** click on the "paperclip" icon in the prompt input.
+Using documents in chat is simple - simply drag and drop your documents into the chat window **or** click on the `+` icon in the prompt input.
 
 <video width="1000" height="1000" controls={false} preload="auto" autoPlay muted loop style={{ borderRadius: "10px", padding: "10px" }}>
   <source
@@ -41,7 +41,7 @@ By default, AnythingLLM will insert the **full text** of your documents into the
 If you exceed the context window while adding documents, AnythingLLM will ask you if you want to chunk the documents into smaller pieces (aka: `embed`). Embedding documents is called [**RAG**](#what-is-rag) and is a powerful technique that allows LLMs to use external data sources to answer questions without
 overloading the model's context window. There are tradeoffs to this approach, but it is a powerful way to get the best of both worlds.
 
-You can monitor the context window size in the chat window by hovering over the "paperclip" icon in the prompt input.
+You can monitor the context window size in the chat window by hovering over the `+` icon in the prompt input when documents are attached to the chat. Which is denoted by the number above the `+` icon.
 
 <Image src="/images/document-chat/manage-attached-docs.png" alt="Manage Attached Documents" width={1000} height={1000} style={{ borderRadius: "10px", padding: "10px" }} />
 

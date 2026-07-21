@@ -49,6 +49,15 @@ Open **Settings** and look for **Scheduled Jobs** in the sidebar. From there you
 - Trigger a job immediately with **Run Now**
 - Open a job's run history to see past results
 
+## Creating jobs conversationally
+
+You don't have to use the settings form to create a job. If you enable the
+[**Create Scheduled Jobs** agent skill](/agent/usage/create-scheduled-job), you can ask the agent
+to set up a job for you in plain language — for example, _"@agent every weekday at 9am, summarize
+my inbox and email me a digest"_. The agent builds the job (name, prompt, schedule, and tools) and
+hands you a clickable card to review or edit it. Like the rest of Scheduled Jobs, this skill is
+**single-user mode only**.
+
 ## Next steps
 
 Start with [Creating Your First Job](/scheduled-jobs/getting-started), then dig into [Scheduling & The Cron Builder](/scheduled-jobs/scheduling) for everything you can do with cron expressions. When you're ready to look at results, see [Viewing Runs & Results](/scheduled-jobs/viewing-runs).

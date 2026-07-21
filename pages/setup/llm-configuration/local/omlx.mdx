@@ -1,0 +1,30 @@
+---
+title: "oMLX LLM"
+description: "oMLX is an LLM inference server for Apple Silicon Macs built on MLX, with continuous batching and SSD caching - managed from the macOS menu bar."
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/anythingllm-setup/llm-configuration/local/omlx/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="oMLX LLM"
+/>
+
+# oMLX LLM
+
+[oMLX](https://omlx.ai/) is an LLM inference server for Apple Silicon Macs built on [MLX](https://github.com/ml-explore/mlx), Apple's machine learning framework. It supports continuous batching for concurrent requests, a tiered KV cache (RAM + SSD), multi-model serving, and is managed from the macOS menu bar.
+
+oMLX is a _separate_ application that you need to download and run first before connecting to it.
+
+## Connecting to oMLX
+
+When running oMLX locally, you **should** first start the oMLX server with at least one MLX model available. By default, the server runs at `http://localhost:8000`.
+
+Select **oMLX** as your LLM provider in AnythingLLM. The base URL will be auto-detected when the server is running, or you can set it manually under advanced settings. Then select the model you want to use from the list of models available on your oMLX server.
+
+The model's context window is automatically detected and cached, but you can override it manually under advanced settings. If your oMLX server requires authentication, you can also provide an API key there.
+
+You can update your model to a different model at any time in the **Settings**.
