@@ -1,0 +1,84 @@
+---
+title: "Neon AI Gateway"
+description: "Connect AnythingLLM to Neon AI Gateway, an OpenAI-compatible inference gateway built into Neon, using the Generic OpenAI provider."
+---
+
+import { Callout } from "nextra/components";
+
+# Neon AI Gateway
+
+[Neon AI Gateway](https://neon.com/docs/ai-gateway/overview) is an OpenAI-compatible inference gateway built into Neon. One Neon credential gives you access to models from OpenAI, Google, Meta, Databricks, and Alibaba, so you do not need a separate account with each provider.
+
+AnythingLLM does not have a dedicated Neon provider. Neon implements the OpenAI Chat Completions API, so you connect it through the [Generic OpenAI](/setup/llm-configuration/cloud/openai-generic) provider.
+
+<Callout type="info" emoji="️💡">
+  **Beta, paid plans, single region**
+
+  Neon AI Gateway is in beta. It requires a paid Neon plan and is only available in the AWS US East (Ohio) region (`aws-us-east-2`), so the Neon project you use must be created there.
+</Callout>
+
+## Prerequisites
+
+- A Neon project on a paid plan in the `aws-us-east-2` region.
+- AnythingLLM installed and running, either the [Desktop application](https://anythingllm.com/download) or a [Docker deployment](https://github.com/Mintplex-Labs/anything-llm).
+
+## Step 1: Create a Neon credential
+
+In the Neon Console, select your branch, click **Credentials** under **APP BACKEND**, then click **Create credential** and check **ai_gateway:invoke**. Copy the credential before closing the dialog, because Neon shows it only once. It begins with `nt_live_`.
+
+You can also create one with the Neon API:
+
+```bash
+curl -X POST "https://console.neon.tech/api/v2/projects/{project_id}/branches/{branch_id}/credentials" \
+  -H "Authorization: Bearer $NEON_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"scopes": ["ai_gateway:invoke"], "principal_type": "user"}'
+```
+
+See [AI Gateway authentication](https://neon.com/docs/ai-gateway/authentication) for scopes, branch binding, and rotation.
+
+## Step 2: Find your branch host
+
+Every Neon branch has its own gateway host, so there is no single URL that applies to a whole account. The Neon Console shows the host for a branch on the AI Gateway page as `NEON_AI_GATEWAY_BASE_URL`. It follows this format:
+
+```
+br-<name>-api.ai.<cell>.<region>.aws.neon.tech
+```
+
+This is different from your database connection string.
+
+## Step 3: Configure the Generic OpenAI provider
+
+1. Launch AnythingLLM, go to **Settings**, and open **LLM Preference**.
+2. In the LLM provider search box, type "Generic OpenAI" and select it.
+3. Fill in the connection details:
+   - **Base URL**: your branch host with `/v1` appended, for example `https://br-winter-pond-aptw82ef-api.ai.c-2.us-east-2.aws.neon.tech/v1`
+   - **API Key**: the Neon credential from step 1
+   - **Selected Model**: a model ID from the Neon catalog, for example `gpt-5-mini`
+   - **Model context window**: the context window of the model you chose, for example 400000 for `gpt-5-mini`
+   - **Max Tokens**: set according to your needs, for example 1024 or 2048
+
+Neon serves chat completions at `/v1/chat/completions`, so the Base URL must end in `/v1`.
+
+After you enter the Base URL and API Key, AnythingLLM calls `GET /v1/models` on your branch and turns **Selected Model** into a dropdown of what that branch can serve. If the call fails, the field stays a text box and you type the model ID yourself.
+
+## Step 4: Test the integration
+
+Save the configuration, then open a workspace and send a test message. If the request fails with `401`, the credential is missing or invalid. A `403` means the credential lacks the `ai_gateway:invoke` scope or does not cover the branch you are calling.
+
+## Choosing a model
+
+Use short model IDs such as `gpt-5-mini`, `gemini-3-flash`, or `qwen3-next-80b-a3b-instruct`. The branch itself lists what it can serve:
+
+```bash
+curl "$NEON_AI_GATEWAY_BASE_URL/v1/models" \
+  -H "Authorization: Bearer $NEON_AI_GATEWAY_TOKEN"
+```
+
+The [Neon model catalog](https://neon.com/docs/ai-gateway/models) lists context windows and pricing for each model. You can also browse them on [Models.dev](https://models.dev/providers/neon/).
+
+<Callout type="warning" emoji="️⚠️">
+  **Response shape varies by model**
+
+  For most models the assistant message content is a plain string. A few models, including `gemini-3-5-flash`, `gemini-3-1-pro`, `gpt-oss-120b`, and `qwen35-122b-a10b`, return an array of typed content blocks instead. If a model renders as empty output in AnythingLLM, try one that returns plain text. See [Which endpoint to use](https://neon.com/docs/ai-gateway/models#which-endpoint-to-use) in the Neon docs.
+</Callout>
