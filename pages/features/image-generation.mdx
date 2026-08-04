@@ -22,15 +22,12 @@ AnythingLLM can generate images directly inside your workspace and thread chats 
 Generated images are saved with your chat history, persist across page reloads, and can be referenced as context in follow-up messages.
 
 <Callout type="info" emoji="💡">
-  Image generation must be configured by an admin before the `/img` command can
-  be used. Images are generated at **512x512**.
+  Image generation must be configured by an admin before the `/img` command can be used.
 </Callout>
 
 <Callout type="warning" emoji="⚠️">
   For a generated image to be used as context in follow-up messages, your
-  workspace's chat model must support **image (vision) input**. Models without
-  vision input can still generate images, but won't be able to reference them in
-  later turns.
+  workspace's chat model must support **image (vision) input**.
 </Callout>
 
 ## Setting Up Image Generation
