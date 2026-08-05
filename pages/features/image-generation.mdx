@@ -58,12 +58,16 @@ Generated images are saved with your chat history, persist across page reloads, 
 
 ### Supported Providers
 
-| Provider | Description |
-|----------|-------------|
-| **OpenAI** | Generate images with OpenAI's DALL-E and image models. |
-| **OpenRouter** | Generate images from image models available on OpenRouter. |
-| **Ollama** | Generate images locally on your own machine (macOS only). |
-| **Lemonade** | Generate images locally on your own machine using Lemonade. |
+| Provider | Generation | Editing (image references) |
+|----------|------------|---------------------------|
+| **OpenAI** | ✅ | ✅ via `/v1/images/edits` |
+| **OpenRouter** | ✅ | ✅ via chat completions with image inputs |
+| **Ollama** | ✅ | ❌ — gracefully falls back to generation from prompt only |
+| **Lemonade** | ✅ | ✅ via `/v1/images/edits` (model-dependent, see note below) |
+
+<Callout type="warning" emoji="⚠️">
+  **Lemonade image editing depends on the model.** Some models served by Lemonade (e.g. SD-Turbo) accept the edit endpoint but do not meaningfully transform reference images — they generate a new image loosely based on the prompt instead. For better editing results, use a model that explicitly supports img2img pipelines such as SDXL.
+</Callout>
 
 ## Generating Images
 
@@ -95,13 +99,40 @@ While the image is being created, a placeholder card appears in the chat. You do
   style={{ borderRadius: "10px", padding: "10px" }}
 />
 
-The finished image renders as a card in the conversation. Hover over it to **download** or **copy** the image, and click it to view the full-size version.
+The finished image renders as a card in the conversation. Hover over it to reveal actions:
+
+- **Copy** (bottom-left) — copies the image to your clipboard.
+- **⋯ menu** (top-right) — opens a popover with **Edit** and **Download** options.
+- **Click** the image to view the full-size version.
 
 <Image
-  src="/images/features/image-generation/generated-image.png"
+  src="/images/features/image-generation/edit-controls.png"
   height={1080}
   width={1920}
   quality={100}
-  alt="AnythingLLM Generated Image"
+  alt="AnythingLLM Image Generation"
   style={{ borderRadius: "10px", padding: "10px" }}
 />
+
+## Editing Images with References
+
+If your provider supports image editing, you can attach one or more images to your `/img` prompt to use them as references. AnythingLLM automatically detects image attachments and routes the request to the provider's edit endpoint instead of the generation endpoint.
+
+There are two ways to start an image edit:
+
+1. **From an existing generated image** — hover over the image card, click the **⋯** menu, and select **Edit**. This attaches the image to the prompt input and prefills `/img` so you can type your edit instructions.
+2. **From scratch** — drag, drop, or paste one or more images into the chat input, then type `/img` followed by your prompt describing what you want.
+
+```
+/img change the background to a sunset over mountains
+```
+
+The edited image is saved as a new image in your chat history — the original is not modified.
+
+<Callout type="info" emoji="💡">
+  All image attachments that pass an image MIME type check are sent to the provider. If the provider or model does not support the number or format of images you attached, the provider's error will be surfaced directly.
+</Callout>
+
+<Callout type="info" emoji="💡">
+  **Ollama users:** If you attach reference images with `/img` while using Ollama, AnythingLLM will generate a new image from the prompt only and display a notice that Ollama does not support image editing. Your images are silently dropped — no crash or error will occur.
+</Callout>
