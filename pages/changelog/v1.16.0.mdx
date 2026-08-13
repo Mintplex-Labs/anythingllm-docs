@@ -1,0 +1,104 @@
+---
+title: "v1.16.0"
+description: "AnythingLLM Desktop v.1.16.0 Changelog"
+---
+
+import Image from "next/image";
+
+## Major Features
+
+### Image Generation
+
+Now you can generate images via `/img` when a [supported provider is set up](/features/image-generation#supported-providers).
+
+This flow also allows image attachments for edits, followups, or combination prompts if your provider supports image editing.
+
+<Image
+  src="/images/features/image-generation/edit-controls.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Image Generation"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+> Ability for an agent-tool to generate images is coming next update.
+
+### Better File Picker UX
+
+Now in the file picker you can drag entire folders and their hierarchy will be preserved in the upload panel. This will only import the **top level** files in the folder — it will be deep and recursive in a later update.
+
+You can also now drag and drop a file into an existing folder directly without needing to move it.
+
+Lastly, you no longer need to type `https` in the URL fetcher - it will just assume https when left out.
+
+We also made some large performance improvements, like lazy-loading of folders, for those with thousands of documents in a folder.
+
+### Tool Toggle Mid-Session
+
+Now, during agentic chats you can freely toggle tools on/off at will without needing to reload or start a new session. Only tools that have been configured (if configuration is required) are available.
+
+### Stop Generation
+
+A large improvement is now that `aborting` a response actually fully kills the inference as well so that ghost inference does not continue when no longer wanted mid-stream.
+
+## New Features
+
+- [x] New `create-scheduled-job` agent tool - agents can now create scheduled jobs on your behalf, with a dedicated card in the Assistant Panel
+- [x] Image generation via the `/img` command, including rendering and controls in the Assistant Panel
+- [x] Foundry Local overhaul - model table with full model management, agent and async chat, and tool calling support
+- [x] PiperTTS overhaul - long messages now stream as they are spoken with no timeouts, and the Assistant Panel can speak responses with markdown formatting stripped
+- [x] You.com added as a web-search provider for agents
+- [x] Gitea data connector
+- [x] GitHub Enterprise URLs are now supported in the GitHub data connector
+- [x] OpenAI-compatible Whisper API support for speech-to-text (bring your own transcription endpoint)
+- [x] `input_audio` support for audio attachments on the Generic OpenAI provider
+- [x] Folder upload in the Document Manager now preserves relative folder paths
+- [x] Current date and time is now included in default system prompts so models can answer time-aware questions
+- [x] SQL agent connector now supports adding multiple databases at once and includes an SSL toggle for self-signed certificates
+
+## Improvements
+
+- [x] Stop generation button now fully aborts agent sessions and inference, including the Assistant Panel and local inference engines
+- [x] Agent chats with no tools attached now route through native tooled completions for better response quality
+- [x] Model router cooldown now starts when inference completes instead of when the routing rule is detected, so long reasoning responses no longer consume the entire cooldown window
+- [x] Smoother chat auto-scrolling during streaming - no more scroll lock or jitter on long messages
+- [x] Updated default fallback models for OpenAI and Anthropic
+- [x] MCP tools with nested object parameters (`$ref`/`$defs` schemas) are now inlined correctly for Anthropic agent tool calls
+- [x] Light mode scrollbar colors
+- [x] macOS system overlays are now filtered out of screen context capture
+- [x] New and updated translations: Catalan, Italian, Indonesian, Lao, Croatian, and Traditional Chinese (zh-TW)
+- [x] PiperTTS now chunk-plays content, meaning significantly faster playback times for longer messages
+
+## Bug Fixes
+
+- [x] Fixed PiperTTS bug preventing voices from playing and causing a "Worker Timeout" error
+- [x] Fixed a native `onnxruntime` crash during embedding caused by `maxConcurrentChunks` when using an external embedding provider
+- [x] Anthropic responses are now properly streamed for non-streaming REST API workspace chat endpoints
+- [x] Fixed workspace model selection for AWS Bedrock
+- [x] Fixed Lemonade URL input not saving on change
+- [x] Thinking blocks no longer render for models that do not emit them on Generic OpenAI providers
+- [x] Fixed Windows filepaths in the Document Manager
+- [x] Fixed slash command presets not expanding into prompt text
+- [x] Fixed citations regression in the API
+- [x] Fixed Generic OpenAI provider requests for Magic Echo
+- [x] Watched document re-syncs no longer break pinned document de-duplication
+- [x] Agent clarifying-question counter now resets per turn
+- [x] Fixed `null` and incorrect vector counts for Milvus/Zilliz when multiple workspaces exist
+- [x] Workspace update API now validates payloads instead of returning a misleading `200` response
+- [x] Thread lookups are now scoped to the validated workspace
+- [x] Kokoro TTS voice lists now render for pre-0.3.x `kokoro-fastapi` servers
+- [x] Empty "App Integrations" section is now hidden on the Agent Skills page in multi-user mode
+- [x] Temperature is now omitted for `claude-sonnet-5`, which does not support it
+
+## Pinned Download Links
+
+**Revision 1.16.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.0/AnythingLLMDesktop-Arm64.AppImage) |
