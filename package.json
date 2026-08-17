@@ -19,6 +19,9 @@
     "url": "https://github.com/Mintplex-Labs/anythingllm-docs/issues"
   },
   "homepage": "https://github.com/Mintplex-Labs/anythingllm-docs#readme",
+  "engines": {
+    "node": "24.x"
+  },
   "dependencies": {
     "@next/third-parties": "^14.2.3",
     "@vercel/og": "^0.6.2",
