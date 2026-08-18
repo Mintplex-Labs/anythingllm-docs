@@ -25,6 +25,15 @@ import Image from "next/image";
 
 AnythingLLM ships with a built-in LLM engine and provider that enables you to download popular and highly-rated LLMs like LLama-3, Phi-3 and more that can run locally on your CPU and GPU.
 
+<Callout type="warning" emoji="⚠️">
+  **Not a full Ollama replacement**
+
+  The built-in provider uses [Ollama's](https://ollama.com) MIT-licensed open-source engine under the hood, and is intended **only for downloading and running local models** on your machine.
+
+  It is **not** a full Ollama replacement — features like Ollama Cloud models are **not supported** through the built-in provider, even if they appear to work. If you need the full Ollama feature set, install [Ollama](https://ollama.com) separately and connect it via the [Ollama provider](/setup/llm-configuration/local/ollama).
+
+</Callout>
+
 When you boot up AnythingLLM Desktop you will be able to select the model you wish to download. Its progress will be tracked in the top-right of the application window.
 
 You can update your model to a different model at any time in the **Settings**.
