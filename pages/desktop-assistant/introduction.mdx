@@ -56,16 +56,16 @@ Any chats, agentic tasks, or MCPs are processed using your LLM provider and mode
 
 The default shortcut to open the Desktop Assistant is `CMD+/` (MacOS) or `CTRL+/` (Windows/Linux).
 
-### Why is the Desktop Assistant unresponsive while AnythingLLM Docker is running?
+### Why is the Desktop application unresponsive while AnythingLLM Docker is running?
 
 <Callout type="warning" emoji="⚠️">
   AnythingLLM Desktop and the default AnythingLLM Docker setup both use port
-  `3001` on your computer. Running both at the same time can cause a port
-  conflict that prevents the Desktop Assistant from accepting text input or
+  `3001` by default on your computer. Running both at the same time can sometimes cause a port
+  conflict that prevents the Desktop application from accepting text input or
   opening its menu.
 </Callout>
 
-Stop the AnythingLLM Docker container before using the Desktop Assistant. If you
+Stop the AnythingLLM Docker container before using the Desktop application. If you
 need both running at the same time, map Docker to another available host port.
 For example, change the port mapping in the
 [local Docker run command](/installation-docker/local-docker#run-the-image) from
