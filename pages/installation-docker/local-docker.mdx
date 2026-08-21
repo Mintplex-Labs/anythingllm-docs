@@ -87,6 +87,18 @@ Your docker host will show the image as online once the build process is complet
 
 ## Common questions and fixes
 
+### Container exits with `Illegal instruction (core dumped)`
+
+If the container dies on startup or the first time you chat, and the logs end with:
+
+```text
+/usr/local/bin/docker-entrypoint.sh: line 7: 115 Illegal instruction (core dumped) node /app/server/index.js
+```
+
+your CPU does not support the AVX2 instruction set, which the default vector database requires. This comes up most often on older hardware, on some cloud instance families, and on Proxmox or QEMU/KVM guests whose virtual CPU hides AVX2 from the guest.
+
+See [CPU instruction set requirements](/installation-docker/system-requirements#cpu-instruction-set-requirements) for how to check and what to do about it.
+
 ### Cannot connect to service running on localhost!
 
 Please see [How to connect to localhost](/installation-docker/localhost) services.
