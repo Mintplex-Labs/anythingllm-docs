@@ -3,6 +3,8 @@ title: "plugin.json reference"
 description: "Understand the plugin.json file and how to use it to define custom agent skills for AnythingLLM."
 ---
 
+import { Callout } from "nextra/components";
+
 **This page is intended for developers who want to create custom agent skills for AnythingLLM.**
 
 # `plugin.json` reference
@@ -11,6 +13,9 @@ The `plugin.json` file is used to define a custom agent skill for AnythingLLM. I
 
 ```js
 {
+  // see #schema-reference for more information
+  "$schema": "https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/refs/heads/master/server/utils/agents/imported-manifest.schema.json",
+
   // see #active for more information
   "active": true,
 
@@ -77,6 +82,40 @@ The `plugin.json` file is used to define a custom agent skill for AnythingLLM. I
   "imported": true
 }
 ```
+
+## Schema reference
+
+A [JSON Schema](https://json-schema.org/) for `plugin.json` is published in the AnythingLLM repository. Pointing your editor at it gives you autocomplete, inline descriptions, and validation while you write the manifest - most editors, including VS Code and the JetBrains IDEs, pick it up automatically.
+
+The simplest way to use it is to add a `$schema` key as the first property of your `plugin.json`:
+
+```json
+{
+  "$schema": "https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/refs/heads/master/server/utils/agents/imported-manifest.schema.json",
+  "active": true,
+  "hubId": "open-meteo-weather-api"
+  // ...the rest of your manifest
+}
+```
+
+If you would rather not commit the extra key, you can map the schema to your `plugin.json` files in your editor settings instead. In VS Code that looks like this:
+
+```json
+// .vscode/settings.json
+{
+  "json.schemas": [
+    {
+      "fileMatch": ["**/plugin.json"],
+      "url": "https://raw.githubusercontent.com/Mintplex-Labs/anything-llm/refs/heads/master/server/utils/agents/imported-manifest.schema.json"
+    }
+  ]
+}
+```
+
+<Callout type="info" emoji="️💡">
+  `$schema` is ignored by AnythingLLM when the skill is loaded, so it is safe to
+  leave in a published skill. It exists purely for your editor.
+</Callout>
 
 ## `active`
 
