@@ -99,6 +99,41 @@ your CPU does not support the AVX2 instruction set, which the default vector dat
 
 See [CPU instruction set requirements](/installation-docker/system-requirements#cpu-instruction-set-requirements) for how to check and what to do about it.
 
+### Container exits with `unable to open database file`
+
+If the container starts and then immediately dies with a log that ends like this:
+
+```text
+Datasource "db": SQLite database "anythingllm.db" at "file:../storage/anythingllm.db"
+
+Error: Schema engine error:
+SQLite database error
+unable to open database file: ../storage/anythingllm.db
+```
+
+your storage folder is not writable by the container.
+
+This almost always happens on Linux when `STORAGE_LOCATION` points somewhere under a top-level folder such as `/mnt`, `/data`, `/srv`, or `/opt`. Those folders are owned by `root`, and so is anything you create inside them. AnythingLLM runs as the unprivileged `anythingllm` user (UID/GID `1000`), so it cannot write the database file into a root-owned mount.
+
+The install command in this guide uses `$HOME/anythingllm`, which your own user already owns - that is why the default path works and a custom one may not.
+
+To fix it, give the storage folder to UID/GID `1000` before starting the container:
+
+```shell copy showLineNumbers
+sudo chown -R 1000:1000 ${STORAGE_LOCATION}
+```
+
+Then remove the dead container and run the install command again.
+
+<Callout type="warning" emoji="️⚠️">
+  You will find `chmod -R 777` suggested as a fix for this in old GitHub issues.
+  It does work, but it makes your storage folder - including your database, your
+  documents, and your `.env` with any API keys in it - readable and writable by
+  every user on the machine. Use `chown` instead.
+</Callout>
+
+The published image always runs as `1000:1000`. If you build from source with `docker-compose` and have changed the `UID` and `GID` values in your `.env`, use those numbers instead.
+
 ### Cannot connect to service running on localhost!
 
 Please see [How to connect to localhost](/installation-docker/localhost) services.
