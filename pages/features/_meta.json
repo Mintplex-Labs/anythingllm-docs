@@ -53,6 +53,15 @@
       "toc": true
     }
   },
+  "keyboard-shortcuts": {
+    "title": "Keyboard Shortcuts",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "chat-logs": {
     "title": "Chat Logs",
     "theme": {

@@ -1,0 +1,48 @@
+---
+title: "Keyboard Shortcuts"
+description: "Keyboard shortcuts for moving around AnythingLLM without leaving the keyboard."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Keyboard Shortcuts
+
+AnythingLLM has a set of built-in keyboard shortcuts for jumping straight to the pages you use most.
+
+Press <kbd>F1</kbd> at any time to see the full list for your build.
+
+<Image
+  src="/images/features/keyboard-shortcuts/keyboard-shortcuts.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Keyboard Shortcuts"
+/>
+
+## Available shortcuts
+
+| Action                          | macOS                                          | Windows & Linux                                   |
+| ------------------------------- | ---------------------------------------------- | ------------------------------------------------- |
+| Open Settings                   | <kbd>⌘</kbd> + <kbd>,</kbd>                    | <kbd>Ctrl</kbd> + <kbd>,</kbd>                    |
+| Go to Home                      | <kbd>⌘</kbd> + <kbd>H</kbd>                    | <kbd>Ctrl</kbd> + <kbd>H</kbd>                    |
+| Manage Workspaces               | <kbd>⌘</kbd> + <kbd>I</kbd>                    | <kbd>Ctrl</kbd> + <kbd>I</kbd>                    |
+| API Keys settings               | <kbd>⌘</kbd> + <kbd>K</kbd>                    | <kbd>Ctrl</kbd> + <kbd>K</kbd>                    |
+| LLM Preferences                 | <kbd>⌘</kbd> + <kbd>L</kbd>                    | <kbd>Ctrl</kbd> + <kbd>L</kbd>                    |
+| Chat settings                   | <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>C</kbd> |
+| Show the workspace LLM selector | <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>L</kbd> |
+| Show this shortcut list         | <kbd>⌘</kbd> + <kbd>Shift</kbd> + <kbd>?</kbd> | <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>?</kbd> |
+| Show this shortcut list         | <kbd>F1</kbd>                                  | <kbd>F1</kbd>                                     |
+
+<Callout type="info" emoji="️💡">
+  AnythingLLM Desktop ships a slightly different set of shortcuts to the
+  browser-based version. Press <kbd>F1</kbd> or <kbd>⌘</kbd> +{" "}
+  <kbd>Shift</kbd> + <kbd>?</kbd> inside the app you are using to see the list
+  that applies to it.
+</Callout>
+
+## Who can use them
+
+In a **single-user instance**, shortcuts are always active.
+
+In **multi-user mode** they are only available to admin accounts. Several of them open instance-wide settings pages that other roles cannot access, so they are not registered for manager or default users at all.
