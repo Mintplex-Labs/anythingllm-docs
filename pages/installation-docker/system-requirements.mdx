@@ -26,11 +26,53 @@ AnythingLLM can be a wrapper around many external services that all accomplish s
 
 This is the minimum value for running AnythingLLM. This will be enough for you to store some documents, send chats, and use AnythingLLM features.
 
-| Property | Recommended Value |
-| -------- | ----------------- |
-| RAM      | 2GB               |
-| CPU      | 2-core CPU (any)  |
-| Storage  | 5GB               |
+| Property | Recommended Value          |
+| -------- | -------------------------- |
+| RAM      | 2GB                        |
+| CPU      | 2-core CPU with AVX2       |
+| Storage  | 5GB                        |
+
+## CPU instruction set requirements
+
+Your CPU **must** support the **AVX2** instruction set. This is the one hard requirement AnythingLLM has of your hardware.
+
+The default vector database, [LanceDB](https://lancedb.github.io/lancedb/), compiles against a baseline of Intel Haswell (2013) and newer. On a CPU without AVX2, the server process is killed the moment LanceDB loads and the container exits with:
+
+```text
+/usr/local/bin/docker-entrypoint.sh: line 7: 115 Illegal instruction (core dumped) node /app/server/index.js
+```
+
+### Checking for AVX2
+
+AVX2 is an x86 instruction set, so this only applies to Intel and AMD processors. ARM machines - Apple Silicon Macs, Raspberry Pis, AWS Graviton - run a separate ARM64 build and are unaffected.
+
+To check on a Linux host or guest:
+
+```shell copy
+lscpu | grep -o avx2
+```
+
+If that prints nothing, the CPU AnythingLLM can see does not expose AVX2.
+
+<Callout type="warning" emoji="️⚠️">
+  **Running in a VM?** Check inside the guest, not on the host. Hypervisors
+  frequently present a generic virtual CPU that masks AVX2 even when the
+  physical processor supports it - see below.
+</Callout>
+
+### Virtual machines and AVX2
+
+Proxmox, QEMU/KVM, and most other hypervisors default to a generic emulated CPU model such as `kvm64` or `x86-64-v2`. These models deliberately hide newer instruction sets so guests can be live-migrated between mismatched hosts, and AVX2 is one of the things they hide. The guest then reports no AVX2 support even on a modern host processor.
+
+If your physical CPU supports AVX2, set the guest CPU type to **`host`** to pass the real instruction set through. In Proxmox this is under **Hardware → Processor → Type**. Restart the VM and re-run the check above.
+
+Cloud providers vary too. Some instance families expose AVX2 and others do not, so check inside the instance before assuming.
+
+### If your CPU cannot support AVX2
+
+AVX2 cannot be emulated, so the only option is to move off the default vector database. Set `VECTOR_DB` in your `.env` to a provider that is not LanceDB - see [Vector Databases](/setup/vector-database-configuration/overview) for the supported options. LanceDB is only loaded when it is the selected provider, so choosing another one keeps it out of the process entirely.
+
+Every other supported provider runs as a separate service, so you will need to host one yourself or use a cloud offering.
 
 ## LLM selection impact
 
