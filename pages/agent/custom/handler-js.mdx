@@ -63,9 +63,11 @@ To reduce unnecessary repeated calls:
 - Make operations with external side effects idempotent when possible because
   the model may decide to retry a call.
 
-AnythingLLM limits how many tools an agent can chain in one response, but that
-limit is a safety guard. A skill should still return enough information for the
-model to determine that the requested work is complete.
+AnythingLLM limits how many tools an agent can chain in one response. You can
+change this limit from the **Agent Skills** settings panel by increasing
+**Max Tool Calls** to any number. This limit is a safety guard rather than a
+skill-completion signal, so a skill should still return enough information for
+the model to determine that the requested work is complete.
 
 ## Available runtime properties and methods
 
