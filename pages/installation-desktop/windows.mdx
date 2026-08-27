@@ -191,3 +191,51 @@ Your explorer should now look like this:
 5. Restart the AnythingLLM desktop app.
 - Delete all the 7z files from the `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama` folder as they are no longer needed.
 - You should now be able to use your GPU for local LLM inferencing.
+
+## Silent / headless installation
+
+<Callout type="info" emoji="️💡">
+  Available in AnythingLLM Desktop **v1.16.1** and later.
+</Callout>
+
+The Windows installer and uninstaller both support silent (unattended) mode, which is useful for scripted deployments, MDM/Intune packages, or fleet rollouts where no user is present to click through prompts.
+
+Silent mode always installs for the **current user** into `%LOCALAPPDATA%\Programs\AnythingLLM` — this is the only supported install location.
+
+### Installation flags
+
+| Command | Behavior |
+|---------|----------|
+| `AnythingLLMDesktop.exe /S` | Silent install. Skips the ~2GB Meeting Assistant model download. |
+| `AnythingLLMDesktop.exe /S /DOWNLOAD_MODEL=yes` | Silent install **and** downloads the Meeting Assistant transcription model. |
+
+```powershell
+# Silent install, no Meeting Assistant model
+.\AnythingLLMDesktop.exe /S
+
+# Silent install, including the Meeting Assistant model (~2GB)
+.\AnythingLLMDesktop.exe /S /DOWNLOAD_MODEL=yes
+```
+
+Even in silent mode, the installer still downloads its required runtime dependencies (Ollama GPU libraries, FFmpeg, and the Meeting Assistant speaker/segmentation models) from our CDN, so the machine needs outbound network access during installation. Failures are written to log files in the install directory rather than shown as dialogs — see `ollama_install.log`, `ffmpeg_install.log`, `meeting_assistant_install.log`, and `meeting_assistant_model_install.log`.
+
+### Uninstallation flags
+
+| Command | Behavior |
+|---------|----------|
+| `Uninstall AnythingLLM.exe /S` | Silent uninstall. **Keeps** all user data. |
+| `Uninstall AnythingLLM.exe /S /DELETE_DATA=yes` | Silent uninstall **and** permanently removes all models, documents, and data. |
+
+```powershell
+# Silent uninstall, preserving user data
+& "$env:LOCALAPPDATA\Programs\AnythingLLM\Uninstall AnythingLLM.exe" /S
+
+# Silent uninstall, wiping all models, documents, and data
+& "$env:LOCALAPPDATA\Programs\AnythingLLM\Uninstall AnythingLLM.exe" /S /DELETE_DATA=yes
+```
+
+<Callout type="warning" emoji="️⚠️">
+  `/DELETE_DATA=yes` deletes the entire `%APPDATA%\anythingllm-desktop` folder, including all workspaces, documents, vector databases, chat history, and downloaded models. **This cannot be undone.**
+</Callout>
+
+Without `/DELETE_DATA=yes`, your data is left in place, so reinstalling AnythingLLM later will pick up right where you left off.

@@ -1,0 +1,123 @@
+---
+title: "v1.16.1"
+description: "AnythingLLM Desktop v.1.16.1 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+
+## Notable Changes
+
+### Activity and Chain of Thought Overhaul
+
+<Image
+  src="/images/product/changelog/1.16.1/cot-overhaul.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Chain of Thought Overhaul"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+We overhauled our UI for long-horizon agentic tasks that show multiple thinking and tool calls to now roll up into a single clean, collapsible UI element.
+
+This gives you more screen real estate for the actual response while still keeping the important call stack and thoughts the model produces in an easy-to-read format.
+
+
+### Navigation Warning
+
+<Image
+  src="/images/product/changelog/1.16.1/navigation.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM Navigation Warning"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+Recently, we added true abort signals across every supported LLM so that when you cancel inference or leave the page, we stop inference to save you on compute costs.
+
+However, this had the unintended side effect of canceling inference when navigating away from a chat, preventing background completion. Now we warn you before aborting the response.
+
+**Roadmap item:** We intend to make this user configurable so you can customize this behavior and allow background inference for those with more powerful or high-concurrency setups where multiple parallel inference sessions are feasible.
+
+### Foundry Local Embedded
+
+<Image
+  src="/images/product/changelog/1.16.1/foundrylocal.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM FoundryLocal Integration"
+  style={{ borderRadius: "10px"}}
+/>
+
+[FoundryLocal](https://github.com/microsoft/foundry-local) is an inference engine built by Microsoft that is pre-installed and available on Windows 11 (version 24H2, build 26100 or later).
+
+This uses WinML to load models for your CPU, GPU, or NPU across any Windows hardware configuration. It's a great option for hardware configurations we don't have explicit support for. Keep in mind that model availability may be limited as FoundryLocal is still rolling out. Vision models are **not** available currently.
+
+### GenieX for Snapdragon
+
+<Image
+  src="/images/product/changelog/1.16.1/geniex.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="AnythingLLM GenieX Integration"
+  style={{ borderRadius: "10px"}}
+/>
+
+<Callout type="info" emoji="️💡">
+  **Note:** This replaces our previous Snapdragon NPU engine. Any previous models from the old engine are deleted on update, and you'll need to re-download these optimized models. You should see a significant performance increase for NPU models and regular GGUFs.
+
+  We highly recommend using only GGUF models for this engine. Qualcomm NPU-only models have 4K context windows and will result in a poor agent experience.
+</Callout>
+
+[GenieX](https://github.com/qualcomm/GenieX) is an open-source inference engine built by Qualcomm (previously [NexaAI](https://aihub.qualcomm.com/genai)) that efficiently runs GGUFs and Qualcomm AI Hub models on NPU for X and X2 Elite devices.
+
+AnythingLLM offers fully managed support by selecting the "AnythingLLM GenieX" provider in the dropdown. Both GGUFs and NPU-only models can leverage the NPU, giving you the power efficiency and intelligence of both.
+
+## New Features
+
+- [x] Native Foundry Local SDK on Windows (x64/ARM64) - the Foundry provider is now fully self-contained and no longer requires a separate Foundry Local install, with GPU/NPU-optimized model variants exposed in the catalog
+- [x] GenieX runtime support for Windows ARM64 devices
+- [x] AWS Bedrock cross-region inference profile support - geo-prefixed profile IDs (`us.`, `eu.`, `global.`) now appear in the model dropdown and route correctly, plus manual region entry for regions outside the preset list (GovCloud, specialized partitions)
+- [x] LocalAI added as an image generation provider, listing only image-capable models from your server
+- [x] LocalAI context window auto-detection - context windows are read per-model from your server's config, with the manual setting now an optional override
+- [x] Silent/headless install and uninstall flags for the Windows installer - see the [Windows installation docs](/installation-desktop/windows#silent--headless-installation)
+
+## Improvements
+
+- [x] Chain of thought and agent activity are now a single collapsible component - one line when collapsed, one step per thought with a connected rail when expanded, and the live thought shown in the header while streaming
+- [x] The new chain of thought rollup is now mirrored in the Assistant Panel
+- [x] Leaving a thread or navigating away mid-inference now warns you before the response is lost, instead of silently killing the generation
+- [x] Foundry Local no longer prompts for setup when using the built-in runtime, and auto-loads models by capability detection
+- [x] Onboarding light mode styling and a redesigned LLM selection UI
+- [x] Beacon now renders thinking blocks and markdown formatting correctly while streaming, with collapsible thinking and a fix for model detail text overflow
+- [x] Windows installer now includes a sidebar panel image
+- [x] Prompt input drafts now persist between navigation
+
+## Bug Fixes
+
+- [x] Fixed a Gemini crash caused by a content-header length mismatch on unpinned `undici` versions - now compatible with both v6 and v7
+- [x] Fixed a crash when aborting an Anthropic (or Bedrock Anthropic) response mid-stream in `chat` mode and then sending a follow-up
+- [x] Fixed a memory leak from leaked abort-stream listeners, which also caused pausing a response to wipe the entire chat
+- [x] Fixed a crash when creating a new workspace
+- [x] Fixed missing setup CTAs on modals introduced by the new uniform modal component - Scheduled Job skill setup on both the category and tool views, Community Hub connection key, and the experimental features reject button
+- [x] Fixed the intermediate loader being too tall while waiting for an agent capability response
+- [x] Fixed the stray border around the delete button in Workspace Chats
+- [x] Fixed reasoning getting stuck on "thinking" when a model never closes its think tag
+- [x] Fixed agent websocket sends firing while the connection was still opening
+
+## Pinned Download Links
+
+**Revision 1.16.1:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.1/AnythingLLMDesktop-Arm64.AppImage) |
