@@ -35,6 +35,40 @@ description: "An example of what the handler.js file should look like."
   </li>
 </ul>
 
+## How AnythingLLM determines when a skill is complete
+
+A custom agent skill does not set a completion flag. After the `handler`
+function resolves, AnythingLLM adds its returned string to the agent
+conversation. The agent model then decides whether to call another tool or use
+the result to answer the user.
+
+A skill invocation and the overall user task finish at different points:
+
+- The skill invocation finishes when its `handler` resolves and returns a string.
+- The overall task finishes when the agent model determines that the returned
+  result satisfies the user's request.
+
+To reduce unnecessary repeated calls:
+
+- Return a concise, self-contained result that clearly states what happened.
+- State whether the operation succeeded or failed and include any relevant
+  output, identifiers, or next steps.
+- Use a specific skill `description` and precise parameter descriptions so the
+  model understands when and how to call it.
+- Add one to three representative `examples` in `plugin.json`.
+- Return errors as strings from the `catch` block instead of returning an empty
+  value or allowing the handler to fail silently.
+- Do not rely on `this.introspect` or `this.logger` to communicate completion;
+  always return the final outcome from the `handler`.
+- Make operations with external side effects idempotent when possible because
+  the model may decide to retry a call.
+
+AnythingLLM limits how many tools an agent can chain in one response. You can
+change this limit from the **Agent Skills** settings panel by increasing
+**Max Tool Calls** to any number. This limit is a safety guard rather than a
+skill-completion signal, so a skill should still return enough information for
+the model to determine that the requested work is complete.
+
 ## Available runtime properties and methods
 
 ### `this.runtimeArgs`

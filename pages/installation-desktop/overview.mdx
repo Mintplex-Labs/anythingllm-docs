@@ -64,9 +64,24 @@ The below table is a non-exhaustive list of features supported between platforms
 | User management                |          ❌          |         ✅          |
 | Workspace access management    |          ❌          |         ✅          |
 | Website scraping               |          ✅          |         ✅          |
+| Browser-accessible UI          |          ❌          |         ✅          |
 
 <Callout type="info" emoji="️💡">
   **Tip:** AnythingLLM Desktop is the easiest way to use AnythingLLM.
+</Callout>
+
+## Enable network discovery on Desktop
+
+Desktop has a setting under **Settings > Admin > General** called **Enable network discovery**. It exposes the API, not the interface.
+
+When off (the default) the desktop backend listens on `127.0.0.1`, so nothing outside your machine can reach it. When on it listens on `0.0.0.0`, so other devices on your LAN can call its API endpoints. The app must be fully restarted for a change to take effect.
+
+It does not serve the AnythingLLM interface. Unlike Docker, the desktop backend has no web UI attached to it, so a browser pointed at it gets a `404`. Enable this to connect [AnythingLLM Mobile](/mobile/overview) or to drive the app from a script or the [developer API](/features/api) - it is not a way to share one desktop install with several people.
+
+<Callout type="warning" emoji="️⚠️">
+  Do not expose the desktop app to the public internet. It has no user accounts
+  or authentication in front of it. If you need something multiple people can
+  reach, use the [Docker version](/installation-docker/overview).
 </Callout>
 
 <br />

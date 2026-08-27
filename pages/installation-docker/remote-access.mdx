@@ -1,0 +1,75 @@
+---
+title: "Accessing AnythingLLM from other devices"
+description: "How to reach an AnythingLLM Docker instance from your phone or another computer, and what to do instead of tunneling your desktop to the internet."
+---
+
+import { Callout } from "nextra/components";
+
+# Accessing AnythingLLM from other devices
+
+A common question is how to open AnythingLLM on a phone or a second computer when it is running in Docker on a machine at home.
+
+The answer depends on where the other device is. If it is on the same network, this already works and only needs the right address. If it is not, you should host AnythingLLM somewhere built for it rather than exposing the machine on your desk.
+
+<Callout type="error" emoji="️‼️">
+  **Do not tunnel your personal machine to the public internet.**
+
+    Services like ngrok or Cloudflare Tunnel will make your instance reachable from anywhere, but you are opening a door into the computer AnythingLLM is running on. That machine also holds your documents, your API keys, and whatever else is on it.
+
+    It is also unreliable - the moment the machine sleeps or loses power, the instance is gone.
+
+    If you need access from outside your network, [host it properly](#reaching-it-from-outside-your-network) instead.
+
+</Callout>
+
+## Secure the instance first
+
+Before anything else can reach AnythingLLM, turn on authentication. By default a local instance has none, so anything that can reach it can use it and change its settings.
+
+Enable **Password Protect Instance** for a personal instance, or **Multi-User Mode** if other people will have their own logins. See [Security and Access](/features/security-and-access) for both.
+
+## On the same network
+
+This already works. The standard install command publishes port `3001` on the host, and Docker binds that to every interface - so the container is reachable at your host machine's local IP address from any device on the same network.
+
+Find the host machine's local IP:
+
+```shell copy
+# macOS
+ipconfig getifaddr en0
+
+# Linux
+hostname -I | awk '{print $1}'
+```
+
+On Windows, run `ipconfig` and use the **IPv4 Address** of your active adapter.
+
+Then open `http://<that-ip>:3001` on the other device. For example `http://192.168.1.42:3001`.
+
+<Callout type="info" emoji="️💡">
+  If it does not load, the host machine's firewall is usually the reason. Allow
+  incoming connections on port `3001`, or allow Docker through the firewall.
+
+  Note that this address is only valid on your local network, and it can change
+  when the machine reconnects unless you reserve it in your router.
+
+</Callout>
+
+## Reaching it from outside your network
+
+Run AnythingLLM somewhere that is meant to stay online. Any of these give you a stable address without exposing your own machine:
+
+- **[AnythingLLM Cloud](https://anythingllm.com/pricing)** - a hosted instance, nothing to maintain.
+- **Railway or Render** - one-click deployment templates, described on the [Cloud Docker](/installation-docker/cloud-docker) page.
+- **Your own cloud VM** - the same [Cloud Docker](/installation-docker/cloud-docker) instructions apply to any provider.
+
+If you are already running AnythingLLM on a machine at home and want to reach it while away, a private network such as [Tailscale](https://tailscale.com/) is a safer middle ground than a public tunnel. It connects your own devices to each other without publishing anything to the internet, and the address behaves like the local one above.
+
+<Callout type="warning" emoji="️⚠️">
+  Whatever you choose, the machine has to stay awake and online for the instance
+  to be reachable. A laptop that sleeps will take AnythingLLM down with it.
+</Callout>
+
+## Using the mobile app
+
+[AnythingLLM Mobile](/mobile/overview) can connect to a self-hosted instance and sync your workspaces and threads with it. The same rules apply - it needs a reachable address, so use the local IP on your own network or a hosted instance from anywhere else.
