@@ -1,0 +1,61 @@
+---
+title: "Google Vertex AI LLM"
+description: "Use Gemini and Model Garden models through your Google Cloud project with Vertex AI for RAG + Agents."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+# Google Vertex AI LLM
+
+[Google Vertex AI](https://cloud.google.com/vertex-ai) lets you run Gemini (and other Model Garden) models through your own Google Cloud project. Usage is billed to your GCP project and is covered by [Google Cloud's data governance terms](https://cloud.google.com/vertex-ai/generative-ai/docs/data-governance) - your prompts and responses are not used to train models.
+
+<Callout type="info" emoji="️💡">
+  **Vertex AI vs Google Gemini?**
+
+    Both providers serve the same Gemini models. Use **Vertex AI** if your organization runs on Google Cloud and you want billing, quotas, and access control managed through your GCP project. If you just want a simple API key with a free tier, use the [Google Gemini](/setup/llm-configuration/cloud/google-gemini) provider instead.
+
+</Callout>
+
+## Connecting to Google Vertex AI
+
+<Callout type="info" emoji="️💡">
+  **Valid Google Cloud project required!**
+
+    You must have a [Google Cloud](https://console.cloud.google.com) project **with billing enabled** to use Vertex AI - there is no free tier for this service.
+
+</Callout>
+
+### Obtain an API key for Vertex AI
+
+AnythingLLM connects to Vertex AI with a project-bound [Vertex AI API key](https://cloud.google.com/vertex-ai/generative-ai/docs/start/api-keys).
+
+1. Create or select a project in the [Google Cloud console](https://console.cloud.google.com) and make sure [billing is enabled](https://cloud.google.com/billing/docs/how-to/modify-project) for it.
+2. Enable the [Vertex AI API](https://console.cloud.google.com/apis/library/aiplatform.googleapis.com) for the project.
+3. Go to [APIs & Services → Credentials](https://console.cloud.google.com/apis/credentials) and click **Create credentials → API key**.
+4. _(Recommended)_ [Restrict the key](https://cloud.google.com/docs/authentication/api-keys#api_key_restrictions) to the **Vertex AI API** so it cannot be used for anything else.
+
+Paste this key into the **Vertex AI API Key** field in AnythingLLM.
+
+<Callout type="warning" emoji="️⚠️">
+  **API key creation blocked?**
+
+    Some Google Cloud organizations disable API key creation by policy. If the **API key** option is missing or errors, ask your organization admin to allow it via the [organization policy for API keys](https://cloud.google.com/docs/authentication/api-keys#organization-policies), or create the key from a project outside the restricted organization.
+
+</Callout>
+
+### GCP Project ID
+
+The **Project ID** of the Google Cloud project your API key belongs to. You can find it on the [console dashboard](https://console.cloud.google.com) or in the project picker - note that the project _ID_ is not always the same as the project _name_.
+
+### Region
+
+The [Google Cloud region](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations) your requests are processed in. The default `global` endpoint is recommended - it offers the best availability and supports all Gemini models. Pick a specific region only if your organization requires data processing to stay in a particular location, and confirm your model is [available in that region](https://cloud.google.com/vertex-ai/generative-ai/docs/learn/locations#model-availability).
+
+### Chat Model Selection
+
+The model dropdown is pre-populated with the Gemini models available on Vertex AI. If the model you want is not listed - for example a [Model Garden](https://cloud.google.com/model-garden) partner model - choose the manual entry option and type the full model ID (eg: `google/gemini-2.5-pro` or a publisher-prefixed ID like `meta/llama-4-maverick-17b-128e-instruct-maas`).
+
+### Model context window
+
+Only needed for manually entered models. This is the maximum number of tokens for a single request - consult the model's documentation for its limit. Models selected from the dropdown have their context window detected automatically.
