@@ -1,0 +1,84 @@
+---
+title: "Synthorai"
+---
+
+import Image from "next/image";
+
+[Synthorai](https://synthorai.io) is an LLM gateway that exposes an OpenAI-compatible API, so AnythingLLM can use it through the built-in **Generic OpenAI** provider without any extra setup.
+
+- **One endpoint, several upstreams**: Claude, Gemini, GPT, GLM, Kimi, DeepSeek and Qwen models behind a single base URL and key
+- **Per-key model permissions**: each key is scoped to the models it may call
+- **Per-key spend limits and usage reporting**
+
+## Prerequisites
+
+Before connecting AnythingLLM to Synthorai, make sure you have:
+
+1. **A Synthorai API key**: create one from the [Synthorai console](https://synthorai.io/docs/quickstart/)
+2. **AnythingLLM installed**: either the [Desktop application](https://anythingllm.com/download) or a [Docker deployment](https://github.com/Mintplex-Labs/anything-llm)
+
+## Integration steps
+
+### Step 1: Open the LLM preference screen
+
+1. Launch AnythingLLM (Desktop or Docker).
+
+2. Go to **Settings** and open **LLM Preference**:
+
+  <Image
+    src="/images/setup/llm-providers/synthorai/llm-preference.png"
+    alt="AnythingLLM settings page showing the LLM provider selection interface"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+### Step 2: Select the Generic OpenAI provider
+
+In the LLM provider search box, type `Generic OpenAI` and select it.
+
+  <Image
+    src="/images/setup/llm-providers/synthorai/search-generic.png"
+    alt="Searching for and selecting the Generic OpenAI provider in AnythingLLM"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+### Step 3: Fill in the connection
+
+  <Image
+    src="/images/setup/llm-providers/synthorai/connection-filled.png"
+    alt="The Generic OpenAI connection form filled in with Synthorai settings"
+    width={1000}
+    height={1000}
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+
+| Field | Value |
+|---|---|
+| **Base URL** | `https://synthorai.io/v1` |
+| **API Key** | Your Synthorai API key |
+| **Selected Model** | Pick from the dropdown; it fills once the URL and key are in |
+| **Model context window** | The model's input limit, for example `1000000` for `claude-opus-5` |
+| **Max Tokens** | The reply length you want, up to the model's output limit |
+
+Model IDs and their limits are listed in the [model catalog](https://synthorai.io/models/). The context window and output limit differ per model, so read them there rather than reusing another model's numbers:
+
+| Model ID | Context window | Max output |
+|---|---|---|
+| `claude-opus-5` | 1,000,000 | 128,000 |
+| `claude-sonnet-5` | 1,000,000 | 128,000 |
+| `deepseek-v4-pro` | 1,000,000 | 393,216 |
+| `glm-5.2` | 1,048,576 | 131,072 |
+| `kimi-k3` | 1,000,000 | 131,072 |
+
+Once the base URL and API key are in, **Selected Model** populates on its own: AnythingLLM calls `/v1/models` and lists what the key can reach, so pick from the dropdown rather than typing an ID.
+
+Save the connection.
+
+## Troubleshooting
+
+**A model you expect is missing.** `/v1/models` returns the models the key is permitted to use, not the whole catalog. Check that key's model permissions in the Synthorai console rather than typing the ID in by hand: a model added manually but not permitted appears in the selector and then fails when you send a message.
+
+**Verification fails when you save the connection.** AnythingLLM checks a connection by calling `/models` with a bearer token, which Synthorai supports, so a failure here usually means the key is wrong or the base URL is missing the `/v1` suffix.
