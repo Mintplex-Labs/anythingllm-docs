@@ -1,0 +1,87 @@
+---
+title: "Text to Speech (TTS)"
+description: "AnythingLLM supports multiple text to speech providers so chat responses can be read out loud."
+---
+
+# Text to Speech (TTS)
+
+AnythingLLM supports multiple text to speech providers so chat responses can be read out loud. Once a provider is configured, click the speaker icon under any chat response to hear it spoken.
+
+## Selecting a TTS Provider
+
+Open **Settings** and select **Voice & Speech**. Under **Text-to-speech Preference**, choose a provider from the **Provider** menu, fill in its settings, and click **Save changes**.
+
+The default provider is **System native**, which works with no configuration at all.
+
+## Supported TTS Providers
+
+### Local TTS Providers
+
+These run on your device and require no API key.
+
+#### System native
+
+Uses your browser's built in speech synthesis, if supported. Nothing is sent to any external service. Voice quality depends on your browser and operating system.
+
+#### PiperTTS
+
+Runs open source Piper voice models locally in your browser. The voice model is downloaded once, and all audio is generated privately on your device.
+
+### Self Hosted TTS Providers
+
+#### Kokoro
+
+Connects to a self hosted kokoro-fastapi server for high quality open source voices. Set the server URL (for example `http://localhost:8880/v1`), an optional API key if your server requires one, and a voice such as `af_bella`.
+
+### Cloud TTS Providers
+
+#### OpenAI
+
+Uses [OpenAI's](https://platform.openai.com/) hosted text to speech voices. Requires an OpenAI API key and a voice selection such as `nova`.
+
+#### ElevenLabs
+
+Uses [ElevenLabs](https://elevenlabs.io/) voices and technology. Requires an ElevenLabs API key, and you can choose from the voices available to your ElevenLabs account.
+
+### Any OpenAI Compatible TTS Service
+
+The **OpenAI Compatible** provider connects AnythingLLM to any service that implements the OpenAI speech API (`POST /v1/audio/speech`), whether it runs on your own network or is a hosted API. It takes four settings:
+
+- **Base URL**: the root of the service, including the version path, for example `https://api.openai.com/v1`
+- **API Key**: optional, only needed if the service requires one
+- **TTS Model**: the `model` parameter sent with each request
+- **Voice Model**: the voice identifier sent with each request
+
+## Environment Variables
+
+If you deploy AnythingLLM with Docker or bare metal and prefer to configure TTS through environment variables, these are the supported keys (from `docker/.env.example`):
+
+```shell
+# System native (default)
+TTS_PROVIDER="native"
+
+# OpenAI
+TTS_PROVIDER="openai"
+TTS_OPEN_AI_KEY=sk-example
+TTS_OPEN_AI_VOICE_MODEL=nova
+
+# ElevenLabs
+TTS_PROVIDER="elevenlabs"
+TTS_ELEVEN_LABS_KEY=
+TTS_ELEVEN_LABS_VOICE_MODEL=21m00Tcm4TlvDq8ikWAM
+
+# Kokoro
+TTS_PROVIDER="kokoro"
+TTS_KOKORO_ENDPOINT="http://host.docker.internal:8880/v1"
+TTS_KOKORO_KEY=
+TTS_KOKORO_VOICE_MODEL=af_bella
+
+# Any OpenAI compatible service
+TTS_PROVIDER="generic-openai"
+TTS_OPEN_AI_COMPATIBLE_ENDPOINT="https://api.openai.com/v1"
+TTS_OPEN_AI_COMPATIBLE_KEY=sk-example
+TTS_OPEN_AI_COMPATIBLE_MODEL=tts-1
+TTS_OPEN_AI_COMPATIBLE_VOICE_MODEL=nova
+```
+
+Set only one `TTS_PROVIDER` value. **System native** and **PiperTTS** run in the browser, so PiperTTS is configured from the UI rather than through server variables.

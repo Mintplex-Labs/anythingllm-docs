@@ -116,8 +116,17 @@
       "toc": true
     }
   },
+  "text-to-speech": {
+    "title": "Text to Speech (TTS)",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "transcription-models": {
-    "title": "Transcription Models",
+    "title": "Speech to Text (STT)",
     "theme": {
       "breadcrumb": true,
       "footer": true,
