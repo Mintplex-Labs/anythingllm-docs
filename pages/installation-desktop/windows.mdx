@@ -130,7 +130,7 @@ Depending on your network connection, firewall, device settings, or other factor
 is globally accessible, so it is extremely unlikely that the issue is with our CDN.
 
 Before attempting to fix the issue, be sure to check your network connection, firewall, device settings, or other factors that may be blocking the download or extraction of the files. You can relaunch the installer and try again.
-If the error contines, open the `ollama_install.log` file in the `%APPDATA%\Local\Programs\AnythingLLM` folder and check for any errors but also the version of `Ollama` that is being installed.
+If the error contines, open the `ollama_install.log` file in the `%LOCALAPPDATA%\Programs\AnythingLLM` folder and check for any errors but also the version of `Ollama` that is being installed.
 
 From the `ollama_install.log` file, you will see the version of `Ollama` that is being installed. Keep this version number handy for the next steps.
 
@@ -157,19 +157,19 @@ _if you have an AMD GPU, you can download the ROCm support from the following li
 - **Ollama ROCm:** `https://cdn.anythingllm.com/support/ollama/<version>/rocm_vulkan.7z`
 
 2. **Extract the `bins.7z` folder**
-- Open the storage location for AnythingLLM, typically `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama`
+- Open the storage location for AnythingLLM, typically `%APPDATA%\anythingllm-desktop\storage\engines\ollama`
 - In this folder you should see `llm.exe`
-- Create and open the following folder: `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama\lib\ollama`
+- Create and open the following folder: `%APPDATA%\anythingllm-desktop\storage\engines\ollama\lib\ollama`
 - Unzip the `bins.7z` file into this folder.
 - You should now see several DLL files directly in this folder.
 
 3. Extract relevant GPU support files
-- If you have an NVIDIA GPU, you can extract the `cudav13` or `cudav12` folder into the `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama\lib\ollama` folder.
-- If you have an AMD GPU, you can extract the `rocm_vulkan.7z` file into the `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama\lib\ollama` folder.
+- If you have an NVIDIA GPU, you can extract the `cudav13` or `cudav12` folder into the `%APPDATA%\anythingllm-desktop\storage\engines\ollama\lib\ollama` folder.
+- If you have an AMD GPU, you can extract the `rocm_vulkan.7z` file into the `%APPDATA%\anythingllm-desktop\storage\engines\ollama\lib\ollama` folder.
 
 Your explorer should now look like this:
 ```
-%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama
+%APPDATA%\anythingllm-desktop\storage\engines\ollama
 ├── lib
 │   └── ollama
 │       ├── ggml-base.dll
@@ -185,11 +185,11 @@ Your explorer should now look like this:
 └── llm.exe
 ```
 
-4. Create a new dot-file in the `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama` folder called `.ollama-version` (no extension!) and add the following content:
+4. Create a new dot-file in the `%APPDATA%\anythingllm-desktop\storage\engines\ollama` folder called `.ollama-version` (no extension!) and add the following content:
 - `<version>` eg: (0.13.0, 0.12.0, etc.)
 
 5. Restart the AnythingLLM desktop app.
-- Delete all the 7z files from the `%APPDATA%\Roaming\anythingllm-desktop\storage\engines\ollama` folder as they are no longer needed.
+- Delete all the 7z files from the `%APPDATA%\anythingllm-desktop\storage\engines\ollama` folder as they are no longer needed.
 - You should now be able to use your GPU for local LLM inferencing.
 
 ## Silent / headless installation
