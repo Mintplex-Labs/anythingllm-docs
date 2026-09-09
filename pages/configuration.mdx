@@ -370,6 +370,24 @@ AGENT_AUTO_APPROVED_SKILLS="create-pdf-file,create-docx-file" # Automatically ap
 
 Fully remove or comment out the `AGENT_AUTO_APPROVED_SKILLS` environment variable to return to the default behavior.
 
+## Tool Call Approval Timeout
+
+Modification of the `TOOL_CALL_APPROVAL_TIMEOUT_MS` environment variable allows you to override how long AnythingLLM waits for a user to approve or deny an agent tool-call before the request times out.
+
+By default, the timeout is **120 000 ms (2 minutes)**. If a user does not respond within this window, the tool call is automatically rejected.
+
+### Enable
+
+Set the `TOOL_CALL_APPROVAL_TIMEOUT_MS` environment variable to a timeout value in **milliseconds**. The value must be a number greater than `0`.
+
+```bash
+TOOL_CALL_APPROVAL_TIMEOUT_MS="300000" # 5 minutes
+```
+
+### Disable
+
+Fully remove or comment out the `TOOL_CALL_APPROVAL_TIMEOUT_MS` environment variable to return to the default behavior (2 minutes).
+
 ## LLM Provider Timeout
 
 <Callout type="info" emoji="️💡">
