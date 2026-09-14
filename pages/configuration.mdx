@@ -127,7 +127,7 @@ Now, the user can visit the provided `loginPath` URL in their browser to be auto
 https://your-anythingllm-instance.com/sso/simple?token=1234567890
 ```
 
-All temporary authentication tokens expire after 1 hour and are single-use only. Once logged in, the user sessions will be valid for 30 days.
+All temporary authentication tokens expire after 10 minutes and are single-use only. Once logged in, the user sessions will be valid for 30 days.
 The user will be redirected to the home page of AnythingLLM after logging in.
 You can optionally redirect the user to a different URL after successfully logging in by appending `&redirectTo={path/to/redirect}` to the query string of the login path.
 
