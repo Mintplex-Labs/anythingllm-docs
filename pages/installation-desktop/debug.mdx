@@ -18,6 +18,27 @@ import Image from "next/image";
 
 If you are having issues with AnythingLLM, the first thing you should do is check the logs. You can find the logs in the `logs` folder of your AnythingLLM storage - which you can find [on your computer using this guide.](./storage.mdx#where-is-my-data-located)
 
+### App info modal
+
+Click the version number in the top right corner of the app to open the app info modal.
+
+<Image
+  src="/images/guides/app-info-modal.png"
+  height={1000}
+  width={1841}
+  quality={100}
+  alt="AnythingLLM app info modal"
+/>
+
+It shows:
+
+- The installed version and the latest available version. If an update is available, a banner links to the download page.
+- The local ports the API server and document collector are running on.
+- **Open logs** - opens the `logs` folder in your file explorer.
+- **Open storage** - opens the AnythingLLM storage folder in your file explorer.
+
+This is the fastest way to find your logs and storage folder when reporting an issue.
+
 ## Why is the Desktop application unresponsive while AnythingLLM Docker is running?
 
 <Callout type="warning" emoji="⚠️">
