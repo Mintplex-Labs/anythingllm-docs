@@ -1,0 +1,83 @@
+---
+title: "v1.16.2"
+description: "AnythingLLM Desktop v.1.16.2 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+## New Features
+
+- [x] Google Vertex AI is now available as an LLM provider
+- [x] LLMman is now available as a local LLM provider, replacing Docker Model Runner
+- [x] KoboldCPP provider overhauled and modernized to match the rest of our providers
+- [x] New `generate-image` agent skill for creating images from chat
+- [x] Keenable added as a web search provider
+- [x] OpenRouter service tier selection for controlling routing cost and priority
+- [x] LocalAI image editing via reference images
+- [x] Agent flow variables now support optional arguments
+- [x] Hindi, Bulgarian, and Swedish language support added
+- [x] Click the version tag in the sidebar to jump to your logs and storage directory
+
+## Improvements
+
+- [x] Web browsing is now enabled by default for agents
+- [x] You.com is now the default web search provider
+- [x] Local providers now report model loading status in chat so you know why the first response is slow
+- [x] Ollama runtime bumped to 0.33.3 with an updated bundled model list
+- [x] Removed the borders around the main content area for a cleaner desktop layout
+- [x] Redesigned the "new feature" modal layout
+- [x] Dates in tables are now shown in a human-readable format
+- [x] Scraped web pages now preserve tables, ordered lists, and code blocks instead of flattening them
+- [x] PDF pages are now joined with newlines so words don't fuse across page boundaries
+- [x] Mistral embeddings are now batched, making large document embedding significantly faster
+- [x] Document search now matches your terms literally instead of as a regular expression
+- [x] Watched documents now clear stale vectors on sync
+- [x] AnySearch as a web-search provider
+
+## Bug Fixes
+
+- [x] Fixed chat overflow causing the compression to reverse message order
+- [x] Fixed chatting with transcripts on Desktop
+- [x] Fixed workspace prompt and temperature being wiped when no override was sent
+- [x] Fixed threads not being migrated during multi-user migration
+- [x] Fixed orphaned threads created when a query-mode refusal occurred
+- [x] Fixed `lastUpdatedAt` not updating when editing a chat message
+- [x] Fixed near-matching slash commands like `/reset-all` being swallowed by `/reset`
+- [x] Fixed similarity scoring so orthogonal or opposite chunks score 0 instead of a perfect match
+- [x] Fixed log warning when a chunk header exceeds the configured chunk size
+- [x] Fixed CSV/spreadsheet parsing for quoted cells
+- [x] Fixed mbox files only importing the first message in a chain
+- [x] Fixed GitHub file content not being decoded as UTF-8 on watched document re-sync
+- [x] Fixed GitHub wiki and GitLab issue re-syncing on watched documents
+- [x] Fixed GitLab clone URLs, trailing slashes, and view URLs not being accepted
+- [x] Fixed self-hosted GitLab and Confluence instances on `http` failing to re-sync
+- [x] Fixed Confluence personal access tokens being dropped on re-sync
+- [x] Fixed Paperless-NGX re-sync returning empty for every existing document
+- [x] Fixed link uploads losing their metadata when the link resolved to a file
+- [x] Fixed the scraper ignoring the "capture as HTML" flag on its fetch fallback
+- [x] Fixed the self-hosted FastCRW URL producing a double slash
+- [x] Fixed a blank published date being treated as 1970 during collection
+- [x] Fixed chat history attachments being dropped for TogetherAI, SambaNova, Z.ai, and Cerebras
+- [x] Fixed TogetherAI model caching returning a promise instead of the context window
+- [x] Fixed missing context window limits on MoonshotAI and PPIO
+- [x] Fixed Groq's current vision model rejecting image attachments
+- [x] Fixed LocalAI not passing the API key when fetching a generated image
+- [x] Fixed Generic OpenAI providers ignoring max tokens during agent streams
+- [x] Fixed DeepSeek reasoning passthrough for the `deepseek-flash` alias
+- [x] Fixed the SQL agent skill requiring the wrong parameter name
+- [x] Fixed agent flow API Call blocks returning a parse message instead of the response body
+- [x] Fixed several Italian translation strings
+- [x] Fixed a handful of filesystem and permissions issues on Desktop
+
+## Pinned Download Links
+
+**Revision 1.16.2:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.16.2/AnythingLLMDesktop-Arm64.AppImage) |
