@@ -32,3 +32,23 @@ You can update your model to a different model at any time in the **Settings**.
   quality={100}
   alt="Ollama LLM settings"
 />
+
+## Model context window and memory usage
+
+Under **Show advanced settings** there are two options that decide how much memory Ollama uses for AnythingLLM chats.
+
+**Model context window** is sent to Ollama as `num_ctx` with every chat request, so it takes priority over the default context length set on the Ollama server (`OLLAMA_CONTEXT_LENGTH`).
+
+- If you leave it blank, AnythingLLM reads the model's maximum context length from Ollama and uses it, capped at `16384` tokens. If it can't read the model's limit, it falls back to `4096`.
+- If you enter a value larger than the model supports, AnythingLLM uses the model's maximum instead.
+- In Docker or a self-hosted server, the same setting is the `OLLAMA_MODEL_TOKEN_LIMIT` environment variable.
+
+Ollama reserves the KV cache for the whole context window when it loads the model, so a larger value costs memory even when your chats are short. For a model with full attention on every layer, the default `f16` KV cache takes `2 × layers × KV heads × head dim × 2 bytes` per token. For Llama 3.1 8B (32 layers, 8 KV heads, head dim 128) that is 128 KiB per token:
+
+| Model context window | 4096    | 16384 | 32768 | 131072 |
+| -------------------- | ------- | ----- | ----- | ------ |
+| KV cache             | 0.5 GiB | 2 GiB | 4 GiB | 16 GiB |
+
+This comes on top of the model weights (about 4.9 GB for `llama3.1:8b` at Q4_K_M). If the total doesn't fit in VRAM, Ollama runs part of the model on the CPU, which is much slower. Run `ollama ps` after sending a chat: `CONTEXT` shows the context length Ollama loaded, and `PROCESSOR` should read `100% GPU`. Models with sliding-window or compressed attention (Gemma, DeepSeek) need much less memory per token than this formula gives. For other models and quantizations, [ModelVRAM](https://modelvram.com/llm-vram-calculator/llama-3.1-8b-instruct/) shows the weights and KV cache at each context length.
+
+**Ollama Keep Alive** sets how long Ollama keeps the model in memory after a chat (`No cache`, `5 minutes`, `1 hour` or `Forever`; the default is 5 minutes). `No cache` frees the memory right away, but the next chat has to load the model again.
