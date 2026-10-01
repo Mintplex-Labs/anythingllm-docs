@@ -1,0 +1,89 @@
+---
+title: "v1.17.0"
+description: "AnythingLLM Desktop v.1.17.0 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+## New Features
+
+- [x] Reasoning effort controls - pick how hard the model thinks per chat for Anthropic, OpenAI, Gemini, DeepSeek, Ollama, and QNN Engine models
+- [x] Pull a model from Hugging Face straight into AnythingLLM with a deep link (`anythingllm://pull-hf?repo=unsloth/gemma-3-1b-it-GGUF&file=gemma-3-1b-it-Q4_K_M.gguf`)
+- [x] Set your LLM provider from a deep link
+- [x] Tinyscribe 0.1.0 with new speaker UI controls and improved performance
+- [x] Personalized greetings on the home screen and empty chats that change with the time of day
+- [x] Gemini is now available as an image generation provider
+- [x] llmman is now available as an image generation provider
+- [x] Firecrawl is now available as an agent web search provider
+
+## Improvements
+
+- [x] Onboarding updated to cover magic features, with a new privacy UI
+- [x] Workspace settings now save automatically as you edit, with no more "Update workspace" button
+- [x] Provider search menus now autofocus and support arrow keys, Enter, and Escape
+- [x] Workspace temperature now applies to agents, and is left out of the request entirely when unset so the provider uses its own default
+- [x] Temperature is no longer sent to Anthropic models (Anthropic and Bedrock), since newer Claude models reject it
+- [x] OpenAI GPT models on AWS Bedrock now work in chat and agents, with native tool calling
+- [x] Generic OpenAI max tokens can be set to `0` to leave `max_tokens` out of the request
+- [x] TogetherAI now has a configurable max tokens setting to prevent truncated responses
+- [x] SearchApi web search now returns results for all supported engines, including Google Jobs and Google Maps
+- [x] Text uploads in UTF-16 and other non-UTF-8 encodings are now read correctly, falling back to UTF-8
+- [x] Spreadsheet dates and times are now read as dates instead of serial numbers
+- [x] Generated images are now included in chat exports
+- [x] Text-to-speech now skips emoji, Markdown, and thinking blocks for cloud voices, Telegram voice replies, and the desktop assistant
+- [x] GenieX bumped to 0.7.1 with token metric reporting
+
+## Bug Fixes
+
+- [x] Fixed uploaded images being lost when switching from chat to `@agent` mid-session
+- [x] Fixed developer API document attachments being ignored in agent chats
+- [x] Fixed Anthropic replies coming back empty when the first content block was not text
+- [x] Fixed compressed RAG context being dropped when the prompt or a chunk contained "Context:"
+- [x] Fixed Weaviate and Astra DB similarity scores so unrelated chunks no longer pass the similarity threshold
+- [x] Fixed Milvus and Zilliz failing to embed into workspaces whose slug starts with a digit
+- [x] Fixed Azure embedding deployment changes not resetting vectors or showing a warning
+- [x] Fixed malformed agent WebSocket messages crashing the server
+- [x] Fixed the Ollama and llmman Keep Alive setting being ignored in agent chats
+- [x] Fixed a workspace still using its old router after switching back to the system default provider
+- [x] Fixed embeds ignoring their message history limit when the model router is on
+- [x] Fixed embeds ignoring the workspace's custom refusal message when the workspace has no documents
+- [x] Fixed embeds saving empty replies that counted toward chat limits
+- [x] Fixed multi-sheet XLSX uploads losing sheets with non-Latin or similar names
+- [x] Fixed HTML-only mbox messages with attachments being skipped
+- [x] Fixed every message in an mbox upload getting the same title
+- [x] Fixed API uploads with `addToWorkspaces` only embedding the first sheet or message of a file
+- [x] Fixed created Excel files turning IP addresses, version numbers, and decimal commas into wrong numbers
+- [x] Fixed Confluence code blocks losing their code on import
+- [x] Fixed deep website crawls resolving relative links against the start URL
+- [x] Fixed links whose URL path cannot be percent-decoded failing to save
+- [x] Fixed DuckDuckGo result links being double-decoded and titles containing HTML
+- [x] Fixed chat exports including deleted, reset, and API session chats
+- [x] Fixed JSONL and Alpaca chat exports using the default prompt and merging embed chats across workspaces
+- [x] Fixed scheduled jobs running a day early or late when local time falls on a different UTC date
+- [x] Fixed the Google Calendar agent skill ignoring multi-user mode and disabled sub-skills
+- [x] Fixed new agent flow blocks sharing an id after a block was deleted
+- [x] Fixed `filesystem-edit-file` expanding `$` patterns in new text
+- [x] Fixed Telegram bot commands running when a link contained `/new`, `/reset`, or `/model`
+- [x] Fixed Telegram link URLs breaking when they contained Markdown characters
+- [x] Fixed Telegram replies not rendering `c++`, `~~~`, and nested fenced code blocks as code
+- [x] Fixed Kokoro voices not loading when the base URL had a path or trailing slash
+- [x] Fixed Fireworks models and Kokoro voices not loading with a saved API key
+- [x] Fixed the LiteLLM API key not being saved or masked
+- [x] Fixed manually set `.env` values being dropped when settings were saved
+- [x] Fixed turning off password protection not surviving a restart
+- [x] Fixed users and admins being unable to clear a bio
+- [x] Fixed mobile sidebar drawers being clipped at the bottom
+- [x] Fixed AnythingLLM Mobile clearing the default thread when it sent a deleted thread
+
+## Pinned Download Links
+
+**Revision 1.17.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.17.0/AnythingLLMDesktop-Arm64.AppImage) |
