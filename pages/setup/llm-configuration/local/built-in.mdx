@@ -43,18 +43,11 @@ The built-in provider is powered by [Lemonade](https://lemonade-server.ai), an [
 
 - **Vulkan** - AMD, Intel, and NVIDIA GPUs
 - **CUDA** - NVIDIA GPUs (picked automatically when your driver supports it)
-- **Metal** - Apple Silicon Macs
+- **Metal** - Apple Silicon Macs (Intel-based Macs run models on the CPU)
 
 On AMD Ryzen AI machines with an XDNA2 NPU, models can also run on the NPU via FastFlowLM.
 
 The built-in provider is intended **only for downloading and running local models** on your machine. If you want to use your own, separately installed [Ollama](https://ollama.com), connect it via the [Ollama provider](/setup/llm-configuration/local/ollama) instead.
-
-<Callout type="info" emoji="️💡">
-  **Intel-based Macs**
-
-  Lemonade is not supported on Intel (x64) Macs, so Intel-based Macs continue to use the previous built-in engine powered by [Ollama](https://ollama.com).
-
-</Callout>
 
 ## Models
 
