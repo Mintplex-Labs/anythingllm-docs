@@ -1,0 +1,102 @@
+---
+title: "v1.18.0"
+description: "AnythingLLM Desktop v.1.18.0 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+## Notable Changes
+
+### New Built-in Engine: Lemond
+
+<Image
+  src="/images/product/changelog/1.18.0/engine-migration.png"
+  height={2212}
+  width={3680}
+  quality={100}
+  alt="AnythingLLM built-in engine upgrade"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+AnythingLLM Desktop has a new built-in engine for running models on your computer. We are moving off of Ollama and onto Lemond, the embedded version of [Lemonade](https://lemonade-server.ai). Lemonade is a fully [open-source](https://github.com/lemonade-sdk/lemonade) local inference server from AMD, and it runs your models with [llama.cpp](https://github.com/ggml-org/llama.cpp), the open-source inference engine behind much of the local AI ecosystem. On AMD Ryzen AI machines, Lemonade can also run models on your NPU with [FastFlowLM](https://github.com/ROCm/FastFlowLM), and on Snapdragon devices it uses [GenieX](https://github.com/qualcomm/GenieX), now on version 0.8.0. The new engine is smaller, faster, supports more hardware, and can run more models.
+
+New installs use the new engine by default. If you are an existing user on the old Ollama-based engine, you'll see an **Engine upgrade** prompt in the app. The upgrade downloads a small model recommended for your computer so you can keep chatting right away, then removes the old engine and the models you downloaded with it. Your workspaces, chats, and documents are not affected.
+
+<Callout type="info" emoji="️💡">
+  **Note:** We recommend migrating as soon as possible. You'll need to re-download any models you want to use on the new engine. You can keep using the old engine for now, but a future update will move you to the new engine automatically.
+</Callout>
+
+Want to know why we made this change? Read the full write-up on our blog: [Why AnythingLLM is moving from Ollama to Lemonade and llama.cpp](https://anythingllm.com/blog/lemonade-llama-cpp).
+
+### Reasoning Controls for Local and Cloud Models
+
+<Image
+  src="/images/product/changelog/1.18.0/reasoning-controls.png"
+  height={1186}
+  width={2164}
+  quality={100}
+  alt="AnythingLLM reasoning controls"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+You can now control reasoning for supported models directly from the chat input, for both local and cloud providers. The options you see change with your provider and model, based on what that model supports. Some models offer effort levels, while others only let you turn thinking on or off or leave it at the provider default.
+
+Not every provider publishes which of their models support reasoning or which controls they accept, so this is available only where we can detect it. If you don't see reasoning controls for a model, that provider or model doesn't expose them yet.
+
+## Improvements
+
+- [x] Embed widgets now support a domain allowlist
+- [x] Folder uploads of 100+ files now show every file during upload
+- [x] Document picker folders and files now paginate and index correctly
+- [x] Long Excel cell values are now kept in full on upload
+- [x] Word documents now keep nested list numbering
+- [x] Bulk web scraper now handles anchor links and produces cleaner file names
+- [x] Confluence import errors are now shown instead of failing silently
+- [x] Paperless now reports an error when no documents are found and follows the configured path
+- [x] Link options are now passed through when processing links
+- [x] Workspace similarity threshold now applies to RAG memory
+- [x] Synced documents now update atomically so a failed sync no longer leaves partial data
+- [x] Uploads with known-bad MIME types are now explicitly blocked
+- [x] Embedding errors are now shown when a drag-and-drop upload fails
+- [x] Telegram HTTP sockets now time out instead of hanging
+- [x] Login and recovery responses are now normalized to prevent timing-based checks
+- [x] System variable saves now report failures
+- [x] Updating the pin on a missing workspace now returns a 404
+- [x] SDK requests now retry on transient failures
+- [x] Translation fixes across multiple languages
+- [x] GenieX bumped to 0.8.0
+
+## Bug Fixes
+
+- [x] Fixed Magic Beacon copying thinking text and the send/mic button behaving oddly
+- [x] Fixed a UI crash when adding attachments
+- [x] Fixed images with the same file name being treated as the same image
+- [x] Fixed chat history attachments not being sent to providers
+- [x] Fixed chat attachments leaking between threads
+- [x] Fixed typed text being cleared when adding an attachment on the home screen or a new thread
+- [x] Fixed required parameters not being enforced
+- [x] Fixed Anthropic models failing when parallel tool calls are not supported
+- [x] Fixed Outlook auth type not being saved
+- [x] Fixed Outlook attachments on drafts
+- [x] Fixed MBOX attachments leaving orphaned files behind
+- [x] Fixed YouTube channel URLs failing to import
+- [x] Fixed an Astra DB bug
+- [x] Fixed system variable expansion escaping
+- [x] Fixed scheduled job times being off
+- [x] Fixed scheduled jobs not stopping on Windows
+- [x] Fixed scheduled jobs not stopping when synced or cancelled
+- [x] Fixed scheduled jobs not stopping when migrating to multi-user mode
+- [x] Fixed scheduled jobs leaving trailing thinking tags with Generic OpenAI providers
+
+## Pinned Download Links
+
+**Revision 1.18.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.18.0/AnythingLLMDesktop-Arm64.AppImage) |

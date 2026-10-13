@@ -65,7 +65,7 @@ After which, now the regular installer can run to install AnythingLLM Desktop!
 <Callout type="info" emoji="️💡">
   **Local LLM support**
 
-➤ AnythingLLM desktop includes a built-in local LLM powered via [Ollama](https://ollama.com/). This is a super convenient way to get started with LLMs without any additional setup.
+➤ AnythingLLM desktop includes a built-in local LLM powered by [Lemonade](https://lemonade-server.ai) and [llama.cpp](https://github.com/ggml-org/llama.cpp). This is a super convenient way to get started with LLMs without any additional setup.
 
 In order for AnythingLLM to leverage your GPU (NVIDIA or AMD) or even NPU we need to install some extra dependencies. This will be done automatically during installation.
 
@@ -115,6 +115,12 @@ If you are trying to install AnythingLLM and you are getting an error that says 
 **Performing the above steps WILL NOT remove your data or settings. You can do this safely without losing any of your data.**
 
 ### Failed to install/extract GPU support from CDN
+
+<Callout type="info" emoji="️💡">
+  **Legacy built-in Ollama engine only**
+
+  This section only applies if you are still using the previous built-in engine powered by Ollama. Newer versions of AnythingLLM Desktop use [Lemonade](https://lemonade-server.ai) as the built-in engine - see [AnythingLLM Default LLM](/setup/llm-configuration/local/built-in#upgrading-from-the-previous-built-in-engine) for how to switch.
+</Callout>
 
 <Callout type="warning" emoji="️⚠️">
   If we update to a new version of Ollama, we will update the engine version to the new version. Which again, may fail to install/extract the GPU support file leading to this error again.
@@ -217,7 +223,7 @@ Silent mode always installs for the **current user** into `%LOCALAPPDATA%\Progra
 .\AnythingLLMDesktop.exe /S /DOWNLOAD_MODEL=yes
 ```
 
-Even in silent mode, the installer still downloads its required runtime dependencies (Ollama GPU libraries, FFmpeg, and the Meeting Assistant speaker/segmentation models) from our CDN, so the machine needs outbound network access during installation. Failures are written to log files in the install directory rather than shown as dialogs — see `ollama_install.log`, `ffmpeg_install.log`, `meeting_assistant_install.log`, and `meeting_assistant_model_install.log`.
+Even in silent mode, the installer still downloads its required runtime dependencies (the built-in LLM engine and its GPU support files, FFmpeg, and the Meeting Assistant speaker/segmentation models) from our CDN, so the machine needs outbound network access during installation. Failures are written to log files in the install directory rather than shown as dialogs — see `lemond_install.log`, `llamacpp_install.log`, `flm_install.log` (only on machines with an AMD XDNA2 NPU), `ffmpeg_install.log`, `meeting_assistant_install.log`, and `meeting_assistant_model_install.log`.
 
 ### Uninstallation flags
 
