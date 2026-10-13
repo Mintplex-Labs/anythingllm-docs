@@ -25,15 +25,6 @@ import Image from "next/image";
 
 AnythingLLM ships with a built-in LLM engine and provider that enables you to download popular and highly-rated LLMs like LLama-3, Phi-3 and more that can run locally on your CPU and GPU.
 
-<Callout type="warning" emoji="⚠️">
-  **Not a full Ollama replacement**
-
-  The built-in provider uses [Ollama's](https://ollama.com) MIT-licensed open-source engine under the hood, and is intended **only for downloading and running local models** on your machine.
-
-  It is **not** a full Ollama replacement — features like Ollama Cloud models are **not supported** through the built-in provider, even if they appear to work. If you need the full Ollama feature set, install [Ollama](https://ollama.com) separately and connect it via the [Ollama provider](/setup/llm-configuration/local/ollama).
-
-</Callout>
-
 When you boot up AnythingLLM Desktop you will be able to select the model you wish to download. Its progress will be tracked in the top-right of the application window.
 
 You can update your model to a different model at any time in the **Settings**.
@@ -45,3 +36,50 @@ You can update your model to a different model at any time in the **Settings**.
   quality={100}
   alt="AnythingLLM Default LLM"
 />
+
+## How it works
+
+The built-in provider is powered by [Lemonade](https://lemonade-server.ai), an [open-source](https://github.com/lemonade-sdk/lemonade) local AI server maintained by AMD. Lemonade runs your models with [llama.cpp](https://github.com/ggml-org/llama.cpp) on your CPU or GPU:
+
+- **Vulkan** - AMD, Intel, and NVIDIA GPUs
+- **CUDA** - NVIDIA GPUs (picked automatically when your driver supports it)
+- **Metal** - Apple Silicon Macs (Intel-based Macs run models on the CPU)
+
+On AMD Ryzen AI machines with an XDNA2 NPU, models can also run on the NPU via FastFlowLM.
+
+The built-in provider is intended **only for downloading and running local models** on your machine. If you want to use your own, separately installed [Ollama](https://ollama.com), connect it via the [Ollama provider](/setup/llm-configuration/local/ollama) instead.
+
+## Models
+
+The built-in provider uses GGUF models, which are downloaded from Hugging Face.
+
+You can choose where models are downloaded from in the provider's advanced settings via the **model registry** option:
+
+- **Automatic** - Uses Hugging Face, falling back to ModelScope when Hugging Face is unreachable (eg. in mainland China)
+- **Hugging Face**
+- **ModelScope**
+
+### Importing models
+
+From the built-in provider's settings you can also import a local `.gguf` file or any GGUF repo from Hugging Face. See [Import custom models](/import-custom-models) for more details.
+
+Hugging Face deep links work too - clicking **Use this model** -> **AnythingLLM** on a Hugging Face model page will pull that model into the built-in engine.
+
+### Context window
+
+The context window defaults to **16,384 tokens**. You can change it in the provider's advanced settings, up to the maximum context window the model supports.
+
+## Upgrading from the previous built-in engine
+
+Older versions of AnythingLLM Desktop shipped with a built-in engine powered by [Ollama](https://ollama.com). New installs use Lemonade.
+
+If you were using the previous built-in Ollama engine, it will keep working for now. AnythingLLM will show an **Engine upgrade** notice in the title bar that lets you switch to the new engine whenever you are ready.
+
+<Callout type="warning" emoji="⚠️">
+  **You will need to re-download your models**
+
+  Switching to the new engine deletes the old engine and the models that were downloaded with it. After switching, you will need to download your models again.
+
+  A future update will move any remaining users to the new engine automatically.
+
+</Callout>
