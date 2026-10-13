@@ -75,6 +75,8 @@ The context window defaults to **16,384 tokens**. You can change it in the provi
 
 AnythingLLM Docker includes the same kind of built-in engine as an **opt-in** feature, available on the `latest` image and every Docker release after v1.18.0. Start the container with `-e ENABLE_BUILT_IN_LLM=true` (plus `--gpus all` for NVIDIA GPUs, or `--device /dev/dri` for AMD and Intel GPUs) and **Built-in** becomes the default LLM provider during onboarding.
 
+You can also turn it on for an existing installation by pulling the latest image and recreating your container with `-e ENABLE_BUILT_IN_LLM=true`. Your data is kept and your current LLM provider is not changed - **Built-in** just becomes available to select. See [Existing installations](/installation-docker/built-in-llm#existing-installations).
+
 On Docker you get:
 
 - Three models recommended for your server's GPU or memory during onboarding

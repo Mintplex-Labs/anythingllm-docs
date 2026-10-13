@@ -175,6 +175,30 @@ services:
     #           capabilities: [gpu]
 ```
 
+## Existing installations
+
+You can turn on the built-in LLM for an AnythingLLM instance you already run - nothing is reset or migrated.
+
+1. Pull the latest image:
+
+   ```shell copy
+   docker pull mintplexlabs/anythingllm:latest
+   ```
+
+2. Stop and remove your current container. Your data lives in your storage folder, so it is kept.
+
+   ```shell copy
+   docker rm -f anythingllm
+   ```
+
+3. Start it again with the same command you normally use, adding `-e ENABLE_BUILT_IN_LLM=true` (and the GPU flags above, if you want GPU acceleration).
+
+Pulling the image alone is not enough - the container has to be recreated with `ENABLE_BUILT_IN_LLM=true`, since it is only read when the container starts.
+
+<Callout type="info" emoji="️💡">
+  **Your current LLM provider is not changed.** Built-in is only selected for you during onboarding of a new instance. On an existing instance it simply becomes available in **Settings > AI Providers > LLM**, in workspace and agent settings, and in the chat window model picker - select it whenever you are ready.
+</Callout>
+
 ## First boot
 
 On first boot the container downloads the engine (a few MB) into your storage folder. It is not part of the image, so the image stays small and the engine is kept across container updates. The first chat with a model also downloads the llama.cpp runtime for your hardware, so it takes a little longer than later chats.
