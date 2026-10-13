@@ -19,7 +19,7 @@ import { Callout } from "nextra/components";
   style={{ borderRadius: "10px", padding: "10px" }}
 />
 
-AnythingLLM Desktop has a new built-in engine for running models on your computer. We are moving off of Ollama and onto Lemond, the embedded version of AMD's Lemonade, which runs models with llama.cpp. The new engine is smaller, faster, supports more hardware, and can run more models.
+AnythingLLM Desktop has a new built-in engine for running models on your computer. We are moving off of Ollama and onto Lemond, the embedded version of [Lemonade](https://lemonade-server.ai). Lemonade is a fully [open-source](https://github.com/lemonade-sdk/lemonade) local inference server from AMD, and it runs your models with [llama.cpp](https://github.com/ggml-org/llama.cpp), the open-source inference engine behind much of the local AI ecosystem. The new engine is smaller, faster, supports more hardware, and can run more models.
 
 New installs use the new engine by default. If you are an existing user on the old Ollama-based engine, you'll see an **Engine upgrade** prompt in the app. The upgrade downloads a small model recommended for your computer so you can keep chatting right away, then removes the old engine and the models you downloaded with it. Your workspaces, chats, and documents are not affected.
 
