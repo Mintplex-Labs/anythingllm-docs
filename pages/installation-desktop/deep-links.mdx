@@ -9,7 +9,7 @@ import { Callout } from "nextra/components";
 
 AnythingLLM Desktop registers the `anythingllm://` link type with your operating system. Clicking one of these links in a browser, email, or another app opens AnythingLLM (or brings it to the front if it is already running) and takes you straight to the right place.
 
-Other apps and websites can use these links too. For example, a local inference server can send its users to AnythingLLM with its connection details already filled in.
+Other apps and websites can use these links too. For example, a local inference server you have installed can open AnythingLLM with its connection details already filled in for you.
 
 <Callout type="info" emoji="️💡">
   Deep links only work in **AnythingLLM Desktop**. They do nothing in the Docker
@@ -79,7 +79,7 @@ If you cancel or the download fails, your previous LLM provider is restored. Onl
 anythingllm://set-provider?type=llm&provider=lemonade&LemonadeLLMBasePath=http%3A%2F%2Flocalhost%3A13305&LemonadeLLMModelPref=Qwen3-4B-GGUF
 ```
 
-Switches AnythingLLM's LLM provider and saves that provider's settings in one step. This lets an app that runs models locally send its users to AnythingLLM already connected to it. Available from AnythingLLM Desktop 1.18.0.
+Switches AnythingLLM's LLM provider and saves that provider's settings in one step. An app that runs models on your computer can use it to connect AnythingLLM to itself for you. Available from AnythingLLM Desktop 1.18.0.
 
 | Parameter         | Required | Description                                                                                             |
 | ----------------- | -------- | ------------------------------------------------------------------------------------------------------- |
@@ -98,7 +98,7 @@ AnythingLLM shows every setting in the link and only saves them after you click 
 
 ### Examples
 
-**Lemonade** running on this computer:
+**Lemonade:**
 
 ```
 anythingllm://set-provider?type=llm&provider=lemonade&LemonadeLLMBasePath=http%3A%2F%2Flocalhost%3A13305&LemonadeLLMModelPref=Qwen3-4B-GGUF
@@ -123,7 +123,7 @@ anythingllm://set-provider?type=llm&provider=ollama&OllamaLLMBasePath=http%3A%2F
 anythingllm://set-provider?type=llm&provider=lmstudio&LMStudioBasePath=http%3A%2F%2Flocalhost%3A1234%2Fv1&LMStudioModelPref=qwen3-4b
 ```
 
-**The built-in engine**, with a model to download if it isn't already there:
+**The built-in engine**, downloading the model if you don't have it yet:
 
 ```
 anythingllm://set-provider?type=llm&provider=default&AnythingLLMLemondModelPref=Qwen3-1.7B-GGUF
