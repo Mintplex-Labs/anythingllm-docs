@@ -1,0 +1,138 @@
+---
+title: "Deep Links"
+description: "Open AnythingLLM Desktop from a link to open a chat, download a model, or switch your LLM provider."
+---
+
+import { Callout } from "nextra/components";
+
+# Deep Links
+
+AnythingLLM Desktop registers the `anythingllm://` link type with your operating system. Clicking one of these links in a browser, email, or another app opens AnythingLLM (or brings it to the front if it is already running) and takes you straight to the right place.
+
+Other apps and websites can use these links too. For example, a local inference server you have installed can open AnythingLLM with its connection details already filled in for you.
+
+<Callout type="info" emoji="️💡">
+  Deep links only work in **AnythingLLM Desktop**. They do nothing in the Docker
+  or cloud versions.
+</Callout>
+
+## Opening a link
+
+Any way of opening a URL works:
+
+- Click the link on a web page or in a document.
+- From a terminal on **Windows**: `start "" "anythingllm://open-chat?ws=my-workspace"`
+- From a terminal on **macOS**: `open "anythingllm://open-chat?ws=my-workspace"`
+- From a terminal on **Linux**: `xdg-open "anythingllm://open-chat?ws=my-workspace"`
+
+Values in a link must be URL-encoded. Anything containing `:`, `/`, `?`, `&`, or spaces needs encoding. For example, `http://localhost:13305` becomes `http%3A%2F%2Flocalhost%3A13305`.
+
+## Available links
+
+| Link                                             | What it does                                       |
+| ------------------------------------------------ | -------------------------------------------------- |
+| [`open-chat`](#open-a-chat)                      | Opens a workspace, or a thread inside one.         |
+| [`pull-hf`](#download-a-model-from-hugging-face) | Downloads a GGUF model from Hugging Face.          |
+| [`set-provider`](#set-your-llm-provider)         | Switches your LLM provider and saves its settings. |
+
+Links that download a model or change your settings always show a confirmation screen first. Nothing happens until you approve it.
+
+## Open a chat
+
+```
+anythingllm://open-chat?ws=my-workspace
+anythingllm://open-chat?ws=my-workspace&t=my-thread
+```
+
+| Parameter | Required | Description                            |
+| --------- | -------- | -------------------------------------- |
+| `ws`      | Yes      | The workspace slug.                    |
+| `t`       | No       | The thread slug inside that workspace. |
+
+The slug is the last part of the workspace or thread address, usually the name in lowercase with dashes. If the workspace or thread doesn't exist, AnythingLLM shows an error with a button back to the home page.
+
+## Download a model from Hugging Face
+
+```
+anythingllm://pull-hf?repo=unsloth/Qwen3-4B-GGUF&file=Qwen3-4B-Q4_K_M.gguf
+```
+
+This is the link behind the **Use this model → AnythingLLM** button on Hugging Face model pages. It downloads a GGUF model into AnythingLLM's built-in engine.
+
+| Parameter | Required | Description                                                                                                  |
+| --------- | -------- | ------------------------------------------------------------------------------------------------------------ |
+| `repo`    | Yes      | The Hugging Face repository, as `org/name` or a full `huggingface.co` URL. `model` also works.               |
+| `file`    | No       | The GGUF file to download. The quantization (eg. `Q4_K_M`) is read from the filename. `filepath` also works. |
+| `quant`   | No       | The quantization to download, eg. `Q4_K_M`. Takes priority over the one read from `file`. `tag` also works.  |
+
+What happens:
+
+1. AnythingLLM checks whether the model is already downloaded and asks you to confirm.
+2. Your LLM provider switches to the built-in engine and the download starts, with a progress bar and a **Cancel** button.
+3. When the download finishes, the model is selected and ready to chat with.
+
+If you cancel or the download fails, your previous LLM provider is restored. Only one model can download at a time.
+
+## Set your LLM provider
+
+```
+anythingllm://set-provider?type=llm&provider=lemonade&LemonadeLLMBasePath=http%3A%2F%2Flocalhost%3A13305&LemonadeLLMModelPref=Qwen3-4B-GGUF
+```
+
+Switches AnythingLLM's LLM provider and saves that provider's settings in one step. An app that runs models on your computer can use it to connect AnythingLLM to itself for you. Available from AnythingLLM Desktop 1.18.0.
+
+| Parameter         | Required | Description                                                                                             |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------- |
+| `type`            | Yes      | Always `llm`. The LLM is the only provider a link can change.                                           |
+| `provider`        | Yes      | The provider id, eg. `lemonade`, `ollama`, `lmstudio` or `openai`. `default` means the built-in engine. |
+| _(anything else)_ | Depends  | A setting for that provider. See the examples below.                                                    |
+
+AnythingLLM shows every setting in the link and only saves them after you click **Use**. Saved values are checked the same way as on the LLM settings page. You then land on the LLM settings page with the new provider selected.
+
+<Callout type="warning" emoji="️⚠️">
+  A link can only change settings for the LLM provider it names. A link that
+  includes any other setting is rejected. Links can never change your embedder
+  or vector database, because changing either one would delete the embeddings in
+  every workspace.
+</Callout>
+
+### Examples
+
+**Lemonade:**
+
+```
+anythingllm://set-provider?type=llm&provider=lemonade&LemonadeLLMBasePath=http%3A%2F%2Flocalhost%3A13305&LemonadeLLMModelPref=Qwen3-4B-GGUF
+```
+
+| Setting                      | Description                                                                                          |
+| ---------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `LemonadeLLMBasePath`        | The Lemonade Server address, eg. `http://localhost:13305`. Leave off `/api/v1`; AnythingLLM adds it. |
+| `LemonadeLLMModelPref`       | The model name exactly as Lemonade lists it.                                                         |
+| `LemonadeLLMModelTokenLimit` | Optional. The model's context window in tokens.                                                      |
+| `LemonadeLLMApiKey`          | Optional. Only needed if your server requires a key.                                                 |
+
+**Ollama:**
+
+```
+anythingllm://set-provider?type=llm&provider=ollama&OllamaLLMBasePath=http%3A%2F%2F127.0.0.1%3A11434&OllamaLLMModelPref=llama3.2%3A3b
+```
+
+**LM Studio:**
+
+```
+anythingllm://set-provider?type=llm&provider=lmstudio&LMStudioBasePath=http%3A%2F%2Flocalhost%3A1234%2Fv1&LMStudioModelPref=qwen3-4b
+```
+
+**The built-in engine**, downloading the model if you don't have it yet:
+
+```
+anythingllm://set-provider?type=llm&provider=default&AnythingLLMLemondModelPref=Qwen3-1.7B-GGUF
+```
+
+When `provider=default` names a model you haven't downloaded yet, the confirmation screen says so and the button changes to **Download and use**. The download then runs in the background.
+
+<Callout type="info" emoji="️💡">
+  `provider=lemonade` connects to a Lemonade Server you installed yourself.
+  `provider=default` uses the engine built into AnythingLLM, which you don't
+  need to install separately.
+</Callout>
