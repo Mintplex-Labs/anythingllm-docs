@@ -17,9 +17,9 @@ import Image from "next/image";
 # AnythingLLM Default LLM
 
 <Callout type="info" emoji="️💡">
-  **DESKTOP ONLY!**
+  **Available on AnythingLLM Desktop and Docker.**
 
-    This default llm provider feature is only present on Desktop Version of AnythingLLM
+  On Desktop the built-in LLM is the default provider. On Docker it is optional and must be turned on when you start the container - see [Built-in LLM for Docker](/installation-docker/built-in-llm).
 
 </Callout>
 
@@ -47,6 +47,8 @@ The built-in provider is powered by [Lemonade](https://lemonade-server.ai), an [
 
 On AMD Ryzen AI machines with an XDNA2 NPU, models can also run on the NPU via FastFlowLM.
 
+On [Docker](#docker), the built-in provider runs on Linux with CUDA for NVIDIA GPUs, Vulkan for AMD and Intel GPUs, or the CPU.
+
 The built-in provider is intended **only for downloading and running local models** on your machine. If you want to use your own, separately installed [Ollama](https://ollama.com), connect it via the [Ollama provider](/setup/llm-configuration/local/ollama) instead.
 
 ## Models
@@ -69,9 +71,27 @@ Hugging Face deep links work too - clicking **Use this model** -> **AnythingLLM*
 
 The context window defaults to **16,384 tokens**. You can change it in the provider's advanced settings, up to the maximum context window the model supports.
 
+## Docker
+
+AnythingLLM Docker includes the same kind of built-in engine as an **opt-in** feature, available on the `latest` image and every Docker release after v1.18.0. Start the container with `-e ENABLE_BUILT_IN_LLM=true` (plus `--gpus all` for NVIDIA GPUs, or `--device /dev/dri` for AMD and Intel GPUs) and **Built-in** becomes the default LLM provider during onboarding.
+
+You can also turn it on for an existing installation by pulling the latest image and recreating your container with `-e ENABLE_BUILT_IN_LLM=true`. Your data is kept and your current LLM provider is not changed - **Built-in** just becomes available to select. See [Existing installations](/installation-docker/built-in-llm#existing-installations).
+
+On Docker you get:
+
+- Three models recommended for your server's GPU or memory during onboarding
+- The full model table, with ⚡ marking faster multi-token prediction (MTP) models
+- Pulling any GGUF model from Hugging Face as `owner/repo` or `owner/repo:QUANT`
+- The provider in workspace and agent LLM settings, the chat window model picker, and [Model Router](/model-router/setup)
+- RAM and GPU memory freed automatically when you switch the system LLM to another provider
+
+Importing local `.gguf` files and Hugging Face **Use this model** deep links are Desktop only. Docker on macOS cannot use the Apple GPU, so models run on the CPU there.
+
+See [Built-in LLM for Docker](/installation-docker/built-in-llm) for the full setup guide, GPU options, and troubleshooting.
+
 ## Upgrading from the previous built-in engine
 
-Older versions of AnythingLLM Desktop shipped with a built-in engine powered by [Ollama](https://ollama.com). New installs use Lemonade.
+This section only applies to AnythingLLM Desktop. Older versions of AnythingLLM Desktop shipped with a built-in engine powered by [Ollama](https://ollama.com). New installs use Lemonade.
 
 If you were using the previous built-in Ollama engine, it will keep working for now. AnythingLLM will show an **Engine upgrade** notice in the title bar that lets you switch to the new engine whenever you are ready.
 

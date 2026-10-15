@@ -84,6 +84,12 @@ This is how you get chat responses. Popular hosted solutions like [OpenAI](https
   running anywhere via API.
 </Callout>
 
+### Built-in LLM
+
+If you turn on the [built-in LLM](/installation-docker/built-in-llm), models run inside the AnythingLLM container, so the container needs enough memory for the model you choose on top of the requirements above. A GPU is strongly recommended - small models run on the CPU, but responses are much faster on a GPU.
+
+During onboarding, AnythingLLM recommends models that fit your GPU's memory, or the container's memory when there is no supported GPU. Models are stored in your storage folder, so plan for a few GB of extra disk space per model.
+
 ## Embedder selection impact
 
 This is the model which you use to "**embed**" or vectorize text. Likewise, external services connected to AnythingLLM have **zero overhead** impact.
