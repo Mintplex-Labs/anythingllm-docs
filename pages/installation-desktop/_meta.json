@@ -44,6 +44,15 @@
       "toc": true
     }
   },
+  "deep-links": {
+    "title": "Deep Links",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
+  },
   "-- FAQ": {
     "type": "separator",
     "title": "Desktop FAQ"
