@@ -32,6 +32,11 @@ module.exports = withNextra({
         destination: "/chatting-with-documents/rag-in-anythingllm",
         permanent: true,
       },
+      {
+        source: "/agent/usage/browser-use",
+        destination: "/agent/usage/browser-use/overview",
+        permanent: false,
+      },
     ];
   },
 });

@@ -1,0 +1,116 @@
+---
+title: "Browser Use on Docker"
+description: "How Browser Use works in self-hosted AnythingLLM, and its limitations"
+---
+
+import { Callout } from "nextra/components";
+
+# Browser Use on Docker
+
+In the self-hosted (Docker) version, the browser runs **on your AnythingLLM server** and browses over **the server's internet connection**. You watch and control it from the chat.
+
+Start with the [overview](/agent/usage/browser-use/overview) if you haven't already. Running in multi-user mode? Also read [Multi-user mode](#multi-user-mode) below.
+
+<Callout type="warning" emoji="⚠️">
+  **Browsing from a server is very different from browsing from your own computer. Many websites will block it.** Read the limitations below before you turn it on.
+</Callout>
+
+## Limitations
+
+### Many sites will block it
+
+Websites see your server's IP address. If the server is in the cloud (AWS, GCP, Azure, Railway, Render, DigitalOcean and so on), most bot and scraping protection treats it as suspicious by default. Expect:
+
+- "Verify you are human" checks and captchas on many popular sites
+- pages that refuse to load, or load without their content
+- sites that block the request outright
+
+The agent pauses and asks you for help when it hits one of these, and you can solve a check yourself with **Take control**. Some sites will keep blocking anyway, and there is nothing AnythingLLM can do about that.
+
+Sending the browser's traffic through a proxy on a residential or office connection can help. See [Using a proxy](#using-a-proxy).
+
+### Where it works well
+
+- Your organization's own internal sites and tools
+- Sites without aggressive bot protection
+- Servers on a regular home or office connection rather than a cloud provider
+
+Browser Use is coming soon to the Desktop app, which browses from your own computer and so is blocked far less often.
+
+### Other limits
+
+- Files are never downloaded or uploaded.
+- Each running browser uses memory on your server, and closes 5 minutes after its last session.
+- When the agent asks for help, it waits up to 15 minutes for you before it gives up on that step.
+
+## Setup
+
+Browser Use is only available in the official Docker image, which already includes the browser. It is not offered on a bare-metal install of the server. Two things must hold for the browser to start:
+
+- **The container must allow Chromium's sandbox.** The default `docker-compose.yml` and `docker run` command add `--cap-add SYS_ADMIN`, which is what allows it. Without it, the browser fails to start with an error saying so.
+- **AnythingLLM must not run as root.** The official image runs as a regular user. Browser Use is not offered when the server runs as root.
+
+<Callout type="info" emoji="ℹ️">
+  Setting `ANYTHINGLLM_CHROMIUM_ARGS="--no-sandbox,..."` to avoid `SYS_ADMIN` only affects the website scraper. Browser Use opens arbitrary websites, often signed in, so it always runs sandboxed and ignores any flag that would weaken the browser.
+</Callout>
+
+### Network access
+
+The browser can reach anything your server can, including internal addresses and `localhost`. That is on purpose, so it can work with internal tools. Treat turning it on like giving users a browser on that machine, and secure the server's network accordingly.
+
+The one exception is **cloud metadata services** (such as `169.254.169.254` and `metadata.google.internal` on AWS, GCP, Azure and other clouds). They hand out the server's cloud credentials to anything that asks, so the browser never opens them, whichever way a page or the agent tries to reach them.
+
+### Using a proxy
+
+To send the browser's traffic through a proxy, set `ANYTHINGLLM_CHROMIUM_ARGS` in your `.env` to a comma-separated list of Chromium flags. Browser Use only accepts these:
+
+| Flag | Use |
+|---|---|
+| `--proxy-server=http://host:port` | Send all traffic through this proxy |
+| `--proxy-bypass-list=*.internal;10.*` | Addresses that skip the proxy |
+| `--proxy-pac-url=http://host/proxy.pac` | Use a proxy auto-config file |
+| `--lang=de-DE` | The browser's language |
+| `--disable-gpu`, `--disable-software-rasterizer`, `--disable-dev-shm-usage` | Rendering and memory tweaks for constrained hosts |
+
+Every other flag is ignored by Browser Use. The website scraper reads the same variable.
+
+## Sign-ins and privacy
+
+- **Sign-ins are saved.** Sites you sign in to (with **Take control**) stay signed in for later sessions.
+- **They are stored on the server.** Anyone with access to the server's storage folder (`storage/browser-use/profiles`) could read them. For sensitive accounts, ask the agent to browse **incognito**: an incognito session uses a fresh browser and keeps nothing.
+- **Admins can see what the agent did** in every session: the task, the sites and each step. Managers and regular users only see their own sessions, from their chats.
+- Step screenshots in the session history are kept for 3 days.
+- Your AI model provider sees the pages the agent reads, just like any other chat content.
+
+## Single-user mode
+
+There is one saved browser profile for the whole instance, and **Agent Skills > Browser Use** shows the history of every session.
+
+Turning on multi-user mode deletes this profile, so no user inherits its sign-ins.
+
+## Multi-user mode
+
+### Each user gets their own browser
+
+- **Every user has their own browser profile**, with their own cookies and sign-ins. No one can use, see or affect another user's.
+- **Every user's browser runs separately.** One person's session, or a crash in it, has no effect on anyone else's.
+- **Incognito sessions** run in a separate, temporary browser for that user and keep nothing.
+- There is no queue: everyone's sessions run at once. Size the server for how many people will browse at the same time.
+
+### What admins can see and do
+
+Under **Agent Skills > Browser Use**:
+
+- **Sessions** lists every user's browser sessions: the task, the user, the sites visited and each step. Admins can open or delete any of them.
+- **Profiles** lists each user's saved profile. Deleting one signs that user out of every site; their next session starts with a fresh profile.
+
+Admins cannot browse as another user or use their sign-ins.
+
+<Callout type="info" emoji="🔒">
+  To stop admins seeing other users' sessions, set `DISABLE_VIEW_CHAT_HISTORY` (to any value). It hides other people's browser sessions the same way it hides their chat history.
+</Callout>
+
+### Good to know
+
+- **Deleting a user deletes everything Browser Use kept for them:** their saved profile, their incognito browser and their session history.
+- **Saved sign-ins for every user are stored on the server.** Anyone with access to the server's storage folder could read them. Tell users to browse incognito for sensitive accounts.
