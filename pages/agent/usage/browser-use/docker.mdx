@@ -58,7 +58,11 @@ Browser Use is only available in the official Docker image, which already includ
 
 The browser can reach anything your server can, including internal addresses and `localhost`. That is on purpose, so it can work with internal tools. Treat turning it on like giving users a browser on that machine, and secure the server's network accordingly.
 
-The one exception is **cloud metadata services** (such as `169.254.169.254` and `metadata.google.internal` on AWS, GCP, Azure and other clouds). They hand out the server's cloud credentials to anything that asks, so the browser never opens them, whichever way a page or the agent tries to reach them.
+The one exception is **cloud metadata services** (such as `169.254.169.254` and `metadata.google.internal` on AWS, GCP, Azure and other clouds). They hand out the server's cloud credentials to anything that asks, so the browser refuses the well-known metadata addresses as a basic safeguard.
+
+<Callout type="warning" emoji="⚠️">
+  This block is a convenience, not a security boundary, and it does not cover every possible way to reach a metadata service. If AnythingLLM runs on a cloud VM, protect the metadata service at the VM or network level, for example with IMDSv2 and a hop limit of 1 on AWS, firewall rules, or a service account with no permissions.
+</Callout>
 
 ### Using a proxy
 
