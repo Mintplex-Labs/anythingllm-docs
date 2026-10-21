@@ -1,0 +1,85 @@
+---
+title: "v1.19.0"
+description: "AnythingLLM Desktop v.1.19.0 Changelog"
+---
+
+import { Callout } from "nextra/components";
+
+## Notable Changes
+
+### Switch Models Mid-Conversation in Agent Sessions
+
+Changing the workspace model or provider now applies to an agent session that is already running. You no longer need to start a new thread for the change to take effect. Each new message re-reads the workspace's model, and the model router is re-checked on every message, so you can also switch to or from a [model router](/model-router/overview) mid-thread.
+
+A response that is already generating finishes on the model it started with, and your change applies from the next message onward.
+
+### Live Embedding Progress for Large Attachments
+
+When you attach files that are too large to fit in the model's context window, you can choose to embed them into the workspace instead. That embed now runs through the same embedding queue as the document picker. You'll see the status and chunk progress of every file instead of a spinner, and you can remove files from the queue before they are embedded.
+
+### Notice When a Response Hits the Output Token Limit
+
+If a model stops writing because it reached its maximum output tokens, the response used to just cut off with no explanation. You'll now see a notice under the reply telling you the limit was reached, so you know to raise the model's max output tokens if you need longer responses.
+
+### Bulk Link Scraper Now Reads PDFs and Other Files
+
+The bulk link scraper now handles links to files such as PDFs and Word documents. Before, these links came back empty and were skipped. They are now parsed with the same file converters used when you upload a single link. YouTube links found while crawling also get their transcript, just like a single YouTube link upload.
+
+### Hungarian Language Support
+
+AnythingLLM is now available in Hungarian, including the desktop-only features such as Magic Tab, Magic Beacon, Magic Echo and the assistant.
+
+<Callout type="info" emoji="️💡">
+  **Note:** Translations are community contributed. If you spot something that reads oddly, let us know or open a pull request on [GitHub](https://github.com/Mintplex-Labs/anything-llm).
+</Callout>
+
+## Improvements
+
+- [x] `.mov` video files can now be uploaded and transcribed
+- [x] Screen readers now read out a reply once it has finished streaming
+- [x] Clarifying question timeouts now pause once you start answering
+- [x] Tool approval requests now show the email body, recipients and BCC for email tools, and the prompt for scheduled jobs
+- [x] MCP tool results are now returned as plain text without the result wrapper
+- [x] Weaviate now uses the v3 client (gRPC and REST) ahead of Weaviate removing GraphQL, with new options for deployment type and gRPC host and port
+- [x] Bedrock now supports India (`in.`) cross-region inference profiles
+- [x] Gemini and Vertex no longer send sampling and thinking parameters those models have deprecated
+- [x] OpenAI image generation now defaults to `gpt-image-2.5-flare`
+- [x] The assistant now uses the speech-to-text provider you selected in settings
+- [x] Your name is now detected only from your operating system account
+- [x] Magic Tab now calls your own Ollama server directly when it is your provider
+- [x] CSV chat exports now neutralize spreadsheet formulas
+- [x] Embed widget requests now have a request size limit
+- [x] Web search error messages no longer include parts of your API key
+- [x] The app now connects to the document processor over `127.0.0.1`
+- [x] Drupal Wiki and bulk link scraper imports that find no pages are now reported as failures
+- [x] The password reset screen now tells you why a reset was refused
+- [x] Excel short dates are now read as ISO dates
+- [x] Long citation URLs are now shortened in the citation details window
+- [x] Translation fixes across multiple languages
+
+## Bug Fixes
+
+- [x] Fixed a crash when the prompt compressor reached history records that could not be converted
+- [x] Fixed the prompt compressor dropping attachments from the current message
+- [x] Fixed the OpenAI-compatible chat API losing conversation history when the prompt was compressed
+- [x] Fixed token counts ignoring the text of messages that have attachments
+- [x] Fixed system prompt variables expanding placeholders inside other variables' values
+- [x] Fixed the file edit tool changing the line endings of files that use CRLF
+- [x] Fixed GitHub and GitLab repository imports failing on branch names that contain `#`, `&` or `+`
+- [x] Fixed Telegram bot agent answers being cut off when split across several messages
+- [x] Fixed workspace chat settings crashing when the saved LLM provider was not in the list
+- [x] Fixed Magic Beacon window shortcuts firing when a focused control already handled the key
+- [x] Fixed the Visual C++ Redistributable never running during the Windows install
+- [x] Fixed the window opening too small on Linux Wayland with fractional scaling
+
+## Pinned Download Links
+
+**Revision 1.19.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Arm64.AppImage) |
