@@ -3,38 +3,39 @@ title: "v1.19.0"
 description: "AnythingLLM Desktop v.1.19.0 Changelog"
 ---
 
+import Image from "next/image";
 import { Callout } from "nextra/components";
 
 ## Notable Changes
 
-### Switch Models Mid-Conversation in Agent Sessions
+### Built-in LLM for Docker
 
-Changing the workspace model or provider now applies to an agent session that is already running. You no longer need to start a new thread for the change to take effect. Each new message re-reads the workspace's model, and the model router is re-checked on every message, so you can also switch to or from a [model router](/model-router/overview) mid-thread.
+<Image
+  src="/images/product/changelog/1.19.0/docker-built-in-llm.png"
+  height={2212}
+  width={3680}
+  quality={100}
+  alt="AnythingLLM Docker built-in LLM powered by Lemonade and llama.cpp"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
 
-A response that is already generating finishes on the model it started with, and your change applies from the next message onward.
+AnythingLLM Docker now has a default local LLM experience right out of the box. The same kind of built-in engine that ships with [AnythingLLM Desktop](/setup/llm-configuration/local/built-in) can now run **inside the container**: [Lemonade](https://lemonade-server.ai), the fully [open-source](https://github.com/lemonade-sdk/lemonade) local inference server from AMD, running your models with [llama.cpp](https://github.com/ggml-org/llama.cpp). You no longer need to run Ollama, LM Studio or any other inference server next to AnythingLLM.
 
-### Live Embedding Progress for Large Attachments
+Pass your GPU into the container and the engine is accelerated on whatever hardware you have. It picks the fastest backend automatically: CUDA for NVIDIA GPUs, Vulkan for AMD and Intel GPUs, or the CPU. It runs on both `amd64` and `arm64` hosts.
 
-When you attach files that are too large to fit in the model's context window, you can choose to embed them into the workspace instead. That embed now runs through the same embedding queue as the document picker. You'll see the status and chunk progress of every file instead of a spinner, and you can remove files from the queue before they are embedded.
-
-### Notice When a Response Hits the Output Token Limit
-
-If a model stops writing because it reached its maximum output tokens, the response used to just cut off with no explanation. You'll now see a notice under the reply telling you the limit was reached, so you know to raise the model's max output tokens if you need longer responses.
-
-### Bulk Link Scraper Now Reads PDFs and Other Files
-
-The bulk link scraper now handles links to files such as PDFs and Word documents. Before, these links came back empty and were skipped. They are now parsed with the same file converters used when you upload a single link. YouTube links found while crawling also get their transcript, just like a single YouTube link upload.
-
-### Hungarian Language Support
-
-AnythingLLM is now available in Hungarian, including the desktop-only features such as Magic Tab, Magic Beacon, Magic Echo and the assistant.
+When it's turned on, **Built-in** becomes the default LLM provider during onboarding, with three models recommended for your hardware. You can download any model from the model table or pull any GGUF model from Hugging Face. It works everywhere a provider can be used: the system LLM, workspace and agent LLMs, the chat window model picker, and [Model Router](/model-router/setup).
 
 <Callout type="info" emoji="️💡">
-  **Note:** Translations are community contributed. If you spot something that reads oddly, let us know or open a pull request on [GitHub](https://github.com/Mintplex-Labs/anything-llm).
+  **The built-in LLM is off by default.** Turn it on by starting the container with `-e ENABLE_BUILT_IN_LLM=true`, and add `--gpus all` (or pass in your AMD or Intel GPU devices) for GPU acceleration. See [Built-in LLM for Docker](/installation-docker/built-in-llm) for the full setup for each kind of hardware.
 </Callout>
 
 ## Improvements
 
+- [x] Agent sessions now pick up workspace model and provider changes mid-conversation, including switching to or from a model router. A running response finishes on its original model.
+- [x] Embedding attachments that are too large for the context window now shows live per-file progress, and you can remove files from the queue
+- [x] Responses that hit the model's max output tokens now show a notice explaining why they stopped
+- [x] The bulk link scraper now reads PDFs and other file links with the file converters, and gets transcripts for YouTube links it finds
+- [x] Hungarian language support, including the desktop-only features
 - [x] `.mov` video files can now be uploaded and transcribed
 - [x] Screen readers now read out a reply once it has finished streaming
 - [x] Clarifying question timeouts now pause once you start answering
