@@ -178,33 +178,54 @@ By clicking the 3-dot menu next to the recording player, you can click `Regenera
 
 You may want to do this if you apply major changes to your summary template or transcript.
 
-## Agentic follow-up actions
+### Meeting title
 
-The Meeting Assistant is able to propose agentic follow-up actions based on the meeting summary and transcript. **No action is taken until you click the "Run" button.**
+On summary, we will automatically generate a title for the meeting based on the meeting summary. You can also manually edit the title by clicking on the title and typing in the new title.
 
-Every "Agent Skill", including MCPs, Agent Flows, and anything else you can use in AnythingLLM, is instantly available to the Meeting Assistant as a possible follow-up action.
+## Follow-up tasks
+
+When a meeting finishes processing, the Meeting Assistant reads the summary and transcript and turns the follow-ups into tasks you can check off. A task is created for each concrete thing someone committed to or that clearly needs doing after the meeting, like "Send Jacob the updated Q4 roadmap deck". Discussion topics, decisions and vague ideas are left out.
+
+Tasks are generated with the same LLM provider and model used for the meeting summary.
 
 <Image
-  src="/images/meeting-assistant/agent-items.png"
-  height={1080}
-  width={1920}
+  src="/images/meeting-assistant/tasks.png"
+  height={1154}
+  width={1880}
   quality={100}
   style={{ borderRadius: "20px", marginBottom: 10 }}
 />
 
-### View action item details
+### Due dates and reminders
 
-For any action item, you can click on the `View Arguments` hint text to get a breakdown of the arguments that will be passed to the action item and how they will be used in the tool of choice.
+When the meeting mentions a deadline, like "by Friday" or "before the 10am standup", the task is due then. Otherwise the Meeting Assistant estimates a due date from how much work the task is: quick follow-ups like sending a file are due the next business day, and larger pieces of work within a week or two. A task with no real timeframe has no due date.
 
-### Regenerate action items
+When a task comes due, you get a desktop notification. If several tasks come due at once, they are combined into one notification. Clicking the notification opens your task inbox.
 
-By clicking the 3-dot menu next to the recording player, you can click `Regenerate Action Items` to regenerate the action items. This will regenerate the action items available.
+To change a due date, hover over a task and click the calendar icon to pick a date and time. Click the `x` next to the due date to remove it, which also turns off its reminder.
+
+### Task inbox
+
+Click the inbox icon at the top of the app to see your tasks from every meeting. A red dot on the icon means you have tasks to do.
+
+- **To do** shows the tasks you still need to do, grouped by the meeting they came from. Each group shows how many of its tasks are done and splits them into tasks with a due date and tasks without one. Click a meeting's name to open it.
+- **Completed** shows the tasks you have checked off, most recent first.
+
+Click the circle next to a task to mark it done, and click it again to undo. Click the trash icon to delete a task you don't need.
+
+### Meeting tasks
+
+The `Tasks` tab of a meeting shows all of the tasks from that meeting, split into tasks with a due date, tasks without one, and completed tasks.
+
+### Regenerate tasks
+
+By clicking the 3-dot menu next to the recording player, you can click `Regenerate Tasks` to generate the tasks again. Tasks you have already completed are kept and are not created again.
 
 You may want to do this if you apply major changes to your summary template or transcript.
 
-### Meeting title
-
-On summary, we will automatically generate a title for the meeting based on the meeting summary. You can also manually edit the title by clicking on the title and typing in the new title.
+<Callout type="info" emoji="💡">
+  Tasks replace the action items from AnythingLLM Desktop versions before 1.19.0. Action items from older meetings are no longer shown. Open one of those meetings and click `Generate Tasks` on the `Tasks` tab to create tasks for it.
+</Callout>
 
 ## Ask Questions
 

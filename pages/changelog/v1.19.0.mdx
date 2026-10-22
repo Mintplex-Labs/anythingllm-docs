@@ -29,6 +29,28 @@ When it's turned on, **Built-in** becomes the default LLM provider during onboar
   **The built-in LLM is off by default.** Turn it on by starting the container with `-e ENABLE_BUILT_IN_LLM=true`, and add `--gpus all` (or pass in your AMD or Intel GPU devices) for GPU acceleration. See [Built-in LLM for Docker](/installation-docker/built-in-llm) for the full setup for each kind of hardware.
 </Callout>
 
+### Meeting Assistant tasks
+
+<Image
+  src="/images/product/changelog/1.19.0/meeting-assistant-tasks.png"
+  height={1154}
+  width={1880}
+  quality={100}
+  alt="AnythingLLM task inbox showing follow-up tasks grouped by meeting"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+[Meeting Assistant](/meeting-assistant/introduction) now turns every meeting into a checklist of follow-ups. When a meeting finishes processing, AnythingLLM reads the summary and transcript and creates a task for each concrete thing someone committed to, like "Send Jacob the updated Q4 roadmap deck". Discussion topics and vague ideas are left out.
+
+- **Due dates:** a task gets a due date when the meeting mentions a deadline, such as "by Friday" or "before the 10am standup". Otherwise AnythingLLM estimates one from how much work the task is. A task with no real timeframe has no due date. You can change or clear any due date.
+- **Reminders:** when a task comes due, you get a desktop notification. Several tasks coming due at once are combined into one notification.
+- **Task inbox:** open your tasks from the inbox icon at the top of the app. A red dot shows when you have tasks to do. Tasks are grouped by the meeting they came from, with a count of how many are done, and split into tasks with a due date and tasks without one. Check off a task to move it to **Completed**.
+- **Meeting tasks:** every meeting has a **Tasks** tab with all of its tasks. Use **Regenerate Tasks** to create them again; tasks you already completed are kept.
+
+<Callout type="info" emoji="️💡">
+  Tasks replace the **Action Items** tab. Action items from meetings recorded before 1.19.0 are no longer shown. Open one of those meetings and use **Generate Tasks** to create tasks for it.
+</Callout>
+
 ### Meeting Assistant hotkey and developer API
 
 You can now start and stop a [Meeting Assistant](/meeting-assistant/introduction) recording from anywhere, without opening AnythingLLM.
