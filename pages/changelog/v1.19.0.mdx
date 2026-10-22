@@ -29,6 +29,13 @@ When it's turned on, **Built-in** becomes the default LLM provider during onboar
   **The built-in LLM is off by default.** Turn it on by starting the container with `-e ENABLE_BUILT_IN_LLM=true`, and add `--gpus all` (or pass in your AMD or Intel GPU devices) for GPU acceleration. See [Built-in LLM for Docker](/installation-docker/built-in-llm) for the full setup for each kind of hardware.
 </Callout>
 
+### Meeting Assistant hotkey and developer API
+
+You can now start and stop a [Meeting Assistant](/meeting-assistant/introduction) recording from anywhere, without opening AnythingLLM.
+
+- **Global hotkey:** turn it on in Meeting Assistant **Preferences**. Press <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Windows to start a meeting, and press it again to stop it. You can change the key. A notification tells you when the meeting starts, when it can't be started, and when it is being transcribed.
+- **Developer API:** `POST /v1/meeting-assistant/start` and `POST /v1/meeting-assistant/stop` control a recording in the background. Pass an optional `provider` (such as `zoom`, `teams` or `chrome`) to tag the app the meeting is in. Stopping a meeting transcribes and summarizes it automatically. `POST /v1/meeting-assistant/search` searches across all your meeting summaries and transcripts.
+
 ## Improvements
 
 - [x] Agent sessions now pick up workspace model and provider changes mid-conversation, including switching to or from a model router. A running response finishes on its original model.
@@ -56,6 +63,10 @@ When it's turned on, **Built-in** becomes the default LLM provider during onboar
 - [x] Drupal Wiki and bulk link scraper imports that find no pages are now reported as failures
 - [x] The password reset screen now tells you why a reset was refused
 - [x] Excel short dates are now read as ISO dates
+- [x] Meetings recorded in Chrome, Edge, Safari, Firefox and Brave now show the browser's icon
+- [x] The GitHub connector now uses the repository's default branch when no branch is given, or the given branch does not exist
+- [x] Developer API document uploads now report a failure when the document could not be embedded into a requested workspace
+- [x] MCP servers that do not support `ping` are no longer marked as unavailable
 - [x] Long citation URLs are now shortened in the citation details window
 - [x] Translation fixes across multiple languages
 
@@ -73,6 +84,10 @@ When it's turned on, **Built-in** becomes the default LLM provider during onboar
 - [x] Fixed Magic Beacon window shortcuts firing when a focused control already handled the key
 - [x] Fixed the Visual C++ Redistributable never running during the Windows install
 - [x] Fixed the window opening too small on Linux Wayland with fractional scaling
+- [x] Fixed Paperless-ngx plain-text documents losing text in angle brackets and their column layout
+- [x] Fixed Confluence code blocks losing markup, generics and indentation
+- [x] Fixed regenerating or editing a message not counting toward a user's daily message limit
+- [x] Fixed one unreadable watched document stopping every other watched document from syncing
 
 ## Pinned Download Links
 
