@@ -8,27 +8,6 @@ import { Callout } from "nextra/components";
 
 ## Notable Changes
 
-### Built-in LLM for Docker
-
-<Image
-  src="/images/product/changelog/1.19.0/docker-built-in-llm.png"
-  height={2212}
-  width={3680}
-  quality={100}
-  alt="AnythingLLM Docker built-in LLM powered by Lemonade and llama.cpp"
-  style={{ borderRadius: "10px", padding: "10px" }}
-/>
-
-AnythingLLM Docker now has a default local LLM experience right out of the box. The same kind of built-in engine that ships with [AnythingLLM Desktop](/setup/llm-configuration/local/built-in) can now run **inside the container**: [Lemonade](https://lemonade-server.ai), the fully [open-source](https://github.com/lemonade-sdk/lemonade) local inference server from AMD, running your models with [llama.cpp](https://github.com/ggml-org/llama.cpp). You no longer need to run Ollama, LM Studio or any other inference server next to AnythingLLM.
-
-Pass your GPU into the container and the engine is accelerated on whatever hardware you have. It picks the fastest backend automatically: CUDA for NVIDIA GPUs, Vulkan for AMD and Intel GPUs, or the CPU. It runs on both `amd64` and `arm64` hosts.
-
-When it's turned on, **Built-in** becomes the default LLM provider during onboarding, with three models recommended for your hardware. You can download any model from the model table or pull any GGUF model from Hugging Face. It works everywhere a provider can be used: the system LLM, workspace and agent LLMs, the chat window model picker, and [Model Router](/model-router/setup).
-
-<Callout type="info" emoji="️💡">
-  **The built-in LLM is off by default.** Turn it on by starting the container with `-e ENABLE_BUILT_IN_LLM=true`, and add `--gpus all` (or pass in your AMD or Intel GPU devices) for GPU acceleration. See [Built-in LLM for Docker](/installation-docker/built-in-llm) for the full setup for each kind of hardware.
-</Callout>
-
 ### Meeting Assistant tasks
 
 <Image
@@ -100,10 +79,6 @@ You can now give AnythingLLM your own colors. Pick a [color palette](/features/c
 - **Built-in palettes:** choose from Default, True Dark (pure black for OLED screens), Ocean, Forest, Plum and Ember.
 - **Your own palettes:** click **New palette** and pick two colors: a main color, which tints the background, sidebar and content, and an accent for buttons and links. The whole app previews your colors as you pick them. Edit or delete your palettes at any time.
 - **Everywhere you look:** the assistant and Magic Beacon windows and the boot screen use your palette too.
-
-<Callout type="info" emoji="️💡">
-  On AnythingLLM Docker, admins set up palettes in **Settings → Customization → Branding & Whitelabeling → Colors**. The palette an admin picks there becomes the default for everyone on the instance, and admins can require everyone to use it. See [Customization & Branding](/features/customization#colors-docker-only).
-</Callout>
 
 ## Improvements
 
