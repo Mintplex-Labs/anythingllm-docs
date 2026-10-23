@@ -58,6 +58,53 @@ You can now start and stop a [Meeting Assistant](/meeting-assistant/introduction
 - **Global hotkey:** turn it on in Meeting Assistant **Preferences**. Press <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Windows to start a meeting, and press it again to stop it. You can change the key. A notification tells you when the meeting starts, when it can't be started, and when it is being transcribed.
 - **Developer API:** `POST /v1/meeting-assistant/start` and `POST /v1/meeting-assistant/stop` control a recording in the background. Pass an optional `provider` (such as `zoom`, `teams` or `chrome`) to tag the app the meeting is in. Stopping a meeting transcribes and summarizes it automatically. `POST /v1/meeting-assistant/search` searches across all your meeting summaries and transcripts.
 
+### Color palettes
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+  <Image
+    src="/images/product/changelog/1.19.0/palette-ocean.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Ocean color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-forest.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Forest color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-plum.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Plum color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-ember.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Ember color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+</div>
+
+You can now give AnythingLLM your own colors. Pick a color palette in **Settings → Customization → UI Preferences**, and the whole app takes on its colors: the background, sidebar, chat, settings and every window, in both light and dark mode. Shown above are Ocean, Forest, Plum and Ember.
+
+- **Built-in palettes:** choose from Default, True Dark (pure black for OLED screens), Ocean, Forest, Plum and Ember.
+- **Your own palettes:** click **New palette** and pick two colors: a main color, which tints the background, sidebar and content, and an accent for buttons and links. The whole app previews your colors as you pick them. Edit or delete your palettes at any time.
+- **Everywhere you look:** the assistant and Magic Beacon windows and the boot screen use your palette too.
+
+<Callout type="info" emoji="️💡">
+  On AnythingLLM Docker, admins set up palettes in **Settings → Customization → Branding & Whitelabeling → Colors**. The palette an admin picks there becomes the default for everyone on the instance, and admins can require everyone to use it.
+</Callout>
+
 ## Improvements
 
 - [x] Agent sessions now pick up workspace model and provider changes mid-conversation, including switching to or from a model router. A running response finishes on its original model.
