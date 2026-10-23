@@ -32,6 +32,11 @@ module.exports = withNextra({
         destination: "/chatting-with-documents/rag-in-anythingllm",
         permanent: true,
       },
+      {
+        source: "/setup/vector-database-configuration/cloud/chromacloud",
+        destination: "/setup/vector-database-configuration/overview",
+        permanent: true,
+      },
     ];
   },
 });
