@@ -1,6 +1,6 @@
 ---
-title: "Transcription Models"
-description: "AnythingLLM supports custom audio transcription providers."
+title: "Speech to Text (STT)"
+description: "AnythingLLM supports multiple speech to text providers, for voice input in chat and for transcribing audio and video files."
 ---
 
 import { Cards } from "nextra/components";
@@ -15,11 +15,60 @@ import { Card } from "../../components/card";
   alt="AnythingLLM Transcription Models"
 />
 
-# Transcription Models
+# Speech to Text (STT)
 
-AnythingLLM supports custom audio transcription providers.
+AnythingLLM turns speech into text in two places, and each one has its own provider setting:
+
+- **Voice input**: click the microphone button in the chat box and speak your prompt instead of typing it. Choose the provider under **Settings** > **Voice & Speech**.
+- **Audio and video files**: audio and video files you upload are transcribed, so their text can be embedded and used in chats. Choose the provider under **Settings** > **Transcription**.
+
+## Voice Input Providers
+
+Open **Settings** and select **Voice & Speech**. Under **Speech-to-text Preference**, choose a provider from the **Provider** menu, fill in its settings, and click **Save changes**.
+
+The default provider is **System native**, which works with no configuration at all. With any other provider, AnythingLLM records your voice in the browser, and the AnythingLLM server sends the recording to that provider to be transcribed.
+
+**Auto-Submit Speech Input** is on by default and sends your prompt after a pause in your speech. To review the text before sending it, turn it off under **Settings** > **Chat**.
+
+### Local STT Providers
+
+#### System native
+
+Uses your browser's built in speech recognition, if supported.
+
+### Self Hosted STT Providers
+
+#### Lemonade
+
+Connects to a Lemonade server. Set the server's **Base URL**, or click **Auto-Detect**, then choose a **Transcription Model** from the transcription models loaded on that server. The optional API key is shared with the Lemonade LLM and embedder settings.
+
+### Cloud STT Providers
+
+#### OpenAI
+
+Uses OpenAI's hosted transcription models. Requires an OpenAI API key, which is shared with the OpenAI LLM provider. The **Transcription Model** menu lists the transcription models your key can use.
+
+#### Deepgram
+
+Uses Deepgram's hosted transcription models. Requires a Deepgram API key and a **Transcription Model** such as `nova-3`.
+
+#### Groq
+
+Uses Groq's hosted transcription models. Requires a Groq API key and a **Transcription Model** such as `whisper-large-v3-turbo`.
+
+### Any OpenAI Compatible STT Service
+
+The **Generic OpenAI** provider connects AnythingLLM to any service that implements the OpenAI transcription API (`POST /v1/audio/transcriptions`), whether it runs on your own network or is a hosted API. It takes three settings:
+
+- **Base URL**: the root of the service, including the version path, for example `http://localhost:8000/v1`
+- **API Key**: optional, only needed if the service requires one
+- **Transcription Model**: the `model` parameter sent with each request
+
+AnythingLLM converts each recording to WAV before sending it to the service. The AnythingLLM server makes this request, so the **Base URL** must be reachable from where AnythingLLM runs. If you run AnythingLLM in Docker, see [How to connect to localhost](/installation-docker/localhost).
 
 ## Supported Transcription Model Providers
+
+Audio and video files are transcribed with the provider chosen under **Settings** > **Transcription**. The default is **AnythingLLM Built-In**, which runs a Whisper model on your AnythingLLM instance and downloads it the first time it is used.
 
 ### Local Transcription Model Providers
 
@@ -52,6 +101,58 @@ AnythingLLM supports custom audio transcription providers.
   </Card>
 </Cards>
 
+### Any OpenAI Compatible Transcription Service
+
+The **OpenAI Compatible** provider transcribes uploaded audio and video files with any service that implements the OpenAI transcription API. It takes a **Base URL**, for example `http://localhost:8000/v1`, an optional **API Key**, and the **Transcription Model** to request.
+
+## Environment Variables
+
+If you deploy AnythingLLM with Docker or bare metal and prefer to configure speech to text through environment variables, these are the supported keys (from `docker/.env.example`):
+
+```shell
+# Voice input: System native (default)
+STT_PROVIDER="native"
+
+# Voice input: OpenAI. Uses the OPEN_AI_KEY of the OpenAI LLM provider.
+STT_PROVIDER="openai"
+STT_OPEN_AI_MODEL=whisper-1
+
+# Voice input: Lemonade. Uses the LEMONADE_LLM_API_KEY of the Lemonade LLM provider.
+STT_PROVIDER="lemonade"
+STT_LEMONADE_BASE_PATH='http://127.0.0.1:8000'
+STT_LEMONADE_MODEL_PREF=whisper-1
+
+# Voice input: Deepgram
+STT_PROVIDER="deepgram"
+STT_DEEPGRAM_API_KEY=
+STT_DEEPGRAM_MODEL=nova-3
+
+# Voice input: Groq
+STT_PROVIDER="groq"
+STT_GROQ_API_KEY=xxxxx
+STT_GROQ_MODEL=whisper-large-v3-turbo
+
+# Voice input: any OpenAI compatible service
+STT_PROVIDER="generic-openai"
+STT_OPEN_AI_COMPATIBLE_KEY=sk-example
+STT_OPEN_AI_COMPATIBLE_MODEL=whisper-1
+STT_OPEN_AI_COMPATIBLE_ENDPOINT="https://api.openai.com/v1"
+
+# Audio and video files: AnythingLLM Built-In (default)
+WHISPER_PROVIDER="local"
+
+# Audio and video files: OpenAI
+WHISPER_PROVIDER="openai"
+OPEN_AI_KEY=sk-xxxxxxxx
+
+# Audio and video files: any OpenAI compatible service
+WHISPER_PROVIDER="generic-openai"
+WHISPER_GENERIC_OPEN_AI_BASE_URL="http://localhost:8000/v1"
+WHISPER_GENERIC_OPEN_AI_API_KEY=sk-xxxxxxxx
+WHISPER_GENERIC_OPEN_AI_MODEL="whisper-small"
+```
+
+Set only one `STT_PROVIDER` value and one `WHISPER_PROVIDER` value. If `STT_OPEN_AI_COMPATIBLE_MODEL` is not set, AnythingLLM sends `whisper-1`, and if `WHISPER_GENERIC_OPEN_AI_MODEL` is not set, it sends `whisper-small`. Your service may not have these models, so set both to models it supports.
 
 <style global jsx>{`
   img {
