@@ -1,0 +1,149 @@
+---
+title: "v1.19.0"
+description: "AnythingLLM Desktop v.1.19.0 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+## Notable Changes
+
+### Meeting Assistant tasks
+
+<Image
+  src="/images/product/changelog/1.19.0/meeting-assistant-tasks.png"
+  height={1154}
+  width={1880}
+  quality={100}
+  alt="AnythingLLM task inbox showing follow-up tasks grouped by meeting"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+[Meeting Assistant](/meeting-assistant/introduction) now turns every meeting into a checklist of follow-ups. When a meeting finishes processing, AnythingLLM reads the summary and transcript and creates a task for each concrete thing someone committed to, like "Send Jacob the updated Q4 roadmap deck". Discussion topics and vague ideas are left out.
+
+- **Due dates:** a task gets a due date when the meeting mentions a deadline, such as "by Friday" or "before the 10am standup". Otherwise AnythingLLM estimates one from how much work the task is. A task with no real timeframe has no due date. You can change or clear any due date.
+- **Reminders:** when a task comes due, you get a desktop notification. Several tasks coming due at once are combined into one notification.
+- **Task inbox:** open your tasks from the inbox icon at the top of the app. A red dot shows when you have tasks to do. Tasks are grouped by the meeting they came from, with a count of how many are done, and split into tasks with a due date and tasks without one. Check off a task to move it to **Completed**.
+- **Meeting tasks:** every meeting has a **Tasks** tab with all of its tasks. Use **Regenerate Tasks** to create them again; tasks you already completed are kept.
+
+<Callout type="info" emoji="️💡">
+  Tasks replace the **Action Items** tab. Action items from meetings recorded before 1.19.0 are no longer shown. Open one of those meetings and use **Generate Tasks** to create tasks for it.
+</Callout>
+
+### Meeting Assistant hotkey and developer API
+
+You can now start and stop a [Meeting Assistant](/meeting-assistant/introduction) recording from anywhere, without opening AnythingLLM.
+
+- **Global hotkey:** turn it on in Meeting Assistant **Preferences**. Press <kbd>⌘</kbd> + <kbd>⌥</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Mac or <kbd>Ctrl</kbd> + <kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>M</kbd> on Windows to start a meeting, and press it again to stop it. You can change the key. A notification tells you when the meeting starts, when it can't be started, and when it is being transcribed.
+- **Developer API:** `POST /v1/meeting-assistant/start` and `POST /v1/meeting-assistant/stop` control a recording in the background. Pass an optional `provider` (such as `zoom`, `teams` or `chrome`) to tag the app the meeting is in. Stopping a meeting transcribes and summarizes it automatically. `POST /v1/meeting-assistant/search` searches across all your meeting summaries and transcripts.
+
+### Color palettes
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+  <Image
+    src="/images/product/changelog/1.19.0/palette-ocean.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Ocean color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-forest.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Forest color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-plum.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Plum color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.19.0/palette-ember.png"
+    height={960}
+    width={1922}
+    quality={100}
+    alt="AnythingLLM home screen with the Ember color palette"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+</div>
+
+You can now give AnythingLLM your own colors. Pick a [color palette](/features/customization#color-palettes) in **Settings → Customization → UI Preferences**, and the whole app takes on its colors: the background, sidebar, chat, settings and every window, in both light and dark mode. Shown above are Ocean, Forest, Plum and Ember. Color palettes are functionally "tints" and we plan to expand this themeing to be more extensive in future updates - if you have ideas around this we would love to hear them on GitHub. 
+
+- **Built-in palettes:** choose from Default, True Dark (pure black for OLED screens), Ocean, Forest, Plum and Ember.
+- **Your own palettes:** click **New palette** and pick two colors: a main color, which tints the background, sidebar and content, and an accent for buttons and links. The whole app previews your colors as you pick them. Edit or delete your palettes at any time.
+- **Applied Globally:** all UI elements including widgets like desktop assistant and magic beacon and such all inherit the theme you apply.
+
+## Improvements
+
+- [x] Agent sessions now pick up workspace model and provider changes mid-conversation, including switching to or from a model router. A running response finishes on its original model.
+- [x] Embedding attachments that are too large for the context window now shows live per-file progress, and you can remove files from the queue
+- [x] Responses that hit the model's max output tokens now show a notice explaining why they stopped
+- [x] The bulk link scraper now reads PDFs and other file links with the file converters, and gets transcripts for YouTube links it finds
+- [x] Hungarian language support, including the desktop-only features
+- [x] `.mov` video files can now be uploaded and transcribed
+- [x] Screen readers now read out a reply once it has finished streaming
+- [x] Clarifying question timeouts now pause once you start answering
+- [x] Tool approval requests now show the email body, recipients and BCC for email tools, and the prompt for scheduled jobs
+- [x] Agents can now save the Word, PDF, Excel, PowerPoint and text files they create to a folder on your computer when you ask. You approve every save, and existing files are never overwritten
+- [x] MCP tool results are now returned as plain text without the result wrapper
+- [x] Weaviate now uses the v3 client (gRPC and REST) ahead of Weaviate removing GraphQL, with new options for deployment type and gRPC host and port
+- [x] Bedrock now supports India (`in.`) cross-region inference profiles
+- [x] Gemini and Vertex no longer send sampling and thinking parameters those models have deprecated
+- [x] Mistral now lists each chat model once, without aliases or non-chat models, detects vision, reasoning and tool support for each model, and has a thinking on/off toggle for reasoning models in chat and agents
+- [x] OpenAI image generation now defaults to `gpt-image-2.5-flare`
+- [x] The assistant now uses the speech-to-text provider you selected in settings
+- [x] Your name is now detected only from your operating system account
+- [x] Magic Tab now calls your own Ollama server directly when it is your provider
+- [x] CSV chat exports now neutralize spreadsheet formulas
+- [x] Embed widget requests now have a request size limit
+- [x] Web search error messages no longer include parts of your API key
+- [x] The app now connects to the document processor over `127.0.0.1`
+- [x] Drupal Wiki and bulk link scraper imports that find no pages are now reported as failures
+- [x] The password reset screen now tells you why a reset was refused
+- [x] Excel short dates are now read as ISO dates
+- [x] Meetings recorded in Chrome, Edge, Safari, Firefox and Brave now show the browser's icon
+- [x] The GitHub connector now uses the repository's default branch when no branch is given, or the given branch does not exist
+- [x] Developer API document uploads now report a failure when the document could not be embedded into a requested workspace
+- [x] MCP servers that do not support `ping` are no longer marked as unavailable
+- [x] Long citation URLs are now shortened in the citation details window
+- [x] Translation fixes across multiple languages
+
+## Bug Fixes
+
+- [x] Fixed a crash when the prompt compressor reached history records that could not be converted
+- [x] Fixed the prompt compressor dropping attachments from the current message
+- [x] Fixed the OpenAI-compatible chat API losing conversation history when the prompt was compressed
+- [x] Fixed token counts ignoring the text of messages that have attachments
+- [x] Fixed system prompt variables expanding placeholders inside other variables' values
+- [x] Fixed the file edit tool changing the line endings of files that use CRLF
+- [x] Fixed GitHub and GitLab repository imports failing on branch names that contain `#`, `&` or `+`
+- [x] Fixed Telegram bot agent answers being cut off when split across several messages
+- [x] Fixed workspace chat settings crashing when the saved LLM provider was not in the list
+- [x] Fixed Magic Beacon window shortcuts firing when a focused control already handled the key
+- [x] Fixed the Visual C++ Redistributable never running during the Windows install
+- [x] Fixed the window opening too small on Linux Wayland with fractional scaling
+- [x] Fixed Paperless-ngx plain-text documents losing text in angle brackets and their column layout
+- [x] Fixed Confluence code blocks losing markup, generics and indentation
+- [x] Fixed regenerating or editing a message not counting toward a user's daily message limit
+- [x] Fixed one unreadable watched document stopping every other watched document from syncing
+- [x] Fixed Mistral reasoning models such as `mistral-large-4` breaking chat and agent replies
+- [x] Fixed scheduled jobs showing a connected Outlook account as needing setup, which blocked selecting Outlook tools
+
+## Pinned Download Links
+
+**Revision 1.19.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.19.0/AnythingLLMDesktop-Arm64.AppImage) |

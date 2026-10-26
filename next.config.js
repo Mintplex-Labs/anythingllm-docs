@@ -28,6 +28,11 @@ module.exports = withNextra({
         permanent: true,
       },
       {
+        source: "/features/branding",
+        destination: "/features/customization",
+        permanent: true,
+      },
+      {
         source: "/llm-not-using-my-docs",
         destination: "/chatting-with-documents/rag-in-anythingllm",
         permanent: true,
