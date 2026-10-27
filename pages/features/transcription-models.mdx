@@ -107,52 +107,7 @@ The **OpenAI Compatible** provider transcribes uploaded audio and video files wi
 
 ## Environment Variables
 
-If you deploy AnythingLLM with Docker or bare metal and prefer to configure speech to text through environment variables, these are the supported keys (from `docker/.env.example`):
-
-```shell
-# Voice input: System native (default)
-STT_PROVIDER="native"
-
-# Voice input: OpenAI. Uses the OPEN_AI_KEY of the OpenAI LLM provider.
-STT_PROVIDER="openai"
-STT_OPEN_AI_MODEL=whisper-1
-
-# Voice input: Lemonade. Uses the LEMONADE_LLM_API_KEY of the Lemonade LLM provider.
-STT_PROVIDER="lemonade"
-STT_LEMONADE_BASE_PATH='http://127.0.0.1:8000'
-STT_LEMONADE_MODEL_PREF=whisper-1
-
-# Voice input: Deepgram
-STT_PROVIDER="deepgram"
-STT_DEEPGRAM_API_KEY=
-STT_DEEPGRAM_MODEL=nova-3
-
-# Voice input: Groq
-STT_PROVIDER="groq"
-STT_GROQ_API_KEY=xxxxx
-STT_GROQ_MODEL=whisper-large-v3-turbo
-
-# Voice input: any OpenAI compatible service
-STT_PROVIDER="generic-openai"
-STT_OPEN_AI_COMPATIBLE_KEY=sk-example
-STT_OPEN_AI_COMPATIBLE_MODEL=whisper-1
-STT_OPEN_AI_COMPATIBLE_ENDPOINT="https://api.openai.com/v1"
-
-# Audio and video files: AnythingLLM Built-In (default)
-WHISPER_PROVIDER="local"
-
-# Audio and video files: OpenAI
-WHISPER_PROVIDER="openai"
-OPEN_AI_KEY=sk-xxxxxxxx
-
-# Audio and video files: any OpenAI compatible service
-WHISPER_PROVIDER="generic-openai"
-WHISPER_GENERIC_OPEN_AI_BASE_URL="http://localhost:8000/v1"
-WHISPER_GENERIC_OPEN_AI_API_KEY=sk-xxxxxxxx
-WHISPER_GENERIC_OPEN_AI_MODEL="whisper-small"
-```
-
-Set only one `STT_PROVIDER` value and one `WHISPER_PROVIDER` value. If `STT_OPEN_AI_COMPATIBLE_MODEL` is not set, AnythingLLM sends `whisper-1`, and if `WHISPER_GENERIC_OPEN_AI_MODEL` is not set, it sends `whisper-small`. Your service may not have these models, so set both to models it supports.
+If you deploy AnythingLLM with Docker or bare metal, speech to text can also be configured with environment variables. See the `STT_*` keys (voice input) and `WHISPER_*` keys (audio and video files) in [`.env.example`](https://github.com/Mintplex-Labs/anything-llm/blob/master/docker/.env.example). Set only one `STT_PROVIDER` value and one `WHISPER_PROVIDER` value.
 
 <style global jsx>{`
   img {
