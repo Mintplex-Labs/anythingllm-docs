@@ -1,0 +1,90 @@
+---
+title: "TopK Vector Database"
+description: "TopK is a fully managed, serverless search engine for AI with built-in vector and keyword search."
+---
+
+import { Callout } from "nextra/components";
+import Image from "next/image";
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/cloud/topk/header-image.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="TopK Vector Database"
+/>
+
+# TopK Vector Database
+
+[TopK](https://topk.io) is a fully managed, serverless search engine for AI. There is no cluster to size or server to run: you create an API key, pick a region, and AnythingLLM creates everything else it needs on first use.
+
+## Connecting to TopK
+
+You will need two values:
+
+| Field       | What it is                                                                                     |
+| ----------- | ---------------------------------------------------------------------------------------------- |
+| **API Key** | Your TopK API key. Create one in the [TopK console](https://console.topk.io/api-key).          |
+| **Region**  | The region your data is stored in. Pick the one closest to where AnythingLLM runs.             |
+
+The available regions are:
+
+| Region                       | Location                |
+| ---------------------------- | ----------------------- |
+| `aws-us-east-1-elastica`     | AWS us-east-1, N. Virginia |
+| `aws-eu-central-1-monstera`  | AWS eu-central-1, Frankfurt |
+| `gcp-us-east4-aloe`          | GCP us-east4, N. Virginia |
+
+Enter them under **Settings > AI Providers > Vector Database** and select **TopK** as the provider.
+
+<Image
+  src="/images/anythingllm-setup/vector-database-configuration/cloud/topk/topk-vectordb.png"
+  height={1080}
+  width={1920}
+  quality={100}
+  alt="TopK Vector Database Settings"
+/>
+
+If you run AnythingLLM with Docker, you can set the same values in your `.env` file instead:
+
+```bash
+VECTOR_DB="topk"
+TOPK_API_KEY="your-topk-api-key"
+TOPK_REGION="aws-us-east-1-elastica"
+```
+
+<Callout type="info" emoji="️💡">
+  AnythingLLM embeds your documents with the embedding model you have configured
+  and stores the resulting vectors in TopK. TopK does not need its own embedding
+  model.
+</Callout>
+
+## Hybrid search
+
+TopK also indexes the text of every chunk for keyword search (BM25), so each workspace search combines two signals:
+
+- **Vector similarity**, which finds chunks that mean the same thing as your question.
+- **A keyword boost**, which ranks chunks higher when they contain the exact terms you asked about.
+
+This helps most with questions about exact identifiers that embeddings tend to confuse, such as ticket IDs, product codes, part numbers, error codes and names. A question about `ZX-4471` finds the chunk that mentions `ZX-4471` rather than one about a similar-looking `ZX-7144`.
+
+Common words like "what" or "about" are ignored for keyword matching, and the keyword boost is capped, so a keyword match can lift a relevant chunk but never replaces vector search. It helps ordinary questions too: on the SciFact search benchmark, hybrid search found a relevant document in the top results more often than vector search alone. There is nothing to configure: hybrid search is on for every workspace.
+
+## How your data is stored
+
+Each workspace is stored in its own TopK collection, named `anythingllm-<workspace-slug>-d<dimensions>`, for example `anythingllm-support-docs-d384`. You can browse them in the [TopK console](https://console.topk.io).
+
+The vector dimension is part of the name because a collection's dimension is fixed when it is created. If you change your embedding model, AnythingLLM writes to a new collection rather than conflicting with the old one.
+
+When you delete a workspace or reset the vector database, AnythingLLM empties the matching collections instead of deleting them, so that re-creating a workspace with the same name works right away.
+
+## Limits
+
+AnythingLLM works within TopK's limits automatically - large uploads are split into batches of 100 chunks so no single request exceeds TopK's 8 MB request limit. See TopK's [limits](https://docs.topk.io/limits) for current values.
+
+<Callout type="error" emoji="️‼️">
+  **Caution!**
+
+    Switching vector databases does not move your existing embeddings. If you change to TopK from another provider, you will need to delete and re-embed every document in each workspace.
+
+</Callout>
