@@ -316,6 +316,28 @@ DISABLE_SWAGGER_DOCS="true"
 
 Fully remove or comment out the `DISABLE_SWAGGER_DOCS` environment variable to return to the default behavior and re-enable the Swagger documentation endpoint.
 
+## Disable Instance Metrics Endpoint
+
+Modification of the `DISABLE_METRICS_ENDPOINT` environment variable allows you to disable the instance metrics endpoint at `/api/utils/metrics`.
+
+By default, AnythingLLM exposes basic instance metadata at the `/api/utils/metrics` endpoint without authentication. This includes the application version, single or multi-user mode, the vector database in use, and disk storage usage. Operators who want to minimize the metadata available to unauthenticated clients can disable this endpoint.
+
+When disabled, the endpoint returns a `404` and the application version is no longer shown in the settings sidebar. If you use this endpoint for uptime monitoring, point your monitor at `/api/ping` instead.
+
+### Enable
+
+Set the `DISABLE_METRICS_ENDPOINT` environment variable to **`"true"`** to enable.
+_It must be set to a string value of `"true"` to be effective._
+
+```bash
+# Must be set to a string value of "true" to be effective.
+DISABLE_METRICS_ENDPOINT="true"
+```
+
+### Disable
+
+Fully remove or comment out the `DISABLE_METRICS_ENDPOINT` environment variable to return to the default behavior and re-enable the instance metrics endpoint.
+
 ## Native Tool Calling for LLM Providers
 
 <Callout type="info" emoji="️💡">
