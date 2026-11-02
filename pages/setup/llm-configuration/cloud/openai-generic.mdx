@@ -45,3 +45,48 @@ You can update your configuration at any time in the **Settings**.
   quality={100}
   alt="OpenAI (Generic) LLM settings"
 />
+
+## Context window and output tokens
+
+**Model context window** and **Max Tokens** control different limits:
+
+| Setting              | Purpose                                                                                                                                                                                     |
+| -------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Model context window | The context budget AnythingLLM uses when preparing the prompt and chat history. Match the selected model and provider; increasing this value does not increase the model's actual capacity. |
+| Max Tokens           | The output-token limit sent with a normal chat request. Start with a small positive value, such as `256`, when testing a connection.                                                        |
+
+For server deployments, `GENERIC_OPEN_AI_MAX_TOKENS` configures the output limit.
+Setting this environment variable to `0` omits the output-token limit from the
+request. It does **not** disable generation or make requests free. The provider
+may apply its own default limit. Use a positive value to request an output cap.
+
+An output-token limit is not a monetary spending limit; input tokens and other
+provider charges can still apply.
+
+## Choosing the output-token parameter
+
+Generic OpenAI sends the output budget as `max_tokens` by default. If your
+provider explicitly requires `max_completion_tokens` instead and rejects
+`max_tokens`, configure the existing server environment variable:
+
+```dotenv
+GENERIC_OPEN_AI_MODEL_MAX_TOKEN_KEY=max_completion_tokens
+GENERIC_OPEN_AI_MAX_TOKENS=256
+```
+
+Restart the AnythingLLM server after changing its environment. This changes the
+request field name; it does not add support for an otherwise incompatible model.
+Use the parameter documented by your selected model and provider. Leave the
+variable unset when the default `max_tokens` is correct.
+
+## Checking a new connection
+
+- Set **Base URL** to the provider's API root, for example
+  `https://llm.example.com/v1`, rather than the full `/chat/completions` URL.
+- Select the exact model ID supported by that endpoint and use credentials issued
+  for that provider.
+- Start with an empty workspace and a short text prompt before testing document
+  retrieval or agents. A successful chat request does not verify embeddings,
+  tool calling, or other capabilities.
+- If ordinary text works but streaming does not, see
+  [Disable Streaming for Generic OpenAI](/configuration#disable-streaming-for-generic-openai).
