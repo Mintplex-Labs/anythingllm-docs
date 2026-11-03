@@ -13,7 +13,7 @@ const newRelease = Object.keys(_meta)
 
 const config: DocsThemeConfig = {
   project: {
-    link: 'https://twitter.com/mintplexlabs', // Link for the Twitter icon on top nav bar
+    link: 'https://x.com/anythingllm', // Link for the X icon on top nav bar
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
