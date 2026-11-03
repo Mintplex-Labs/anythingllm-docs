@@ -26,16 +26,36 @@ const config: DocsThemeConfig = {
     )
   },
   chat: {
-    link: 'https://github.com/Mintplex-Labs/anything-llm/discussions', // Link for the community discussions icon on top nav bar
+    link: 'https://github.com/Mintplex-Labs/anything-llm/discussions', // Link for the GitHub Discussions icon on top nav bar
     icon: (
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="20"
         height="20"
         fill="currentColor"
-        viewBox="0 0 16 16">
-        <path d="M8 15c4.418 0 8-3.134 8-7s-3.582-7-8-7-8 3.134-8 7c0 1.76.743 3.37 1.97 4.6-.097 1.016-.417 2.13-.771 2.966-.079.186.074.394.273.362 2.256-.37 3.597-.938 4.18-1.234A9 9 0 0 0 8 15" />
+        viewBox="0 0 256 256">
+        <path d="M216,104v8a56.06,56.06,0,0,1-48.44,55.47A39.8,39.8,0,0,1,176,192v40a8,8,0,0,1-8,8H104a8,8,0,0,1-8-8V216H72a40,40,0,0,1-40-40A24,24,0,0,0,8,152a8,8,0,0,1,0-16,40,40,0,0,1,40,40,24,24,0,0,0,24,24H96v-8a39.8,39.8,0,0,1,8.44-24.53A56.06,56.06,0,0,1,56,112v-8a58.14,58.14,0,0,1,7.69-28.32A59.78,59.78,0,0,1,69.07,28,8,8,0,0,1,76,24a59.75,59.75,0,0,1,48,24h24a59.75,59.75,0,0,1,48-24,8,8,0,0,1,6.93,4,59.74,59.74,0,0,1,5.37,47.68A58,58,0,0,1,216,104Z" />
       </svg>
+    )
+  },
+  navbar: {
+    // Reddit icon on top nav bar, styled to match the built-in project/chat icons
+    extraContent: (
+      <a
+        className="nx-p-2 nx-text-current"
+        href="https://www.reddit.com/r/anythingllm/"
+        target="_blank"
+        rel="noreferrer"
+        aria-label="r/anythingllm on Reddit">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          fill="currentColor"
+          viewBox="0 0 256 256">
+          <path d="M248,104a32,32,0,0,0-52.94-24.19c-16.75-8.9-36.76-14.28-57.66-15.53l5.19-31.17,17.72,2.72a24,24,0,1,0,2.87-15.74l-26-4a8,8,0,0,0-9.11,6.59L121.2,64.16c-21.84.94-42.82,6.38-60.26,15.65a32,32,0,0,0-42.59,47.74A59,59,0,0,0,16,144c0,21.93,12,42.35,33.91,57.49C70.88,216,98.61,224,128,224s57.12-8,78.09-22.51C228,186.35,240,165.93,240,144a59,59,0,0,0-2.35-16.45A32.16,32.16,0,0,0,248,104ZM72,128a16,16,0,1,1,16,16A16,16,0,0,1,72,128Zm91.75,55.07a76.18,76.18,0,0,1-71.5,0,8,8,0,1,1,7.5-14.14,60.18,60.18,0,0,0,56.5,0,8,8,0,1,1,7.5,14.14ZM168,144a16,16,0,1,1,16-16A16,16,0,0,1,168,144Z" />
+        </svg>
+      </a>
     )
   },
   docsRepositoryBase: 'https://github.com/Mintplex-Labs/anythingllm-docs/tree/main', // Repo link for the 'Edit this page'
