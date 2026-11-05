@@ -1,0 +1,52 @@
+---
+title: "Browser Use"
+description: "Let your agent use a real web browser to get things done"
+---
+
+import { Callout } from "nextra/components";
+
+# Browser Use
+
+Browser Use lets your agent open a real web browser to get things done: search a site, click through pages, fill in forms and compare results. You watch it work right in the chat, can stop it at any time, and can step in when it needs help.
+
+How it works, and what to watch out for, depends on where AnythingLLM runs. Browser Use is available today in the self-hosted Docker version, and is coming soon to the Desktop app.
+
+| | Where the browser runs | Whose internet connection | Read |
+|---|---|---|---|
+| **Desktop app** | On your computer | Yours | _Coming soon_ |
+| **Docker, single user** | On your server | The server's | [Docker](/agent/usage/browser-use/docker) |
+| **Docker, multi-user** | On your server, one browser per user | The server's | [Docker](/agent/usage/browser-use/docker#multi-user-mode) |
+
+<Callout type="warning" emoji="⚠️">
+  **Read the page for your setup before you turn it on.** Many websites block automated browsing, and far more of them block it when it comes from a server in the cloud.
+</Callout>
+
+## Turning it on
+
+Browser Use is **off by default**. An admin turns it on under **Agent Skills > Browser Use**. Then just ask your agent to do something on a website, for example:
+
+- "Find me the cheapest flights to SFO this Friday"
+- "Check if the RTX 5090 is in stock at Micro Center in Tustin"
+- "Go to our internal wiki and find the onboarding checklist"
+
+It only works in the chat window. The API, embedded chat widgets and scheduled jobs never use it, because nobody would be there to watch it, stop it or help it.
+
+## When the agent needs help
+
+When the agent hits a sign-in page, a captcha or a "verify you are human" check, it pauses and asks you in the chat. Click **Take control**, do what is needed yourself, then press **Continue** and the agent picks up from there.
+
+Sessions can run for a while, so you don't have to watch. If you're in another tab or window when the agent asks for help, you get a notification. Click it to jump straight back to the session. The first time the agent asks, your browser asks whether to allow notifications from AnythingLLM. Browser notifications only work when AnythingLLM is served over HTTPS or on `localhost`.
+
+<Callout type="error" emoji="🔒">
+  **Never type passwords or codes into the chat.** Sign in yourself with **Take control**. The agent will never ask you for a password.
+</Callout>
+
+## Your responsibility
+
+Browser Use is a tool, and how it is used is up to you and your users. You are responsible for:
+
+- following the terms of service of every website the agent visits
+- complying with the laws and regulations that apply to you, including those on automated access and data collection
+- any consequences of automated browsing, such as blocked IP addresses, suspended accounts or rate limits
+
+Mintplex Labs is not responsible for how Browser Use is used, for misuse by you or your users, or for any action a website takes in response to it.
