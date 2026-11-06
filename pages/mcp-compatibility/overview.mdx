@@ -157,7 +157,7 @@ The static `headers` above are the same for every user and workspace. If your MC
 }
 ```
 
-AnythingLLM then sends the calling user's ID, username and role, plus the workspace, as `X-AnythingLLM-*` headers and in the request's `_meta` on every agent tool listing and tool call.
+AnythingLLM then sends the calling user's ID, username and role, plus the workspace ID and slug, as `X-AnythingLLM-*` headers and in the request's `_meta` on every agent tool listing and tool call. To send only some of them, list the fields instead, e.g. `"forwardIdentity": ["user.id", "workspace.slug"]`.
 
 [Read the full guide to forwarding identity &rarr;](/mcp-compatibility/forward-identity)
 

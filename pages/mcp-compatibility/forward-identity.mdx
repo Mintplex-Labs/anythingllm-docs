@@ -42,17 +42,29 @@ Add `forwardIdentity` to the `anythingllm` block of the MCP server in your `anyt
 }
 ```
 
-`forwardIdentity` accepts:
+`forwardIdentity` is either `true` (forward everything) or a list of the fields you want. Only send what your MCP server actually uses.
+
+| Field | Value | Header |
+| --- | --- | --- |
+| `user.id` | The user's ID, e.g. `12` | `X-AnythingLLM-User-Id` |
+| `user.username` | The username, e.g. `jane.doe` | `X-AnythingLLM-Username` |
+| `user.role` | `admin`, `manager` or `default` | `X-AnythingLLM-User-Role` |
+| `workspace.id` | The workspace ID, e.g. `7` | `X-AnythingLLM-Workspace-Id` |
+| `workspace.slug` | The workspace slug, e.g. `tenant-acme` | `X-AnythingLLM-Workspace-Slug` |
+
+`"user"` and `"workspace"` are shorthands for all of their fields:
 
 | Value | What is forwarded |
 | --- | --- |
-| `true` | User **and** workspace |
-| `["user", "workspace"]` | User **and** workspace |
-| `["user"]` | User only |
-| `["workspace"]` | Workspace only |
+| `true` | Every field |
+| `["user", "workspace"]` | Every field |
+| `["user"]` | `user.id`, `user.username`, `user.role` |
+| `["workspace"]` | `workspace.id`, `workspace.slug` |
+| `["user.id", "workspace.slug"]` | Only the user ID and the workspace slug |
+| `["user.role"]` | Only the user's role |
 | `false` or not set | Nothing (default) |
 
-`"user"` and `"workspace"` are the only valid scopes. Anything else in the list is ignored.
+Anything that is not one of the fields or shorthands above is ignored.
 
 After editing the file, click **Refresh** on the "Agent Skills" page to reload your MCP servers.
 
@@ -65,17 +77,11 @@ Identity is sent in two places so it works on every transport:
 
 ### Headers
 
-| Scope | Header | Example |
-| --- | --- | --- |
-| `user` | `X-AnythingLLM-User-Id` | `12` |
-| `user` | `X-AnythingLLM-Username` | `jane.doe` |
-| `user` | `X-AnythingLLM-User-Role` | `admin`, `manager` or `default` |
-| `workspace` | `X-AnythingLLM-Workspace-Id` | `7` |
-| `workspace` | `X-AnythingLLM-Workspace-Slug` | `tenant-acme` |
-
-Any header value that is not plain ASCII (for example a workspace slug with non-latin characters) is URL-encoded.
+Each forwarded field is sent as its own header, listed in the [field table](#enabling-it) above. Any header value that is not plain ASCII (for example a workspace slug with non-latin characters) is URL-encoded.
 
 ### `_meta`
+
+The same fields, grouped by `user` and `workspace`. This example forwards every field:
 
 ```json
 {
@@ -93,7 +99,7 @@ Any header value that is not plain ASCII (for example a workspace slug with non-
 }
 ```
 
-The same `_meta` is sent on `tools/list`.
+The same `_meta` is sent on `tools/list`. With `"forwardIdentity": ["user.id", "workspace.slug"]` it would only contain `{ "user": { "id": 12 }, "workspace": { "slug": "tenant-acme" } }`.
 
 ### Which requests carry identity
 
@@ -110,7 +116,7 @@ The same `_meta` is sent on `tools/list`.
 
 ## When each value is available
 
-Values that don't exist for a request are **left out entirely**. AnythingLLM never sends an empty header or a `null` placeholder. If neither scope has a value, no identity headers and no `_meta` are sent at all.
+Values that don't exist for a request are **left out entirely**. AnythingLLM never sends an empty header or a `null` placeholder. If none of the requested fields has a value, no identity headers and no `_meta` are sent at all.
 
 | Where the agent runs | User | Workspace |
 | --- | --- | --- |
@@ -178,5 +184,5 @@ server.setRequestHandler(CallToolRequestSchema, async (request, extra) => {
 
 - **MCP servers are shared across all workspaces.** Every workspace sees the same MCP servers. Use the forwarded workspace to decide what each one is allowed to do or see.
 - **Usernames and roles can change.** If you store permissions on your side, key them on the user **ID**, which never changes. Use the username for display or for syncing with your own user list.
-- **The user is looked up once per agent session.** A username or role change applies from the next agent session.
-- **Desktop has no users.** Only the `workspace` scope has any effect on AnythingLLM Desktop.
+- **The user is looked up once per agent session**, and only when `user.username` or `user.role` is forwarded. A username or role change applies from the next agent session.
+- **Desktop has no users.** Only the `workspace` fields have any effect on AnythingLLM Desktop.
