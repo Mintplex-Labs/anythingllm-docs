@@ -1,0 +1,182 @@
+---
+title: "Forwarding user & workspace identity to MCP servers"
+description: "Let your MCP server know which AnythingLLM user and workspace is calling it, so it can filter tools, enforce permissions, and scope data per user or tenant."
+---
+
+import { Callout } from "nextra/components";
+
+# Forwarding identity to MCP servers
+
+_This property is **specific to AnythingLLM only** and will have no effect on other tools._
+
+By default, every MCP server in AnythingLLM runs as **one shared connection for the whole instance**. Every user and every workspace calls your MCP server with the same static `headers` from the config file, so the server has no idea who is on the other end.
+
+Identity forwarding fixes that. When enabled for a server, AnythingLLM tells the MCP server **which user and which workspace** the agent is acting for on every request. Your MCP server can then:
+
+- Show different tools to different users or roles (filter `tools/list`).
+- Refuse a tool call the caller is not allowed to make.
+- Scope data per user or per tenant. For example, one workspace per customer, with the MCP server connecting to that customer's database.
+
+<Callout type="info" emoji="💡">
+  This is **identity forwarding**, not authentication. Your MCP server trusts whatever identity AnythingLLM sends, so it should only accept requests from your AnythingLLM instance. Keep a shared secret in the static `headers` block (like `X-API-KEY`) and/or keep the MCP server on a private network.
+</Callout>
+
+## Enabling it
+
+Add `forwardIdentity` to the `anythingllm` block of the MCP server in your `anythingllm_mcp_servers.json` file. It is **off** by default and is set per server.
+
+```json5
+{
+  "mcpServers": {
+    "my-tenant-mcp": {
+      "type": "streamable",
+      "url": "http://my-mcp:8000/mcp",
+      "headers": {
+        "X-API-KEY": "shared-secret-between-anythingllm-and-my-mcp"
+      },
+      "anythingllm": {
+        "forwardIdentity": true
+      }
+    }
+  }
+}
+```
+
+`forwardIdentity` accepts:
+
+| Value | What is forwarded |
+| --- | --- |
+| `true` | User **and** workspace |
+| `["user", "workspace"]` | User **and** workspace |
+| `["user"]` | User only |
+| `["workspace"]` | Workspace only |
+| `false` or not set | Nothing (default) |
+
+`"user"` and `"workspace"` are the only valid scopes. Anything else in the list is ignored.
+
+After editing the file, click **Refresh** on the "Agent Skills" page to reload your MCP servers.
+
+## What your MCP server receives
+
+Identity is sent in two places so it works on every transport:
+
+1. **HTTP headers.** For `sse` and `streamable` servers only.
+2. **The request's `_meta` field**, under the key `com.anythingllm/identity`. For **all** servers, including `stdio`. `_meta` is the field the MCP protocol provides for metadata on a request.
+
+### Headers
+
+| Scope | Header | Example |
+| --- | --- | --- |
+| `user` | `X-AnythingLLM-User-Id` | `12` |
+| `user` | `X-AnythingLLM-Username` | `jane.doe` |
+| `user` | `X-AnythingLLM-User-Role` | `admin`, `manager` or `default` |
+| `workspace` | `X-AnythingLLM-Workspace-Id` | `7` |
+| `workspace` | `X-AnythingLLM-Workspace-Slug` | `tenant-acme` |
+
+Any header value that is not plain ASCII (for example a workspace slug with non-latin characters) is URL-encoded.
+
+### `_meta`
+
+```json
+{
+  "method": "tools/call",
+  "params": {
+    "name": "get_invoices",
+    "arguments": { "month": "2026-10" },
+    "_meta": {
+      "com.anythingllm/identity": {
+        "user": { "id": 12, "username": "jane.doe", "role": "default" },
+        "workspace": { "id": 7, "slug": "tenant-acme" }
+      }
+    }
+  }
+}
+```
+
+The same `_meta` is sent on `tools/list`.
+
+### Which requests carry identity
+
+| Request | Identity sent? |
+| --- | --- |
+| `tools/list` when an agent session starts | ✅ So you can return a different tool list per user |
+| `tools/call` from an agent | ✅ Every call |
+| `initialize` and connection setup | ❌ The connection is shared by everyone |
+| `tools/list` from the "Agent Skills" admin page | ❌ No agent session, so no identity |
+
+<Callout type="warning">
+  Because the "Agent Skills" page lists tools **without** an identity, your server should decide what an anonymous `tools/list` returns. Returning the full list lets admins see and toggle every tool in the UI. Either way, **always check permissions on `tools/call` as well**. An agent can try to call a tool by name even if it was never listed for that user.
+</Callout>
+
+## When each value is available
+
+Values that don't exist for a request are **left out entirely**. AnythingLLM never sends an empty header or a `null` placeholder. If neither scope has a value, no identity headers and no `_meta` are sent at all.
+
+| Where the agent runs | User | Workspace |
+| --- | --- | --- |
+| Workspace chat, multi-user mode | ✅ | ✅ |
+| Workspace chat, single-user mode | ❌ No users exist | ✅ |
+| AnythingLLM Desktop | ❌ No users exist | ✅ |
+| Mobile app | ✅ In multi-user mode | ✅ |
+| Developer API: thread chat with `userId` | ✅ In multi-user mode | ✅ |
+| Developer API: workspace chat, or thread chat without `userId` | ❌ | ✅ |
+| Telegram bot | ❌ | ✅ |
+| Scheduled jobs | ❌ | ❌ |
+
+<Callout type="info">
+  On the developer API, the user is whatever `userId` the API caller passes. Anyone holding an AnythingLLM API key can act as any user, so treat API keys as having full access when identity forwarding is on.
+</Callout>
+
+## Reserved header prefix
+
+All headers starting with `X-AnythingLLM-` are reserved for identity forwarding. If you put one in a server's static `headers` block, AnythingLLM ignores it and logs a warning. This way a hardcoded value in the config can never be mistaken for a real forwarded identity.
+
+## Example: checking identity in your MCP server
+
+A minimal Node.js server using the official [MCP TypeScript SDK](https://github.com/modelcontextprotocol/typescript-sdk). The same idea works in any language. Read the headers, or `params._meta["com.anythingllm/identity"]` if you also want to support `stdio`.
+
+```js
+const {
+  ListToolsRequestSchema,
+  CallToolRequestSchema,
+} = require("@modelcontextprotocol/sdk/types.js");
+
+function callerOf(request, extra) {
+  const headers = extra?.requestInfo?.headers ?? {};
+  const meta = request.params?._meta?.["com.anythingllm/identity"];
+  return {
+    username: headers["x-anythingllm-username"] ?? meta?.user?.username,
+    role: headers["x-anythingllm-user-role"] ?? meta?.user?.role,
+    workspace: headers["x-anythingllm-workspace-slug"] ?? meta?.workspace?.slug,
+  };
+}
+
+const ADMIN_TOOLS = ["delete_customer"];
+
+server.setRequestHandler(ListToolsRequestSchema, async (request, extra) => {
+  const { role } = callerOf(request, extra);
+  const tools = ALL_TOOLS.filter(
+    (tool) => role === "admin" || !ADMIN_TOOLS.includes(tool.name)
+  );
+  return { tools };
+});
+
+server.setRequestHandler(CallToolRequestSchema, async (request, extra) => {
+  const { role, workspace } = callerOf(request, extra);
+  if (ADMIN_TOOLS.includes(request.params.name) && role !== "admin") {
+    return {
+      isError: true,
+      content: [{ type: "text", text: "You are not allowed to use this tool." }],
+    };
+  }
+  // Use `workspace` to pick the right tenant database, etc.
+  return runTool(request.params.name, request.params.arguments, { workspace });
+});
+```
+
+## Things to know
+
+- **MCP servers are shared across all workspaces.** Every workspace sees the same MCP servers. Use the forwarded workspace to decide what each one is allowed to do or see.
+- **Usernames and roles can change.** If you store permissions on your side, key them on the user **ID**, which never changes. Use the username for display or for syncing with your own user list.
+- **The user is looked up once per agent session.** A username or role change applies from the next agent session.
+- **Desktop has no users.** Only the `workspace` scope has any effect on AnythingLLM Desktop.
