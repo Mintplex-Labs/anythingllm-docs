@@ -135,7 +135,9 @@ Values that don't exist for a request are **left out entirely**. AnythingLLM nev
 
 ## Reserved header prefix
 
-All headers starting with `X-AnythingLLM-` are reserved for identity forwarding. If you put one in a server's static `headers` block, AnythingLLM ignores it and logs a warning. This way a hardcoded value in the config can never be mistaken for a real forwarded identity.
+On a server with `forwardIdentity` enabled, all headers starting with `X-AnythingLLM-` are reserved for identity forwarding. If that server's static `headers` block contains one, AnythingLLM ignores it and logs a warning. This way a hardcoded value in the config can never be mistaken for a real forwarded identity.
+
+Servers **without** `forwardIdentity` are not affected. Their `headers` are sent exactly as written, including any `X-AnythingLLM-` headers.
 
 ## Example: checking identity in your MCP server
 
