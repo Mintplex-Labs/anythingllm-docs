@@ -25,5 +25,14 @@
       "pagination": true,
       "toc": true
     }
+  },
+  "forward-identity": {
+    "title": "Forwarding Identity",
+    "theme": {
+      "breadcrumb": true,
+      "footer": true,
+      "pagination": true,
+      "toc": true
+    }
   }
 }
