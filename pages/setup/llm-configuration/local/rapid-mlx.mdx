@@ -1,0 +1,37 @@
+---
+title: "Rapid-MLX LLM"
+description: "Rapid-MLX is an open-source local LLM inference server for Apple Silicon, built on MLX with an OpenAI-compatible API."
+---
+
+import Image from "next/image";
+
+<Image
+  src="/images/anythingllm-setup/llm-configuration/local/rapid-mlx/header-image.png"
+  height={606}
+  width={683}
+  quality={100}
+  alt="Rapid-MLX LLM"
+/>
+
+# Rapid-MLX LLM
+
+[Rapid-MLX](https://rapidmlx.com/) is an open-source local LLM inference server for Apple Silicon, built on MLX. Its OpenAI-compatible API connects to AnythingLLM through the [Generic OpenAI provider](/setup/llm-configuration/cloud/openai-generic).
+
+Rapid-MLX is a _separate_ application that you need to install and run first before connecting to it.
+
+## Connecting to Rapid-MLX
+
+Install Rapid-MLX and start a model:
+
+```bash
+brew install rapid-mlx
+rapid-mlx serve qwen3.5-4b-4bit --port 8000
+```
+
+Select **Generic OpenAI** as your LLM provider in AnythingLLM. Set the base URL to `http://localhost:8000/v1`, the API key to `not-needed`, and the model to the exact served model ID returned by `http://localhost:8000/v1/models` (for example, `mlx-community/Qwen3.5-4B-MLX-4bit`). Set the model context window to your served model's context size, available in the `context_window` field of the models response.
+
+Rapid-MLX does not require an API key by default. If you enable authentication, enter your configured API key instead of the placeholder.
+
+If port 8000 is already in use, choose another port with `--port` and update the base URL to match. Without `--port`, Rapid-MLX uses the first free port from 8000 through 8009.
+
+You can update your configuration at any time in the **Settings**. See the [Rapid-MLX documentation](https://rapidmlx.com/docs/) for more setup options.
