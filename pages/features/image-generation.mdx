@@ -64,9 +64,14 @@ Generated images are saved with your chat history, persist across page reloads, 
 | **OpenRouter** | ✅ | ✅ via chat completions with image inputs |
 | **Ollama** | ✅ | ❌ — gracefully falls back to generation from prompt only |
 | **Lemonade** | ✅ | ✅ via `/v1/images/edits` (model-dependent, see note below) |
+| **MiniMax** | ✅ | ✅ via `/v1/images/edits` |
 
 <Callout type="warning" emoji="⚠️">
   **Lemonade image editing depends on the model.** Some models served by Lemonade (e.g. SD-Turbo) accept the edit endpoint but do not meaningfully transform reference images — they generate a new image loosely based on the prompt instead. For better editing results, use a model that explicitly supports img2img pipelines such as SDXL.
+</Callout>
+
+<Callout type="info" emoji="💡">
+  **MiniMax settings.** MiniMax uses an **Aspect Ratio** (or **Auto**) instead of fixed image dimensions, and a **Resolution** of 1K, 2K, or 4K. **Prompt Enhancement** is enabled by default and rewrites your prompt into a more detailed one before generating, which is billed as extra input tokens. When disabled, your prompt is used exactly as written and the Auto aspect ratio falls back to 1:1. Image edits always use prompt enhancement.
 </Callout>
 
 ## Generating Images
