@@ -3,11 +3,31 @@ title: "v1.20.0"
 description: "AnythingLLM Desktop v.1.20.0 Changelog"
 ---
 
+import Image from "next/image";
 import { Callout } from "nextra/components";
 
 ## Notable Changes
 
 ### Redesigned task inbox
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+  <Image
+    src="/images/product/changelog/1.20.0/pending-tasks.png"
+    height={1099}
+    width={1990}
+    quality={100}
+    alt="Task inbox showing to-do tasks with due dates"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.20.0/complete-tasks.png"
+    height={1099}
+    width={1990}
+    quality={100}
+    alt="Task inbox showing that all tasks are completed"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+</div>
 
 The task inbox for [Meeting Assistant](/meeting-assistant/introduction) tasks has been redesigned to make it easier to keep on top of your follow-ups.
 
@@ -18,6 +38,15 @@ The task inbox for [Meeting Assistant](/meeting-assistant/introduction) tasks ha
 
 ### PowerPoint tool overhaul
 
+<Image
+  src="/images/product/changelog/1.20.0/pptx-generation.png"
+  height={1099}
+  width={1990}
+  quality={100}
+  alt="Agent building a PowerPoint deck with live slide previews in the chat"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
 The agent's PowerPoint tool has been rebuilt from the ground up to produce cleaner, better looking presentations.
 
 - **Themes and layouts:** decks use new color themes and a set of layouts that are picked to fit each slide's content, so the same layout is not repeated slide after slide.
@@ -25,6 +54,15 @@ The agent's PowerPoint tool has been rebuilt from the ground up to produce clean
 - **Grounded content:** figures, chart values and quotes are only kept when your outline, research or conversation contains them, and text is sized to fit each slide.
 
 ### Email approval cards for Gmail and Outlook
+
+<Image
+  src="/images/product/changelog/1.20.0/email-drafting.png"
+  height={1099}
+  width={1990}
+  quality={100}
+  alt="Gmail draft approval card with editable recipients, subject and body"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
 
 When an agent wants to send or draft an email with the [Gmail](/agent/usage/gmail-agent) or [Outlook](/agent/usage/outlook-agent) tools, the approval request is now shown as an email card. You can edit the recipients, Cc, Bcc, subject and body right in the card before you approve it. The approval timer pauses while you edit, and you can expand a sent email to see exactly what went out.
 
@@ -34,10 +72,6 @@ When an agent wants to send or draft an email with the [Gmail](/agent/usage/gmai
 - **Per-server timeouts:** set `anythingllm.timeout` (in seconds) on an MCP server to control how long its tool calls can run. The default is 60 seconds.
 - **Developer API:** new `/v1/mcp-servers` endpoints let you list, add, update, delete, start, stop and reload MCP servers, and turn individual tools on or off.
 - MCP servers with many tools now load every page of tools, starting one server also picks up any newly saved servers, and disconnected servers can be deleted.
-
-### MiniMax image generation
-
-[Image generation](/features/image-generation) now supports MiniMax as a provider, with aspect ratio, resolution and prompt enhancement settings.
 
 ## Improvements
 
