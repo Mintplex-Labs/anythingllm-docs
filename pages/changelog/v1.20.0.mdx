@@ -1,0 +1,182 @@
+---
+title: "v1.20.0"
+description: "AnythingLLM Desktop v.1.20.0 Changelog"
+---
+
+import Image from "next/image";
+import { Callout } from "nextra/components";
+
+## Notable Changes
+
+### Redesigned task inbox
+
+<div style={{ display: "grid", gridTemplateColumns: "repeat(2, minmax(0, 1fr))" }}>
+  <Image
+    src="/images/product/changelog/1.20.0/pending-tasks.png"
+    height={1099}
+    width={1990}
+    quality={100}
+    alt="Task inbox showing to-do tasks with due dates"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+  <Image
+    src="/images/product/changelog/1.20.0/complete-tasks.png"
+    height={1099}
+    width={1990}
+    quality={100}
+    alt="Task inbox showing that all tasks are completed"
+    style={{ borderRadius: "10px", padding: "10px" }}
+  />
+</div>
+
+The task inbox for [Meeting Assistant](/meeting-assistant/introduction) tasks has been redesigned to make it easier to keep on top of your follow-ups.
+
+- **Edit tasks:** open any task to change its title or due date. The editor works from both the task inbox and a meeting's **Tasks** tab.
+- **Due dates with times:** pick a due date and time with your system's date picker, right from the task row. Changes save automatically.
+- **Sorted for you:** tasks with a due date are listed soonest first, followed by tasks with no due date.
+- **Completed tasks:** completed tasks show when they were completed. Reopen a task to change its due date.
+
+### PowerPoint tool overhaul
+
+<Image
+  src="/images/product/changelog/1.20.0/pptx-generation.png"
+  height={1099}
+  width={1990}
+  quality={100}
+  alt="Agent building a PowerPoint deck with live slide previews in the chat"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+The agent's PowerPoint tool has been rebuilt from the ground up to produce cleaner, better looking presentations.
+
+- **Themes and layouts:** decks use new color themes and a set of layouts that are picked to fit each slide's content, so the same layout is not repeated slide after slide.
+- **Live slide previews:** slides appear in the chat as they are built, so you can watch the deck come together. Click a preview to see it full size.
+- **Grounded content:** figures, chart values and quotes are only kept when your outline, research or conversation contains them, and text is sized to fit each slide.
+
+### Email approval cards for Gmail and Outlook
+
+<Image
+  src="/images/product/changelog/1.20.0/email-drafting.png"
+  height={1099}
+  width={1990}
+  quality={100}
+  alt="Gmail draft approval card with editable recipients, subject and body"
+  style={{ borderRadius: "10px", padding: "10px" }}
+/>
+
+When an agent wants to send or draft an email with the [Gmail](/agent/usage/gmail-agent) or [Outlook](/agent/usage/outlook-agent) tools, the approval request is now shown as an email card. You can edit the recipients, Cc, Bcc, subject and body right in the card before you approve it. The approval timer pauses while you edit, and you can expand a sent email to see exactly what went out.
+
+### MCP improvements
+
+- **Identity forwarding:** MCP servers can now receive the workspace and user that is calling them. Opt in per server with `anythingllm.forwardIdentity`. See [Forwarding identity to MCP servers](/mcp-compatibility/forward-identity).
+- **Per-server timeouts:** set `anythingllm.timeout` (in seconds) on an MCP server to control how long its tool calls can run. The default is 60 seconds.
+- **Developer API:** new `/v1/mcp-servers` endpoints let you list, add, update, delete, start, stop and reload MCP servers, and turn individual tools on or off.
+- MCP servers with many tools now load every page of tools, starting one server also picks up any newly saved servers, and disconnected servers can be deleted.
+
+## Improvements
+
+- [x] New **Closing Behavior** setting in **Settings → Customization → UI Preferences** lets you choose whether closing the main window keeps AnythingLLM running in the system tray or quits the app
+- [x] The browser extension can now chat from a side panel, with chats saved to your workspace threads (requires the latest browser extension)
+- [x] You can now edit your prompt after stopping a response
+- [x] A live timer now shows how long the model has been thinking
+- [x] Your message is now saved to the thread before the model responds, so it is kept even if the response fails
+- [x] Leaving an agent session now shows an exit notice instead of a "session closed" alert
+- [x] DeepSeek now supports vision for models that accept images
+- [x] DeepSeek can now be used as an agent web search provider
+- [x] Generic OpenAI now has reasoning effort controls
+- [x] Mistral reasoning models now offer the reasoning levels each model accepts, so turning reasoning off no longer fails on models like Mistral Large 4
+- [x] LocalAI now reads each model's context window and capabilities
+- [x] OpenAI now defaults to `gpt-5.6-luna`
+- [x] Voyage AI now reports progress while embedding and sends the correct input type for queries and documents
+- [x] Context windows for local and runtime-discovered models are now cached, so chats start faster
+- [x] LanceDB has been upgraded to 0.30.0
+- [x] [GenieX](https://github.com/qualcomm/GenieX) on Windows on ARM has been upgraded to 0.11.0, so switching from an NPU-only model to a GGUF model no longer restarts the engine
+- [x] The document picker now supports <kbd>Shift</kbd> and <kbd>⌘</kbd>/<kbd>Ctrl</kbd> click to select multiple files, and select all
+- [x] Wide Markdown tables now scroll sideways instead of overflowing the chat
+- [x] Workspace settings forms now fit narrow windows
+- [x] Workspace chats no longer show the **Sent By** column, which only applies to multi-user instances
+- [x] Scanned PDFs whose pages have no text are now run through OCR
+- [x] The agent file tools now handle Windows paths without regard to case, and keep indentation when editing files
+- [x] Telegram bot slash command presets now run when sent to the bot
+- [x] Telegram bot messages, tool approval prompts, `/history` and `/status` are now formatted and escaped correctly, and shortened to fit Telegram's limits
+- [x] Threads started from the mobile app or developer API are now named automatically
+- [x] The mobile app now uses the workspace's chat mode
+- [x] Outlook thread reads are now limited to fit the model's context window, and Outlook citations link to the email in Outlook
+- [x] Paperless-ngx imports now limit how many documents download at once
+- [x] Qdrant uploads are now split into batches under the request size limit
+- [x] PGVector search errors now show the real cause
+- [x] Agent file tools now refuse to download images from local network addresses into PDF, Word and PowerPoint files
+- [x] Community links now point to GitHub Discussions and r/anythingllm
+- [x] Translation fixes for French and Estonian
+
+## Bug Fixes
+
+- [x] Fixed the Meeting Assistant reporting a failed meeting when only task generation failed. The meeting summary is kept and the notification says tasks could not be generated
+- [x] Fixed the Meeting Assistant runtime loading state and recording player showing dark colors in light mode
+- [x] Fixed Meeting Assistant modals overlapping the window title bar
+- [x] Fixed the contextual save bar and the active settings sidebar item in light mode
+- [x] Fixed the prompt compressor dropping images for Ollama and losing provider formatting
+- [x] Fixed tool calls with no arguments being retried
+- [x] Fixed prompt-based tool calls failing on `null` or JSON string arguments
+- [x] Fixed the PowerPoint tool's section sub-agents and stop button not working
+- [x] Fixed PowerPoint decks dropping negative chart values
+- [x] Fixed regenerating a response right after it was saved
+- [x] Fixed pinned documents taking up search results when reranking is on
+- [x] Fixed a chat history limit of 0 being ignored, in workspaces and in embed widgets
+- [x] Fixed embed widget history not checking the widget's settings and session
+- [x] Fixed the developer API chat history `limit` when it is not a number
+- [x] Fixed the filesystem read tool missing the last lines of a file and breaking characters when reading the start or end of a file
+- [x] Fixed the filesystem tool copying a folder into itself forever
+- [x] Fixed files with no extension not being parsed when a parent folder name has a dot
+- [x] Fixed simultaneous uploads overwriting each other
+- [x] Fixed adding files while other documents were still uploading
+- [x] Fixed individually selected documents being lost when searching in the document picker
+- [x] Fixed deleting a partially selected folder also removing the documents you did not select
+- [x] Fixed deleted folders' documents staying in workspaces on Windows
+- [x] Fixed nested folder names being allowed when creating or moving folders
+- [x] Fixed the sidebar search showing results for an older search
+- [x] Fixed clarifying questions not closing when an agent session is stopped
+- [x] Fixed unanswered prompts being kept in the agent session history
+- [x] Fixed multi-select clarifying questions losing picks when **Other** was opened but left empty
+- [x] Fixed model router hour ranges that span midnight
+- [x] Fixed model router decisions not updating after the router is edited
+- [x] Fixed scheduled jobs set for Sunday running on Saturday
+- [x] Fixed a scheduled job's next run time not updating when it is turned back on
+- [x] Fixed agent flow API Call blocks sending empty headers, dropping the `Content-Type` header and ending JSON body strings early
+- [x] Fixed agent flow static variables appearing in flow results and status messages
+- [x] Fixed OpenAI streams dropping text that started with `data:`
+- [x] Fixed Azure OpenAI reasoning models in agents
+- [x] Fixed failed OpenAI Responses API agent requests not showing an error
+- [x] Fixed KoboldCPP and Foundry Local agents ignoring max response tokens
+- [x] Fixed tokens per second for Bedrock, SambaNova and Cerebras
+- [x] Fixed context windows for Groq models with a prefix
+- [x] Fixed `PROVIDER_DISABLE_NATIVE_TOOL_CALLING` not matching provider names with spaces
+- [x] Fixed MCP tools whose schemas use `$ref`, `definitions` or `$defs`
+- [x] Fixed Weaviate workspaces whose name starts with a number
+- [x] Fixed the Telegram bot `/model` command picking the wrong model when model names are long
+- [x] Fixed text-to-speech reading out underscores inside words
+- [x] Fixed chart data in chat being sent to the UI unparsed
+- [x] Fixed chat exports removing generic types like `Promise<Response>`
+- [x] Fixed Word exports restarting numbered lists after a code block and dropping spaces in list items
+- [x] Fixed non-Latin text being lost in scraped page titles and raw-text document titles
+- [x] Fixed scraped `<pre>` blocks without `<code>` being escaped
+- [x] Fixed HTML entities in YouTube transcripts
+- [x] Fixed mbox files with CJK subjects and characters split across chunks
+- [x] Fixed re-syncing GitHub documents whose paths need encoding, and GitHub repo URLs with a query or hash
+- [x] Fixed GitLab issue thread replies running together
+- [x] Fixed DrupalWiki attachments being titled with the upload path
+- [x] Fixed suggested messages failing to save part way through
+- [x] Fixed file extensions being read from folder names
+- [x] Fixed a typo in the SQL Connector skill description
+
+## Pinned Download Links
+
+**Revision 1.20.0:**
+| Operating System | Architecture | Download |
+|------------------|--------------|----------|
+| Mac | x64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop.dmg) |
+| Mac | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop-Silicon.dmg) |
+| Windows  | x64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop.exe) |
+| Windows | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop-Arm64.exe) |
+| Linux | x64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop.AppImage) |
+| Linux  | ARM64 | [Download](https://cdn.anythingllm.com/legacy/1.20.0/AnythingLLMDesktop-Arm64.AppImage) |
