@@ -46,6 +46,17 @@ You can update your configuration at any time in the **Settings**.
   alt="OpenAI (Generic) LLM settings"
 />
 
+## Example: CrowLLM
+
+[CrowLLM](https://crowllm.com) is an OpenAI-compatible gateway that serves models from several labs behind one base URL and one API key.
+
+| Field | Value |
+| --- | --- |
+| Base URL | `https://crowllm.com/v1` |
+| API key | a key from [crowllm.com](https://crowllm.com) |
+| Chat model | any id from `https://crowllm.com/v1/models`, e.g. `glm-5.3`, `deepseek-v4-flash`, `kimi-k3`, `claude-opus-4-7` |
+| Max Tokens | the model's cap, e.g. `32768` for `glm-5.3` |
+
 ## Context window and output tokens
 
 **Model context window** and **Max Tokens** control different limits:
